@@ -363,7 +363,7 @@ consulate --api-host 172.17.42.1:8500 kv set backend/current production
 
 
 &lt;h2&gt;Conclusion&lt;/h2&gt;
-&lt;p&gt;マルチホストDocker環境でBlueGreenなデプロイを実現するためweaveでL3の抽象化とConsulによる分散Key-ValueストアでL3/L4リソースの管理、consul-templateで設定ファイルの動的書き換え、docker-swarm/composeによるコンテナのスケジューリング、ライフサイクル管理を行った。&lt;br&gt;
+&lt;p&gt;マルチホストDocker環境でBlueGreenなデプロイを実現するためweaveでL3の抽象化とConsulによる分散Key-ValueストアでL3/L4リソースの管理、consul-templateで設定ファイルの動的書き換え、docker-swarm/composeによるコンテナのスケジューリング、ライフサイクル管理、BlueGreenなクラスタの切り替えを行った。&lt;br&gt;
 構成要素は多いものの各要素は疎結合でそれぞれ代替可能なツールが多い(weaveはpipeworkやflannel、Consulはetcdやzookeeper、consul-templateはconfd等ある)ので、要件に応じて構成要素は変えることが出来る。&lt;br&gt;
 dokkuやflynn、deis等のマイクロPaaSやCloud-FoundryやOpenShift等のフルスタックPaaSは単体で上記ツールチェインのほとんどの機能を備えている一方ロックインされやすいという面もあるため今回は既存の技術の組み合わせのみで構成した。  &lt;/p&gt;
 &lt;p&gt;&lt;a href="https://blog.docker.com/2015/03/dockers-2nd-birthday-wishes-qa-with-solomon-hykes-founder-of-docker/"&gt;Docker誕生から２年&lt;/a&gt;を迎え牧歌的なシングルホストでのdon't recommend in productionな状態からプロダクションでのマルチホスト環境を見据えたオーケストレーションツール群も大分整理統合されてきた感がある。&lt;br&gt;
