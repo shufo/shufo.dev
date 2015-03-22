@@ -1,0 +1,15 @@
+## Pelican
+output/*
+*.pid
+cache/*
+!cache/empty
+
+## Python
+*.py[cod]
+
+## Mac OS X
+.DS_Store
+.*~
+
+## theme
+pelican-themes
