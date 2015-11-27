@@ -1,4 +1,4 @@
-Title: Pelican + codeanywhere + Github PagesでPCレスなブログ作成
+Title: Pelican + codeanywhere + Github Pagesでシンクライアントなブログ作成
 Date: 2015-11-23 13:00
 Category: Pelican
 Tags: pelican
