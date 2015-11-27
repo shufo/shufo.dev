@@ -14,6 +14,7 @@ TWITTER_USERNAME = 'shufo_'
 DISQUS_SITENAME = 'shufo'
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
 DELETE_OUTPUT_DIRECTORY = True
+LOAD_CONTENT_CACHE = False
 
 AUTHOR = u'shufo'
 SITENAME = u'shufo blog'
@@ -61,3 +62,5 @@ DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
+
+PLUGIN_PATHS = ['pelican-plugins']
