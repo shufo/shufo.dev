@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog</title><link href="http://shufo.github.io/" rel="alternate"></link><link href="http://shufo.github.io/feeds/pc.atom.xml" rel="self"></link><id>http://shufo.github.io/</id><updated>2016-11-28T20:00:00+09:00</updated><entry><title>MacBook Proを捨ててThinkpad X220を買った</title><link href="http://shufo.github.io/alternative_to_mac.html" rel="alternate"></link><published>2016-11-28T20:00:00+09:00</published><updated>2016-11-28T20:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2016-11-28:alternative_to_mac.html</id><summary type="html">&lt;p&gt;関連: &lt;a href="http://d.hatena.ne.jp/joker1007/20161125/1480069437"&gt;MacBook Proを捨ててThinkpad T460sを買ってgentooを入れた - joker1007の日記&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;概要&lt;/h2&gt;
+&lt;p&gt;正確にいうとMBP Late 2016を買おうと思っていたのだけど結局Thinkpad X220を買った話です&lt;/p&gt;
+&lt;p&gt;今年10月の&lt;a href="http://www.apple.com/apple-events/october-2016/"&gt;例のイベント&lt;/a&gt;で発表されたMBPは本当に楽しみにしていたし、MBP費用も貯めていたのだけど&lt;br&gt;
+やっぱり欲しくなくなってしまった理由としてAppleがもう開発者の方向を向いてないかもしれない、というのをあのイベントを見て強く感じたからです。&lt;br&gt;
+Appleの方向性に共感していたら買ったかもしれないけどTouchBarの方向性はちょっと支持出来なかったので…&lt;/p&gt;
+&lt;p&gt;あと最近Docker for Windowsを久しぶりに使ったらmount周りもちゃんと動いたのでWindows環境でも自分の場合は普段の開発にほとんど問題なくなったというのもあります。
+自分で作ったアプリは全てDockerizeするDockerオタクなのでこういうときはさすがに恩恵を感じます。
+Linuxデスクトップを導入することも考えたけどドライバ周りや普段使い、会社での相互運用性を考えると常用するには少しハードルが高いなと思いWindowsにしています。&lt;/p&gt;
+&lt;h2&gt;ThinkPad X220&lt;/h2&gt;
+&lt;h3&gt;スペック&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Core i5-2660M&lt;/li&gt;
+&lt;li&gt;Mem: 4G&lt;/li&gt;
+&lt;li&gt;Disk: HDD 480GB&lt;/li&gt;
+&lt;li&gt;ディスプレイ解像度: 1366x768&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;MBPとの比較&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;ESCがデカい&lt;/li&gt;
+&lt;li&gt;キーボードが最高&lt;/li&gt;
+&lt;li&gt;トラックポイントはいいぞ&lt;/li&gt;
+&lt;li&gt;2～3万で買える&lt;/li&gt;
+&lt;li&gt;バッテリ持ちは悪い&lt;/li&gt;
+&lt;li&gt;1.5kgぐらいあるので若干重い&lt;/li&gt;
+&lt;li&gt;パーツが大量に出回って分解も簡単なので直しやすい&lt;/li&gt;
+&lt;li&gt;&lt;del&gt;スタバでMacを威嚇出来る&lt;/del&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ThinkPad X220は2011年発売のモデルで、アイソレーションキーボードになる前のクラシック型のキーボードとしては最後のold ThinkPadです。
+Sandy Bridge世代のCPUと高い拡張性で2016年現在でもパーツの換装を行えば十分使用可能ながら、企業からのリース品が大量に出回って中古市場で2～3万でとこなれて来てるので購入するには丁度いい頃だと思います。&lt;br&gt;
+Sandy Bridgeと最新のSkylake世代のCPUを比較しても性能差は&lt;a href="http://www.cpubenchmark.net/compare.php?cmp%5B%5D=2556&amp;amp;cmp%5B%5D=812"&gt;ほぼない&lt;/a&gt;のでCPUバウンドな処理を行わなければSSDとメモリ換装で最新ノートPCと比べてもほぼ遜色ないんじゃないでしょうか。&lt;br&gt;
+さすがにPCIe-NVMeディスクを搭載出来るような機種にはSATA SSDに換装してもディスクI/Oで劣るけれども割り切って使うにはありだと思います。&lt;/p&gt;
+&lt;p&gt;今回は英字キーボードが国内の中古市場には見つからなかったのでeBayから輸入しましたが
+日本語キーボードでよければ国内の中古市場にも十分流通してるのでそちらの方が早いと思います。&lt;/p&gt;
+&lt;h3&gt;注文&lt;/h3&gt;
+&lt;p&gt;&lt;a href="http://www.ebay.com/sch/i.html?_from=R40&amp;amp;_trksid=p2050601.m570.l1313.TR0.TRC0.H0.XX220.TRS0&amp;amp;_nkw=X220&amp;amp;_sacat=0"&gt;eBay&lt;/a&gt;からThinkPad X220を検索しそこそこ状態のよさそうな品かつリース品を綺麗にしたようなものをDyminという業者から購入。&lt;/p&gt;
+&lt;p&gt;X220にはタッチパネルモデルもあるみたいだけど無駄に重くなるので普通のモデルにした。&lt;/p&gt;
+&lt;h3&gt;配送から届くまで&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;注文後1日: 業者から発送&lt;/li&gt;
+&lt;li&gt;4日: eBayのGlobal集荷センターに到着(ここから長い)&lt;/li&gt;
+&lt;li&gt;5～14日: 海外配送&lt;/li&gt;
+&lt;li&gt;14～15日: 国内配送&lt;/li&gt;
+&lt;li&gt;16日: 到着&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;パーツも結構流通してるっぽいので国内中古市場で買った日本語キーボード版を英字キーボードに換装したほうが早かったかなと思いました。&lt;/p&gt;
+&lt;h3&gt;到着&lt;/h3&gt;
+&lt;blockquote class="twitter-tweet" data-partner="tweetdeck"&gt;&lt;p lang="ja" dir="ltr"&gt;MacBook Pro届いた &lt;a href="https://t.co/A3lKMTUrYT"&gt;pic.twitter.com/A3lKMTUrYT&lt;/a&gt;&lt;/p&gt;&amp;mdash; shufo (@shufo_) &lt;a href="https://twitter.com/shufo_/status/802768934432743424"&gt;November 27, 2016&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;script async src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+&lt;p&gt;(ThinkPad X220です)&lt;/p&gt;
+&lt;p&gt;海外発送の送料込でちょうど3万程でした。&lt;br&gt;
+全体的に使用感はほとんどなく綺麗だったけどキーボードには気にならないレベルだけどわずかに使用感あり。
+ThinkPadを買うのは初めてですがこの時代のold ThinkPadは雰囲気があっていいですね。個人的にはキーボードは薄い方が好きですがちゃんとした深さがあるので無駄にガチャガチャやりたくなります。&lt;/p&gt;
+&lt;h3&gt;SSD・メモリ換装&lt;/h3&gt;
+&lt;p&gt;SSDとメモリを以下に換装。
+パーツ費用含めても全体で大体5万くらいでした。&lt;br&gt;
+換装済みの中古品もあるけど高くつく割には容量が少なかったりするので手間をかけられるなら自分で換装した方が安く高スペックに出来ます。&lt;/p&gt;
+&lt;h4&gt;SSD&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Crusial MX300 525GB&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;交換手順参照: &lt;a href="http://003sh.ou-net.com/blog/?p=1114"&gt;ThinkPad x220 SSD交換(Apacer/SanDisk) \| 003SH 解体新書&lt;/a&gt;&lt;/p&gt;
+&lt;h4&gt;メモリ&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Transcend PC3L-12800 DDR3L 1600 8GB×2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;交換手順参照: &lt;a href="http://kimamatech.blog.fc2.com/blog-entry-49.html"&gt;ThinkPad X220 増強作戦 その１ ： 1万円でメモリを16GBに増設 - きままテック&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;MBPの代替としてThinkPad X220を買った。&lt;br&gt;
+モバイル出来るUnixとしてMacは好きなのだけど最近のAppleの方向性からロックインが強くなることの懸念も含めてノートPCから変えてみました。(まだiPhoneは使ってる)&lt;/p&gt;
+&lt;p&gt;最近のWindows開発環境としてはbabun + Docker for Windowsがあれば個人的に困ることはほぼなくなって来たのであとはWSLのbashの完成度がより高まればいよいよWindowsでも十分だなと思います。&lt;br&gt;
+Linuxデスクトップは&lt;a href="https://elementary.io/ja/"&gt;elementary OS&lt;/a&gt;が気になっているのでmSATA SSDを追加してデュアルブートにでもしてみようかなと思います。&lt;/p&gt;
+&lt;h2&gt;他候補&lt;/h2&gt;
+&lt;p&gt;MBPオルタナティブのノートPCとしては&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://www.razerzone.com/gaming-systems/razer-blade-stealth"&gt;Razer Blade Stealth&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.dell.com/jp/p/xps-13-9360-laptop/pd"&gt;Dell XPS 13&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;がスペックと価格のバランスがよかったので検討していたのだけど自分のノートPCの使用頻度に対してはオーバースペックすぎたので候補から外れました。&lt;/p&gt;</summary><category term="Mac"></category><category term="PC"></category></entry></feed>
