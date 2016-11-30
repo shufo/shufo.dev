@@ -79,7 +79,20 @@ Linuxデスクトップは&lt;a href="https://elementary.io/ja/"&gt;elementary O
 &lt;li&gt;&lt;a href="http://www.razerzone.com/gaming-systems/razer-blade-stealth"&gt;Razer Blade Stealth&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://www.dell.com/jp/p/xps-13-9360-laptop/pd"&gt;Dell XPS 13&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;がスペックと価格のバランスがよかったので検討していたのだけど自分のノートPCの使用頻度に対してはオーバースペックすぎたので候補から外れました。&lt;/p&gt;</summary><category term="Mac"></category><category term="PC"></category></entry><entry><title>Pelican + codeanywhere + Github Pagesでシンクライアントなブログ作成</title><link href="http://shufo.github.io/site_building.html" rel="alternate"></link><published>2015-11-23T13:00:00+09:00</published><updated>2015-11-23T13:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2015-11-23:site_building.html</id><summary type="html">&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;がスペックと価格のバランスがよかったので検討していたのだけど自分のノートPCの使用頻度に対してはオーバースペックすぎたので候補から外れました。&lt;/p&gt;
+&lt;h2&gt;追記 2016-12-01&lt;/h2&gt;
+&lt;p&gt;到着後Windows7からWindows10 Proにアップグレードしバッテリーのファームウェアをアップグレードしようとしたらバッテリーが死にました…
+ファームウェアをアップデートする前はバッテリーを認識していたので恐らくファームウェアの書き換えに失敗したようです。&lt;/p&gt;
+&lt;h3&gt;バッテリー追加&lt;/h3&gt;
+&lt;p&gt;結局以下の互換バッテリーをAmazonでポチりました&lt;br&gt;
+元は9セルでX220本体からバッテリーがはみ出していたのが筐体の枠にちょうど収まりました&lt;br&gt;
+公式じゃないですけど今のとこ問題ないです&lt;br&gt;
+安いし物理的に取り外しし易いからバッテリーが心配な時は何本か持ち歩くってのもありですね&lt;/p&gt;
+&lt;blockquote class="imgur-embed-pub" lang="en" data-id="a/wiq4p"&gt;&lt;a href="//imgur.com/wiq4p"&gt;&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;script async src="//s.imgur.com/min/embed.js" charset="utf-8"&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;a href="http://amzn.asia/bjrtGpW"&gt;WorldPlus バッテリー LENOVO ThinkPad X230 X230i X220 X220i X220s 対応 6セル&lt;/a&gt;&lt;/p&gt;</summary><category term="Mac"></category><category term="PC"></category></entry><entry><title>Pelican + codeanywhere + Github Pagesでシンクライアントなブログ作成</title><link href="http://shufo.github.io/site_building.html" rel="alternate"></link><published>2015-11-23T13:00:00+09:00</published><updated>2015-11-23T13:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2015-11-23:site_building.html</id><summary type="html">&lt;h2&gt;Overview&lt;/h2&gt;
 &lt;p&gt;このブログは&lt;a href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;で書いているけどいわゆるサイトジェネレータにありがちな問題なのがいちいち開発環境を開いたりするのが面倒というのがある。&lt;br&gt;
 WebUI管理画面をサイトジェネレータ自体が持っている&lt;a href="http://hubpress.io/"&gt;HubPress&lt;/a&gt;は気軽に記事を投稿出来るもののGithub APIを使うためGithub Pages専用アプリという色が強く他の環境に移す場合を考慮して使ってはいない。&lt;br&gt;
 2015年11月現在主なサイトジェネレータは&lt;a href="https://staticsitegenerators.net/"&gt;Static Site Generators&lt;/a&gt;でGitHub Starの多い順で&lt;a href="http://jekyllrb.com/"&gt;Jekyll&lt;/a&gt;, &lt;a href="http://octopress.org/"&gt;OctoPress&lt;/a&gt;, &lt;a href="https://hexo.io/"&gt;Hexo&lt;/a&gt;, &lt;a href="http://gohugo.io/"&gt;Hugo&lt;/a&gt;, &lt;a href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;がよく使われている。&lt;br&gt;
