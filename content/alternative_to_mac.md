@@ -109,3 +109,19 @@ MBPオルタナティブのノートPCとしては
 - [Dell XPS 13](http://www.dell.com/jp/p/xps-13-9360-laptop/pd)
 
 がスペックと価格のバランスがよかったので検討していたのだけど自分のノートPCの使用頻度に対してはオーバースペックすぎたので候補から外れました。
+
+## 追記 2016-12-01
+
+到着後Windows7からWindows10 Proにアップグレードしバッテリーのファームウェアをアップグレードしようとしたらバッテリーが死にました…
+ファームウェアをアップデートする前はバッテリーを認識していたので恐らくファームウェアの書き換えに失敗したようです。
+
+### バッテリー追加
+
+結局以下の互換バッテリーをAmazonでポチりました  
+元は9セルでX220本体からバッテリーがはみ出していたのが筐体の枠にちょうど収まりました  
+公式じゃないですけど今のとこ問題ないです  
+安いし物理的に取り外しし易いからバッテリーが心配な時は何本か持ち歩くってのもありですね
+
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/wiq4p"><a href="//imgur.com/wiq4p"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+
+[WorldPlus バッテリー LENOVO ThinkPad X230 X230i X220 X220i X220s 対応 6セル](http://amzn.asia/bjrtGpW)
