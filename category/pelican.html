@@ -75,13 +75,13 @@
 
             <article class="uk-article" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
                 <a href="http://shufo.github.io/site_building.html" class="uk-article-title uk-link-muted" itemprop="name">Pelican + codeanywhere + Github Pagesでシンクライアントなブログ作成</a>
-                <p class="uk-article-meta"><time datetime="2015-11-23" itemprop="datePublished">2015 Nov/23 (Mon)</time> • <a href="http://shufo.github.io/category/pelican.html">Pelican</a> • <br class="uk-visible-small"><i class="uk-icon-comment"></i> <a href="http://shufo.github.io/site_building.html#disqus_thread" itemprop="discussionUrl"></a></p>
+                <p class="uk-article-meta"><time datetime="2015-11-23" itemprop="datePublished">2015 11月/23 (月)</time> • <a href="http://shufo.github.io/category/pelican.html">Pelican</a> • <br class="uk-visible-small"><i class="uk-icon-comment"></i> <a href="http://shufo.github.io/site_building.html#disqus_thread" itemprop="discussionUrl"></a></p>
 </p>
                 <p class="uk-article-lead" itemprop="description">Pelican + codeanywhere + Github Pagesで非環境依存なブログ構築</p>
                 <section itemprop="articleBody"><h2>Overview</h2>
-<p>このブログは<a href="http://blog.getpelican.com/">Pelican</a>で書いているけどいわゆるサイトジェネレータにありがちな問題なのがいちいち開発環境を開いたりするのが面倒というのがある。<br>
-WebUI管理画面をサイトジェネレータ自体が持っている<a href="http://hubpress.io/">HubPress</a>は気軽に記事を投稿出来るもののGithub APIを使うためGithub Pages専用アプリという色が強く他の環境に移す場合を考慮して使ってはいない。<br>
-2015年11月現在主なサイトジェネレータは<a href="https://staticsitegenerators.net/">Static Site Generators</a>でGitHub Starの多い順で<a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://octopress.org/">OctoPress</a>, <a href="https://hexo.io/">Hexo</a>, <a href="http://gohugo.io/">Hugo</a>, <a href="http://blog.getpelican.com/">Pelican</a>がよく使われている。<br>
+<p>このブログは<a href="http://blog.getpelican.com/">Pelican</a>で書いているけどいわゆるサイトジェネレータにありがちな問題なのがいちいち開発環境を開いたりするのが面倒というのがある。<br />
+WebUI管理画面をサイトジェネレータ自体が持っている<a href="http://hubpress.io/">HubPress</a>は気軽に記事を投稿出来るもののGithub APIを使うためGithub Pages専用アプリという色が強く他の環境に移す場合を考慮して使ってはいない。<br />
+2015年11月現在主なサイトジェネレータは<a href="https://staticsitegenerators.net/">Static Site Generators</a>でGitHub Starの多い順で<a href="http://jekyllrb.com/">Jekyll</a>, <a href="http://octopress.org/">OctoPress</a>, <a href="https://hexo.io/">Hexo</a>, <a href="http://gohugo.io/">Hugo</a>, <a href="http://blog.getpelican.com/">Pelican</a>がよく使われている。<br />
 それぞれWebベースの管理画面はないもののシンプルな構成で一度生成してしまえば特定のランタイムやDBに依存しないで静的コンテンツを配信出来る。</p>
 <h2>やりたいこと</h2>
 <ul>
@@ -90,7 +90,7 @@ WebUI管理画面をサイトジェネレータ自体が持っている<a href="
 <h2>やったこと</h2>
 <p><a href="http://blog.getpelican.com/">Pelican</a>で静的コンテンツの生成、<a href="https://codeanywhere.com/">codeanywhere</a>でWebベースでのファイルの編集とサイトジェネレータ用ランタイムの構築、GitHub Pagesでサイトの公開を行った。</p>
 <h2>Pelican とは</h2>
-<p><img alt="画像" src="/images/pelican.png"></p>
+<p><img alt="画像" src="/images/pelican.png" /></p>
 <p><a href="http://docs.getpelican.com/en/3.6.3/">Pelican</a>はPython製の静的サイトジェネレータでMarkdown形式で記事を書くことが出来る。</p>
 <p>主な機能としては</p>
 <ul>
@@ -101,13 +101,13 @@ WebUI管理画面をサイトジェネレータ自体が持っている<a href="
 </ul>
 <p>があり、ここら辺は類似のサイトジェネレータと特に変わりなし。</p>
 <h2>Github Pages とは</h2>
-<p><img alt="画像" src="/images/githubpages.JPG"></p>
+<p><img alt="画像" src="/images/githubpages.JPG" /></p>
 <p><a href="https://github.com/">GitHub</a> で静的なページをホスティングすることが出来るサービス。
 独自ドメインの割当も出来る。</p>
 <h2>codeanywhere とは</h2>
-<p><img alt="画像" src="/images/codeanywhere.png"></p>
-<p><a href="https://codeanywhere.com/">codeanywhere</a>は Web上でコードの編集や実行が出来るクラウドIDE。<br>
-プロジェクトごとにコンテナが作成されランタイム等は自由にインストール出来る。<br>
+<p><img alt="画像" src="/images/codeanywhere.png" /></p>
+<p><a href="https://codeanywhere.com/">codeanywhere</a>は Web上でコードの編集や実行が出来るクラウドIDE。<br />
+プロジェクトごとにコンテナが作成されランタイム等は自由にインストール出来る。<br />
 ちなみにこの記事もcodeanywhereで作成から公開まで行っている。</p>
 <p>主な機能としては</p>
 <ul>
@@ -118,99 +118,78 @@ WebUI管理画面をサイトジェネレータ自体が持っている<a href="
 </ul>
 <p>がある。今回はPython製ツールを使うのでコンテナのテンプレートにPythonを使いプロジェクトを作成してみる。</p>
 <h2>やってみる</h2>
-<p>まず<a href="https://github.com/new">GitHub</a>で「<code><a href="http://ユーザ名.github.io">ユーザ名.github.io</a></code>」という名前で空のリポジトリを作る。
-自分の場合GitHubユーザ名は<code>shufo</code>なので<code><a href="http://shufo.github.io">shufo.github.io</a></code>を作成。</p>
+<p>まず<a href="https://github.com/new">GitHub</a>で「<code>ユーザ名.github.io</code>」という名前で空のリポジトリを作る。
+自分の場合GitHubユーザ名は<code>shufo</code>なので<code>shufo.github.io</code>を作成。</p>
 <p>作成出来たらcodeanywhereの<a href="https://codeanywhere.com/dashboard#project">プロジェクトページ</a>から適当に新規プロジェクトを作成する。</p>
-<p><img alt="画像" src="/images/codeanywhere1.jpg"></p>
+<p><img alt="画像" src="/images/codeanywhere1.jpg" /></p>
 <p>先ほど作成したユーザ名.github.ioを選び、コンテナのテンプレートとしてpythonを選択する。</p>
-<p><img alt="画像" src="/images/codeanywhere2.jpg"></p>
-<p>Nextボタンをクリックししばらく待つとプロジェクト編集画面が開きファイルを編集出来るようになるので<br>
+<p><img alt="画像" src="/images/codeanywhere2.jpg" /></p>
+<p>Nextボタンをクリックししばらく待つとプロジェクト編集画面が開きファイルを編集出来るようになるので<br />
 左のファイルツリーからレポジトリ名を右クリックし「SSH Terminal」をクリックする。</p>
-<p><img alt="画像" src="/images/codeanywhere3.jpg"></p>
+<p><img alt="画像" src="/images/codeanywhere3.jpg" /></p>
 <p>ターミナルが開くのでPelicanのインストールをする。</p>
-<div class="highlight"><pre><span></span>sudo pip install pelican Markdown mdx_linkify mdx_del_ins ghp-import
-</pre></div>
-
-
+<p><code>sudo pip install pelican Markdown mdx_linkify mdx_del_ins ghp-import</code></p>
 <p>次にサイトの初期化。設定するパラメータを色々質問されるので必要に応じてyまたはnを押して進める。</p>
-<div class="highlight"><pre><span></span>Please answer the following questions so this script can generate the files                                                                                                                                                                                                           
-needed by Pelican.                                                                                                                                                                                                                                                                    
-
-
-&gt; Where do you want to create your new web site? [.]                                                                                                                                                                                                                                  
-&gt; What will be the title of this web site? test                                                                                                                                                                                                                                       
-&gt; Who will be the author of this web site? shufo                                                                                                                                                                                                                                      
-&gt; What will be the default language of this web site? [en] ja                                                                                                                                                                                                                         
-&gt; Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) y                                                                                                                                                                                                             
-&gt; What is your URL prefix? (see above example; no trailing slash) http://shufo.github.io                                                                                                                                                                                              
-&gt; Do you want to enable article pagination? (Y/n) y                                                                                                                                                                                                                                   
-&gt; How many articles per page do you want? [10]                                                                                                                                                                                                                                        
-&gt; What is your time zone? [Europe/Paris] Asia/Tokyo                                                                                                                                                                                                                                   
-&gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) y                                                                                                                                                                                           
-&gt; Do you want an auto-reload &amp; simpleHTTP script to assist with theme and site development? (Y/n) y                                                                                                                                                                                   
-&gt; Do you want to upload your website using FTP? (y/N) n                                                                                                                                                                                                                               
-&gt; Do you want to upload your website using SSH? (y/N) n                                                                                                                                                                                                                               
-&gt; Do you want to upload your website using Dropbox? (y/N) n                                                                                                                                                                                                                           
-&gt; Do you want to upload your website using S3? (y/N) n                                                                                                                                                                                                                                
-&gt; Do you want to upload your website using Rackspace Cloud Files? (y/N) n                                                                                                                                                                                                             
-&gt; Do you want to upload your website using GitHub Pages? (y/N) y                                                                                                                                                                                                                      
-&gt; Is this your personal page (username.github.io)? (y/N) y                                                                                                                                                                                                                            
+<p>```                                                                                                                                                                                                                                                                                    <br />
+Please answer the following questions so this script can generate the files                                                                                                                                                                                                         <br />
+needed by Pelican.                                                                                                                                                                                                                                                                    </p>
+<blockquote>
+<p>Where do you want to create your new web site? [.]                                                                                                                                                                                                                                <br />
+What will be the title of this web site? test                                                                                                                                                                                                                                     <br />
+Who will be the author of this web site? shufo                                                                                                                                                                                                                                    <br />
+What will be the default language of this web site? [en] ja                                                                                                                                                                                                                       <br />
+Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) y                                                                                                                                                                                                           <br />
+What is your URL prefix? (see above example; no trailing slash) http://shufo.github.io                                                                                                                                                                                            <br />
+Do you want to enable article pagination? (Y/n) y                                                                                                                                                                                                                                 <br />
+How many articles per page do you want? [10]                                                                                                                                                                                                                                      <br />
+What is your time zone? [Europe/Paris] Asia/Tokyo                                                                                                                                                                                                                                 <br />
+Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) y                                                                                                                                                                                         <br />
+Do you want an auto-reload &amp; simpleHTTP script to assist with theme and site development? (Y/n) y                                                                                                                                                                                 <br />
+Do you want to upload your website using FTP? (y/N) n                                                                                                                                                                                                                             <br />
+Do you want to upload your website using SSH? (y/N) n                                                                                                                                                                                                                             <br />
+Do you want to upload your website using Dropbox? (y/N) n                                                                                                                                                                                                                         <br />
+Do you want to upload your website using S3? (y/N) n                                                                                                                                                                                                                              <br />
+Do you want to upload your website using Rackspace Cloud Files? (y/N) n                                                                                                                                                                                                           <br />
+Do you want to upload your website using GitHub Pages? (y/N) y                                                                                                                                                                                                                    <br />
+Is this your personal page (username.github.io)? (y/N) y                                                                                                                                                                                                                          <br />
 Done. Your new project is available at /home/cabox/workspace
-</pre></div>
-
-
+```</p>
+</blockquote>
 <p>初期化が完了したので記事を書いていく。<code>content</code>ディレクトリ以下に拡張子を<code>.md</code>で保存したファイルが記事の対象となる。
 基本的な記事のフォーマットは以下の様になる。</p>
-<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">Pelican</span> <span class="o">+</span> <span class="n">codeanywhere</span> <span class="o">+</span> <span class="n">Github</span> <span class="n">Pages</span><span class="err">でブラウザのみでブログ構築</span>
-<span class="n">Date</span><span class="o">:</span> <span class="mi">2015</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">23</span> <span class="mi">13</span><span class="o">:</span><span class="mi">00</span>
-<span class="n">Category</span><span class="o">:</span> <span class="n">Pelican</span>
-<span class="n">Tags</span><span class="o">:</span> <span class="n">pelican</span>
-<span class="n">Slug</span><span class="o">:</span> <span class="n">site_building</span>
-<span class="n">Author</span><span class="o">:</span> <span class="n">shufo</span>
-<span class="n">Summary</span><span class="o">:</span> <span class="n">Pelican</span> <span class="o">+</span> <span class="n">codeanywhere</span> <span class="o">+</span> <span class="n">Github</span> <span class="n">Pages</span><span class="err">での非環境依存なブログ構築</span>
-
-<span class="err">##</span> <span class="n">Pelican</span> <span class="err">とは</span>
-<span class="err">以下本文</span>
-</pre></div>
-
-
+<p>```
+Title: Pelican + codeanywhere + Github Pagesでブラウザのみでブログ構築
+Date: 2015-11-23 13:00
+Category: Pelican
+Tags: pelican
+Slug: site_building
+Author: shufo
+Summary: Pelican + codeanywhere + Github Pagesでの非環境依存なブログ構築</p>
+<h2>Pelican とは</h2>
+<p>以下本文
+```</p>
 <p>テーマを適用。テーマは公式の<a href="https://github.com/getpelican/pelican-themes">テーマ一覧</a>から適当に。</p>
-<div class="highlight"><pre><span></span>mkdir pelican-themes
-git clone https://github.com/lucachr/pelican-mg.git pelican-themes/pelican-mg
-</pre></div>
-
-
+<p><code>mkdir pelican-themes
+git clone https://github.com/lucachr/pelican-mg.git pelican-themes/pelican-mg</code></p>
 <p>pelicanconf.pyを編集。</p>
-<div class="highlight"><pre><span></span>THEME = &#39;./pelican-themes/pelican-mg&#39;
-</pre></div>
-
-
+<p><code>THEME = './pelican-themes/pelican-mg'</code></p>
 <p>記事の出力とサーバの起動を実行。</p>
-<div class="highlight"><pre><span></span>./develop_server.sh start
-</pre></div>
-
-
+<p><code>./develop_server.sh start</code></p>
 <p>確認用のサーバURLは画面左のファイルツリーのリポジトリを右クリックし「Info」から表示出来る。</p>
-<p><img alt="画像" src="/images/codeanywhere4.jpg"></p>
+<p><img alt="画像" src="/images/codeanywhere4.jpg" /></p>
 <p>ファイルビューに環境情報が表示される。</p>
-<p><img alt="画像" src="/images/codeanywhere5.jpg"></p>
-<div class="highlight"><pre><span></span>http://preview.ys2w6ouag0c0udid1stmdqerhrara4iot2p57l4efhzd7vi.box.codeanywhere.com
-</pre></div>
-
-
+<p><img alt="画像" src="/images/codeanywhere5.jpg" /></p>
+<p><code>http://preview.ys2w6ouag0c0udid1stmdqerhrara4iot2p57l4efhzd7vi.box.codeanywhere.com</code></p>
 <p>先ほど起動したHTTPサーバはデフォルトで8000番でListenするので</p>
-<p><a href="http://preview.ys2w6ouag0c0udid1stmdqerhrara4iot2p57l4efhzd7vi.box.codeanywhere.com:8000">http://preview.ys2w6ouag0c0udid1stmdqerhrara4iot2p57l4efhzd7vi.box.codeanywhere.com:8000</a> をブラウザで開いてみる。</p>
-<p><img alt="画像" src="/images/codeanywhere6.jpg"></p>
+<p>http://preview.ys2w6ouag0c0udid1stmdqerhrara4iot2p57l4efhzd7vi.box.codeanywhere.com:8000 をブラウザで開いてみる。</p>
+<p><img alt="画像" src="/images/codeanywhere6.jpg" /></p>
 <p>確認出来た。</p>
 <p>記事に問題がなければ公開を実行。</p>
-<div class="highlight"><pre><span></span>make github
-</pre></div>
-
-
-<p>このコマンドを実行すると<code>ghp-import</code>で<code>output</code>ディレクトリの内容が<code>master</code>ブランチにコミットされ、同時に<code>master</code>ブランチがGitHubへpushされ公開される。<br>
+<p><code>make github</code></p>
+<p>このコマンドを実行すると<code>ghp-import</code>で<code>output</code>ディレクトリの内容が<code>master</code>ブランチにコミットされ、同時に<code>master</code>ブランチがGitHubへpushされ公開される。<br />
 pushから反映までは10分ほど時間かかるのでしばらく待ち反映されたのを確認出来たら完了。</p>
 <h2>まとめ</h2>
-<p>PelicanとcodeanywhereとGitHub Pagesで意識低めのブログ構築をした。<br>
+<p>PelicanとcodeanywhereとGitHub Pagesで意識低めのブログ構築をした。<br />
 ローカルの環境に依存しないためいつでも気が向いたときに書けるというのがブログ作成に当たっては大きいメリットだと思う。</p></section>
                 <a href="http://shufo.github.io/site_building.html#disqus_thread"></a>
                 <hr class="uk-article-divider">
@@ -234,6 +213,7 @@ pushから反映までは10分ほど時間かかるのでしばらく待ち反�
                     <li ><a href="http://shufo.github.io/category/docker.html">Docker</a></li>
                     <li ><a href="http://shufo.github.io/category/pc.html">PC</a></li>
                     <li class="uk-active"><a href="http://shufo.github.io/category/pelican.html">Pelican</a></li>
+                    <li ><a href="http://shufo.github.io/category/vacation.html">vacation</a></li>
                     <li class="uk-nav-header">Pages</li>
 
 
@@ -306,6 +286,7 @@ pushから反映までは10分ほど時間かかるのでしばらく待ち反�
             <li ><a href="http://shufo.github.io/category/docker.html">Docker</a></li>
             <li ><a href="http://shufo.github.io/category/pc.html">PC</a></li>
             <li class="uk-active"><a href="http://shufo.github.io/category/pelican.html">Pelican</a></li>
+            <li ><a href="http://shufo.github.io/category/vacation.html">vacation</a></li>
             <li class="uk-nav-header">Pages</li>
 
 
