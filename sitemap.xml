@@ -5,14 +5,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://shufo.github.io/</loc>
-<lastmod>2017-12-03T00:18:16-00:00</lastmod>
+<lastmod>2017-12-03T02:33:41-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://shufo.github.io/categories.html</loc>
-<lastmod>2017-12-03T00:18:16-00:00</lastmod>
+<lastmod>2017-12-03T02:33:41-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -95,8 +95,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/consul</loc>
+<loc>http://shufo.github.io/tag/docker</loc>
 <lastmod>2015-03-19T13:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://shufo.github.io/tag/pelican</loc>
+<lastmod>2015-11-23T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -109,14 +116,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/weave</loc>
-<lastmod>2015-03-19T13:00:00+09:19</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>http://shufo.github.io/tag/swarm</loc>
+<loc>http://shufo.github.io/tag/consul</loc>
 <lastmod>2015-03-19T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -130,13 +130,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/compose</loc>
-<lastmod>2015-03-19T13:00:00+09:19</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://shufo.github.io/tag/mac</loc>
 <lastmod>2016-11-28T20:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
@@ -144,7 +137,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/docker</loc>
+<loc>http://shufo.github.io/tag/compose</loc>
 <lastmod>2015-03-19T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -158,8 +151,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/pelican</loc>
-<lastmod>2015-11-23T13:00:00+09:19</lastmod>
+<loc>http://shufo.github.io/tag/weave</loc>
+<lastmod>2015-03-19T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -167,6 +160,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://shufo.github.io/tag/vacation</loc>
 <lastmod>2017-08-06T09:18:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://shufo.github.io/tag/swarm</loc>
+<lastmod>2015-03-19T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
