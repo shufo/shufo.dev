@@ -6,7 +6,7 @@ Category: vacation
 Slug: -panorama-nyc-festival-2017-2
 Summary: ニューヨーク一人旅その２
 
-[1日目]()に続きNew York一人旅2日目です。
+[1日目](http://shufo.github.io/panorama-festival-2017-1.html)に続きNew York一人旅2日目です。
 
 この日からPanorama NYCフェスティバルが3日間開催されます。
 
