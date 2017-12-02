@@ -79,12 +79,12 @@
 </p>
                 <p class="uk-article-lead" itemprop="description">Weave / Swarm / Compose / Consulでdockerのクラスタリング</p>
                 <section itemprop="articleBody"><h2>Overview</h2>
-<p>dockerをそれなりに扱おうと思うと直面するのがマルチホスト環境でのdockerの構成。<br />
-大抵シングルホストのプリミティブな環境では問題無かったL3/L4の扱い、IPアドレス、ポート等のメタデータのリソース管理が問題になってくる。<br />
-前者に関しては、ルーティングコンテナ経由でのパケット交換、cgroup/namespaced、Open vSwtichなどでSDNを実装、 <br />
+<p>dockerをそれなりに扱おうと思うと直面するのがマルチホスト環境でのdockerの構成。<br>
+大抵シングルホストのプリミティブな環境では問題無かったL3/L4の扱い、IPアドレス、ポート等のメタデータのリソース管理が問題になってくる。<br>
+前者に関しては、ルーティングコンテナ経由でのパケット交換、cgroup/namespaced、Open vSwtichなどでSDNを実装、 <br>
 L3/L4を抽象化し仮想的に１つのネットワークとして扱えるようにすることで解決をしようという動きがある。
 代表的なソリューションとしては<a href="https://github.com/socketplane/socketplane">socketplane</a>, <a href="https://github.com/zettio/weave">weave</a>, <a href="https://github.com/jpetazzo/pipework">pipework</a>, <a href="https://github.com/coreos/flannel">flannel</a>, Open vSwitch等のソリューションがある。  </p>
-<p>後者に関して分散Key Valueストアにコンテナのメタデータを登録し必要に応じてクラスタの構成情報を読み出す<br />
+<p>後者に関して分散Key Valueストアにコンテナのメタデータを登録し必要に応じてクラスタの構成情報を読み出す<br>
 ことで解決しようとする動きがある。
 代表的なソリューションとしては<a href="https://www.consul.io/">Consul</a>、<a href="https://github.com/coreos/etcd">etcd</a>、<a href="http://zookeeper.apache.org/">zookeeper</a>等がある。  </p>
 <h2>マルチホストdocker環境で辛いところ</h2>
@@ -102,11 +102,11 @@ L3/L4を抽象化し仮想的に１つのネットワークとして扱えるよ
 <li>BlueGreenなデプロイメント</li>
 </ul>
 <h2>やったこと</h2>
-<p><code>weave</code>でホストごとに存在するdockerのプライベートネットワークをL3レベルで抽象化、複数のホストにまたがるdockerネットワークを一つのネットワークとして扱えるようにし、<code>Consul</code>/<code>consul-template</code>/<code>registrator</code>でメタデータの管理/configの自動書き換え及びBlueGreenなクラスタの切り替え、またコンテナのスケジューリング/ライフサイクル管理に<code>docker-swarm</code>/<code>docker-compose</code>を使用しクラスタ全体を透過的に管理出来るようにした。<br />
+<p><code>weave</code>でホストごとに存在するdockerのプライベートネットワークをL3レベルで抽象化、複数のホストにまたがるdockerネットワークを一つのネットワークとして扱えるようにし、<code>Consul</code>/<code>consul-template</code>/<code>registrator</code>でメタデータの管理/configの自動書き換え及びBlueGreenなクラスタの切り替え、またコンテナのスケジューリング/ライフサイクル管理に<code>docker-swarm</code>/<code>docker-compose</code>を使用しクラスタ全体を透過的に管理出来るようにした。<br>
 それぞれの構成要素は単体で落ちても他の構成要素には影響しないものとし、ホスト障害があってもクラスタ全体としては可用性を存続出来るようにする。
 なお前提として各構成要素は全てコンテナのためOSは便宜的に<code>CoreOS</code>を使用しているがホストでdockerさえ動作すればどんな環境でも動作するようになっている。</p>
 <h3>構成イメージ</h3>
-<p><img alt="docker-weave-swarm" src="/images/docker-weave-swarm.gif" title="構成" /></p>
+<p><img alt="docker-weave-swarm" src="/images/docker-weave-swarm.gif" title="構成"></p>
 <h2>Requirements</h2>
 <ul>
 <li><a href="https://coreos.com/">CoreOS</a> (Tested on 557.2.0)</li>
@@ -119,285 +119,372 @@ L3/L4を抽象化し仮想的に１つのネットワークとして扱えるよ
 <li><a href="https://github.com/gliderlabs/registrator">registrator</a> (Tested on v5)</li>
 </ul>
 <h2>Weave</h2>
-<p>dockerネットワークの抽象化には<a href="https://github.com/zettio/weave">Weave</a>を使う。<br />
+<p>dockerネットワークの抽象化には<a href="https://github.com/zettio/weave">Weave</a>を使う。<br>
 Weaveは各ホストに存在するローカルなdockerネットワークを抽象化し、１つのネットワークとして扱うことを可能にする。</p>
 <ul>
 <li>Unitファイル作成</li>
 </ul>
-<p><code>sudo vim /etc/systemd/system/install-weave.service</code></p>
-<p>```bash
-[Unit]
-After=network-online.target
-After=docker.service
-Description=Install Weave
-Documentation=http://zettio.github.io/weave/
-Requires=network-online.target
-Requires=docker.service</p>
-<p>[Service]
-Type=oneshot
-RemainAfterExit=yes
-ExecStartPre=/usr/bin/wget -N -P /opt/bin \
+<div class="highlight"><pre><span></span>sudo vim /etc/systemd/system/install-weave.service
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="o">[</span>Unit<span class="o">]</span>
+<span class="nv">After</span><span class="o">=</span>network-online.target
+<span class="nv">After</span><span class="o">=</span>docker.service
+<span class="nv">Description</span><span class="o">=</span>Install Weave
+<span class="nv">Documentation</span><span class="o">=</span>http://zettio.github.io/weave/
+<span class="nv">Requires</span><span class="o">=</span>network-online.target
+<span class="nv">Requires</span><span class="o">=</span>docker.service
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">Type</span><span class="o">=</span>oneshot
+<span class="nv">RemainAfterExit</span><span class="o">=</span>yes
+<span class="nv">ExecStartPre</span><span class="o">=</span>/usr/bin/wget -N -P /opt/bin <span class="se">\</span>
     https://raw.github.com/zettio/weave/master/weave 
-ExecStartPre=/usr/bin/chmod +x /opt/bin/weave
-ExecStartPre=/usr/bin/docker pull zettio/weave:latest
-ExecStart=/bin/echo Wave Installed
-```</p>
+<span class="nv">ExecStartPre</span><span class="o">=</span>/usr/bin/chmod +x /opt/bin/weave
+<span class="nv">ExecStartPre</span><span class="o">=</span>/usr/bin/docker pull zettio/weave:latest
+<span class="nv">ExecStart</span><span class="o">=</span>/bin/echo Wave Installed
+</pre></div>
+
+
 <ul>
 <li>weave用ブリッジインターフェースUnitファイル作成</li>
 </ul>
-<p><code>sudo vim /etc/systemd/network/10-weave.network</code></p>
-<p>```
-[Match]
-Type=bridge
-Name=weave*</p>
-<p>[Network]
-Address=10.0.0.1/8
-```</p>
-<p><code>sudo vim /etc/systemd/network/10-weave.netdev</code></p>
-<p><code>[NetDev]
-Name=weave
-Kind=bridge</code></p>
+<div class="highlight"><pre><span></span>sudo vim /etc/systemd/network/10-weave.network
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">[Match]</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">bridge</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">weave*</span>
+
+<span class="k">[Network]</span>
+<span class="na">Address</span><span class="o">=</span><span class="s">10.0.0.1/8</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>sudo vim /etc/systemd/network/10-weave.netdev
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">[NetDev]</span>
+<span class="na">Name</span><span class="o">=</span><span class="s">weave</span>
+<span class="na">Kind</span><span class="o">=</span><span class="s">bridge</span>
+</pre></div>
+
+
 <ul>
 <li>weave service用Unitファイル作成</li>
 </ul>
-<p><code>sudo vim /etc/systemd/system/weave.service</code></p>
-<p>```
-[Unit]
-After=install-weave.service
-Description=Weave Network
-Documentation=http://zettio.github.io/weave/
-Requires=install-weave.service</p>
-<p>[Service]
-ExecStartPre=/opt/bin/weave launch
-ExecStart=/usr/bin/docker attach weave
-```</p>
+<div class="highlight"><pre><span></span>sudo vim /etc/systemd/system/weave.service
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">[Unit]</span>
+<span class="na">After</span><span class="o">=</span><span class="s">install-weave.service</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Weave Network</span>
+<span class="na">Documentation</span><span class="o">=</span><span class="s">http://zettio.github.io/weave/</span>
+<span class="na">Requires</span><span class="o">=</span><span class="s">install-weave.service</span>
+
+<span class="k">[Service]</span>
+<span class="na">ExecStartPre</span><span class="o">=</span><span class="s">/opt/bin/weave launch</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/docker attach weave</span>
+</pre></div>
+
+
 <ul>
 <li>ネットワーク再起動</li>
 </ul>
-<p><code>sudo systemctl restart systemd-networkd</code></p>
+<div class="highlight"><pre><span></span>sudo systemctl restart systemd-networkd
+</pre></div>
+
+
 <ul>
 <li>weaveインストール・起動</li>
 </ul>
-<p><code>sudo systemctl start install-weave.service
+<div class="highlight"><pre><span></span>sudo systemctl start install-weave.service
 sudo systemctl start weave.service
-sudo /opt/bin/weave create-bridge</code></p>
+sudo /opt/bin/weave create-bridge
+</pre></div>
+
+
 <h2>Docker</h2>
 <p>docker用の管理ポートを開ける。</p>
 <ul>
 <li>Unitファイル作成</li>
 </ul>
-<p><code>bash
-sudo vim /etc/systemd/system/docker-tcp.socket</code></p>
-<p>```ini
-[Unit]
-Description=Docker Socket for the API</p>
-<p>[Socket]
-ListenStream=2375
-BindIPv6Only=both
-Service=docker.service</p>
-<p>[Install]
-WantedBy=sockets.target
-```</p>
+<div class="highlight"><pre><span></span>sudo vim /etc/systemd/system/docker-tcp.socket
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Docker Socket for the API</span>
+
+<span class="k">[Socket]</span>
+<span class="na">ListenStream</span><span class="o">=</span><span class="s">2375</span>
+<span class="na">BindIPv6Only</span><span class="o">=</span><span class="s">both</span>
+<span class="na">Service</span><span class="o">=</span><span class="s">docker.service</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">sockets.target</span>
+</pre></div>
+
+
 <p>dockerのデフォルトブリッジをweaveし、dockerから透過的にweaveネットワークを扱えるようにする。</p>
-<p><code>sudo cp /usr/lib/systemd/system/docker.service /etc/systemd/system/
-sudo vim /etc/systemd/system/docker.service</code></p>
-<p><code>Environment=DOCKER_OPTS='--bridge=weave --fixed-cidr="10.0.0.0/8" --insecure-registry="0.0.0.0/0"'</code></p>
+<div class="highlight"><pre><span></span>sudo cp /usr/lib/systemd/system/docker.service /etc/systemd/system/
+sudo vim /etc/systemd/system/docker.service
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>Environment=DOCKER_OPTS=&#39;--bridge=weave --fixed-cidr=&quot;10.0.0.0/8&quot; --insecure-registry=&quot;0.0.0.0/0&quot;&#39;
+</pre></div>
+
+
 <ul>
 <li>socketを起動</li>
 </ul>
-<p><code>sudo systemctl enable docker-tcp.socket
+<div class="highlight"><pre><span></span>sudo systemctl enable docker-tcp.socket
 sudo systemctl stop docker
 sudo systemctl start docker-tcp.socket
-sudo systemctl start docker</code></p>
+sudo systemctl start docker
+</pre></div>
+
+
 <ul>
 <li>適宜iptables等でListenする相手を制限。</li>
 </ul>
-<p>```bash</p>
-<h1>Accept a manage node</h1>
-<p>sudo iptables -A INPUT -s 10.0.0.1 -m tcp -p tcp --dport 2375 -j ACCEPT</p>
-<h1>Drop other nodes</h1>
-<p>sudo iptables -A INPUT -s 0.0.0.0/0 -m tcp -p tcp --dport 2375 -j DROP
-```</p>
+<div class="highlight"><pre><span></span><span class="c1"># Accept a manage node</span>
+sudo iptables -A INPUT -s <span class="m">10</span>.0.0.1 -m tcp -p tcp --dport <span class="m">2375</span> -j ACCEPT
+<span class="c1"># Drop other nodes</span>
+sudo iptables -A INPUT -s <span class="m">0</span>.0.0.0/0 -m tcp -p tcp --dport <span class="m">2375</span> -j DROP
+</pre></div>
+
+
 <p>参照: <a href="https://coreos.com/docs/launching-containers/building/customizing-docker/">https://coreos.com/docs/launching-containers/building/customizing-docker/</a></p>
 <h2>Swarm</h2>
 <ul>
 <li>クラスタIDを取得</li>
 </ul>
-<p><code>docker run --rm swarm create
-6856663cdefdec325839a4b7e1de38e8</code></p>
+<div class="highlight"><pre><span></span>docker run --rm swarm create
+6856663cdefdec325839a4b7e1de38e8
+</pre></div>
+
+
 <ul>
 <li>Swarm agentを起動(各ノード)</li>
 </ul>
-<p><code>docker run -d --name swarm_agent swarm join --addr=&lt;node_ip:2375&gt; token://&lt;cluster_id&gt;</code></p>
+<div class="highlight"><pre><span></span>docker run -d --name swarm_agent swarm join --addr=&lt;node_ip:2375&gt; token://&lt;cluster_id&gt;
+</pre></div>
+
+
 <ul>
 <li>Swarm managerを起動</li>
 </ul>
-<p><code>docker run -d --name swarm_manager -p &lt;swarm_port&gt;:2375 swarm manage token://&lt;cluster_id&gt;</code></p>
+<div class="highlight"><pre><span></span>docker run -d --name swarm_manager -p &lt;swarm_port&gt;:2375 swarm manage token://&lt;cluster_id&gt;
+</pre></div>
+
+
 <ul>
 <li>確認</li>
 </ul>
-<p><code>docker run --rm swarm list token://&lt;cluster_id&gt;</code></p>
+<div class="highlight"><pre><span></span>docker run --rm swarm list token://&lt;cluster_id&gt;
+</pre></div>
+
+
 <ul>
 <li>終了</li>
 </ul>
-<p><code>docker kill swarm_agent
-docker kill swarm_manager</code></p>
+<div class="highlight"><pre><span></span>docker kill swarm_agent
+docker kill swarm_manager
+</pre></div>
+
+
 <h2>Compose</h2>
 <ul>
 <li>実行ファイルをDL</li>
 </ul>
-<p><code>curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose</code></p>
+<div class="highlight"><pre><span></span>curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+</pre></div>
+
+
 <ul>
 <li>docker-compose.ymlにコンテナの定義を書く</li>
 </ul>
-<p><code>mkdir nodes
+<div class="highlight"><pre><span></span>mkdir nodes
 cd nodes
-vim docker-compose.yml</code></p>
-<p>```yaml
-consul:
-  command: --name consul -server -bootstrap -ui-dir /ui -data-dir ./data
-  image: progrium/consul:latest
-  ports:
-  - "8300"
-  - "8400"
-  - "8500"
-  - "8600/udp"
-  environment:
-  - "affinity:container!=nodes_consul_*"
-  net: "host"</p>
-<p>registrator:
-  command: -internal consul://127.0.0.1:8500
-  image: sttts/registrator:latest
-  volumes:
-  - "/var/run/docker.sock:/tmp/docker.sock"
-  environment:
-  - "affinity:container!=nodes_registrator_*"
-  net: "host"</p>
-<p>haproxy:
-  image: shayashibara/docker-consul-template-haproxy
-  environment:
-  - "affinity:container!=nodes_haproxy_*"
-  links:
-    consul:consul
-  ports:
-  - "80:80"</p>
-<p>apache:
-  image: httpd
-  environment:
-  - "SERVICE_TAGS=production"</p>
-<p>```</p>
+vim docker-compose.yml
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">consul</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">command</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">--name consul -server -bootstrap -ui-dir /ui -data-dir ./data</span>
+  <span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">progrium/consul:latest</span>
+  <span class="l l-Scalar l-Scalar-Plain">ports</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;8300&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;8400&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;8500&quot;</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;8600/udp&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">environment</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;affinity:container!=nodes_consul_*&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">net</span><span class="p p-Indicator">:</span> <span class="s">&quot;host&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">registrator</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">command</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">-internal consul://127.0.0.1:8500</span>
+  <span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sttts/registrator:latest</span>
+  <span class="l l-Scalar l-Scalar-Plain">volumes</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;/var/run/docker.sock:/tmp/docker.sock&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">environment</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;affinity:container!=nodes_registrator_*&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">net</span><span class="p p-Indicator">:</span> <span class="s">&quot;host&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">haproxy</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">shayashibara/docker-consul-template-haproxy</span>
+  <span class="l l-Scalar l-Scalar-Plain">environment</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;affinity:container!=nodes_haproxy_*&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">links</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">consul:consul</span>
+  <span class="l l-Scalar l-Scalar-Plain">ports</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;80:80&quot;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">apache</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">image</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpd</span>
+  <span class="l l-Scalar l-Scalar-Plain">environment</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="s">&quot;SERVICE_TAGS=production&quot;</span>
+</pre></div>
+
+
 <ul>
 <li>Swarm経由でComposeを実行</li>
 </ul>
-<p><code>bash
-DOCKER_HOST=tcp://localhost:2375 docker-compose scale consul=3 registrator=3 haproxy=3 apache=6</code></p>
+<div class="highlight"><pre><span></span><span class="nv">DOCKER_HOST</span><span class="o">=</span>tcp://localhost:2375 docker-compose scale <span class="nv">consul</span><span class="o">=</span><span class="m">3</span> <span class="nv">registrator</span><span class="o">=</span><span class="m">3</span> <span class="nv">haproxy</span><span class="o">=</span><span class="m">3</span> <span class="nv">apache</span><span class="o">=</span><span class="m">6</span>
+</pre></div>
+
+
 <ul>
 <li>確認</li>
 </ul>
-<p><code>bash
-DOCKER_HOST=tcp://localhost:2375 docker-compose ps</code></p>
-<p>```</p>
-<p>```</p>
+<div class="highlight"><pre><span></span><span class="nv">DOCKER_HOST</span><span class="o">=</span>tcp://localhost:2375 docker-compose ps
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>
+</pre></div>
+
+
 <h2>Consul / consul-template</h2>
 <p>Consulでコンテナのメタデータを管理し、Consul-templateでHAProxy配下のbackendを切り替える。</p>
 <ul>
 <li><code>shayashibara/docker-consul-template-haproxy</code>で起動するhaproxy用のconsul-templateのテンプレート。</li>
 </ul>
-<p>```
-global
-  log 127.0.0.1 local0
-  log 127.0.0.1 local1 notice
-  user haproxy
-  group haproxy</p>
-<p>defaults
-  log global
-  mode http
-  option httplog
-  option dontlognull
-  balance roundrobin
-  timeout connect 5000
-  timeout client 50000
-  timeout server 50000</p>
-<p>listen stats
-  bind *:8001
-  option httpclose
-  option forwardfor
-  stats enable
-  stats uri /haproxy?stats
-  stats auth admin:123123q
-  stats realm HAProxy\ Statistics</p>
-<p>frontend web-app
-  bind *:80
-  default_backend {{key "backend/current"}}</p>
-<p>backend default
-  server s1 localhost:8080</p>
-<p>{{range $tag, $services := service "apache-80" | byTag}}backend {{$tag}}
- balance roundrobin
-{{range $services}} server {{.ID}} {{.Address}}:{{.Port}}
-{{end}}{{end}}
-```</p>
+<div class="highlight"><pre><span></span><span class="x">global</span>
+<span class="x">  log 127.0.0.1 local0</span>
+<span class="x">  log 127.0.0.1 local1 notice</span>
+<span class="x">  user haproxy</span>
+<span class="x">  group haproxy</span>
+
+<span class="x">defaults</span>
+<span class="x">  log global</span>
+<span class="x">  mode http</span>
+<span class="x">  option httplog</span>
+<span class="x">  option dontlognull</span>
+<span class="x">  balance roundrobin</span>
+<span class="x">  timeout connect 5000</span>
+<span class="x">  timeout client 50000</span>
+<span class="x">  timeout server 50000</span>
+
+<span class="x">listen stats</span>
+<span class="x">  bind *:8001</span>
+<span class="x">  option httpclose</span>
+<span class="x">  option forwardfor</span>
+<span class="x">  stats enable</span>
+<span class="x">  stats uri /haproxy?stats</span>
+<span class="x">  stats auth admin:123123q</span>
+<span class="x">  stats realm HAProxy\ Statistics</span>
+
+<span class="x">frontend web-app</span>
+<span class="x">  bind *:80</span>
+<span class="x">  default_backend </span><span class="cp">{{</span><span class="nv">key</span> <span class="s2">&quot;backend/current&quot;</span><span class="cp">}}</span><span class="x"></span>
+
+<span class="x">backend default</span>
+<span class="x">  server s1 localhost:8080</span>
+
+<span class="cp">{{</span><span class="nv">range</span> <span class="err">$</span><span class="nv">tag</span><span class="o">,</span> <span class="err">$</span><span class="nv">services</span> <span class="o">:=</span> <span class="nv">service</span> <span class="s2">&quot;apache-80&quot;</span> <span class="o">|</span> <span class="nf">byTag</span><span class="cp">}}</span><span class="x">backend </span><span class="cp">{{</span><span class="err">$</span><span class="nv">tag</span><span class="cp">}}</span><span class="x"></span>
+<span class="x"> balance roundrobin</span>
+<span class="cp">{{</span><span class="nv">range</span> <span class="err">$</span><span class="nv">services</span><span class="cp">}}</span><span class="x"> server </span><span class="cp">{{</span><span class="nv">.ID</span><span class="cp">}}</span><span class="x"> </span><span class="cp">{{</span><span class="nv">.Address</span><span class="cp">}}</span><span class="x">:</span><span class="cp">{{</span><span class="nv">.Port</span><span class="cp">}}</span><span class="x"></span>
+<span class="cp">{{</span><span class="nv">end</span><span class="cp">}}{{</span><span class="nv">end</span><span class="cp">}}</span><span class="x"></span>
+</pre></div>
+
+
 <ul>
-<li><a href="https://github.com/gmr/consulate">consulate</a>(Consulのpythonクライアント)で現在のクラスタのタグをsetし切り替える。<br />
-要件によるけど任意のタイミングでBlueGreenなクラスタの切り替えを行いたかったのでこのような構成にした。<br />
+<li><a href="https://github.com/gmr/consulate">consulate</a>(Consulのpythonクライアント)で現在のクラスタのタグをsetし切り替える。<br>
+要件によるけど任意のタイミングでBlueGreenなクラスタの切り替えを行いたかったのでこのような構成にした。<br>
 実作業に落としこむ場合はJenkins等で切り替えをタスク化しWebUIから操作することになると思う。</li>
 </ul>
-<p><code>pip install consulate
-consulate --api-host 172.17.42.1:8500 kv set backend/current production</code></p>
+<div class="highlight"><pre><span></span>pip install consulate
+consulate --api-host 172.17.42.1:8500 kv set backend/current production
+</pre></div>
+
+
 <ul>
 <li>確認</li>
 </ul>
-<p><code>docker exec -it nodes_haproxy_1 cat /etc/haproxy/haproxy.cfg</code></p>
+<div class="highlight"><pre><span></span>docker exec -it nodes_haproxy_1 cat /etc/haproxy/haproxy.cfg
+</pre></div>
+
+
 <ul>
 <li>クラスタの終了</li>
 </ul>
-<p><code>bash
-DOCKER_HOST=tcp://localhost:2375 docker-compose kill
-DOCKER_HOST=tcp://localhost:2375 docker-compose rm</code></p>
+<div class="highlight"><pre><span></span><span class="nv">DOCKER_HOST</span><span class="o">=</span>tcp://localhost:2375 docker-compose <span class="nb">kill</span>
+<span class="nv">DOCKER_HOST</span><span class="o">=</span>tcp://localhost:2375 docker-compose rm
+</pre></div>
+
+
 <h2>Conclusion</h2>
-<p>マルチホストDocker環境でBlueGreenなデプロイを実現するためweaveでL3の抽象化とConsulによる分散Key-ValueストアでL3/L4リソースの管理、consul-templateで設定ファイルの動的書き換え、docker-swarm/composeによるコンテナのスケジューリング、ライフサイクル管理、BlueGreenなクラスタの切り替えを行った。<br />
-構成要素は多いものの各要素は疎結合でそれぞれ代替可能なツールが多い(weaveはpipeworkやflannel、Consulはetcdやzookeeper、consul-templateはconfd等ある)ので、要件に応じて構成要素は変えることが出来る。<br />
+<p>マルチホストDocker環境でBlueGreenなデプロイを実現するためweaveでL3の抽象化とConsulによる分散Key-ValueストアでL3/L4リソースの管理、consul-templateで設定ファイルの動的書き換え、docker-swarm/composeによるコンテナのスケジューリング、ライフサイクル管理、BlueGreenなクラスタの切り替えを行った。<br>
+構成要素は多いものの各要素は疎結合でそれぞれ代替可能なツールが多い(weaveはpipeworkやflannel、Consulはetcdやzookeeper、consul-templateはconfd等ある)ので、要件に応じて構成要素は変えることが出来る。<br>
 dokkuやflynn、deis等のマイクロPaaSやCloud-FoundryやOpenShift等のフルスタックPaaSは単体で上記ツールチェインのほとんどの機能を備えている一方ロックインされやすいという面もあるため今回は既存の技術の組み合わせのみで構成した。  </p>
-<p><a href="https://blog.docker.com/2015/03/dockers-2nd-birthday-wishes-qa-with-solomon-hykes-founder-of-docker/">Docker誕生から２年</a>を迎え牧歌的なシングルホストでのdon't recommend in productionな状態からプロダクションでのマルチホスト環境を見据えたオーケストレーションツール群も大分整理統合されてきた感がある。<br />
+<p><a href="https://blog.docker.com/2015/03/dockers-2nd-birthday-wishes-qa-with-solomon-hykes-founder-of-docker/">Docker誕生から２年</a>を迎え牧歌的なシングルホストでのdon't recommend in productionな状態からプロダクションでのマルチホスト環境を見据えたオーケストレーションツール群も大分整理統合されてきた感がある。<br>
 依然レポジトリの扱いやセキュリティ面等、実運用面で辛い箇所は残るものの徐々にプロダクション環境での現実的な解が見えてきたように思える。今年はdocker in productionの飛躍の年になることを願いたい。</p>
 <h3>解決していない課題</h3>
 <ul>
 <li>
-<p>プライベートなイメージの扱い<br />
-  OSイメージ + アプリケーションでそれなりの容量になる。<br />
+<p>プライベートなイメージの扱い<br>
+  OSイメージ + アプリケーションでそれなりの容量になる。<br>
   また何をするにもdocker-registry専用のプロトコルが必要なためイメージの配信方法の選択肢が少ない。</p>
 </li>
 <li>
-<p>ログの扱い<br />
+<p>ログの扱い<br>
   各コンテナが生成するログをどこに送るか。またログ送信の冗長性の担保をどうするか</p>
 </li>
 <li>
-<p>ステートフルなコンテナの扱い<br />
+<p>ステートフルなコンテナの扱い<br>
   主にRedis, MySQL, PostgreSQLといった状態を持ったアプリケーションをどうするか</p>
 </li>
 <li>
-<p>セキュリティ面<br />
+<p>セキュリティ面<br>
   dockerデーモン自体の脆弱性、コンテナの脆弱性、ホストOSの脆弱性をどうするか</p>
 </li>
 </ul>
 <h3>課題解決への布石</h3>
 <ul>
 <li>
-<p>プライベートなイメージの扱い<br />
+<p>プライベートなイメージの扱い<br>
   レポジトリ自体の冗長化、容量コスト等考えると<a href="http://quay.io/">quay.io</a>, <a href="https://cloud.google.com/tools/container-registry/">Google Container Registry</a>等のRegistry as a Serviceという選択肢もある。</p>
 </li>
 <li>
-<p>ログの扱い<br />
+<p>ログの扱い<br>
 <a href="https://github.com/gliderlabs/logspout">logsoutput</a>, journalctl, fluentd等</p>
 </li>
 <li>
-<p>ステートフルなコンテナの扱い<br />
+<p>ステートフルなコンテナの扱い<br>
   ホスト側にマウント、data volume container、または<a href="https://clusterhq.com/">flocker</a>、そもそもDockerizeしない等</p>
 </li>
 <li>
-<p>セキュリティ面<br />
+<p>セキュリティ面<br>
   Docker層だけで対応するのは難しいのでDockerを乗せるIaaSレベルでのコントロール。
-  ホスト側をなるべく薄く保つという意味でCoreOSやAtomic host等のコンテナ向け軽量OSやCoreOSの自動アップデート機能を使う。  <br />
+  ホスト側をなるべく薄く保つという意味でCoreOSやAtomic host等のコンテナ向け軽量OSやCoreOSの自動アップデート機能を使う。  <br>
   またCoreOSによるコンテナ実装の<a href="https://github.com/coreos/rocket">Rocket</a>からのセキュリティ面でのフィードバックを今後期待。</p>
 </li>
 </ul>

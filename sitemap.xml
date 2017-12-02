@@ -5,22 +5,29 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://shufo.github.io/</loc>
-<lastmod>2017-10-01T21:37:28-00:00</lastmod>
+<lastmod>2017-12-02T12:51:10-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://shufo.github.io/archives.html</loc>
-<lastmod>2017-10-01T21:37:28-00:00</lastmod>
+<lastmod>2017-12-02T12:51:10-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://shufo.github.io/categories.html</loc>
-<lastmod>2017-10-01T21:37:28-00:00</lastmod>
+<lastmod>2017-12-02T12:51:10-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://shufo.github.io/-panorama-nyc-festival-2017-2.html</loc>
+<lastmod>2017-08-06T09:18:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -89,7 +96,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://shufo.github.io/category/vacation.html</loc>
-<lastmod>2017-08-04T02:33:00+09:19</lastmod>
+<lastmod>2017-08-06T09:18:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

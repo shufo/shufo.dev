@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog</title><link href="http://shufo.github.io/" rel="alternate"></link><link href="http://shufo.github.io/feeds/pc.atom.xml" rel="self"></link><id>http://shufo.github.io/</id><updated>2016-11-28T20:00:00+09:00</updated><entry><title>MacBook Proを捨ててThinkpad X220を買った</title><link href="http://shufo.github.io/alternative_to_mac.html" rel="alternate"></link><published>2016-11-28T20:00:00+09:00</published><updated>2016-11-28T20:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2016-11-28:alternative_to_mac.html</id><summary type="html">&lt;p&gt;関連: &lt;a href="http://d.hatena.ne.jp/joker1007/20161125/1480069437"&gt;MacBook Proを捨ててThinkpad T460sを買ってgentooを入れた - joker1007の日記&lt;/a&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog - PC</title><link href="http://shufo.github.io/" rel="alternate"></link><link href="http://shufo.github.io/feeds/pc.atom.xml" rel="self"></link><id>http://shufo.github.io/</id><updated>2016-11-28T20:00:00+09:00</updated><entry><title>MacBook Proを捨ててThinkpad X220を買った</title><link href="http://shufo.github.io/alternative_to_mac.html" rel="alternate"></link><published>2016-11-28T20:00:00+09:00</published><updated>2016-11-28T20:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2016-11-28:/alternative_to_mac.html</id><summary type="html">&lt;p&gt;Macbook Proを捨ててThinkpad X220を買った話&lt;/p&gt;</summary><content type="html">&lt;p&gt;関連: &lt;a href="http://d.hatena.ne.jp/joker1007/20161125/1480069437"&gt;MacBook Proを捨ててThinkpad T460sを買ってgentooを入れた - joker1007の日記&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;概要&lt;/h2&gt;
 &lt;p&gt;正確にいうとMBP Late 2016を買おうと思っていたのだけど結局Thinkpad X220を買った話です&lt;/p&gt;
-&lt;p&gt;今年10月の&lt;a href="http://www.apple.com/apple-events/october-2016/"&gt;例のイベント&lt;/a&gt;で発表されたMBPは本当に楽しみにしていたし、MBP費用も貯めていたのだけど&lt;br /&gt;
-やっぱり欲しくなくなってしまった理由としてAppleがもう開発者の方向を向いてないかもしれない、というのをあのイベントを見て強く感じたからです。&lt;br /&gt;
+&lt;p&gt;今年10月の&lt;a href="http://www.apple.com/apple-events/october-2016/"&gt;例のイベント&lt;/a&gt;で発表されたMBPは本当に楽しみにしていたし、MBP費用も貯めていたのだけど&lt;br&gt;
+やっぱり欲しくなくなってしまった理由としてAppleがもう開発者の方向を向いてないかもしれない、というのをあのイベントを見て強く感じたからです。&lt;br&gt;
 Appleの方向性に共感していたら買ったかもしれないけどTouchBarの方向性はちょっと支持出来なかったので…&lt;/p&gt;
 &lt;p&gt;あと最近Docker for Windowsを久しぶりに使ったらmount周りもちゃんと動いたのでWindows環境でも自分の場合は普段の開発にほとんど問題なくなったというのもあります。
 自分で作ったアプリは全てDockerizeするDockerオタクなのでこういうときはさすがに恩恵を感じます。
@@ -28,8 +28,8 @@ Linuxデスクトップを導入することも考えたけどドライバ周り
 &lt;li&gt;~~スタバでMacを威嚇出来る~~&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;ThinkPad X220は2011年発売のモデルで、アイソレーションキーボードになる前のクラシック型のキーボードとしては最後のold ThinkPadです。
-Sandy Bridge世代のCPUと高い拡張性で2016年現在でもパーツの換装を行えば十分使用可能ながら、企業からのリース品が大量に出回って中古市場で2～3万でとこなれて来てるので購入するには丁度いい頃だと思います。&lt;br /&gt;
-Sandy Bridgeと最新のSkylake世代のCPUを比較しても性能差は&lt;a href="http://www.cpubenchmark.net/compare.php?cmp%5B%5D=2556&amp;amp;cmp%5B%5D=812"&gt;ほぼない&lt;/a&gt;のでCPUバウンドな処理を行わなければSSDとメモリ換装で最新ノートPCと比べてもほぼ遜色ないんじゃないでしょうか。&lt;br /&gt;
+Sandy Bridge世代のCPUと高い拡張性で2016年現在でもパーツの換装を行えば十分使用可能ながら、企業からのリース品が大量に出回って中古市場で2～3万でとこなれて来てるので購入するには丁度いい頃だと思います。&lt;br&gt;
+Sandy Bridgeと最新のSkylake世代のCPUを比較しても性能差は&lt;a href="http://www.cpubenchmark.net/compare.php?cmp%5B%5D=2556&amp;amp;cmp%5B%5D=812"&gt;ほぼない&lt;/a&gt;のでCPUバウンドな処理を行わなければSSDとメモリ換装で最新ノートPCと比べてもほぼ遜色ないんじゃないでしょうか。&lt;br&gt;
 さすがにPCIe-NVMeディスクを搭載出来るような機種にはSATA SSDに換装してもディスクI/Oで劣るけれども割り切って使うにはありだと思います。&lt;/p&gt;
 &lt;p&gt;今回は英字キーボードが国内の中古市場には見つからなかったのでeBayから輸入しましたが
 日本語キーボードでよければ国内の中古市場にも十分流通してるのでそちらの方が早いと思います。&lt;/p&gt;
@@ -51,12 +51,12 @@ Sandy Bridgeと最新のSkylake世代のCPUを比較しても性能差は&lt;a h
 &lt;script async src="//platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
 
 &lt;p&gt;(ThinkPad X220です)&lt;/p&gt;
-&lt;p&gt;海外発送の送料込でちょうど3万程でした。&lt;br /&gt;
+&lt;p&gt;海外発送の送料込でちょうど3万程でした。&lt;br&gt;
 全体的に使用感はほとんどなく綺麗だったけどキーボードには気にならないレベルだけどわずかに使用感あり。
 ThinkPadを買うのは初めてですがこの時代のold ThinkPadは雰囲気があっていいですね。個人的にはキーボードは薄い方が好きですがちゃんとした深さがあるので無駄にガチャガチャやりたくなります。&lt;/p&gt;
 &lt;h3&gt;SSD・メモリ換装&lt;/h3&gt;
 &lt;p&gt;SSDとメモリを以下に換装。
-パーツ費用含めても全体で大体5万くらいでした。&lt;br /&gt;
+パーツ費用含めても全体で大体5万くらいでした。&lt;br&gt;
 換装済みの中古品もあるけど高くつく割には容量が少なかったりするので手間をかけられるなら自分で換装した方が安く高スペックに出来ます。&lt;/p&gt;
 &lt;h4&gt;SSD&lt;/h4&gt;
 &lt;ul&gt;
@@ -69,9 +69,9 @@ ThinkPadを買うのは初めてですがこの時代のold ThinkPadは雰囲気
 &lt;/ul&gt;
 &lt;p&gt;交換手順参照: &lt;a href="http://kimamatech.blog.fc2.com/blog-entry-49.html"&gt;ThinkPad X220 増強作戦 その１ ： 1万円でメモリを16GBに増設 - きままテック&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;まとめ&lt;/h2&gt;
-&lt;p&gt;MBPの代替としてThinkPad X220を買った。&lt;br /&gt;
+&lt;p&gt;MBPの代替としてThinkPad X220を買った。&lt;br&gt;
 モバイル出来るUnixとしてMacは好きなのだけど最近のAppleの方向性からロックインが強くなることの懸念も含めてノートPCから変えてみました。(まだiPhoneは使ってる)&lt;/p&gt;
-&lt;p&gt;最近のWindows開発環境としてはbabun + Docker for Windowsがあれば個人的に困ることはほぼなくなって来たのであとはWSLのbashの完成度がより高まればいよいよWindowsでも十分だなと思います。&lt;br /&gt;
+&lt;p&gt;最近のWindows開発環境としてはbabun + Docker for Windowsがあれば個人的に困ることはほぼなくなって来たのであとはWSLのbashの完成度がより高まればいよいよWindowsでも十分だなと思います。&lt;br&gt;
 Linuxデスクトップは&lt;a href="https://elementary.io/ja/"&gt;elementary OS&lt;/a&gt;が気になっているのでmSATA SSDを追加してデュアルブートにでもしてみようかなと思います。&lt;/p&gt;
 &lt;h2&gt;他候補&lt;/h2&gt;
 &lt;p&gt;MBPオルタナティブのノートPCとしては&lt;/p&gt;
@@ -84,12 +84,12 @@ Linuxデスクトップは&lt;a href="https://elementary.io/ja/"&gt;elementary O
 &lt;p&gt;到着後Windows7からWindows10 Proにアップグレードしバッテリーのファームウェアをアップグレードしようとしたらバッテリーが死にました…
 ファームウェアをアップデートする前はバッテリーを認識していたので恐らくファームウェアの書き換えに失敗したようです。&lt;/p&gt;
 &lt;h3&gt;バッテリー追加&lt;/h3&gt;
-&lt;p&gt;結局以下の互換バッテリーをAmazonでポチりました&lt;br /&gt;
-元は9セルでX220本体からバッテリーがはみ出していたのが筐体の枠にちょうど収まりました&lt;br /&gt;
-公式じゃないですけど今のとこ問題ないです&lt;br /&gt;
+&lt;p&gt;結局以下の互換バッテリーをAmazonでポチりました&lt;br&gt;
+元は9セルでX220本体からバッテリーがはみ出していたのが筐体の枠にちょうど収まりました&lt;br&gt;
+公式じゃないですけど今のとこ問題ないです&lt;br&gt;
 安いし物理的に取り外しし易いからバッテリーが心配な時は何本か持ち歩くってのもありですね&lt;/p&gt;
 &lt;blockquote class="imgur-embed-pub" lang="en" data-id="a/wiq4p"&gt;&lt;a href="//imgur.com/wiq4p"&gt;&lt;/a&gt;&lt;/blockquote&gt;
 
 &lt;script async src="//s.imgur.com/min/embed.js" charset="utf-8"&gt;&lt;/script&gt;
 
-&lt;p&gt;&lt;a href="http://amzn.asia/bjrtGpW"&gt;WorldPlus バッテリー LENOVO ThinkPad X230 X230i X220 X220i X220s 対応 6セル&lt;/a&gt;&lt;/p&gt;</summary><category term="Mac"></category><category term="PC"></category></entry></feed>
+&lt;p&gt;&lt;a href="http://amzn.asia/bjrtGpW"&gt;WorldPlus バッテリー LENOVO ThinkPad X230 X230i X220 X220i X220s 対応 6セル&lt;/a&gt;&lt;/p&gt;</content><category term="Mac"></category><category term="PC"></category></entry></feed>
