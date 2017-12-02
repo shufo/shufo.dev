@@ -34,3 +34,19 @@ git clone --recursive https://github.com/getpelican/pelican-plugins
 - Confirm your server is running
 
 Open http://yourserver.com:8000/.
+
+- Add content
+
+```
+git checkout pelican
+vim content/page.md
+```
+
+- Publish
+
+```
+make publish
+make github
+```
+
+
