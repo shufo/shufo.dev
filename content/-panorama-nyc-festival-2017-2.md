@@ -3,6 +3,8 @@ Date: 2017-08-06 09:18
 Status: published
 Tags: vacation
 Category: vacation
+Authors: shufo
+header_cover: https://i.imgur.com/Q5BklUY.jpg
 Slug: -panorama-nyc-festival-2017-2
 Summary: ニューヨーク一人旅その２
 
