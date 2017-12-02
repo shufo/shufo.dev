@@ -19,7 +19,7 @@ LOAD_CONTENT_CACHE = False
 
 AUTHOR = u'shufo'
 SITENAME = u'shufo blog'
-SITEURL = 'http://shufo.github.io/'
+SITEURL = 'https://shufo.github.io/'
 ALT_NAME = "#! " + SITENAME
 SITESUBTITLE = "Random automation stuff"
 FAVICON = '/images/favicon.ico'
@@ -29,6 +29,8 @@ META_IMAGE_TYPE = "image/jpeg"
 GITHUB_URL = "https://github.com/shufo/"
 
 PATH = 'content'
+
+COLOR_SCHEME_CSS = 'tomorrow_night.css'
 
 TIMEZONE = 'Asia/Tokyo'
 
@@ -50,8 +52,8 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
          ('You can modify those links in your config file', '#'),)
 
 # Social widget
-SOCIAL = (('Twitter', 'https://twitter.com/shufo_'),
-         ('Github', 'https://github.com/shufo'),
+SOCIAL = (('twitter', 'https://twitter.com/shufo_'),
+         ('github', 'https://github.com/shufo'),
          ('envelope', 'mailto:meikyowise@gmail.com'),)
 
 FOOTER = ("&copy; 2017 shufo. All rights reserved.<br>" +
@@ -90,7 +92,7 @@ AUTHORS_SAVE_AS = 'authors.html'
 
 CATEGORY_URL = 'category/{slug}'
 CATEGORY_SAVE_AS = 'category/{slug}/index.html'
-CATEGORIES_SAVE_AS = 'catgegories.html'
+CATEGORIES_SAVE_AS = 'categories.html'
 TAG_URL = 'tag/{slug}'
 TAG_SAVE_AS = 'tag/{slug}/index.html'
 TAGS_SAVE_AS = 'tags.html'
@@ -106,7 +108,7 @@ MONTH_ARCHIVE_SAVE_AS = '{date:%Y}/{date:%m}/index.html'
 
 MENUITEMS = (
 	('About', '/hello-world.html'),
-    ('Categories', '/categories'),
+    ('Categories', './categories.html'),
 	('GitHub', 'https://github.com/shufo')
 )
 
