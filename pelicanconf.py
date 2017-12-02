@@ -19,7 +19,7 @@ LOAD_CONTENT_CACHE = False
 
 AUTHOR = u'shufo'
 SITENAME = u'shufo blog'
-SITEURL = 'https://shufo.github.io/'
+SITEURL = 'http://shufo.github.io/'
 ALT_NAME = "#! " + SITENAME
 SITESUBTITLE = "Random automation stuff"
 FAVICON = '/images/favicon.ico'
