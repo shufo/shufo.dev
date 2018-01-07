@@ -1,5 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog</title><link href="http://shufo.github.io/" rel="alternate"></link><link href="http://shufo.github.io/feeds/all.atom.xml" rel="self"></link><id>http://shufo.github.io/</id><updated>2017-08-06T09:18:00+09:00</updated><entry><title>ニューヨーク一人旅 + Panorama NYC Festival 2017 その２</title><link href="http://shufo.github.io/-panorama-nyc-festival-2017-2.html" rel="alternate"></link><published>2017-08-06T09:18:00+09:00</published><updated>2017-08-06T09:18:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2017-08-06:/-panorama-nyc-festival-2017-2.html</id><summary type="html">&lt;p&gt;ニューヨーク一人旅その２&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://shufo.github.io/panorama-festival-2017-1.html"&gt;1日目&lt;/a&gt;に続きNew York一人旅2日目です。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog</title><link href="http://shufo.github.io/" rel="alternate"></link><link href="http://shufo.github.io/feeds/all.atom.xml" rel="self"></link><id>http://shufo.github.io/</id><updated>2018-01-08T00:00:00+09:00</updated><entry><title>Let's Split (レツプリ) を組み立てた</title><link href="http://shufo.github.io/build-lets-split.html" rel="alternate"></link><published>2018-01-08T00:00:00+09:00</published><updated>2018-01-08T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-01-08:/build-lets-split.html</id><summary type="html">&lt;p&gt;レツプリを組み立てた話&lt;/p&gt;</summary><content type="html">&lt;p&gt;昨今の自作キーボードブームと格子配列型で左右分割のキーボードを試してみたくなったので昨年よく見かけたレツプリを作ってみることにした&lt;/p&gt;
+&lt;h2&gt;必要なもの&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Let's Split PCB x 2&lt;/li&gt;
+&lt;li&gt;Pro micro x 2&lt;/li&gt;
+&lt;li&gt;スイッチ x 48 &lt;a href="https://www.aliexpress.com/item/kailh-pro-switches-3pin-RGB-SMD-purple-light-green-teal-aqua-burgundy-MX-RGB-Swithes-For/32838033039.html?spm=a2g0s.9042311.0.0.lT90up"&gt;Kailh Pro Switche Burgundy&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;TRRSジャック x 2&lt;/li&gt;
+&lt;li&gt;TRRSケーブル&lt;/li&gt;
+&lt;li&gt;ダイオード x 48&lt;/li&gt;
+&lt;li&gt;ケース(topプレートとbottomプレート)&lt;/li&gt;
+&lt;li&gt;ネジとスタンド&lt;/li&gt;
+&lt;li&gt;LEDケーブル x 1 [&lt;a href="https://www.switch-science.com/"&gt;Switch Science&lt;/a&gt;]&lt;/li&gt;
+&lt;li&gt;タクトスイッチ x 2 [Switch Science]&lt;/li&gt;
+&lt;li&gt;リード線 [Amazon]&lt;/li&gt;
+&lt;li&gt;3Mクッションゴム [Amazon]&lt;/li&gt;
+&lt;li&gt;はんだごてセット [Amazon]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;今回は&lt;a href="https://mehkee.com/"&gt;Mehkee&lt;/a&gt;でレツプリの&lt;a href="https://mehkee.com/collections/keyboards/products/lets-split-acrylic-cases-kits?variant=46981199311"&gt;セット&lt;/a&gt;が売っていたので最初に必用なパーツはある程度揃える事が出来た&lt;/p&gt;
+&lt;p&gt;クッションゴム, タクトスイッチ, リード線、LEDケーブルはなかったので別途買った&lt;/p&gt;
+&lt;h2&gt;組み立て&lt;/h2&gt;
+&lt;p&gt;幸い先人たちのビルドログが結構な数あったので途中で詰まることはあまりなかった&lt;/p&gt;
+&lt;h3&gt;ダイオードハンダ付け&lt;/h3&gt;
+&lt;p&gt;それぞれ+-の方向だけ気をつけてハンダ付け。ダイオードの黒い方のリード線が四角い穴に入るようにする。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://gaaasw.ch.files.1drv.com/y4m1jARiYKevuzhzusO6jJ8wPdIbbNPbzkkYZHw0pu-tl8cFUlVv1Vrbu0KbQ1ERLsMbeTdPnjUyN9DVr8XMqkmAIRmiOp6mFGe7mLyfPRK5sMsTRBYQHpjEZrj2KkT7a2TArf8chzK33vnxI9PrhaMXI9ym7TGHdMVP-QnbWZQcDUHTJRysWbRqY6ggMCWr2_9Oaxvyi9z4C3WLNiB1ivlPA?width=1440&amp;height=1080&amp;cropmode=none" width="1440" height="1080" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://iqbl1g.ch.files.1drv.com/y4m7Fs5CBMUaGnv8q3IisbBbepE1D4AbrEc296TJdNPqJEOWYy9p2G4CVJNjGrUhRXDUASDHZcv-sIUoHvL9XbqeN786dSDReb890_bOu4N1zGbn8lLnJTPCmsVSQjEV85bBkyQ2nelmSI12gsXDNLQkpQl_r_g9SwRPNwmSJodHPJSwO-cjz2wNKp7-dUVOVrxlFA4aSk_7Zzut3YK9TTW1A?width=1440&amp;height=1080&amp;cropmode=none" width="1440" height="1080" /&gt;&lt;/p&gt;
+&lt;h3&gt;TRRS ジャック取り付け&lt;/h3&gt;
+&lt;p&gt;&lt;img src="https://gqaasw.ch.files.1drv.com/y4mxf1_q7YLEL3iYck7oRBTGC4PzSOwLRBfxe_g-j6k9P19EavN_yOB3x_9G_8zCeXobCrzFML70YLiXqN2pXkipsrYZmK4wk-3b4kjWCvvI453J3AbouwkY_4rKAAXS5Vvz3rJwhjmKv8Lx3SNyU5qBIYJ9CxduFoUY5T0iiIJDJWu4RtjJhxXb80LZgsokJJT2d6_PD8L7WyD8PqdqHB97w?width=1440&amp;height=1080&amp;cropmode=none" width="1440" height="1080" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://igaasw.ch.files.1drv.com/y4m8yzp4MEmVM-rBrQ7MbrdXfJI9C3koY5tRdBP98f4pnxV_gOIy8r2KHpUNimtJW_AiZdraMPTDmkVJ3Xk8xD99ab0Xqdf8g9Hk4_zy4JnypcFtxopwVHy5pUOZpGhe9N8FJYill3pQAj2uEI3qB_kDs5DsZUfnwHhm3VJ8MSzyt6eHuUetbTZbreTHnQBz2zKqm11JjtWBx6Ug86S_lcHlg?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
+&lt;h3&gt;ジャンパー接続&lt;/h3&gt;
+&lt;p&gt;公式から引用。以下の要領でPCBのTRRSジャック下のに空いてる箇所をハンダで接続する&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;VCC [x]     [ ] VCC
+    [x]     [x]
+GND [ ]     [x] GND
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;img src="https://jabl1g.ch.files.1drv.com/y4m_8f2vgBCB3MmpwtKz4wBRiYAoCtmQoqS0WiyLbEOsqX9x5dt5JeX0_56u2UfNtKmCJwsyz2lwskcKKigd1kcoXE3TGEBfWsMacPM0hG3RSSe5KJ4t-PnU4ku8hEh7DARKS6ptIJzGa44kma2nUwOwz-tAyCPspVnBg5b4RkW5-yCpqlINLKU9fwQid-riexK4lJpQ6hrbmlfIV--eIwdTg?width=1503&amp;height=1127&amp;cropmode=none" width="1503" height="1127" /&gt;&lt;/p&gt;
+&lt;h3&gt;ヘッダーピン取り付け&lt;/h3&gt;
+&lt;p&gt;Pro Micro付属のヘッダーピンを取り付ける。足の長い方をTRRSジャックと同じ側にして差し込む。足の短い表側をハンダ付けしておく。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://jaaasw.ch.files.1drv.com/y4m7GJqIcbAhnM0nX8C96lB3Q2wb3XwbRC9gqN2kS-Q09ijWyW8sdoORQhLH07kAI_SR50sL6bjYtvih2otF3pdyPrHxKMQATL7ZIbEaxA9IDRwi1KA7lrM5EEKmKXmmKJnWjNMuEXRFjwLbw7URqrtfMMFLA8e0SgG7Q4878Lc_KW7LqJkdpDkRd4cDSqRbp2HiVldYpqeG8OEjgcxVS9BpQ?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
+&lt;h3&gt;先に２つスイッチをつける&lt;/h3&gt;
+&lt;p&gt;Pro Microと位置が被るのでPro Microの位置のスイッチ2つは先に実装する。&lt;/p&gt;
+&lt;p&gt;上側のケースを挟みこむようにしてスイッチを取り付ける。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://hgaasw.ch.files.1drv.com/y4mc2BP86AEgyrKSczYwuB2xd4eoBKNQ4KhquoY7mk4DPs-6cHcwDGOmpILzn0nfm7CVf0NTdEUt5cagf4D_lOhdOkKHuhMDtDhB80rMRNE-HTh4STIXGPEW_U_7cuQqxEAXY3pdp0LK_ZHKX5GNr6mmGLDHDlYhMyscJhDtjsZsOjiN1ji-4sUF2zkuIjG8QAxGZ_gsGnbIF4ajUBEToMcTQ?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
+&lt;p&gt;スイッチを差し込むとPCBのパンダの目のようなとこにスイッチの足が出るのでハンダ付け。ここがしっかり接続されていないとキーを押したのに反応しないというようなことが起こるので注意。特にPro Microを取り付けた後だとここのハンダは修正出来ないのでハンダがちゃんと浸透してるか見ておいた方がいい。&lt;/p&gt;
+&lt;h3&gt;Pro Micro取り付け&lt;/h3&gt;
+&lt;p&gt;Pro Microを実装する。それぞれ左右で表裏を変えないといけないので注意。&lt;/p&gt;
+&lt;p&gt;左手側(TRRSジャックが右に来る方)は実装面が上に来るようにして実装。Pro Microから飛び出した長い足はニッパーで切ってハンダ付け。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://iqaasw.ch.files.1drv.com/y4mGkc4xtrqV5YE1GZz9Ot8be8M00g0_fwgRRlmHKfXRMsEEgosB20gxHUIV9AQzJ-bM_S_iqpu3jhgJlT9FcHLA7n5U80ZrGAzqp_AQzP8BftTr2PXzMRaeYR3idP1YvnkUmKsb2k8NbFb2CSdAokDNuCsY2Og1J7DPdpr6y6WZCEUQQUi1WApp7zAMmm8bWZKX8gv9Gs8KS2ak8UuqjQFrQ?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
+&lt;p&gt;右手側(TRRSジャックが左に来る方)は裏側を表にして実装。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://iaaasw.ch.files.1drv.com/y4m9jLjzUJJawBh8NlfNBmwXRg-JofQmUFjHEOgXskkbaTKk6UlE_yonASXdL3oLKHHUDNZytGyKWxnRr39KXuuA7VXCLc3_q6x523ZLOCPPERRweTx_kCTRWHLOdeXKeOyPgAU1ZlBsz7iCpXwQRKIeTtav4tJEcctRsi5KwQloEU0W0HEI-G-CCGAG5LDRojAU5dFHN2jdw02o9qCri6fkg?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
+&lt;h3&gt;スイッチ取り付け&lt;/h3&gt;
+&lt;p&gt;残りのスイッチを全て取り付ける。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://gaybwa.ch.files.1drv.com/y4mhwUF-UokW-i4HMxpXoACH1VMM8BqXjEKE0H4PaCd18Kiic9u7npca62IboQdXiUvNJp9Vp0mmnCxHcnWXju0lp42Cah5za_5PyPfSh6l47z4q6G2lDFLDM2zJoXEa_AmXu72GU4zGbNDVWTzYSSeXDRpMDHPBA-534Vlq3UuguTfxMwzYbd9kj-0KDyYEnD1lOnBtZlq9fnmG_-ph5QdIA?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
+&lt;p&gt;ハンダ付け後。同じくハンダ付けが甘いとキー押下時の認識が甘くなるのでちゃんとハンダ付けする。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://gqybwa.ch.files.1drv.com/y4mLN753LmIQu1V992WSp6VrK7ysOsc-VukF8zXCBVt-xiPPBOByJ0lyg6Uz7PxsPNO8cqY-g5_zRu7l6G84mLKfuRaWNzkMaoydb0bSUYdbOynM5f52beoyaiT7zWNGN65WPg6S4GjgVbOD0Rdk-EPcEXJWcDm_A7R2KYptZ6XLIcoIWP2M41wSHNwr0VJ1mG307GjJ0A3N7rZfrIOVK8B7Q?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
+&lt;h3&gt;タクトスイッチ取り付け&lt;/h3&gt;
+&lt;p&gt;ファームウェアを書き込む時にGNCとRSTをショートさせる必要があるため、ボタン操作でリセット出来るようにタクトスイッチを取り付ける。それぞれGNDとRSTをタクトスイッチの足にハンダ付け。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://iwybwa.ch.files.1drv.com/y4m5jLAqCvWcOQblxIMaTcd9knX-m2XqWKSG_duQ-fORXu0o3sDmdD_hC52x-xnWzBYo1N9JlQsbG_Y9YW8REIi8c3a70YzGwnxGgMn2X5ehzvbSVjt2Ew5pAziG0KPQzO5OZFJc1cv6wayFoxsIcM4Rx_D-Q_R6hozLbGq4aEGQO8c8j0BEm8EK1W4xQPs9sZAx8NaBGpwPha1L635N4hHkA?width=3120&amp;height=4160&amp;cropmode=none" width="3120" height="4160" /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://jaybwa.ch.files.1drv.com/y4mrmJWnLXTyVzF3vQW3WnTnEabbeofN-OBNcGjf3Ka2HO7WAUGzQT0TuHE7FBUtcQ4Od6GfthJWNctxtYjxVYzx8bC7O3eZImQ5c_REwInl00efvmpc1Hx-tktO97ncd3EyGICnPjl88IJ73bTk8UVd0xWSTi-CWV0rwpaM54wV-r67dA3wvjy-hTTLZYkEmeH5Pm09pu53KjYAw2Rplz3FA?width=3120&amp;height=4160&amp;cropmode=none" width="3120" height="4160" /&gt;&lt;/p&gt;
+&lt;h3&gt;LED実装&lt;/h3&gt;
+&lt;p&gt;一応ここまでで既にキーボードは動作するが光の民ゆえ光らせたいのでLEDを実装する。光の民って何。&lt;/p&gt;
+&lt;p&gt;Switch Scienceで買ったLED（１７ｃｍ）をハサミで２つに切ってそれぞれ実装する。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://iaybwa.ch.files.1drv.com/y4mRKqpbFxku7gKCZhJghVjULduUSHpxFpK7PQ_ArX28a1Ghumaknc5iWxkSIdU-CZjQvAt4_b-MblTESka0_o83n3A0AOP_snyQFM_gqD57_swFg0O1ebbrGj_XbqzqsXJfW1qtkeE5ViNdCZKexYxI1hka6ahRHARrylt1hvMBIUSGQck9mnf6UdBQ4mTIccgzU4Qv-KrHjauJVVKrqlFcw?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
+&lt;p&gt;たぶんここが一番苦労した。リード線に予備ハンダをして線をメッキしてからハンダ付け箇所でリード線に付着したハンダを溶かして付着させると楽かもしれない。&lt;/p&gt;
+&lt;p&gt;右手側はGND -&amp;gt; GND, +5V -&amp;gt; VCC, DI -&amp;gt; extra dataで接続する。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://skixvg.ch.files.1drv.com/y4mrI_iwEgfR1VIiVU1DBj9TxeZdbQvlmicJijTASkPwx3cxz4ZsTFp0BZPoo419AVifnyHn0Aj0BezXXMERFReAZgILWcMqlgJu2VbsChdhDDnaoUheIXXEDm7n8c4VPbsYemwBCdOJ9-2I69HQeXLbZgTeweD1sh1T0E1qjuo1rZmkpOlZCf4flq4ajYlGR1BQoCWyXMhDW9QIaPK9bzvow?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
+&lt;p&gt;左手側はそれぞれ左は+5V -&amp;gt; VCC, DO -&amp;gt; extra data, GND -&amp;gt; GND. 右側は DIN -&amp;gt; TX0 pin, GND -&amp;gt; GND, +5V -&amp;gt; VCCで接続する。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://uaixvg.ch.files.1drv.com/y4mQKyOuuUal6JLuePdC_lM_Gb6561jeZRFFeSco83hq4iTx3shQTpEVyfT_M1xDtEVi7zTfG0Z-KDpAg7015xaHxMcl1X9ULUDf7jOAp1VTV88k6B5YAIuzyfeE_2cSv0p8CenMGfOQFmgBv3VhBqThdT7xKWWUkOlsxrR6MW-6lEmrqw759KGqvxcHNSl2_7Msye3lerFz4LXNJrNJJupVg?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
+&lt;h2&gt;ファームウェア書き込み&lt;/h2&gt;
+&lt;p&gt;リポジトリをclone&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/qmk/qmk_firmware.git
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;ファームウェアのビルドに必要なパッケージ類をインストール(Linux)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;apt-get install gcc unzip wget zip gcc-avr binutils-avr avr-libc dfu-programmer dfu-util gcc-arm-none-eabi binutils-arm-none-eabi libnewlib-arm-none-eabi
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;デフォルトのレイアウトを書き込む&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ make lets_split/rev2:default
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo make lets_split/rev2:default:avrdude
+QMK Firmware &lt;span class="m"&gt;0&lt;/span&gt;.5.207
+Making lets_split/rev2 with keymap default and target avrdude
+
+avr-gcc &lt;span class="o"&gt;(&lt;/span&gt;GCC&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;4&lt;/span&gt;.9.2
+Copyright &lt;span class="o"&gt;(&lt;/span&gt;C&lt;span class="o"&gt;)&lt;/span&gt; &lt;span class="m"&gt;2014&lt;/span&gt; Free Software Foundation, Inc.
+This is free software&lt;span class="p"&gt;;&lt;/span&gt; see the &lt;span class="nb"&gt;source&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; copying conditions.  There is NO
+warranty&lt;span class="p"&gt;;&lt;/span&gt; not even &lt;span class="k"&gt;for&lt;/span&gt; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Size before:
+   text    data     bss     dec     hex filename
+      &lt;span class="m"&gt;0&lt;/span&gt;   &lt;span class="m"&gt;18850&lt;/span&gt;       &lt;span class="m"&gt;0&lt;/span&gt;   &lt;span class="m"&gt;18850&lt;/span&gt;    49a2 ./.build/lets_split_rev2_default.hex
+
+Compiling: ./tmk_core/common/command.c                                                              &lt;span class="o"&gt;[&lt;/span&gt;OK&lt;span class="o"&gt;]&lt;/span&gt;
+Linking: .build/lets_split_rev2_default.elf                                                         &lt;span class="o"&gt;[&lt;/span&gt;OK&lt;span class="o"&gt;]&lt;/span&gt;
+Creating load file &lt;span class="k"&gt;for&lt;/span&gt; flashing: .build/lets_split_rev2_default.hex                                 &lt;span class="o"&gt;[&lt;/span&gt;OK&lt;span class="o"&gt;]&lt;/span&gt;
+Checking file size of lets_split_rev2_default.hex                                                   &lt;span class="o"&gt;[&lt;/span&gt;OK&lt;span class="o"&gt;]&lt;/span&gt;
+ * File size is fine - &lt;span class="m"&gt;18850&lt;/span&gt;/28672
+Detecting USB port, reset your controller now...........
+Detected controller on USB port at /dev/ttyACM0
+
+Connecting to programmer: .
+Found programmer: &lt;span class="nv"&gt;Id&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;CATERIN&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="nb"&gt;type&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; S
+    Software &lt;span class="nv"&gt;Version&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="m"&gt;1&lt;/span&gt;.0&lt;span class="p"&gt;;&lt;/span&gt; No Hardware Version given.
+Programmer supports auto addr increment.
+Programmer supports buffered memory access with &lt;span class="nv"&gt;buffersize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;128&lt;/span&gt; bytes.
+
+Programmer supports the following devices:
+    Device code: 0x44
+
+avrdude: AVR device initialized and ready to accept instructions
+
+Reading &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="c1"&gt;################################################## | 100% 0.00s&lt;/span&gt;
+
+avrdude: Device &lt;span class="nv"&gt;signature&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; 0x1e9587 &lt;span class="o"&gt;(&lt;/span&gt;probably m32u4&lt;span class="o"&gt;)&lt;/span&gt;
+avrdude: NOTE: &lt;span class="s2"&gt;&amp;quot;flash&amp;quot;&lt;/span&gt; memory has been specified, an erase cycle will be performed
+         To disable this feature, specify the -D option.
+avrdude: erasing chip
+avrdude: reading input file &lt;span class="s2"&gt;&amp;quot;./.build/lets_split_rev2_default.hex&amp;quot;&lt;/span&gt;
+avrdude: input file ./.build/lets_split_rev2_default.hex auto detected as Intel Hex
+avrdude: writing flash &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="m"&gt;18850&lt;/span&gt; bytes&lt;span class="o"&gt;)&lt;/span&gt;:
+
+Writing &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="c1"&gt;################################################## | 100% 1.41s&lt;/span&gt;
+
+avrdude: &lt;span class="m"&gt;18850&lt;/span&gt; bytes of flash written
+avrdude: verifying flash memory against ./.build/lets_split_rev2_default.hex:
+avrdude: load data flash data from input file ./.build/lets_split_rev2_default.hex:
+avrdude: input file ./.build/lets_split_rev2_default.hex auto detected as Intel Hex
+avrdude: input file ./.build/lets_split_rev2_default.hex contains &lt;span class="m"&gt;18850&lt;/span&gt; bytes
+avrdude: reading on-chip flash data:
+
+Reading &lt;span class="p"&gt;|&lt;/span&gt; &lt;span class="c1"&gt;################################################## | 100% 0.14s&lt;/span&gt;
+
+avrdude: verifying ...
+avrdude: &lt;span class="m"&gt;18850&lt;/span&gt; bytes of flash verified
+
+avrdude: safemode: Fuses OK &lt;span class="o"&gt;(&lt;/span&gt;E:CB, H:D8, L:FF&lt;span class="o"&gt;)&lt;/span&gt;
+
+avrdude &lt;span class="k"&gt;done&lt;/span&gt;.  Thank you.
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;途中で&lt;code&gt;reset your controller now&lt;/code&gt;と出るのでGNDとRSTをショートしたスイッチを押す。1回で認識しない場合は何回か押す。&lt;/p&gt;
+&lt;p&gt;書き込みが成功すると上記のようなログが出る。左手と右手両方とも書き込む。
+USB接続し、TRRSソケットで繋げて全部のキーが動作するか確認。ハンダ付けが甘いと微妙に認識しづらいキーがあるので直しておく。&lt;/p&gt;
+&lt;h3&gt;LEDの設定&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;vim keyboards/lets_split/keymaps/default/rules.mk&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;rules.mk&lt;/code&gt;に以下の行を追加&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;RGBLIGHT_ENABLE = yes
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;キーマップを修正する&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;vim keyboards/lets_split/keymaps/default/keymap.c
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;UNDERGLOW用のレイヤーを定義&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#define UNDERGLOW_LAYER 6
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;キーマップを追加&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[UNDERGLOW_LAYER] = KEYMAP( \
+  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______, \
+  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______, \
+  _______,  RGB_TOG,  RGB_MOD,  RGB_HUD,  RGB_HUI,  RGB_SAD,  RGB_SAI,  RGB_VAD,  RGB_VAI,  _______,  _______,  _______, \
+  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______ \
+),
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;QWERTYレイヤーのどこかのキーに&lt;code&gt;MO(UNDERGLOW_LAYER)&lt;/code&gt;を割り当て&lt;/p&gt;
+&lt;p&gt;再度ファームウェア書き込みの時と同じ手順でキーマップをFlashし&lt;code&gt;MO(UNDERGLOW_LAYER)&lt;/code&gt;でレイヤーを切り替えて&lt;code&gt;RGB_TOG&lt;/code&gt;でLEDが光ることを確認する。また&lt;code&gt;RGB_MOD&lt;/code&gt;で発光パターンを色々切り替えられる。&lt;/p&gt;
+&lt;p&gt;以降もキーマップを変えたい場合は&lt;code&gt;keymap.c&lt;/code&gt;を編集して変えることが出来る。&lt;/p&gt;
+&lt;h2&gt;完成&lt;/h2&gt;
+&lt;p&gt;こんな感じでなんとか完成。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://u6ixvg.ch.files.1drv.com/y4mLfKNMawH4ubEowYh-8FARCykY9b6eRKWdZ8hw_eEJcNoQT-yXqxYvspmdnUjZnJydyewy-7r6tOh2eBF7eT2971-Q1w9lGMJ4AU_ujoGQcUUSkbYehZXST-aJJFCBexTGC06YIosebBsTnmP0fGPmUb_lcxbQm-mIh-j9a2A4ywTrDKPF3n4uF3eWtMc-pFzYYk2WDYqogjASzkWcFoOrw?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
+&lt;p&gt;キーキャップは&lt;a href="http://www.mechsupply.co.uk/product/devlin-k-series-aurora-planck-keyset"&gt;DEVLIN K-SERIES AURORA&lt;/a&gt;にした。&lt;/p&gt;
+&lt;h2&gt;感想&lt;/h2&gt;
+&lt;p&gt;パーツが揃ったり揃わなかったり、10数年ぶりのハンダ付けに苦労したりと結構時間かかったけど初自作キーボードなのでやっぱりなんとなく愛着が湧く。
+キーマップを色々いじって自分好みの配列にしてみたい。&lt;/p&gt;
+&lt;h2&gt;参考&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/nicinabox/lets-split-guide/blob/master/assembly.md"&gt;lets-split-guide/assembly.md at master · nicinabox/lets-split-guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://pppurple.hatenablog.com/entry/2017/09/24/193635"&gt;Let's splitを作る(製作編) - abcdefg.....&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://qiita.com/kzmake/items/443478763cdeaedcfd0a"&gt;分離型のコンパクトなキーボードlet's split(レツプリ)を組み立てた話 - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://yhara.jp/LetsSplit"&gt;レツプリ他自作キーボードまとめ - yhara.jp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://yushakobo.jp/pluis9/2017/07/lets-split-fes/"&gt;Let's Split を組み立てた話 \| 遊舎工房&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://docs.qmk.fm/getting_started_build_tools.html"&gt;Install Build Tools · QMK Firmware&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="DIY"></category><category term="keyboard"></category><category term="自作キーボード"></category></entry><entry><title>ニューヨーク一人旅 + Panorama NYC Festival 2017 その２</title><link href="http://shufo.github.io/-panorama-nyc-festival-2017-2.html" rel="alternate"></link><published>2017-08-06T09:18:00+09:00</published><updated>2017-08-06T09:18:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2017-08-06:/-panorama-nyc-festival-2017-2.html</id><summary type="html">&lt;p&gt;ニューヨーク一人旅その２&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://shufo.github.io/panorama-festival-2017-1.html"&gt;1日目&lt;/a&gt;に続きNew York一人旅2日目です。&lt;/p&gt;
 &lt;p&gt;この日からPanorama NYCフェスティバルが3日間開催されます。&lt;/p&gt;
 &lt;p&gt;ゲートオープンは正午でそれまではフリータイムなのでその間に観光とかします。&lt;/p&gt;
 &lt;h3&gt;エンパイアステートビル&lt;/h3&gt;
@@ -564,7 +759,7 @@ Warm on a cold nightで締め。&lt;/p&gt;
 
 &lt;script async src="//s.imgur.com/min/embed.js" charset="utf-8"&gt;&lt;/script&gt;
 
-&lt;p&gt;MMMM &lt;/p&gt;
+&lt;p&gt;MMMM&lt;/p&gt;
 &lt;blockquote class="imgur-embed-pub" lang="en" data-id="p2US4wK"&gt;&lt;a href="//imgur.com/p2US4wK"&gt;View post on imgur.com&lt;/a&gt;&lt;/blockquote&gt;
 
 &lt;script async src="//s.imgur.com/min/embed.js" charset="utf-8"&gt;&lt;/script&gt;
@@ -641,7 +836,7 @@ Amazonが最近買収して生鮮食品業界にも参入したことで有名�
 こんな感じで1日目を終えました。&lt;/p&gt;
 &lt;p&gt;何気なく過ごしてるけど普通に聞き取れないこと多くて何回も聞き直してたりしつつなんとか過ごせたので面倒でも対応してくれた人には感謝です。&lt;/p&gt;
 &lt;p&gt;本来の目的のフェスは2日目からになります。&lt;/p&gt;
-&lt;p&gt;その2へ続く...&lt;/p&gt;</content><category term="vacation panorama"></category></entry><entry><title>MacBook Proを捨ててThinkpad X220を買った</title><link href="http://shufo.github.io/alternative_to_mac.html" rel="alternate"></link><published>2016-11-28T20:00:00+09:00</published><updated>2016-11-28T20:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2016-11-28:/alternative_to_mac.html</id><summary type="html">&lt;p&gt;Macbook Proを捨ててThinkpad X220を買った話&lt;/p&gt;</summary><content type="html">&lt;p&gt;関連: &lt;a href="http://d.hatena.ne.jp/joker1007/20161125/1480069437"&gt;MacBook Proを捨ててThinkpad T460sを買ってgentooを入れた - joker1007の日記&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;その2へ続く...&lt;/p&gt;</content><category term="vacation"></category><category term="panorama"></category></entry><entry><title>MacBook Proを捨ててThinkpad X220を買った</title><link href="http://shufo.github.io/alternative_to_mac.html" rel="alternate"></link><published>2016-11-28T20:00:00+09:00</published><updated>2016-11-28T20:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2016-11-28:/alternative_to_mac.html</id><summary type="html">&lt;p&gt;Macbook Proを捨ててThinkpad X220を買った話&lt;/p&gt;</summary><content type="html">&lt;p&gt;関連: &lt;a href="http://d.hatena.ne.jp/joker1007/20161125/1480069437"&gt;MacBook Proを捨ててThinkpad T460sを買ってgentooを入れた - joker1007の日記&lt;/a&gt;&lt;/p&gt;
 &lt;h2&gt;概要&lt;/h2&gt;
 &lt;p&gt;正確にいうとMBP Late 2016を買おうと思っていたのだけど結局Thinkpad X220を買った話です&lt;/p&gt;
 &lt;p&gt;今年10月の&lt;a href="http://www.apple.com/apple-events/october-2016/"&gt;例のイベント&lt;/a&gt;で発表されたMBPは本当に楽しみにしていたし、MBP費用も貯めていたのだけど&lt;br&gt;

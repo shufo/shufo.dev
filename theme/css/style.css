@@ -676,7 +676,7 @@ pre {
     position: relative;
     margin: 2em auto;
     padding: 1em;
-    overflow: hidden;
+    overflow: display;
     font-family: 'Inconsolata', monospace, sans-serif;
     white-space: pre;
     background: #faf9f7;
