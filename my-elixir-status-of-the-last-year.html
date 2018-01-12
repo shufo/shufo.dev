@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 
-  <title>Elixirを仕事で使ったメモ |> 2017年</title>
+  <title>2017年にElixirを仕事で使った振り返り</title>
 
 
   <meta name="HandheldFriendly" content="True" />
@@ -38,9 +38,9 @@
   <![endif]-->
 
 
-    <link href="http://shufo.github.io/drafts/my-elixir-status-of-the-last-year.html" rel="canonical" />
+    <link href="http://shufo.github.io/my-elixir-status-of-the-last-year.html" rel="canonical" />
 
-        <meta name="description" content="1年と少しElixirを使ったまとめと作ったパッケージ10個、お世話になってるパッケージ10個">
+        <meta name="description" content="1年と少しElixirを使った感想など">
 
         <meta name="author" content="shufo">
 
@@ -57,20 +57,20 @@
 
   <meta property="og:type" content="article">
             <meta property="article:author" content="http://shufo.github.io/author/shufo">
-  <meta property="og:url" content="http://shufo.github.io/drafts/my-elixir-status-of-the-last-year.html">
-  <meta property="og:title" content="Elixirを仕事で使ったメモ |> 2017年">
-  <meta property="article:published_time" content="2018-01-08 00:00:00+09:00">
-            <meta property="og:description" content="1年と少しElixirを使ったまとめと作ったパッケージ10個、お世話になってるパッケージ10個">
+  <meta property="og:url" content="http://shufo.github.io/my-elixir-status-of-the-last-year.html">
+  <meta property="og:title" content="2017年にElixirを仕事で使った振り返り">
+  <meta property="article:published_time" content="2018-01-12 00:00:00+09:00">
+            <meta property="og:description" content="1年と少しElixirを使った感想など">
 
                 <meta property="og:image" content="https://i.imgur.com/gEpo3Gi.png">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:site" content="@shufo_">
-        <meta name="twitter:title" content="Elixirを仕事で使ったメモ |> 2017年">
-        <meta name="twitter:url" content="http://shufo.github.io/drafts/my-elixir-status-of-the-last-year.html">
+        <meta name="twitter:title" content="2017年にElixirを仕事で使った振り返り">
+        <meta name="twitter:url" content="http://shufo.github.io/my-elixir-status-of-the-last-year.html">
 
                 <meta name="twitter:image:src" content="https://i.imgur.com/gEpo3Gi.png">
 
-            <meta name="twitter:description" content="1年と少しElixirを使ったまとめと作ったパッケージ10個、お世話になってるパッケージ10個">
+            <meta name="twitter:description" content="1年と少しElixirを使った感想など">
 </head>
 <!-- TODO : Body class -->
 <body class="home-template">
@@ -105,11 +105,11 @@
             <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
           </span>
         </nav>
-        <h1 class="post-title">Elixirを仕事で使ったメモ |> 2017年</h1>
+        <h1 class="post-title">2017年にElixirを仕事で使った振り返り</h1>
         <!-- TODO : Proper class for headline -->
         <span class="post-meta">
                 <a href="http://shufo.github.io/author/shufo">Shufo</a>
-            | <time datetime="2018  1月/08 (月)">2018  1月/08 (月)</time>
+            | <time datetime="2018  1月/12 (金)">2018  1月/12 (金)</time>
         </span>
         <!-- TODO : Modified check -->
         
@@ -126,32 +126,49 @@
         <article class="post">
         <div class="inner">
             <section class="post-content">
-                <p>去年の1月頃初めて<a href="https://qiita.com/shufo/items/9cfb7bfcecd363e0ea86">Elixirを触って</a>4月頃からプロジェクトで使い始めてから約1年半程経ったので使ってるうちによかった点や辛かった点、開発環境など振り返ってみる。</p>
+                <p>少し遅くなったけど2017年にElixirを使った振り返りをしてみる。(<s>年末年始ダラダラしてて書くの遅れた</s>
+)</p>
+<p>以下のElixir環境まとめエントリーに触発されました</p>
+<ul>
+<li><a href="https://qiita.com/melpon/items/1502c403b7b5f37e325f">Elixir のチームでの開発環境について - Qiita</a></li>
+<li><a href="http://www.m3tech.blog/entry/elixir-development-environment-2017">エムスリーでの Elixir 開発環境 ver.2017 #m3dev - エムスリーテックブログ</a></li>
+<li><a href="https://qiita.com/ndruger/items/f6bd35bb0aede78b827d">Elixir 開発環境 2017 in ACCESS - Qiita</a></li>
+</ul>
+<p>Elixirは2016年ごろから<a href="https://qiita.com/shufo/items/9cfb7bfcecd363e0ea86">触っていた</a>のだけど2016年後半から2017年は仕事としてもほぼフルタイムで使っていたため、使ってるうちによかった点や辛かった点、開発環境など振り返ってみる。</p>
 <h2>よかったところ</h2>
 <h3>堅牢性(robustness)</h3>
 <p>これは本当に頑強でErlang VMが直接的な原因でサーバが落ちたということは本番運用も含めて１年ぐらい稼働させてる中でなかったと思う。可用性nine nines(99.9999999%)はガチ。逆にやることなさすぎて暇になるやつ</p>
 <h3>エコシステム</h3>
-<p>ここ一年で大分充実した気がする。Hex.pmに登録されているパッケージの数は<a href="https://medium.com/@cameronp/is-the-elixir-ecosystem-mature-enough-for-production-apps-79fbf9f2df31">2016年2月の段階で1455個</a>だったのが2017年12月現在<strong>5506</strong>個になった。約1年で378%の増加。</p>
-<p>また<a href="http://phoenixframework.org/blog/phoenix-1-3-0-released">Phoenix 1.3</a>がリリースされた. <a href="https://qiita.com/shufo/items/f0c85a100728a39dde13">ディレクトリ構造が変わったりContextという概念の導入</a>などもあり若干脱Railsっぽくなってきてます。既存のディレクトリ構造のままアップデートも可能なのでそのままアップデートして新しい機能を使うもよし、Phoenix 1.3 styleで始めるもよし。</p>
+<p>ここ1, 2年で大分充実した。Hex.pmに登録されているパッケージの数は<a href="https://medium.com/@cameronp/is-the-elixir-ecosystem-mature-enough-for-production-apps-79fbf9f2df31">2016年2月の段階で1455個</a>だったのが2018年1月現在<strong>5702</strong>個になった。約1年10ヶ月で約380%の増加。以前は主要なWebサービスでもAPIクライアントがないというようなこともあったけど最近はほぼないんじゃないんだろうか。</p>
+<p>また<a href="http://phoenixframework.org/blog/phoenix-1-3-0-released">Phoenix 1.3</a>がリリースされた. <a href="https://qiita.com/shufo/items/f0c85a100728a39dde13">ディレクトリ構造が変わったりContextという概念の導入</a>などもあり若干脱Railsっぽくなってきている。既存のディレクトリ構造のままアップデートも可能なのでそのままアップデートして新しい機能を使うもよし、Phoenix 1.3 styleで始めるもよし。</p>
+<p>以前言われていたほどパッケージが少ない問題はなくなってきていると思うのでそこが懸念点になる場合も今はあまりないと思う。</p>
 <h3>コミュニティ</h3>
-<p>ここ1年半ほどでゆるやかに成長してきた。急に人口が増えたら増えたでバックグラウンドの違うステークホルダーが増えて混乱する気がするのでちょうどいいぐらいだと思う。</p>
+<p>ここ1年半ほどでゆるやかに成長してきた。</p>
+<p>以下のグラフはRedditの言語別subredditのsubscriber数の統計だが、恐らく同じようなパラダイムで領域もそこそこ被ってると思われるClojureやScalaと比較して後発ながら伸び率も悪くない。</p>
+<p><img alt="Imgur" src="https://i.imgur.com/8cEXJbn.png"></p>
+<p>急に人口が増えたら増えたでバックグラウンドの違うステークホルダーが増えてコミュニティが混乱する気がするのでこのぐらいの伸び率でちょうどいいと思う。</p>
 <h3>生産性</h3>
-<p>最初はElixirを部分的に使って管理系の画面はLLなどで作ろうかと考えていたけどPhoenixの生産性がほぼ他のFWと変わらなかったので結局管理系も含めて全てElixirで作っている</p>
+<p>最初はElixirを部分的に使って管理系の画面はPHPなどで作ろうかと考えていたけどPhoenixの生産性がほぼ他のFWと変わらなかったので結局管理系も含めて全てElixirで作っているぐらいには問題ない</p>
+<h3>楽しい</h3>
+<p>Elixirはたのしい（語彙力）</p>
 <h2>つらかったところ</h2>
 <p>逆に使っているうちにつらかった点など</p>
 <h3>コンパイル時間</h3>
-<p>通常Elixirはコンパイル時に変更のあったファイルのみ再コンパイルをするのだけど、変更のあったファイル以外にも依存のあるファイルが再コンパイルされる。コンパイル時の依存はcompile-time dependencyのある参照が存在するかどうかで決まる。</p>
+<p>通常Elixirはコンパイル時に変更のあったファイルのみ再コンパイルされるのだけど、変更のあったファイル以外にも依存のあるファイルが再コンパイルされる。小さなライブラリレベルでは問題ないのだけどPhoenixを利用したWeb系の開発ではファイル数も多くなってきてコンパイル時間が大きくなるのが地味に効いてくる。</p>
+<p>ちなみに再コンパイルの基準は<code>compile-time dependency</code>が存在するかどうかで決まる。</p>
 <p>例えば</p>
 <ul>
 <li><code>import</code>, <code>require</code> を使用したとき</li>
 <li>Structを使用したとき</li>
 </ul>
-<p>などが主に追加される原因となる。
-Elixir 1.6で<code>mix xref graph --format stats</code>でどのファイルにコンパイル時依存が多いか確認出来るようになるのでCIなどでチェックしてあげるといいと思います</p>
+<p>に<code>compile-time dependency</code>が追加され再コンパイル対象が増える。</p>
+<p>Elixir 1.6で<code>mix xref graph --format stats</code>でcompile-time dependencyの多いファイルを<a href="https://github.com/elixir-lang/elixir/releases/tag/v1.6.0-rc.0">確認出来るようになる</a>のでCIなどでチェックしてあげるといいと思います</p>
 <p>参照: <a href="http://milhouseonsoftware.com/2016/08/11/understanding-elixir-recompilation/">Understanding Elixir's recompilation</a></p>
+<h3>他の言語を使った時</h3>
+<p>デメリットというかパターンマッチングがないと辛くなるようになってしまった(?)</p>
 <h2>開発環境</h2>
 <h3>コーディング規約</h3>
-<p><a href="https://qiita.com/shufo/items/f5e3ccd4892288449ff9">Elixir 1.6のcode formatter</a>を使っている。1.6.0-devの開発版に既に入っていたのでローカルとCIでのチェック用に1.6.0正式版に先行して導入したけど最高だったのでみんな使いましょう。コードレビューでコーディング規約に関する指摘がなくなるだけで大分脳の負荷が違います。</p>
+<p><a href="https://qiita.com/shufo/items/f5e3ccd4892288449ff9">Elixir 1.6のcode formatter</a>を使っている。1.6.0-devの開発版に既に入っていたのでローカルとCIでのチェック用に1.6.0正式版に先行して導入したけど最高だったのでみんな使いましょう。コードレビューでコーディング規約に関する指摘をしなくてよくなるだけで大分脳の負荷が違います。</p>
 <h3>テスト</h3>
 <p>特に特別なことはしてないけどExUnitと<a href="https://github.com/HashNuke/hound">hound</a>でE2Eテストをしている</p>
 <p>PhantomJSをバックエンドにE2Eテストしているけど挙動が微妙にブラウザと違ったりdeprecatedになっているのでそろそろHeadless Chromeに置き換えたい</p>
@@ -159,10 +176,12 @@ Elixir 1.6で<code>mix xref graph --format stats</code>でどのファイルに�
 <h3>デプロイ</h3>
 <p>ローカル: docker + docker-compose</p>
 <p>本番: ECS + Distributed Erlang</p>
-<p>たぶんElixirで一番悩むところがデプロイだと思うけど、<a href="https://12factor.net/ja/dev-prod-parity">開発/本番一致</a>の原則のためDockerでデプロイしている。<a href="https://github.com/shufo/docker-phoenix">イメージ</a>はpublicでDockerHubに公開しローカルと本番で共通のベースイメージを使っている。</p>
-<p>CIはCircleCIでビルド、docker imageの作成とDockerHubへのpush、ECSのタスク更新を行う。</p>
-<p>しばらくPhoenixのChannelのPubSubのアダプターとしてRedisを使っていたが無駄に障害点を増やしたくないので分散Erlangクラスタを組んでPG2をアダプターとして使っている。RedisをPubSubサーバとして使っていた頃は少しレイテンシがあったりストレージとしてもRedisを併用していたので負荷によってはPubSubが不安定になったりしたけどPG2にしてからは全くそういうのがなくなった。</p>
-<p>コンテナ起動時にどのようにしてコンテナ内のプロセスをDistributed Erlang(Elixir)クラスタに参加させるかについては、<code>ERL_AFLAGS</code>でepmdのポートを固定しコンテナ起動時のポートマッピングで固定したポートへのudp, tcpパケットを通している</p>
+<p>たぶんElixirで一番悩むところがデプロイだと思うけど、<a href="https://12factor.net/ja/dev-prod-parity">開発/本番一致</a>の原則のためDockerでデプロイしている。<a href="https://github.com/shufo/docker-phoenix">ベースイメージ</a>はpublicでDockerHubに公開しローカルと本番で共通のベースイメージを使っている。</p>
+<p>CIはCircleCIでテスト、コンパイル、docker imageの作成とプライベートなDockerHubのリポジトリへのpush、ECSのタスク更新を行う。</p>
+<p>ちなみに<a href="https://github.com/bitwalker/distillery">Distillery</a>は使っていない。Dockerを使っている以上リリースのたびにプロセスが再起動されるので長期間に渡って起動されるようなプロセスもなくremote consoleを使ってプロセスのstateまで閲覧してデバッグしないといけないような状況も発生しづらくメリットも薄いと考えたからだ。OTP releaseは使わずコンパイル済みのソースを含めたイメージ内で<code>mix</code>でサーバを起動している。今のところ起動中のプロセスのstateまで確認しないと分からないようなエッジケースには出会ったことはないが、そのようなケースになった時はremote console用にOTP releaseにしてみたい。</p>
+<p>あとしばらくPhoenixのChannelのPubSubのアダプターとしてRedisを使っていたが無駄に単一障害点や管理ポイントを増やしたくないので分散Erlangクラスタを組んで<a href="https://hexdocs.pm/phoenix_pubsub/Phoenix.PubSub.PG2.html">PG2</a>をアダプターとして使っている。RedisをPubSubサーバとして使っていた頃は少しレイテンシがあったりRedisサーバの負荷によってはPubSubが不安定になったりしたけどPG2にしてからは全くそういうのがなくなった。</p>
+<p>余計な不確実性を持ち込まないという意味でも言語のランタイムレベルで問題を解決出来るというのは精神衛生的にも良い。</p>
+<p>コンテナ起動時にどのようにしてコンテナ内のプロセスをDistributed Erlang(Elixir)クラスタに参加させるかについては、<code>ERL_AFLAGS</code>でVM間通信に使うポートを固定しコンテナ起動時のポートマッピングで固定したポートへのudp, tcpパケットを通している</p>
 <div class="highlight"><pre><span></span><span class="nv">ERL_AFLAGS</span><span class="o">=</span><span class="s2">&quot;-name app@</span><span class="nv">$ERL_HOST</span><span class="s2"> \</span>
 <span class="s2">  -setcookie </span><span class="nv">$ERL_COOKIE</span><span class="s2"> \</span>
 <span class="s2">  -kernel inet_dist_listen_min 4370 \</span>
@@ -170,14 +189,42 @@ Elixir 1.6で<code>mix xref graph --format stats</code>でどのファイルに�
 </pre></div>
 
 
+<p>以下はECS task definition。<code>4369</code>はepmdが固定で使うポートで<code>4370</code>はepmdが動的に割り当てるポートを固定で指定したもの。</p>
+<div class="highlight"><pre><span></span><span class="err">〜中略〜</span>
+<span class="s2">&quot;portMappings&quot;</span><span class="err">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;containerPort&quot;</span><span class="p">:</span> <span class="mi">4369</span><span class="p">,</span>
+        <span class="nt">&quot;hostPort&quot;</span><span class="p">:</span> <span class="mi">4369</span><span class="p">,</span>
+        <span class="nt">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;tcp&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;containerPort&quot;</span><span class="p">:</span> <span class="mi">4369</span><span class="p">,</span>
+        <span class="nt">&quot;hostPort&quot;</span><span class="p">:</span> <span class="mi">4369</span><span class="p">,</span>
+        <span class="nt">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;udp&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;containerPort&quot;</span><span class="p">:</span> <span class="mi">4370</span><span class="p">,</span>
+        <span class="nt">&quot;hostPort&quot;</span><span class="p">:</span> <span class="mi">4370</span><span class="p">,</span>
+        <span class="nt">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;tcp&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="nt">&quot;containerPort&quot;</span><span class="p">:</span> <span class="mi">4370</span><span class="p">,</span>
+        <span class="nt">&quot;hostPort&quot;</span><span class="p">:</span> <span class="mi">4370</span><span class="p">,</span>
+        <span class="nt">&quot;protocol&quot;</span><span class="p">:</span> <span class="s2">&quot;udp&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+<span class="err">〜中略〜</span>
+</pre></div>
+
+
 <p>サービスディスカバリは<a href="https://github.com/mrluc/peerage">peerage</a>でカスタムのディスカバリを作成しredisにexpire付きでEC2のmetadataから取得した自身のホストの(コンテナではない)プライベートIPアドレスを保存して定期的にホストの一覧を走査して取得している。</p>
 <p>なぜこうしているかというとEC2上ではmulticast udpが基本使えず（<a href="https://www.weave.works">Weave</a>などでoverlay networkを構築する方法もあるがオーバーヘッドが大きい）またgossipプロトコルを使うにもdockerコンテナのnetwork modeをhostにしなければならない→<code>network=host</code>にするとlinkオプションが使えない→分離したnginxコンテナからlink出来ないという状態になるので、半自動的なクラスタリングはせずに地道にサービス一覧を取得し、それぞれのホストに対して定期的に<code>Node.connetct/1</code>するようなディスカバリを書いている</p>
-<p>long-running processを作れたりHot Upgrade出来るところがBEAMの強みでもあるけどdockerを使うことでデプロイの度にコンテナは破棄されるのでその利点は失われることは覚悟しないといけない。</p>
+<p>long-running processを作れたりHot Upgrade出来るところがBEAMの強みでもあるけどdockerを使うことでデプロイの度にコンテナは破棄されるのでその利点は失われることは覚悟しないといけない。とはいえ実際にその機能は切り札のようなものでHot Upgrade自体のテストやロールバック等も考えると大半の場合は無停止でのアップグレードなどはインフラを含めたアプリケーション全体のアーキテクチャで吸収した方がいいとは思うのでElixirは基本コンテナの起動・停止で影響の出るようなステートを保持しない方針でdockerでワンバイナリのように扱っている。</p>
 <h2>作ったパッケージ</h2>
-<p>1年程使う中でお仕事的に必要になったり個人的な興味で作ったパッケージが<a href="https://hex.pm/users/shufo">10個</a>に達したので感想</p>
+<p>分量が少ないので1年程使う中でお仕事的に必要になったり個人的な興味で作ったパッケージが<a href="https://hex.pm/users/shufo">10個</a>に達したので感想など</p>
 <h3><a href="https://github.com/shufo/cdn">cdn</a></h3>
 <p>Elixirで初めて作成したパッケージ。</p>
-<p>Laravelの<a href="https://github.com/Vinelab/cdn">cdn</a>をportしたパッケージです。
+<p>Laravelの<a href="https://github.com/Vinelab/cdn">cdn</a>というパッケージをportした。
 S3に特定のディレクトリ（<code>priv/assets</code>とか）を更新時や差分等を考慮してアップロード出来る。またCloudFrontから配布するためのパスを生成出来る 例: <code>cdn(static_path(conn, "/css/main.css"))</code></p>
 <p><img alt="" src="https://raw.githubusercontent.com/wiki/shufo/cdn/img/upload.gif"></p>
 <ul>
@@ -185,7 +232,8 @@ S3に特定のディレクトリ（<code>priv/assets</code>とか）を更新時
 <li><a href="http://elixir-lang.github.io/getting-started/mix-otp/docs-tests-and-with.html">doctest</a>便利</li>
 </ul>
 <h3><a href="https://github.com/shufo/plug_rate_limit_redis">plug_rate_limit_redis</a></h3>
-<p>rate limitをredisをデータストアにplugで実現するパッケージ</p>
+<p>rate limitをredisをデータストアに<a href="https://github.com/elixir-plug/plug">plug</a>で実現するパッケージ</p>
+<h4>Usage</h4>
 <div class="highlight"><pre><span></span><span class="kd">defmodule</span> <span class="nc">MyApp</span> <span class="k">do</span>
 
   <span class="n">plug</span> <span class="nc">RateLimit</span><span class="p">,</span> <span class="ss">interval_seconds</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span> <span class="ss">max_requests</span><span class="p">:</span> <span class="mi">30</span>
@@ -202,8 +250,9 @@ S3に特定のディレクトリ（<code>priv/assets</code>とか）を更新時
 <li>自作plugの作り方を学ぶ</li>
 </ul>
 <h3><a href="https://github.com/shufo/payjp-elixir">payjp</a></h3>
-<p>PAY.JPのAPIクライアント。公式のクライアントライブラリがなかったので作成。
-Stripeのクライアントを参考にした。</p>
+<p><a href="https://pay.jp/">PAY.JP</a>のAPIクライアント。公式のクライアントライブラリがなかったので作成。
+<a href="https://github.com/code-corps/stripity_stripe">Stripe</a>のクライアントを参考にした。</p>
+<h4>Usage</h4>
 <div class="highlight"><pre><span></span><span class="n">customer</span> <span class="o">=</span> <span class="p">[</span>
   <span class="ss">email</span><span class="p">:</span> <span class="s2">&quot;test@test.com&quot;</span><span class="p">,</span>
   <span class="ss">description</span><span class="p">:</span> <span class="s2">&quot;An Elixir Test Account&quot;</span><span class="p">,</span>
@@ -225,21 +274,22 @@ Stripeのクライアントを参考にした。</p>
 
 <ul>
 <li>APIクライアントの作り方を学ぶ</li>
-<li>HTTPoison最高</li>
 <li>外部APIのテストには<a href="https://github.com/parroty/exvcr">ExVCR</a>を使うとリクエストを再現して実際叩かないようにしてくれるので便利</li>
 </ul>
 <h3><a href="https://github.com/shufo/paidy-elixir">paidy</a></h3>
-<p>PaidyのAPIクライアント。同じく公式にクライアントライブラリがなかったので作成。</p>
+<p><a href="https://paidy.com/">Paidy</a>のAPIクライアント。同じく公式にクライアントライブラリがなかったので作成。</p>
 <h3><a href="https://github.com/shufo/ex_line_pay">ex_line_pay</a></h3>
-<p>LINE PAYのAPIクライアント。同じく類似パッケージが(ry</p>
+<p><a href="https://line.me/en/pay">LINE PAY</a>のAPIクライアント。同じく類似パッケージが(ry</p>
 <p>APIクライアントは一度ベースを作るとあとはエンドポイントとモジュールをちょっと調整すれば大体似通った作りになるので楽ですね。</p>
 <h3><a href="https://github.com/shufo/fcmex">fcmex</a></h3>
-<p>FCM(Firebase Cloud Messaging)のAPIクライアント</p>
+<p><a href="https://firebase.google.com/docs/cloud-messaging/">FCM</a>(Firebase Cloud Messaging)のAPIクライアント</p>
 <p>FCM側にRate Limitがあり1リクエストあたり1000件までしかデバイスTokenを送信出来ないのと、短時間で大量のプッシュ通知を送信出来るように<a href="https://hexdocs.pm/flow">Flow</a>で流量を考慮しつつ並列度、CPU効率を考えて送信出来るようにした。</p>
 <h3><a href="https://github.com/shufo/activity_log">activity_log</a></h3>
-<p>ロギング周りの実装で<a href="https://www.w3.org/TR/activitystreams-core/">Activity Streams</a>風のスキーマを定義するのにDSLが欲しくなったのでmacroで実装。
+<p>ロギング周りの実装で<a href="https://www.w3.org/TR/activitystreams-core/">Activity Streams</a>風のスキーマを定義したくてDSLが欲しくなったのでmacroで実装。
 EctoのSchema風にしたかったのでEctoを参考にしたりした。</p>
-<div class="highlight"><pre><span></span><span class="kd">defmodule</span> <span class="nc">MyApp.Activity.Article</span> <span class="k">do</span>
+<h4>Usage</h4>
+<div class="highlight"><pre><span></span><span class="c1"># スキーマ定義</span>
+<span class="kd">defmodule</span> <span class="nc">MyApp.Activity.Article</span> <span class="k">do</span>
   <span class="kn">use</span> <span class="nc">ActivityLog</span>
 
   <span class="n">activity</span> <span class="s2">&quot;create&quot;</span> <span class="k">do</span>
@@ -250,6 +300,7 @@ EctoのSchema風にしたかったのでEctoを参考にしたりした。</p>
   <span class="kd">def</span> <span class="n">name</span><span class="p">(</span><span class="n">actor</span><span class="p">,</span> <span class="n">object</span><span class="p">),</span> <span class="ss">do</span><span class="p">:</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">actor</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> created </span><span class="si">#{</span><span class="n">object</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="k">end</span>
 
+<span class="c1"># ログ出力</span>
 <span class="n">iex</span><span class="o">&gt;</span> <span class="kn">alias</span> <span class="nc">MyApp.Activity.Article</span>
 <span class="n">iex</span><span class="o">&gt;</span> <span class="n">activity</span> <span class="o">=</span> <span class="p">%</span><span class="nc">Article</span><span class="p">{</span><span class="ss">actor</span><span class="p">:</span> <span class="p">%</span><span class="nc">Article.Actor</span><span class="p">{</span><span class="ss">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">name</span><span class="p">:</span> <span class="s2">&quot;foo&quot;</span><span class="p">},</span> <span class="ss">object</span><span class="p">:</span> <span class="p">%</span><span class="nc">Article.Object</span><span class="p">{</span><span class="ss">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="ss">name</span><span class="p">:</span> <span class="s2">&quot;My article&quot;</span><span class="p">}}</span>
 <span class="n">iex</span><span class="o">&gt;</span> <span class="nc">ActivityLog</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">activity</span><span class="p">)</span>
@@ -265,7 +316,8 @@ EctoのSchema風にしたかったのでEctoを参考にしたりした。</p>
 </ul>
 <h3><a href="https://github.com/shufo/plug_cache">plug_cache</a></h3>
 <p>特定のリクエストパスに対するレスポンスをキャッシュするplug。
-ETSでインメモリでキャッシュを保存するからキャッシュサーバ等は不要。分散Erlangクラスタを組んでいる場合は分散キャッシュを使うことも出来る。</p>
+ETSでインメモリでキャッシュを保存するからキャッシュサーバ等は不要。分散Erlangクラスタを組んでいる場合は分散キャッシュを使ってクラスタ全体で一意なキャッシュのinvalidationなども出来る。</p>
+<h4>Usage</h4>
 <div class="highlight"><pre><span></span><span class="kd">defmodule</span> <span class="nc">MyApp.PageController</span> <span class="k">do</span>
 
   <span class="n">plug</span> <span class="nc">PlugCache</span><span class="p">,</span> <span class="ss">ttl</span><span class="p">:</span> <span class="mi">86400</span> <span class="ow">when</span> <span class="n">action</span> <span class="ow">in</span> <span class="p">[</span><span class="ss">:index</span><span class="p">]</span>
@@ -278,67 +330,72 @@ ETSでインメモリでキャッシュを保存するからキャッシュサ�
 </pre></div>
 
 
+<ul>
+<li>ETS便利</li>
+</ul>
 <h3><a href="https://github.com/shufo/plug_maintenance">plug_maintenance</a></h3>
-<p>メンテナンス状態を取得して<code>503 Service Not Available</code>を返すplug</p>
+<p>メンテナンス状態を取得して<code>503 Service Not Available</code>のHTTP Statusを返すplug</p>
 <h3><a href="https://github.com/shufo/plug_robots">plug_robots</a></h3>
 <p>robots.txtを平文で返すplug。作った理由忘れたけどたぶんrobots.txtをapplicationサーバから返したいみたいな感じだったと思う</p>
 <p>と、こんな感じで微力ながらElixirコミュニティに何らかのContributionが出来ればと思ったのと必要性にかられて何個か作成したけど、やっぱり言語を学習するのになんらかのパッケージを作るのは一番の近道だなと。</p>
 <h2>お世話になってるパッケージ</h2>
 <p>普段お世話になってるパッケージ</p>
-<h3>ecto</h3>
+<h3><a href="https://github.com/elixir-ecto/ecto">ecto</a></h3>
 <ul>
-<li>言わずもがな</li>
+<li>みんな大好き. <a href="https://blog.drewolson.org/composable-queries-ecto/">Composed Query</a>として書くと再利用性も高くシンプルな書き方が出来るのがすき。</li>
 </ul>
-<h3>ja_serializer</h3>
+<h3><a href="https://github.com/vt-elixir/ja_serializer">ja_serializer</a></h3>
 <ul>
 <li><a href="http://jsonapi.org/">JSON-API</a>形式でAPIレスポンスを返すため</li>
 </ul>
-<h3>hound</h3>
+<h3><a href="https://github.com/HashNuke/hound">hound</a></h3>
 <ul>
 <li>E2Eでのテストをするため。PhantomJSをバックエンドとして使っていたけどdeprecatedになってしまったのでそろそろHeadless Chromeに移行したい</li>
 </ul>
-<h3>ex_machina</h3>
+<h3><a href="https://github.com/thoughtbot/ex_machina">ex_machina</a></h3>
 <ul>
-<li>テスト時にDBにサンプルのデータを作成するため</li>
+<li>テストデータのFactoryに</li>
 </ul>
-<h3>canary</h3>
+<h3><a href="https://github.com/cpjk/canary">canary</a></h3>
 <ul>
-<li>Authorization</li>
+<li>Authorizationに</li>
 </ul>
-<h3>sentry</h3>
+<h3><a href="https://github.com/getsentry/sentry-elixir">sentry</a></h3>
 <ul>
-<li>Sentry公式でElixirのクライアントライブラリが提供されているので</li>
+<li><a href="https://sentry.io/welcome/">Sentry</a>公式でElixirのクライアントライブラリが提供されているのでエラートラッカーはこれを使っている</li>
 </ul>
-<h3>benchee</h3>
+<h3><a href="https://github.com/PragTob/benchee">benchee</a></h3>
 <ul>
 <li>実装に困ったらマイクロベンチマークで適宜ベンチマークを測って指標にする</li>
 </ul>
-<h3>phoenix_swagger</h3>
+<h3><a href="https://github.com/xerions/phoenix_swagger">phoenix_swagger</a></h3>
 <ul>
-<li><a href="https://swagger.io/">Swagger</a>形式でAPIドキュメントを出力するため。そのうちOpenAPI 3.0仕様に準拠したい</li>
+<li><a href="https://swagger.io/">Swagger</a>形式でAPIドキュメントを出力するため。そろそろOpenAPI 3.0仕様に準拠したい</li>
 </ul>
-<h3>logster</h3>
+<h3><a href="https://github.com/navinpeiris/logster">logster</a></h3>
 <ul>
-<li>ログをCloudwatch LogsからKinesis, S3, Asanaなどに送り込むので最初からJSON形式でログを出力したかったので。</li>
+<li>アクセスログをワンライナーでJSONで出力出来る</li>
+<li>アクセスログをCloudwatch LogsからKinesis, S3, Athenaなどに送り込むため最初からJSON形式でログを出力したかったのでこれを使っている</li>
 <li>ちなみにJSON形式でログを出力するとCloudWatch Logsのフィルタで<code>{ $.type = 'foo' }</code>のような形で検索ワードを指定出来て便利</li>
 </ul>
-<h3>scrivener</h3>
+<h3><a href="https://github.com/drewolson/scrivener">scrivener</a></h3>
 <ul>
 <li>ページングライブラリ。最初自前でページャなどを書いたけど辛かったので早く知りたかった</li>
 </ul>
 <h2>まとめ</h2>
-<p>最初は社内で自分一人だけだったElixir開発者も他プロジェクトでも使われるようになって社内で5人ほどになったり、周りで使われている会社も増えてきたりでなんだかんだゆるやかな成長を感じます。</p>
+<p>最初は社内で自分一人だけだったElixir開発者も、実績がたまったおかげで他プロジェクトでも使われるようになって社内で5人ほど使うようになったり、周りで使われている会社も増えてきたりでなんだかんだゆるやかな成長を感じる。</p>
+<p>少し前はミーハーでHypeな感じもあったけど最近は落ち着いて実際使う人は粛々と使ってる感じで個人的には居心地がいいです。</p>
             </section>
 
             <section class="post-info">
                 <div class="post-share">
-                    <a class="twitter" href="https://twitter.com/share?text=Elixirを仕事で使ったメモ |> 2017年&amp;url=http://shufo.github.io/drafts/my-elixir-status-of-the-last-year.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <a class="twitter" href="https://twitter.com/share?text=2017年にElixirを仕事で使った振り返り&amp;url=http://shufo.github.io/my-elixir-status-of-the-last-year.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
                     </a>
-                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://shufo.github.io/drafts/my-elixir-status-of-the-last-year.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://shufo.github.io/my-elixir-status-of-the-last-year.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
                     <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
                     </a>
-                    <a class="googleplus" href="https://plus.google.com/share?url=http://shufo.github.io/drafts/my-elixir-status-of-the-last-year.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <a class="googleplus" href="https://plus.google.com/share?url=http://shufo.github.io/my-elixir-status-of-the-last-year.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
                     <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
                     </a>
                     <div class="clear"></div>
@@ -364,6 +421,17 @@ ETSでインメモリでキャッシュを保存するからキャッシュサ�
 
                 </section>
 
+                <script type="text/javascript">
+                    var disqus = 'shufo';
+                    var disqus_shortname = 'shufo';
+                    var disqus_identifier = '/my-elixir-status-of-the-last-year.html';
+                    var disqus_url = 'http://shufo.github.io/my-elixir-status-of-the-last-year.html';
+                </script>
+                <noscript>Please enable JavaScript to view the comments.</noscript>                  
+                <section class="post-comments">
+                        <a id="show-disqus" class="post-comments-activate" data-disqus-identifier="/my-elixir-status-of-the-last-year.html" >Show Comments</a>
+                    <div id="disqus_thread"></div>                  
+                </section>
 
                 <aside class="post-nav">
                     <div class="clear"></div>

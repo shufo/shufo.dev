@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog - programming</title><link href="http://shufo.github.io/" rel="alternate"></link><link href="http://shufo.github.io/feeds/programming.atom.xml" rel="self"></link><id>http://shufo.github.io/</id><updated>2018-01-12T00:00:00+09:00</updated><entry><title>2017年にElixirを仕事で使った振り返り</title><link href="http://shufo.github.io/my-elixir-status-of-the-last-year.html" rel="alternate"></link><published>2018-01-12T00:00:00+09:00</published><updated>2018-01-12T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-01-12:/my-elixir-status-of-the-last-year.html</id><summary type="html">&lt;p&gt;1年と少しElixirを使った感想など&lt;/p&gt;</summary><content type="html">&lt;p&gt;少し遅くなったけど2017年にElixirを使った振り返りをしてみる。(&lt;s&gt;年末年始ダラダラしてて書くの遅れた&lt;/s&gt;
+)&lt;/p&gt;
+&lt;p&gt;以下のElixir環境まとめエントリーに触発されました&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://qiita.com/melpon/items/1502c403b7b5f37e325f"&gt;Elixir のチームでの開発環境について - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.m3tech.blog/entry/elixir-development-environment-2017"&gt;エムスリーでの Elixir 開発環境 ver.2017 #m3dev - エムスリーテックブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://qiita.com/ndruger/items/f6bd35bb0aede78b827d"&gt;Elixir 開発環境 2017 in ACCESS - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Elixirは2016年ごろから&lt;a href="https://qiita.com/shufo/items/9cfb7bfcecd363e0ea86"&gt;触っていた&lt;/a&gt;のだけど2016年後半から2017年は仕事としてもほぼフルタイムで使っていたため、使ってるうちによかった点や辛かった点、開発環境など振り返ってみる。&lt;/p&gt;
+&lt;h2&gt;よかったところ&lt;/h2&gt;
+&lt;h3&gt;堅牢性(robustness)&lt;/h3&gt;
+&lt;p&gt;これは本当に頑強でErlang VMが直接的な原因でサーバが落ちたということは本番運用も含めて１年ぐらい稼働させてる中でなかったと思う。可用性nine nines(99.9999999%)はガチ。逆にやることなさすぎて暇になるやつ&lt;/p&gt;
+&lt;h3&gt;エコシステム&lt;/h3&gt;
+&lt;p&gt;ここ1, 2年で大分充実した。Hex.pmに登録されているパッケージの数は&lt;a href="https://medium.com/@cameronp/is-the-elixir-ecosystem-mature-enough-for-production-apps-79fbf9f2df31"&gt;2016年2月の段階で1455個&lt;/a&gt;だったのが2018年1月現在&lt;strong&gt;5702&lt;/strong&gt;個になった。約1年10ヶ月で約380%の増加。以前は主要なWebサービスでもAPIクライアントがないというようなこともあったけど最近はほぼないんじゃないんだろうか。&lt;/p&gt;
+&lt;p&gt;また&lt;a href="http://phoenixframework.org/blog/phoenix-1-3-0-released"&gt;Phoenix 1.3&lt;/a&gt;がリリースされた. &lt;a href="https://qiita.com/shufo/items/f0c85a100728a39dde13"&gt;ディレクトリ構造が変わったりContextという概念の導入&lt;/a&gt;などもあり若干脱Railsっぽくなってきている。既存のディレクトリ構造のままアップデートも可能なのでそのままアップデートして新しい機能を使うもよし、Phoenix 1.3 styleで始めるもよし。&lt;/p&gt;
+&lt;p&gt;以前言われていたほどパッケージが少ない問題はなくなってきていると思うのでそこが懸念点になる場合も今はあまりないと思う。&lt;/p&gt;
+&lt;h3&gt;コミュニティ&lt;/h3&gt;
+&lt;p&gt;ここ1年半ほどでゆるやかに成長してきた。&lt;/p&gt;
+&lt;p&gt;以下のグラフはRedditの言語別subredditのsubscriber数の統計だが、恐らく同じようなパラダイムで領域もそこそこ被ってると思われるClojureやScalaと比較して後発ながら伸び率も悪くない。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Imgur" src="https://i.imgur.com/8cEXJbn.png"&gt;&lt;/p&gt;
+&lt;p&gt;急に人口が増えたら増えたでバックグラウンドの違うステークホルダーが増えてコミュニティが混乱する気がするのでこのぐらいの伸び率でちょうどいいと思う。&lt;/p&gt;
+&lt;h3&gt;生産性&lt;/h3&gt;
+&lt;p&gt;最初はElixirを部分的に使って管理系の画面はPHPなどで作ろうかと考えていたけどPhoenixの生産性がほぼ他のFWと変わらなかったので結局管理系も含めて全てElixirで作っているぐらいには問題ない&lt;/p&gt;
+&lt;h3&gt;楽しい&lt;/h3&gt;
+&lt;p&gt;Elixirはたのしい（語彙力）&lt;/p&gt;
+&lt;h2&gt;つらかったところ&lt;/h2&gt;
+&lt;p&gt;逆に使っているうちにつらかった点など&lt;/p&gt;
+&lt;h3&gt;コンパイル時間&lt;/h3&gt;
+&lt;p&gt;通常Elixirはコンパイル時に変更のあったファイルのみ再コンパイルされるのだけど、変更のあったファイル以外にも依存のあるファイルが再コンパイルされる。小さなライブラリレベルでは問題ないのだけどPhoenixを利用したWeb系の開発ではファイル数も多くなってきてコンパイル時間が大きくなるのが地味に効いてくる。&lt;/p&gt;
+&lt;p&gt;ちなみに再コンパイルの基準は&lt;code&gt;compile-time dependency&lt;/code&gt;が存在するかどうかで決まる。&lt;/p&gt;
+&lt;p&gt;例えば&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;import&lt;/code&gt;, &lt;code&gt;require&lt;/code&gt; を使用したとき&lt;/li&gt;
+&lt;li&gt;Structを使用したとき&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;に&lt;code&gt;compile-time dependency&lt;/code&gt;が追加され再コンパイル対象が増える。&lt;/p&gt;
+&lt;p&gt;Elixir 1.6で&lt;code&gt;mix xref graph --format stats&lt;/code&gt;でcompile-time dependencyの多いファイルを&lt;a href="https://github.com/elixir-lang/elixir/releases/tag/v1.6.0-rc.0"&gt;確認出来るようになる&lt;/a&gt;のでCIなどでチェックしてあげるといいと思います&lt;/p&gt;
+&lt;p&gt;参照: &lt;a href="http://milhouseonsoftware.com/2016/08/11/understanding-elixir-recompilation/"&gt;Understanding Elixir's recompilation&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;他の言語を使った時&lt;/h3&gt;
+&lt;p&gt;デメリットというかパターンマッチングがないと辛くなるようになってしまった(?)&lt;/p&gt;
+&lt;h2&gt;開発環境&lt;/h2&gt;
+&lt;h3&gt;コーディング規約&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://qiita.com/shufo/items/f5e3ccd4892288449ff9"&gt;Elixir 1.6のcode formatter&lt;/a&gt;を使っている。1.6.0-devの開発版に既に入っていたのでローカルとCIでのチェック用に1.6.0正式版に先行して導入したけど最高だったのでみんな使いましょう。コードレビューでコーディング規約に関する指摘をしなくてよくなるだけで大分脳の負荷が違います。&lt;/p&gt;
+&lt;h3&gt;テスト&lt;/h3&gt;
+&lt;p&gt;特に特別なことはしてないけどExUnitと&lt;a href="https://github.com/HashNuke/hound"&gt;hound&lt;/a&gt;でE2Eテストをしている&lt;/p&gt;
+&lt;p&gt;PhantomJSをバックエンドにE2Eテストしているけど挙動が微妙にブラウザと違ったりdeprecatedになっているのでそろそろHeadless Chromeに置き換えたい&lt;/p&gt;
+&lt;p&gt;カバレッジは取ってないけど体感大体8割くらいはテスト書いてる&lt;/p&gt;
+&lt;h3&gt;デプロイ&lt;/h3&gt;
+&lt;p&gt;ローカル: docker + docker-compose&lt;/p&gt;
+&lt;p&gt;本番: ECS + Distributed Erlang&lt;/p&gt;
+&lt;p&gt;たぶんElixirで一番悩むところがデプロイだと思うけど、&lt;a href="https://12factor.net/ja/dev-prod-parity"&gt;開発/本番一致&lt;/a&gt;の原則のためDockerでデプロイしている。&lt;a href="https://github.com/shufo/docker-phoenix"&gt;ベースイメージ&lt;/a&gt;はpublicでDockerHubに公開しローカルと本番で共通のベースイメージを使っている。&lt;/p&gt;
+&lt;p&gt;CIはCircleCIでテスト、コンパイル、docker imageの作成とプライベートなDockerHubのリポジトリへのpush、ECSのタスク更新を行う。&lt;/p&gt;
+&lt;p&gt;ちなみに&lt;a href="https://github.com/bitwalker/distillery"&gt;Distillery&lt;/a&gt;は使っていない。Dockerを使っている以上リリースのたびにプロセスが再起動されるので長期間に渡って起動されるようなプロセスもなくremote consoleを使ってプロセスのstateまで閲覧してデバッグしないといけないような状況も発生しづらくメリットも薄いと考えたからだ。OTP releaseは使わずコンパイル済みのソースを含めたイメージ内で&lt;code&gt;mix&lt;/code&gt;でサーバを起動している。今のところ起動中のプロセスのstateまで確認しないと分からないようなエッジケースには出会ったことはないが、そのようなケースになった時はremote console用にOTP releaseにしてみたい。&lt;/p&gt;
+&lt;p&gt;あとしばらくPhoenixのChannelのPubSubのアダプターとしてRedisを使っていたが無駄に単一障害点や管理ポイントを増やしたくないので分散Erlangクラスタを組んで&lt;a href="https://hexdocs.pm/phoenix_pubsub/Phoenix.PubSub.PG2.html"&gt;PG2&lt;/a&gt;をアダプターとして使っている。RedisをPubSubサーバとして使っていた頃は少しレイテンシがあったりRedisサーバの負荷によってはPubSubが不安定になったりしたけどPG2にしてからは全くそういうのがなくなった。&lt;/p&gt;
+&lt;p&gt;余計な不確実性を持ち込まないという意味でも言語のランタイムレベルで問題を解決出来るというのは精神衛生的にも良い。&lt;/p&gt;
+&lt;p&gt;コンテナ起動時にどのようにしてコンテナ内のプロセスをDistributed Erlang(Elixir)クラスタに参加させるかについては、&lt;code&gt;ERL_AFLAGS&lt;/code&gt;でVM間通信に使うポートを固定しコンテナ起動時のポートマッピングで固定したポートへのudp, tcpパケットを通している&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;ERL_AFLAGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-name app@&lt;/span&gt;&lt;span class="nv"&gt;$ERL_HOST&lt;/span&gt;&lt;span class="s2"&gt; \&lt;/span&gt;
+&lt;span class="s2"&gt;  -setcookie &lt;/span&gt;&lt;span class="nv"&gt;$ERL_COOKIE&lt;/span&gt;&lt;span class="s2"&gt; \&lt;/span&gt;
+&lt;span class="s2"&gt;  -kernel inet_dist_listen_min 4370 \&lt;/span&gt;
+&lt;span class="s2"&gt;          inet_dist_listen_max 4370&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以下はECS task definition。&lt;code&gt;4369&lt;/code&gt;はepmdが固定で使うポートで&lt;code&gt;4370&lt;/code&gt;はepmdが動的に割り当てるポートを固定で指定したもの。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;〜中略〜&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;portMappings&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;containerPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4369&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;hostPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4369&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;protocol&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;tcp&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;containerPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4369&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;hostPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4369&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;protocol&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;udp&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;containerPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4370&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;hostPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4370&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;protocol&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;tcp&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;containerPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4370&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;hostPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4370&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;protocol&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;udp&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="err"&gt;〜中略〜&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;サービスディスカバリは&lt;a href="https://github.com/mrluc/peerage"&gt;peerage&lt;/a&gt;でカスタムのディスカバリを作成しredisにexpire付きでEC2のmetadataから取得した自身のホストの(コンテナではない)プライベートIPアドレスを保存して定期的にホストの一覧を走査して取得している。&lt;/p&gt;
+&lt;p&gt;なぜこうしているかというとEC2上ではmulticast udpが基本使えず（&lt;a href="https://www.weave.works"&gt;Weave&lt;/a&gt;などでoverlay networkを構築する方法もあるがオーバーヘッドが大きい）またgossipプロトコルを使うにもdockerコンテナのnetwork modeをhostにしなければならない→&lt;code&gt;network=host&lt;/code&gt;にするとlinkオプションが使えない→分離したnginxコンテナからlink出来ないという状態になるので、半自動的なクラスタリングはせずに地道にサービス一覧を取得し、それぞれのホストに対して定期的に&lt;code&gt;Node.connetct/1&lt;/code&gt;するようなディスカバリを書いている&lt;/p&gt;
+&lt;p&gt;long-running processを作れたりHot Upgrade出来るところがBEAMの強みでもあるけどdockerを使うことでデプロイの度にコンテナは破棄されるのでその利点は失われることは覚悟しないといけない。とはいえ実際にその機能は切り札のようなものでHot Upgrade自体のテストやロールバック等も考えると大半の場合は無停止でのアップグレードなどはインフラを含めたアプリケーション全体のアーキテクチャで吸収した方がいいとは思うのでElixirは基本コンテナの起動・停止で影響の出るようなステートを保持しない方針でdockerでワンバイナリのように扱っている。&lt;/p&gt;
+&lt;h2&gt;作ったパッケージ&lt;/h2&gt;
+&lt;p&gt;分量が少ないので1年程使う中でお仕事的に必要になったり個人的な興味で作ったパッケージが&lt;a href="https://hex.pm/users/shufo"&gt;10個&lt;/a&gt;に達したので感想など&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/cdn"&gt;cdn&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Elixirで初めて作成したパッケージ。&lt;/p&gt;
+&lt;p&gt;Laravelの&lt;a href="https://github.com/Vinelab/cdn"&gt;cdn&lt;/a&gt;というパッケージをportした。
+S3に特定のディレクトリ（&lt;code&gt;priv/assets&lt;/code&gt;とか）を更新時や差分等を考慮してアップロード出来る。またCloudFrontから配布するためのパスを生成出来る 例: &lt;code&gt;cdn(static_path(conn, "/css/main.css"))&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://raw.githubusercontent.com/wiki/shufo/cdn/img/upload.gif"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://qiita.com/ma2ge/items/0e19bf3f03078f589096"&gt;Hex.pmへのパッケージの公開の仕方&lt;/a&gt;を学ぶ&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://elixir-lang.github.io/getting-started/mix-otp/docs-tests-and-with.html"&gt;doctest&lt;/a&gt;便利&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/plug_rate_limit_redis"&gt;plug_rate_limit_redis&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;rate limitをredisをデータストアに&lt;a href="https://github.com/elixir-plug/plug"&gt;plug&lt;/a&gt;で実現するパッケージ&lt;/p&gt;
+&lt;h4&gt;Usage&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;defmodule&lt;/span&gt; &lt;span class="nc"&gt;MyApp&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+
+  &lt;span class="n"&gt;plug&lt;/span&gt; &lt;span class="nc"&gt;RateLimit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;interval_seconds&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;60&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;max_requests&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;
+
+  &lt;span class="kd"&gt;def&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_params&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="n"&gt;conn&lt;/span&gt;
+    &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;自作plugの作り方を学ぶ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/payjp-elixir"&gt;payjp&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://pay.jp/"&gt;PAY.JP&lt;/a&gt;のAPIクライアント。公式のクライアントライブラリがなかったので作成。
+&lt;a href="https://github.com/code-corps/stripity_stripe"&gt;Stripe&lt;/a&gt;のクライアントを参考にした。&lt;/p&gt;
+&lt;h4&gt;Usage&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;customer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+  &lt;span class="ss"&gt;email&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;test@test.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="ss"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;An Elixir Test Account&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="ss"&gt;metadata&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="ss"&gt;app_attr1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;xyz&amp;quot;&lt;/span&gt;
+  &lt;span class="p"&gt;],&lt;/span&gt;
+  &lt;span class="ss"&gt;card&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="ss"&gt;number&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;4242424242424242&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="ss"&gt;exp_month&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;01&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="ss"&gt;exp_year&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2020&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="ss"&gt;cvc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;123&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="ss"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Joe Test User&amp;quot;&lt;/span&gt;
+  &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="nc"&gt;Payjp.Customers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;customer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;APIクライアントの作り方を学ぶ&lt;/li&gt;
+&lt;li&gt;外部APIのテストには&lt;a href="https://github.com/parroty/exvcr"&gt;ExVCR&lt;/a&gt;を使うとリクエストを再現して実際叩かないようにしてくれるので便利&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/paidy-elixir"&gt;paidy&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://paidy.com/"&gt;Paidy&lt;/a&gt;のAPIクライアント。同じく公式にクライアントライブラリがなかったので作成。&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/ex_line_pay"&gt;ex_line_pay&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://line.me/en/pay"&gt;LINE PAY&lt;/a&gt;のAPIクライアント。同じく類似パッケージが(ry&lt;/p&gt;
+&lt;p&gt;APIクライアントは一度ベースを作るとあとはエンドポイントとモジュールをちょっと調整すれば大体似通った作りになるので楽ですね。&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/fcmex"&gt;fcmex&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://firebase.google.com/docs/cloud-messaging/"&gt;FCM&lt;/a&gt;(Firebase Cloud Messaging)のAPIクライアント&lt;/p&gt;
+&lt;p&gt;FCM側にRate Limitがあり1リクエストあたり1000件までしかデバイスTokenを送信出来ないのと、短時間で大量のプッシュ通知を送信出来るように&lt;a href="https://hexdocs.pm/flow"&gt;Flow&lt;/a&gt;で流量を考慮しつつ並列度、CPU効率を考えて送信出来るようにした。&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/activity_log"&gt;activity_log&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;ロギング周りの実装で&lt;a href="https://www.w3.org/TR/activitystreams-core/"&gt;Activity Streams&lt;/a&gt;風のスキーマを定義したくてDSLが欲しくなったのでmacroで実装。
+EctoのSchema風にしたかったのでEctoを参考にしたりした。&lt;/p&gt;
+&lt;h4&gt;Usage&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# スキーマ定義&lt;/span&gt;
+&lt;span class="kd"&gt;defmodule&lt;/span&gt; &lt;span class="nc"&gt;MyApp.Activity.Article&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="kn"&gt;use&lt;/span&gt; &lt;span class="nc"&gt;ActivityLog&lt;/span&gt;
+
+  &lt;span class="n"&gt;activity&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;create&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="n"&gt;actor&lt;/span&gt;  &lt;span class="ss"&gt;:user&lt;/span&gt;
+    &lt;span class="n"&gt;object&lt;/span&gt; &lt;span class="ss"&gt;:article&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="kd"&gt;def&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;actor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;object&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="ss"&gt;do&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;actor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; created &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;object&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="c1"&gt;# ログ出力&lt;/span&gt;
+&lt;span class="n"&gt;iex&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;alias&lt;/span&gt; &lt;span class="nc"&gt;MyApp.Activity.Article&lt;/span&gt;
+&lt;span class="n"&gt;iex&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;activity&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;%&lt;/span&gt;&lt;span class="nc"&gt;Article&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;actor&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;%&lt;/span&gt;&lt;span class="nc"&gt;Article.Actor&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="ss"&gt;object&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;%&lt;/span&gt;&lt;span class="nc"&gt;Article.Object&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;My article&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}}&lt;/span&gt;
+&lt;span class="n"&gt;iex&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nc"&gt;ActivityLog&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;activity&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# outputs&lt;/span&gt;
+&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;32.128&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;create&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;target&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;object&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;article&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;My article&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;foo createed My article&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;actor&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;user&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;@timestamp&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;2017-10-15T20:29:32.128192Z&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;@context&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;https://github.com/shufo/activity_log&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="ss"&gt;:ok&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Macroの強力さと諸刃の剣さを理解&lt;/li&gt;
+&lt;li&gt;でもやっぱDSL便利&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/plug_cache"&gt;plug_cache&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;特定のリクエストパスに対するレスポンスをキャッシュするplug。
+ETSでインメモリでキャッシュを保存するからキャッシュサーバ等は不要。分散Erlangクラスタを組んでいる場合は分散キャッシュを使ってクラスタ全体で一意なキャッシュのinvalidationなども出来る。&lt;/p&gt;
+&lt;h4&gt;Usage&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;defmodule&lt;/span&gt; &lt;span class="nc"&gt;MyApp.PageController&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+
+  &lt;span class="n"&gt;plug&lt;/span&gt; &lt;span class="nc"&gt;PlugCache&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;ttl&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;86400&lt;/span&gt; &lt;span class="ow"&gt;when&lt;/span&gt; &lt;span class="n"&gt;action&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:index&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+  &lt;span class="kd"&gt;def&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_params&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="n"&gt;conn&lt;/span&gt;
+    &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;ETS便利&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/plug_maintenance"&gt;plug_maintenance&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;メンテナンス状態を取得して&lt;code&gt;503 Service Not Available&lt;/code&gt;のHTTP Statusを返すplug&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/plug_robots"&gt;plug_robots&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;robots.txtを平文で返すplug。作った理由忘れたけどたぶんrobots.txtをapplicationサーバから返したいみたいな感じだったと思う&lt;/p&gt;
+&lt;p&gt;と、こんな感じで微力ながらElixirコミュニティに何らかのContributionが出来ればと思ったのと必要性にかられて何個か作成したけど、やっぱり言語を学習するのになんらかのパッケージを作るのは一番の近道だなと。&lt;/p&gt;
+&lt;h2&gt;お世話になってるパッケージ&lt;/h2&gt;
+&lt;p&gt;普段お世話になってるパッケージ&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/elixir-ecto/ecto"&gt;ecto&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;みんな大好き. &lt;a href="https://blog.drewolson.org/composable-queries-ecto/"&gt;Composed Query&lt;/a&gt;として書くと再利用性も高くシンプルな書き方が出来るのがすき。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/vt-elixir/ja_serializer"&gt;ja_serializer&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://jsonapi.org/"&gt;JSON-API&lt;/a&gt;形式でAPIレスポンスを返すため&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/HashNuke/hound"&gt;hound&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;E2Eでのテストをするため。PhantomJSをバックエンドとして使っていたけどdeprecatedになってしまったのでそろそろHeadless Chromeに移行したい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/thoughtbot/ex_machina"&gt;ex_machina&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;テストデータのFactoryに&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/cpjk/canary"&gt;canary&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Authorizationに&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/getsentry/sentry-elixir"&gt;sentry&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://sentry.io/welcome/"&gt;Sentry&lt;/a&gt;公式でElixirのクライアントライブラリが提供されているのでエラートラッカーはこれを使っている&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/PragTob/benchee"&gt;benchee&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;実装に困ったらマイクロベンチマークで適宜ベンチマークを測って指標にする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/xerions/phoenix_swagger"&gt;phoenix_swagger&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://swagger.io/"&gt;Swagger&lt;/a&gt;形式でAPIドキュメントを出力するため。そろそろOpenAPI 3.0仕様に準拠したい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/navinpeiris/logster"&gt;logster&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;アクセスログをワンライナーでJSONで出力出来る&lt;/li&gt;
+&lt;li&gt;アクセスログをCloudwatch LogsからKinesis, S3, Athenaなどに送り込むため最初からJSON形式でログを出力したかったのでこれを使っている&lt;/li&gt;
+&lt;li&gt;ちなみにJSON形式でログを出力するとCloudWatch Logsのフィルタで&lt;code&gt;{ $.type = 'foo' }&lt;/code&gt;のような形で検索ワードを指定出来て便利&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/drewolson/scrivener"&gt;scrivener&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;ページングライブラリ。最初自前でページャなどを書いたけど辛かったので早く知りたかった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;最初は社内で自分一人だけだったElixir開発者も、実績がたまったおかげで他プロジェクトでも使われるようになって社内で5人ほど使うようになったり、周りで使われている会社も増えてきたりでなんだかんだゆるやかな成長を感じる。&lt;/p&gt;
+&lt;p&gt;少し前はミーハーでHypeな感じもあったけど最近は落ち着いて実際使う人は粛々と使ってる感じで個人的には居心地がいいです。&lt;/p&gt;</content><category term="Elixir"></category><category term="programming"></category></entry></feed>
