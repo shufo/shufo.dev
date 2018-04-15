@@ -1,5 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog</title><link href="http://shufo.github.io/" rel="alternate"></link><link href="http://shufo.github.io/feeds/all.atom.xml" rel="self"></link><id>http://shufo.github.io/</id><updated>2018-01-16T00:00:00+09:00</updated><entry><title>ニューヨーク旅行 + Panorama NYC Festival 2017 その３</title><link href="http://shufo.github.io/panorama-nyc-festival-2017-3.html" rel="alternate"></link><published>2018-01-16T00:00:00+09:00</published><updated>2018-01-16T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-01-16:/panorama-nyc-festival-2017-3.html</id><summary type="html">&lt;p&gt;去年の話&lt;/p&gt;</summary><content type="html">&lt;p&gt;もはや去年になってしまっていつ書き終わるのか分からないけど、Panorama NYC Festival 2017 &lt;a href="http://shufo.github.io/-panorama-nyc-festival-2017-2.html"&gt;1日目&lt;/a&gt;に続き2日目.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog</title><link href="http://shufo.github.io/" rel="alternate"></link><link href="http://shufo.github.io/feeds/all.atom.xml" rel="self"></link><id>http://shufo.github.io/</id><updated>2018-04-15T00:00:00+09:00</updated><entry><title>エンジニアリング組織論への招待を読んだ</title><link href="http://shufo.github.io/book-review-engineering-organization.html" rel="alternate"></link><published>2018-04-15T00:00:00+09:00</published><updated>2018-04-15T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-04-15:/book-review-engineering-organization.html</id><summary type="html">&lt;p&gt;感想&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.amazon.co.jp/dp/B079TLW41L/"&gt;エンジニアリング組織論への招待　～不確実性に向き合う思考と組織のリファクタリング&lt;/a&gt;を読んだので紹介とその感想を&lt;/p&gt;
+&lt;p&gt;元々この著者の方は Qiita とかでもちょくちょく拝見していて&lt;a href="https://www.amazon.co.jp/dp/B00IR1HYGW/"&gt;アジャイルな見積りと計画づくり ～価値あるソフトウェアを育てる概念と技法～&lt;/a&gt;で紹介されていた SRSS 等の見積もり法を Qiita で&lt;a href="https://qiita.com/hirokidaichi/items/5a204a57a200569f755d#%E3%81%BE%E3%81%A8%E3%82%81"&gt;紹介されていた&lt;/a&gt;のがきっかけで知った。SRSS 法は、実際試した時にそこそこの精度で納期が収束したのでそういった方法に詳しい方なんだなーと思っていた。で、その方が組織論に関する本を出したのことでさっそく気になって買ってみた&lt;/p&gt;
+&lt;p&gt;*&lt;/p&gt;
+&lt;p&gt;Amazon の紹介欄より概要を引用&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;「コミュニケーションにおける不確実性を減らすには？」「技術的負債を解消する方法とは？」「経営陣とエンジニア間の認識のずれを解消するには？」エンジニアリングにおける課題を解決する思考の整理方法やメンタリング手法を，さまざまな企業の技術組織アドバイザリーを務めている著者が解説。若手を戦力として育て上げ，成長する組織を設計・運営するためにおすすめの 1 冊です。&lt;/p&gt;
+&lt;p&gt;（こんな方におすすめ）・開発チームの生産性を上げたいエンジニア・社内組織を改善したい経営者&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;まずこの本は紹介にもある通り、開発チームの生産性を上げたいエンジニアから社内組織を改善したい経営者にも勧められる本とあるけど、技術書というよりは広い意味での組織論として読める書籍になっているので読者を限定しないで技術組織で活動している人なら誰でも読者の対象になりえる&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;「工学とは数学と自然科学を基礎とし、ときには人文社会科学の知見を用いて、公共の安全、健康、福祉のために有用な事物や快適な環境を構築することを目的とする学問である。」&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;広木 大地. エンジニアリング組織論への招待　～不確実性に向き合う思考と組織のリファクタリング (Kindle の位置 No.299-301). 株式会社技術評論社. Kindle 版.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;本書ではこの定義のとおり、ルーマンのシステム論や心の理論など人文社会科学や認知科学などの知識も援用して精神論には依拠しないあくまで科学的な立場から組織を捉え、エンジニアリングを行うことを推奨する&lt;/p&gt;
+&lt;p&gt;また不確実性をいかに下げるかという全体として一貫した視点を通じてメンタリングや各種プラクティスを紹介している&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;エンジニアリングで重要なのは「どうしたら効率よく不確実性を減らしていける のか」 という考え方なのです。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;広木 大地. エンジニアリング組織論への招待　～不確実性に向き合う思考と組織のリファクタリング (Kindle の位置 No.329-330). 株式会社技術評論社. Kindle 版.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;「分からない」ということに対する根本的な不安を「不確実性」という言葉で言い表して、それにいかに対処するかというのが本書籍でのメインテーマになっている&lt;/p&gt;
+&lt;p&gt;本書籍のよいところは結局のところ知り得ない他者の心を推察するということはしないで、あくまで他者の思考は推察出来ないという不可知論的な立場から科学的な手法を用いて問題解決をするというエンジニアリングを行うところで、そういう意味では真っ当な技術書でもある&lt;/p&gt;
+&lt;p&gt;またこの本自体著者と読者がメンター（メンタリングする人）とメンティー（メンタリングを受ける人）のような関係になっていて、メンターとメンティーに存在する「情報の非対称性」を解消していくという構造になっていてメンタリングを受けている感覚になる&lt;/p&gt;
+&lt;p&gt;実際自分もソフトウェアエンジニアによくありがちなコードに自分のアイデンティティを敷衍するということはよくやってしまいがちでそれに関する章は耳が痛いところも多かったけど、あらためて言語化して自分が目を逸らしていたところを可視化してもらえると安心感もあった。メンタリングがうまい人ってのはこういう人のことをいうんだろう。&lt;/p&gt;
+&lt;p&gt;著者の広木さんが今まで Qiita 等で発表してきた情報を体系化したような書籍だったけど、既に内容を知ってる人には復習になるし知らない人にとってはアジャイルとか組織論とか各トピックへの入門的な情報にもなるのでとりあえず入門として買ってみるのもいいと思った&lt;/p&gt;
+&lt;p&gt;下記リンク先で参考書籍等が紹介されているので、そこから各トピックを深堀りしてみるのも面白そう&lt;/p&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://qiita.com/hirokidaichi/items/195d42ee056ea85a3150"&gt;エンジニアリング組織論への招待：リファレンスガイド第１章/第２章 - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Book"></category><category term="Review"></category></entry><entry><title>ニューヨーク旅行 + Panorama NYC Festival 2017 その３</title><link href="http://shufo.github.io/panorama-nyc-festival-2017-3.html" rel="alternate"></link><published>2018-01-16T00:00:00+09:00</published><updated>2018-01-16T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-01-16:/panorama-nyc-festival-2017-3.html</id><summary type="html">&lt;p&gt;去年の話&lt;/p&gt;</summary><content type="html">&lt;p&gt;もはや去年になってしまっていつ書き終わるのか分からないけど、Panorama NYC Festival 2017 &lt;a href="http://shufo.github.io/-panorama-nyc-festival-2017-2.html"&gt;1日目&lt;/a&gt;に続き2日目.&lt;/p&gt;
 &lt;p&gt;前日は1時にホテルに帰ってシャワー浴びてもなんかアドレナリンが出ていたためか寝付きが悪く結局3時ぐらいに寝た割りには起床が早かった。
 1日目なんとなく靴下履いていなかったから足の裏が水ぶくれやら皮がめくれてボロボロでさっそく先行き不安に。&lt;/p&gt;
 &lt;p&gt;しばらくニュースとか見てぼーっとしていたら、10時頃になりハウスキーパーが入ってきたから身振りで1時間後に来てって伝えてとりあえずもう観光とフェスに行くことにしました。&lt;/p&gt;
@@ -345,19 +373,19 @@ ETSでインメモリでキャッシュを保存するからキャッシュサ�
 &lt;li&gt;Let's Split PCB x 2&lt;/li&gt;
 &lt;li&gt;Pro micro x 2&lt;/li&gt;
 &lt;li&gt;スイッチ x 48 &lt;a href="https://www.aliexpress.com/item/kailh-pro-switches-3pin-RGB-SMD-purple-light-green-teal-aqua-burgundy-MX-RGB-Swithes-For/32838033039.html?spm=a2g0s.9042311.0.0.lT90up"&gt;Kailh Pro Switche Burgundy&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;TRRSジャック x 2&lt;/li&gt;
-&lt;li&gt;TRRSケーブル&lt;/li&gt;
+&lt;li&gt;TRRS ジャック x 2&lt;/li&gt;
+&lt;li&gt;TRRS ケーブル&lt;/li&gt;
 &lt;li&gt;ダイオード x 48&lt;/li&gt;
-&lt;li&gt;ケース(topプレートとbottomプレート)&lt;/li&gt;
+&lt;li&gt;ケース(top プレートと bottom プレート)&lt;/li&gt;
 &lt;li&gt;ネジとスタンド&lt;/li&gt;
-&lt;li&gt;LEDケーブル x 1 [&lt;a href="https://www.switch-science.com/"&gt;Switch Science&lt;/a&gt;]&lt;/li&gt;
+&lt;li&gt;LED ケーブル x 1 [&lt;a href="https://www.switch-science.com/"&gt;Switch Science&lt;/a&gt;]&lt;/li&gt;
 &lt;li&gt;タクトスイッチ x 2 [Switch Science]&lt;/li&gt;
 &lt;li&gt;リード線 [Amazon]&lt;/li&gt;
-&lt;li&gt;3Mクッションゴム [Amazon]&lt;/li&gt;
+&lt;li&gt;3M クッションゴム [Amazon]&lt;/li&gt;
 &lt;li&gt;はんだごてセット [Amazon]&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;今回は&lt;a href="https://mehkee.com/"&gt;Mehkee&lt;/a&gt;でレツプリの&lt;a href="https://mehkee.com/collections/keyboards/products/lets-split-acrylic-cases-kits?variant=46981199311"&gt;セット&lt;/a&gt;が売っていたので最初に必用なパーツはある程度揃える事が出来た&lt;/p&gt;
-&lt;p&gt;クッションゴム, タクトスイッチ, リード線、LEDケーブルはなかったので別途買った&lt;/p&gt;
+&lt;p&gt;クッションゴム, タクトスイッチ, リード線、LED ケーブルはなかったので別途買った&lt;/p&gt;
 &lt;h2&gt;組み立て&lt;/h2&gt;
 &lt;p&gt;幸い先人たちのビルドログが結構な数あったので途中で詰まることはあまりなかった&lt;/p&gt;
 &lt;h3&gt;ダイオードハンダ付け&lt;/h3&gt;
@@ -368,7 +396,7 @@ ETSでインメモリでキャッシュを保存するからキャッシュサ�
 &lt;p&gt;&lt;img src="https://gqaasw.ch.files.1drv.com/y4mxf1_q7YLEL3iYck7oRBTGC4PzSOwLRBfxe_g-j6k9P19EavN_yOB3x_9G_8zCeXobCrzFML70YLiXqN2pXkipsrYZmK4wk-3b4kjWCvvI453J3AbouwkY_4rKAAXS5Vvz3rJwhjmKv8Lx3SNyU5qBIYJ9CxduFoUY5T0iiIJDJWu4RtjJhxXb80LZgsokJJT2d6_PD8L7WyD8PqdqHB97w?width=1440&amp;height=1080&amp;cropmode=none" width="1440" height="1080" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://igaasw.ch.files.1drv.com/y4m8yzp4MEmVM-rBrQ7MbrdXfJI9C3koY5tRdBP98f4pnxV_gOIy8r2KHpUNimtJW_AiZdraMPTDmkVJ3Xk8xD99ab0Xqdf8g9Hk4_zy4JnypcFtxopwVHy5pUOZpGhe9N8FJYill3pQAj2uEI3qB_kDs5DsZUfnwHhm3VJ8MSzyt6eHuUetbTZbreTHnQBz2zKqm11JjtWBx6Ug86S_lcHlg?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
 &lt;h3&gt;ジャンパー接続&lt;/h3&gt;
-&lt;p&gt;公式から引用。以下の要領でPCBのTRRSジャック下のに空いてる箇所をハンダで接続する&lt;/p&gt;
+&lt;p&gt;公式から引用。以下の要領で PCB の TRRS ジャック下のに空いてる箇所をハンダで接続する&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;VCC [x]     [ ] VCC
     [x]     [x]
 GND [ ]     [x] GND
@@ -377,18 +405,18 @@ GND [ ]     [x] GND
 
 &lt;p&gt;&lt;img src="https://jabl1g.ch.files.1drv.com/y4m_8f2vgBCB3MmpwtKz4wBRiYAoCtmQoqS0WiyLbEOsqX9x5dt5JeX0_56u2UfNtKmCJwsyz2lwskcKKigd1kcoXE3TGEBfWsMacPM0hG3RSSe5KJ4t-PnU4ku8hEh7DARKS6ptIJzGa44kma2nUwOwz-tAyCPspVnBg5b4RkW5-yCpqlINLKU9fwQid-riexK4lJpQ6hrbmlfIV--eIwdTg?width=1503&amp;height=1127&amp;cropmode=none" width="1503" height="1127" /&gt;&lt;/p&gt;
 &lt;h3&gt;ヘッダーピン取り付け&lt;/h3&gt;
-&lt;p&gt;Pro Micro付属のヘッダーピンを取り付ける。足の長い方をTRRSジャックと同じ側にして差し込む。足の短い表側をハンダ付けしておく。&lt;/p&gt;
+&lt;p&gt;Pro Micro 付属のヘッダーピンを取り付ける。足の長い方を TRRS ジャックと同じ側にして差し込む。足の短い表側をハンダ付けしておく。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://jaaasw.ch.files.1drv.com/y4m7GJqIcbAhnM0nX8C96lB3Q2wb3XwbRC9gqN2kS-Q09ijWyW8sdoORQhLH07kAI_SR50sL6bjYtvih2otF3pdyPrHxKMQATL7ZIbEaxA9IDRwi1KA7lrM5EEKmKXmmKJnWjNMuEXRFjwLbw7URqrtfMMFLA8e0SgG7Q4878Lc_KW7LqJkdpDkRd4cDSqRbp2HiVldYpqeG8OEjgcxVS9BpQ?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
 &lt;h3&gt;先に２つスイッチをつける&lt;/h3&gt;
-&lt;p&gt;Pro Microと位置が被るのでPro Microの位置のスイッチ2つは先に実装する。&lt;/p&gt;
+&lt;p&gt;Pro Micro と位置が被るので Pro Micro の位置のスイッチ 2 つは先に実装する。&lt;/p&gt;
 &lt;p&gt;上側のケースを挟みこむようにしてスイッチを取り付ける。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://hgaasw.ch.files.1drv.com/y4mc2BP86AEgyrKSczYwuB2xd4eoBKNQ4KhquoY7mk4DPs-6cHcwDGOmpILzn0nfm7CVf0NTdEUt5cagf4D_lOhdOkKHuhMDtDhB80rMRNE-HTh4STIXGPEW_U_7cuQqxEAXY3pdp0LK_ZHKX5GNr6mmGLDHDlYhMyscJhDtjsZsOjiN1ji-4sUF2zkuIjG8QAxGZ_gsGnbIF4ajUBEToMcTQ?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
-&lt;p&gt;スイッチを差し込むとPCBのパンダの目のようなとこにスイッチの足が出るのでハンダ付け。ここがしっかり接続されていないとキーを押したのに反応しないというようなことが起こるので注意。特にPro Microを取り付けた後だとここのハンダは修正出来ないのでハンダがちゃんと浸透してるか見ておいた方がいい。&lt;/p&gt;
-&lt;h3&gt;Pro Micro取り付け&lt;/h3&gt;
-&lt;p&gt;Pro Microを実装する。それぞれ左右で表裏を変えないといけないので注意。&lt;/p&gt;
-&lt;p&gt;左手側(TRRSジャックが右に来る方)は実装面が上に来るようにして実装。Pro Microから飛び出した長い足はニッパーで切ってハンダ付け。&lt;/p&gt;
+&lt;p&gt;スイッチを差し込むと PCB のパンダの目のようなとこにスイッチの足が出るのでハンダ付け。ここがしっかり接続されていないとキーを押したのに反応しないというようなことが起こるので注意。特に Pro Micro を取り付けた後だとここのハンダは修正出来ないのでハンダがちゃんと浸透してるか見ておいた方がいい。&lt;/p&gt;
+&lt;h3&gt;Pro Micro 取り付け&lt;/h3&gt;
+&lt;p&gt;Pro Micro を実装する。それぞれ左右で表裏を変えないといけないので注意。&lt;/p&gt;
+&lt;p&gt;左手側(TRRS ジャックが右に来る方)は実装面が上に来るようにして実装。Pro Micro から飛び出した長い足はニッパーで切ってハンダ付け。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://iqaasw.ch.files.1drv.com/y4mGkc4xtrqV5YE1GZz9Ot8be8M00g0_fwgRRlmHKfXRMsEEgosB20gxHUIV9AQzJ-bM_S_iqpu3jhgJlT9FcHLA7n5U80ZrGAzqp_AQzP8BftTr2PXzMRaeYR3idP1YvnkUmKsb2k8NbFb2CSdAokDNuCsY2Og1J7DPdpr6y6WZCEUQQUi1WApp7zAMmm8bWZKX8gv9Gs8KS2ak8UuqjQFrQ?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
-&lt;p&gt;右手側(TRRSジャックが左に来る方)は裏側を表にして実装。&lt;/p&gt;
+&lt;p&gt;右手側(TRRS ジャックが左に来る方)は裏側を表にして実装。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://iaaasw.ch.files.1drv.com/y4m9jLjzUJJawBh8NlfNBmwXRg-JofQmUFjHEOgXskkbaTKk6UlE_yonASXdL3oLKHHUDNZytGyKWxnRr39KXuuA7VXCLc3_q6x523ZLOCPPERRweTx_kCTRWHLOdeXKeOyPgAU1ZlBsz7iCpXwQRKIeTtav4tJEcctRsi5KwQloEU0W0HEI-G-CCGAG5LDRojAU5dFHN2jdw02o9qCri6fkg?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
 &lt;h3&gt;スイッチ取り付け&lt;/h3&gt;
 &lt;p&gt;残りのスイッチを全て取り付ける。&lt;/p&gt;
@@ -396,20 +424,20 @@ GND [ ]     [x] GND
 &lt;p&gt;ハンダ付け後。同じくハンダ付けが甘いとキー押下時の認識が甘くなるのでちゃんとハンダ付けする。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://gqybwa.ch.files.1drv.com/y4mLN753LmIQu1V992WSp6VrK7ysOsc-VukF8zXCBVt-xiPPBOByJ0lyg6Uz7PxsPNO8cqY-g5_zRu7l6G84mLKfuRaWNzkMaoydb0bSUYdbOynM5f52beoyaiT7zWNGN65WPg6S4GjgVbOD0Rdk-EPcEXJWcDm_A7R2KYptZ6XLIcoIWP2M41wSHNwr0VJ1mG307GjJ0A3N7rZfrIOVK8B7Q?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
 &lt;h3&gt;タクトスイッチ取り付け&lt;/h3&gt;
-&lt;p&gt;ファームウェアを書き込む時にGNCとRSTをショートさせる必要があるため、ボタン操作でリセット出来るようにタクトスイッチを取り付ける。それぞれGNDとRSTをタクトスイッチの足にハンダ付け。&lt;/p&gt;
+&lt;p&gt;ファームウェアを書き込む時に GNC と RST をショートさせる必要があるため、ボタン操作でリセット出来るようにタクトスイッチを取り付ける。それぞれ GND と RST をタクトスイッチの足にハンダ付け。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://iwybwa.ch.files.1drv.com/y4m5jLAqCvWcOQblxIMaTcd9knX-m2XqWKSG_duQ-fORXu0o3sDmdD_hC52x-xnWzBYo1N9JlQsbG_Y9YW8REIi8c3a70YzGwnxGgMn2X5ehzvbSVjt2Ew5pAziG0KPQzO5OZFJc1cv6wayFoxsIcM4Rx_D-Q_R6hozLbGq4aEGQO8c8j0BEm8EK1W4xQPs9sZAx8NaBGpwPha1L635N4hHkA?width=3120&amp;height=4160&amp;cropmode=none" width="3120" height="4160" /&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://jaybwa.ch.files.1drv.com/y4mrmJWnLXTyVzF3vQW3WnTnEabbeofN-OBNcGjf3Ka2HO7WAUGzQT0TuHE7FBUtcQ4Od6GfthJWNctxtYjxVYzx8bC7O3eZImQ5c_REwInl00efvmpc1Hx-tktO97ncd3EyGICnPjl88IJ73bTk8UVd0xWSTi-CWV0rwpaM54wV-r67dA3wvjy-hTTLZYkEmeH5Pm09pu53KjYAw2Rplz3FA?width=3120&amp;height=4160&amp;cropmode=none" width="3120" height="4160" /&gt;&lt;/p&gt;
-&lt;h3&gt;LED実装&lt;/h3&gt;
-&lt;p&gt;一応ここまでで既にキーボードは動作するが光の民ゆえ光らせたいのでLEDを実装する。光の民って何。&lt;/p&gt;
-&lt;p&gt;Switch Scienceで買ったLED（１７ｃｍ）をハサミで２つに切ってそれぞれ実装する。&lt;/p&gt;
+&lt;h3&gt;LED 実装&lt;/h3&gt;
+&lt;p&gt;一応ここまでで既にキーボードは動作するが光の民ゆえ光らせたいので LED を実装する。光の民って何。&lt;/p&gt;
+&lt;p&gt;Switch Science で買った LED（１７ｃｍ）をハサミで２つに切ってそれぞれ実装する。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://iaybwa.ch.files.1drv.com/y4mRKqpbFxku7gKCZhJghVjULduUSHpxFpK7PQ_ArX28a1Ghumaknc5iWxkSIdU-CZjQvAt4_b-MblTESka0_o83n3A0AOP_snyQFM_gqD57_swFg0O1ebbrGj_XbqzqsXJfW1qtkeE5ViNdCZKexYxI1hka6ahRHARrylt1hvMBIUSGQck9mnf6UdBQ4mTIccgzU4Qv-KrHjauJVVKrqlFcw?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
 &lt;p&gt;たぶんここが一番苦労した。リード線に予備ハンダをして線をメッキしてからハンダ付け箇所でリード線に付着したハンダを溶かして付着させると楽かもしれない。&lt;/p&gt;
-&lt;p&gt;右手側はGND -&amp;gt; GND, +5V -&amp;gt; VCC, DI -&amp;gt; extra dataで接続する。&lt;/p&gt;
+&lt;p&gt;右手側は GND -&amp;gt; GND, +5V -&amp;gt; VCC, DI -&amp;gt; extra data で接続する。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://skixvg.ch.files.1drv.com/y4mrI_iwEgfR1VIiVU1DBj9TxeZdbQvlmicJijTASkPwx3cxz4ZsTFp0BZPoo419AVifnyHn0Aj0BezXXMERFReAZgILWcMqlgJu2VbsChdhDDnaoUheIXXEDm7n8c4VPbsYemwBCdOJ9-2I69HQeXLbZgTeweD1sh1T0E1qjuo1rZmkpOlZCf4flq4ajYlGR1BQoCWyXMhDW9QIaPK9bzvow?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
-&lt;p&gt;左手側はそれぞれ左は+5V -&amp;gt; VCC, DO -&amp;gt; extra data, GND -&amp;gt; GND. 右側は DIN -&amp;gt; TX0 pin, GND -&amp;gt; GND, +5V -&amp;gt; VCCで接続する。&lt;/p&gt;
+&lt;p&gt;左手側はそれぞれ左は+5V -&amp;gt; VCC, DO -&amp;gt; extra data, GND -&amp;gt; GND. 右側は DIN -&amp;gt; TX0 pin, GND -&amp;gt; GND, +5V -&amp;gt; VCC で接続する。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://uaixvg.ch.files.1drv.com/y4mQKyOuuUal6JLuePdC_lM_Gb6561jeZRFFeSco83hq4iTx3shQTpEVyfT_M1xDtEVi7zTfG0Z-KDpAg7015xaHxMcl1X9ULUDf7jOAp1VTV88k6B5YAIuzyfeE_2cSv0p8CenMGfOQFmgBv3VhBqThdT7xKWWUkOlsxrR6MW-6lEmrqw759KGqvxcHNSl2_7Msye3lerFz4LXNJrNJJupVg?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
 &lt;h2&gt;ファームウェア書き込み&lt;/h2&gt;
-&lt;p&gt;リポジトリをclone&lt;/p&gt;
+&lt;p&gt;リポジトリを clone&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;git clone https://github.com/qmk/qmk_firmware.git
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -486,10 +514,10 @@ avrdude &lt;span class="k"&gt;done&lt;/span&gt;.  Thank you.
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;途中で&lt;code&gt;reset your controller now&lt;/code&gt;と出るのでGNDとRSTをショートしたスイッチを押す。1回で認識しない場合は何回か押す。&lt;/p&gt;
+&lt;p&gt;途中で&lt;code&gt;reset your controller now&lt;/code&gt;と出るので GND と RST をショートしたスイッチを押す。1 回で認識しない場合は何回か押す。&lt;/p&gt;
 &lt;p&gt;書き込みが成功すると上記のようなログが出る。左手と右手両方とも書き込む。
-USB接続し、TRRSソケットで繋げて全部のキーが動作するか確認。ハンダ付けが甘いと微妙に認識しづらいキーがあるので直しておく。&lt;/p&gt;
-&lt;h3&gt;LEDの設定&lt;/h3&gt;
+USB 接続し、TRRS ソケットで繋げて全部のキーが動作するか確認。ハンダ付けが甘いと微妙に認識しづらいキーがあるので直しておく。&lt;/p&gt;
+&lt;h3&gt;LED の設定&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;vim keyboards/lets_split/keymaps/default/rules.mk&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;rules.mk&lt;/code&gt;に以下の行を追加&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;RGBLIGHT_ENABLE = yes
@@ -501,7 +529,7 @@ USB接続し、TRRSソケットで繋げて全部のキーが動作するか確�
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;UNDERGLOW用のレイヤーを定義&lt;/p&gt;
+&lt;p&gt;UNDERGLOW 用のレイヤーを定義&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;#define UNDERGLOW_LAYER 6
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -516,22 +544,21 @@ USB接続し、TRRSソケットで繋げて全部のキーが動作するか確�
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;QWERTYレイヤーのどこかのキーに&lt;code&gt;MO(UNDERGLOW_LAYER)&lt;/code&gt;を割り当て&lt;/p&gt;
-&lt;p&gt;再度ファームウェア書き込みの時と同じ手順でキーマップをFlashし&lt;code&gt;MO(UNDERGLOW_LAYER)&lt;/code&gt;でレイヤーを切り替えて&lt;code&gt;RGB_TOG&lt;/code&gt;でLEDが光ることを確認する。また&lt;code&gt;RGB_MOD&lt;/code&gt;で発光パターンを色々切り替えられる。&lt;/p&gt;
+&lt;p&gt;QWERTY レイヤーのどこかのキーに&lt;code&gt;MO(UNDERGLOW_LAYER)&lt;/code&gt;を割り当て&lt;/p&gt;
+&lt;p&gt;再度ファームウェア書き込みの時と同じ手順でキーマップを Flash し&lt;code&gt;MO(UNDERGLOW_LAYER)&lt;/code&gt;でレイヤーを切り替えて&lt;code&gt;RGB_TOG&lt;/code&gt;で LED が光ることを確認する。また&lt;code&gt;RGB_MOD&lt;/code&gt;で発光パターンを色々切り替えられる。&lt;/p&gt;
 &lt;p&gt;以降もキーマップを変えたい場合は&lt;code&gt;keymap.c&lt;/code&gt;を編集して変えることが出来る。&lt;/p&gt;
 &lt;h2&gt;完成&lt;/h2&gt;
 &lt;p&gt;こんな感じでなんとか完成。&lt;/p&gt;
 &lt;p&gt;&lt;img src="https://u6ixvg.ch.files.1drv.com/y4mLfKNMawH4ubEowYh-8FARCykY9b6eRKWdZ8hw_eEJcNoQT-yXqxYvspmdnUjZnJydyewy-7r6tOh2eBF7eT2971-Q1w9lGMJ4AU_ujoGQcUUSkbYehZXST-aJJFCBexTGC06YIosebBsTnmP0fGPmUb_lcxbQm-mIh-j9a2A4ywTrDKPF3n4uF3eWtMc-pFzYYk2WDYqogjASzkWcFoOrw?width=4160&amp;height=3120&amp;cropmode=none" width="4160" height="3120" /&gt;&lt;/p&gt;
 &lt;p&gt;キーキャップは&lt;a href="http://www.mechsupply.co.uk/product/devlin-k-series-aurora-planck-keyset"&gt;DEVLIN K-SERIES AURORA&lt;/a&gt;にした。&lt;/p&gt;
 &lt;h2&gt;感想&lt;/h2&gt;
-&lt;p&gt;パーツが揃ったり揃わなかったり、10数年ぶりのハンダ付けに苦労したりと結構時間かかったけど初自作キーボードなのでやっぱりなんとなく愛着が湧く。
-キーマップを色々いじって自分好みの配列にしてみたい。&lt;/p&gt;
+&lt;p&gt;パーツが揃ったり揃わなかったり、10 数年ぶりのハンダ付けに苦労したりと結構時間かかったけど初自作キーボードなのでやっぱりなんとなく愛着が湧く。キーマップを色々いじって自分好みの配列にしてみたい。&lt;/p&gt;
 &lt;h2&gt;参考資料&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://github.com/nicinabox/lets-split-guide/blob/master/assembly.md"&gt;lets-split-guide/assembly.md at master · nicinabox/lets-split-guide&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://pppurple.hatenablog.com/entry/2017/09/24/193635"&gt;Let's splitを作る(製作編) - abcdefg.....&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://qiita.com/kzmake/items/443478763cdeaedcfd0a"&gt;分離型のコンパクトなキーボードlet's split(レツプリ)を組み立てた話 - Qiita&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="http://riv-mk.hateblo.jp/entry/pro_micro_and_qmk"&gt;Pro Micro &amp;amp; QMK Firmware のセットアップガイド (Let's Split編) - Voxel Highway&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://pppurple.hatenablog.com/entry/2017/09/24/193635"&gt;Let's split を作る(製作編) - abcdefg.....&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://qiita.com/kzmake/items/443478763cdeaedcfd0a"&gt;分離型のコンパクトなキーボード let's split(レツプリ)を組み立てた話 - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://riv-mk.hateblo.jp/entry/pro_micro_and_qmk"&gt;Pro Micro &amp;amp; QMK Firmware のセットアップガイド (Let's Split 編) - Voxel Highway&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="http://yhara.jp/LetsSplit"&gt;レツプリ他自作キーボードまとめ - yhara.jp&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://yushakobo.jp/pluis9/2017/07/lets-split-fes/"&gt;Let's Split を組み立てた話 | 遊舎工房&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.qmk.fm/getting_started_build_tools.html"&gt;Install Build Tools · QMK Firmware&lt;/a&gt;&lt;/li&gt;

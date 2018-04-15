@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog - Book</title><link href="http://shufo.github.io/" rel="alternate"></link><link href="http://shufo.github.io/feeds/book.atom.xml" rel="self"></link><id>http://shufo.github.io/</id><updated>2018-04-15T00:00:00+09:00</updated><entry><title>エンジニアリング組織論への招待を読んだ</title><link href="http://shufo.github.io/book-review-engineering-organization.html" rel="alternate"></link><published>2018-04-15T00:00:00+09:00</published><updated>2018-04-15T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-04-15:/book-review-engineering-organization.html</id><summary type="html">&lt;p&gt;感想&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://www.amazon.co.jp/dp/B079TLW41L/"&gt;エンジニアリング組織論への招待　～不確実性に向き合う思考と組織のリファクタリング&lt;/a&gt;を読んだので紹介とその感想を&lt;/p&gt;
+&lt;p&gt;元々この著者の方は Qiita とかでもちょくちょく拝見していて&lt;a href="https://www.amazon.co.jp/dp/B00IR1HYGW/"&gt;アジャイルな見積りと計画づくり ～価値あるソフトウェアを育てる概念と技法～&lt;/a&gt;で紹介されていた SRSS 等の見積もり法を Qiita で&lt;a href="https://qiita.com/hirokidaichi/items/5a204a57a200569f755d#%E3%81%BE%E3%81%A8%E3%82%81"&gt;紹介されていた&lt;/a&gt;のがきっかけで知った。SRSS 法は、実際試した時にそこそこの精度で納期が収束したのでそういった方法に詳しい方なんだなーと思っていた。で、その方が組織論に関する本を出したのことでさっそく気になって買ってみた&lt;/p&gt;
+&lt;p&gt;*&lt;/p&gt;
+&lt;p&gt;Amazon の紹介欄より概要を引用&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;「コミュニケーションにおける不確実性を減らすには？」「技術的負債を解消する方法とは？」「経営陣とエンジニア間の認識のずれを解消するには？」エンジニアリングにおける課題を解決する思考の整理方法やメンタリング手法を，さまざまな企業の技術組織アドバイザリーを務めている著者が解説。若手を戦力として育て上げ，成長する組織を設計・運営するためにおすすめの 1 冊です。&lt;/p&gt;
+&lt;p&gt;（こんな方におすすめ）・開発チームの生産性を上げたいエンジニア・社内組織を改善したい経営者&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;まずこの本は紹介にもある通り、開発チームの生産性を上げたいエンジニアから社内組織を改善したい経営者にも勧められる本とあるけど、技術書というよりは広い意味での組織論として読める書籍になっているので読者を限定しないで技術組織で活動している人なら誰でも読者の対象になりえる&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;「工学とは数学と自然科学を基礎とし、ときには人文社会科学の知見を用いて、公共の安全、健康、福祉のために有用な事物や快適な環境を構築することを目的とする学問である。」&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;広木 大地. エンジニアリング組織論への招待　～不確実性に向き合う思考と組織のリファクタリング (Kindle の位置 No.299-301). 株式会社技術評論社. Kindle 版.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;本書ではこの定義のとおり、ルーマンのシステム論や心の理論など人文社会科学や認知科学などの知識も援用して精神論には依拠しないあくまで科学的な立場から組織を捉え、エンジニアリングを行うことを推奨する&lt;/p&gt;
+&lt;p&gt;また不確実性をいかに下げるかという全体として一貫した視点を通じてメンタリングや各種プラクティスを紹介している&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;エンジニアリングで重要なのは「どうしたら効率よく不確実性を減らしていける のか」 という考え方なのです。&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;広木 大地. エンジニアリング組織論への招待　～不確実性に向き合う思考と組織のリファクタリング (Kindle の位置 No.329-330). 株式会社技術評論社. Kindle 版.&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;「分からない」ということに対する根本的な不安を「不確実性」という言葉で言い表して、それにいかに対処するかというのが本書籍でのメインテーマになっている&lt;/p&gt;
+&lt;p&gt;本書籍のよいところは結局のところ知り得ない他者の心を推察するということはしないで、あくまで他者の思考は推察出来ないという不可知論的な立場から科学的な手法を用いて問題解決をするというエンジニアリングを行うところで、そういう意味では真っ当な技術書でもある&lt;/p&gt;
+&lt;p&gt;またこの本自体著者と読者がメンター（メンタリングする人）とメンティー（メンタリングを受ける人）のような関係になっていて、メンターとメンティーに存在する「情報の非対称性」を解消していくという構造になっていてメンタリングを受けている感覚になる&lt;/p&gt;
+&lt;p&gt;実際自分もソフトウェアエンジニアによくありがちなコードに自分のアイデンティティを敷衍するということはよくやってしまいがちでそれに関する章は耳が痛いところも多かったけど、あらためて言語化して自分が目を逸らしていたところを可視化してもらえると安心感もあった。メンタリングがうまい人ってのはこういう人のことをいうんだろう。&lt;/p&gt;
+&lt;p&gt;著者の広木さんが今まで Qiita 等で発表してきた情報を体系化したような書籍だったけど、既に内容を知ってる人には復習になるし知らない人にとってはアジャイルとか組織論とか各トピックへの入門的な情報にもなるのでとりあえず入門として買ってみるのもいいと思った&lt;/p&gt;
+&lt;p&gt;下記リンク先で参考書籍等が紹介されているので、そこから各トピックを深堀りしてみるのも面白そう&lt;/p&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://qiita.com/hirokidaichi/items/195d42ee056ea85a3150"&gt;エンジニアリング組織論への招待：リファレンスガイド第１章/第２章 - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Book"></category><category term="Review"></category></entry></feed>
