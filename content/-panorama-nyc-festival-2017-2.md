@@ -7,6 +7,7 @@ Authors: shufo
 header_cover: http://i.imgur.com/Q5BklUY.jpg
 cover: http://i.imgur.com/Q5BklUY.jpg
 twitter_image: http://i.imgur.com/Q5BklUY.jpg
+og_image: http://i.imgur.com/Q5BklUY.jpg
 Slug: -panorama-nyc-festival-2017-2
 Summary: ニューヨーク一人旅その２
 
