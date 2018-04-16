@@ -4,301 +4,301 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://shufo.github.io/</loc>
-<lastmod>2018-04-16T21:44:19-00:00</lastmod>
+<loc>https://shufo.github.io/</loc>
+<lastmod>2018-04-16T21:49:44-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/categories.html</loc>
-<lastmod>2018-04-16T21:44:19-00:00</lastmod>
+<loc>https://shufo.github.io/categories.html</loc>
+<lastmod>2018-04-16T21:49:44-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/kindle-oasis.html</loc>
+<loc>https://shufo.github.io/kindle-oasis.html</loc>
 <lastmod>2018-04-16T00:00:00+09:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/book-review-engineering-organization.html</loc>
+<loc>https://shufo.github.io/book-review-engineering-organization.html</loc>
 <lastmod>2018-04-15T00:00:00+09:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/panorama-nyc-festival-2017-3.html</loc>
+<loc>https://shufo.github.io/panorama-nyc-festival-2017-3.html</loc>
 <lastmod>2018-01-16T00:00:00+09:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/my-elixir-status-of-the-last-year.html</loc>
+<loc>https://shufo.github.io/my-elixir-status-of-the-last-year.html</loc>
 <lastmod>2018-01-12T00:00:00+09:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/build-lets-split.html</loc>
+<loc>https://shufo.github.io/build-lets-split.html</loc>
 <lastmod>2018-01-08T00:00:00+09:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/-panorama-nyc-festival-2017-2.html</loc>
+<loc>https://shufo.github.io/-panorama-nyc-festival-2017-2.html</loc>
 <lastmod>2017-08-06T09:18:00+09:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/panorama-festival-2017-1.html</loc>
+<loc>https://shufo.github.io/panorama-festival-2017-1.html</loc>
 <lastmod>2017-08-04T02:33:00+09:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/alternative_to_mac.html</loc>
+<loc>https://shufo.github.io/alternative_to_mac.html</loc>
 <lastmod>2016-11-28T20:00:00+09:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/site_building.html</loc>
+<loc>https://shufo.github.io/site_building.html</loc>
 <lastmod>2015-11-23T13:00:00+09:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/weave_swarm_compose.html</loc>
+<loc>https://shufo.github.io/weave_swarm_compose.html</loc>
 <lastmod>2015-03-19T13:00:00+09:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/hello-world.html</loc>
+<loc>https://shufo.github.io/hello-world.html</loc>
 <lastmod>2015-01-09T13:00:00+09:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/category/about</loc>
+<loc>https://shufo.github.io/category/about</loc>
 <lastmod>2015-01-09T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/category/book</loc>
+<loc>https://shufo.github.io/category/book</loc>
 <lastmod>2018-04-15T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/category/docker</loc>
+<loc>https://shufo.github.io/category/docker</loc>
 <lastmod>2015-03-19T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/category/gadget</loc>
+<loc>https://shufo.github.io/category/gadget</loc>
 <lastmod>2018-04-16T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/category/keyboard</loc>
+<loc>https://shufo.github.io/category/keyboard</loc>
 <lastmod>2018-01-08T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/category/pc</loc>
+<loc>https://shufo.github.io/category/pc</loc>
 <lastmod>2016-11-28T20:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/category/pelican</loc>
+<loc>https://shufo.github.io/category/pelican</loc>
 <lastmod>2015-11-23T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/category/programming</loc>
+<loc>https://shufo.github.io/category/programming</loc>
 <lastmod>2018-01-12T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/category/vacation</loc>
+<loc>https://shufo.github.io/category/vacation</loc>
 <lastmod>2018-01-16T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/zi-zuo-kibodo</loc>
+<loc>https://shufo.github.io/tag/zi-zuo-kibodo</loc>
 <lastmod>2018-01-08T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/pelican</loc>
+<loc>https://shufo.github.io/tag/pelican</loc>
 <lastmod>2015-11-23T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/about</loc>
+<loc>https://shufo.github.io/tag/about</loc>
 <lastmod>2015-01-09T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/compose</loc>
+<loc>https://shufo.github.io/tag/compose</loc>
 <lastmod>2015-03-19T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/consul</loc>
+<loc>https://shufo.github.io/tag/consul</loc>
 <lastmod>2015-03-19T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/swarm</loc>
+<loc>https://shufo.github.io/tag/swarm</loc>
 <lastmod>2015-03-19T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/festival</loc>
+<loc>https://shufo.github.io/tag/festival</loc>
 <lastmod>2018-01-16T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/panorama</loc>
+<loc>https://shufo.github.io/tag/panorama</loc>
 <lastmod>2017-08-04T02:33:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/gadget</loc>
+<loc>https://shufo.github.io/tag/gadget</loc>
 <lastmod>2018-04-16T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/keyboard</loc>
+<loc>https://shufo.github.io/tag/keyboard</loc>
 <lastmod>2018-01-08T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/programming</loc>
+<loc>https://shufo.github.io/tag/programming</loc>
 <lastmod>2018-01-12T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/vacation</loc>
+<loc>https://shufo.github.io/tag/vacation</loc>
 <lastmod>2018-01-16T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/pc</loc>
+<loc>https://shufo.github.io/tag/pc</loc>
 <lastmod>2016-11-28T20:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/mac</loc>
+<loc>https://shufo.github.io/tag/mac</loc>
 <lastmod>2016-11-28T20:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/book</loc>
+<loc>https://shufo.github.io/tag/book</loc>
 <lastmod>2018-04-16T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/diy</loc>
+<loc>https://shufo.github.io/tag/diy</loc>
 <lastmod>2018-01-08T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/elixir</loc>
+<loc>https://shufo.github.io/tag/elixir</loc>
 <lastmod>2018-01-12T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/docker</loc>
+<loc>https://shufo.github.io/tag/docker</loc>
 <lastmod>2015-03-19T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/review</loc>
+<loc>https://shufo.github.io/tag/review</loc>
 <lastmod>2018-04-15T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/tag/weave</loc>
+<loc>https://shufo.github.io/tag/weave</loc>
 <lastmod>2015-03-19T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://shufo.github.io/author/shufo</loc>
+<loc>https://shufo.github.io/author/shufo</loc>
 <lastmod>2018-04-16T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
