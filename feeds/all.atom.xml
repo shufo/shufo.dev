@@ -1,5 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog</title><link href="https://shufo.github.io/" rel="alternate"></link><link href="https://shufo.github.io/feeds/all.atom.xml" rel="self"></link><id>https://shufo.github.io/</id><updated>2018-04-16T00:00:00+09:00</updated><entry><title>Kindle Oasis (2017)を買った</title><link href="https://shufo.github.io/kindle-oasis.html" rel="alternate"></link><published>2018-04-16T00:00:00+09:00</published><updated>2018-04-16T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-04-16:/kindle-oasis.html</id><summary type="html">&lt;p&gt;目立った隙はない。バッテリー以外は…&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://amzn.asia/dHGDiPp"&gt;Kindle Oasis (2017)&lt;/a&gt; を買った&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog</title><link href="https://shufo.github.io/" rel="alternate"></link><link href="https://shufo.github.io/feeds/all.atom.xml" rel="self"></link><id>https://shufo.github.io/</id><updated>2018-04-19T00:00:00+09:00</updated><entry><title>Visual Studio Live Share (Preview) を使ってみた</title><link href="https://shufo.github.io/visual-studio-live-share.html" rel="alternate"></link><published>2018-04-19T00:00:00+09:00</published><updated>2018-04-19T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-04-19:/visual-studio-live-share.html</id><summary type="html">&lt;p&gt;ローカルサーバ共有便利&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="https://code.visualstudio.com/visual-studio-live-share"&gt;Visual Studio Live Share&lt;/a&gt; のプレビュー版の Invitation が届いていたので使ってみた&lt;/p&gt;
+&lt;h3&gt;環境&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;VSCode 1.22.2&lt;/li&gt;
+&lt;li&gt;Windows 10&lt;/li&gt;
+&lt;li&gt;Ubuntu 16.04 (Elementary OS)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;インストール&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://docs.microsoft.com/en-us/visualstudio/liveshare/quickstart/share?utm_source=hs_email&amp;amp;utm_medium=email&amp;amp;utm_content=62213452&amp;amp;_hsenc=p2ANqtz--m9WZrFIPTxaPK0eTQ3uE4z6Yd7V-bkVsRtSa9amDCZtBMIExhOfl1uhzG27uu73HL3SzfjyrTI9fPcwC7zmN_dFaW7w&amp;amp;_hsmi=62213452"&gt;インストールガイド&lt;/a&gt;を参考に進める&lt;/p&gt;
+&lt;p&gt;Windows 環境の場合は &lt;a href="https://marketplace.visualstudio.com/items?itemName=MS-vsliveshare.vsliveshare"&gt;Live Share 専用の拡張&lt;/a&gt;を入れれば即使えるが、Linux は追加でパッケージのインストールが必要。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo apt-get install libunwind8 \
+liblttng-ust0 \
+libcurl3 \
+libssl1.0.0 \
+libuuid1 \
+libkrb5-3 \
+zlib1g \
+libicu55 \
+gnome-keyring
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Linux 環境の場合は Live Share 拡張をインストールするとインストール手順が出るのでそれに従って進める。&lt;/p&gt;
+&lt;h3&gt;所感&lt;/h3&gt;
+&lt;p&gt;接続性はほぼ問題なし。エディタで現在開いているファイルや、ファイル作成もリアルタイムで行われる。&lt;/p&gt;
+&lt;p&gt;ここまでは割とよくありがちなエディタ共有なので特に目立ったところはない。&lt;/p&gt;
+&lt;p&gt;ポイントとしてはエディタの操作も共有されるため VSCode のブレークポイントも共有されるのでデバッグも同時に出来るところか。&lt;/p&gt;
+&lt;h3&gt;ローカルサーバ共有&lt;/h3&gt;
+&lt;p&gt;個人的にこれ便利だなと思ったのがローカルサーバ共有機能で、ホスト側で「Share Local Server」からポート番号を &lt;code&gt;80&lt;/code&gt; など指定すると、ホスト側のローカルのポートがクライアント側にフォワーディングされる&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Imgur" src="https://i.imgur.com/Y34EUM9.png"&gt;&lt;/p&gt;
+&lt;p&gt;つまり、何が出来るかというとホスト側で 80 番で Web サーバを立ち上げて共有するとゲスト側のブラウザでも &lt;code&gt;localhost:80&lt;/code&gt; で動作確認出来る。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.teleconsole.com/"&gt;Teleconsole&lt;/a&gt;などのツールでポートフォワーディングは出来るが別のツールとなってしまうため VSCode でポートフォワーディングを完結出来るのは大きい。&lt;/p&gt;
+&lt;h3&gt;ターミナル&lt;/h3&gt;
+&lt;p&gt;コマンドは基本ホスト側からしか叩けない。基本的に主導権はホストでゲストは編集をサポートする役を想定しているのかもしれない。ペアプロなどで同時に編集する場合ホスト側からだけしかコマンド叩けないとゲスト側にコマンドについての知識がある場合ややこしくなる。なので基本的にはペアプロなどする場合はホスト側がメインで作業する側でゲストがサポート役ということになる。&lt;/p&gt;
+&lt;p&gt;出来ればターミナル共有なども出来るとうれしい。&lt;/p&gt;
+&lt;h3&gt;他困った点など&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux → Windows だと IME の入力が確定するまで Windows 側に反映されないので入力しているかどうか分からない問題がある&lt;/li&gt;
+&lt;li&gt;Windows → Linux だと IME の確定を待たずにリアルタイムで共有される&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Tech"></category><category term="VSCode"></category></entry><entry><title>Kindle Oasis (2017)を買った</title><link href="https://shufo.github.io/kindle-oasis.html" rel="alternate"></link><published>2018-04-16T00:00:00+09:00</published><updated>2018-04-16T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-04-16:/kindle-oasis.html</id><summary type="html">&lt;p&gt;目立った隙はない。バッテリー以外は…&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://amzn.asia/dHGDiPp"&gt;Kindle Oasis (2017)&lt;/a&gt; を買った&lt;/p&gt;
 &lt;p&gt;&lt;img alt="" src="https://i.imgur.com/95T3k5Q.jpg"&gt;&lt;/p&gt;
 &lt;p&gt;WiFi + 広告無しモデルで￥ 34k と Kindle シリーズの中ではハイエンドという位置づけになっているだけあって、筐体の金属のディティール等は満足度が高い。以前持っていた Kindle Paperwhite 初代と比べるとページ送りはかなり早くなっていてここはほぼ使っていてストレスを感じないレベルになっていた。あと物理ボタンがやっぱ楽で片手で持ちながら ﾎﾟﾁﾎﾟﾁ ページをめくれるのが素晴らしい。&lt;/p&gt;
 &lt;p&gt;ただバッテリーの持ちが悪いというのはレビュー等でも&lt;a href="https://www.amazon.co.jp/gp/customer-reviews/R37D2V3PWJFQQC/ref=cm_cr_getr_d_rvw_ttl?ie=UTF8&amp;amp;ASIN=B06XDFJJRS"&gt;指摘されている&lt;/a&gt;通りで 1 日中使うとほぼ空になってしまうように感じる。
