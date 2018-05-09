@@ -5,15 +5,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/</loc>
-<lastmod>2018-04-26T00:26:50-00:00</lastmod>
+<lastmod>2018-05-09T10:55:17-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://shufo.github.io/categories.html</loc>
-<lastmod>2018-04-26T00:26:50-00:00</lastmod>
+<lastmod>2018-05-09T10:55:17-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://shufo.github.io/book-review-washoku-toha-nanika.html</loc>
+<lastmod>2018-04-28T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -117,7 +124,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/category/book</loc>
-<lastmod>2018-04-23T00:00:00+09:19</lastmod>
+<lastmod>2018-04-28T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -243,7 +250,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/tag/review</loc>
-<lastmod>2018-04-23T00:00:00+09:19</lastmod>
+<lastmod>2018-04-28T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -264,7 +271,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/tag/book</loc>
-<lastmod>2018-04-23T00:00:00+09:19</lastmod>
+<lastmod>2018-04-28T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -334,7 +341,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/author/shufo</loc>
-<lastmod>2018-04-23T00:00:00+09:19</lastmod>
+<lastmod>2018-04-28T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
