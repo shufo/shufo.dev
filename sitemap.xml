@@ -5,15 +5,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/</loc>
-<lastmod>2018-05-25T21:04:38-00:00</lastmod>
+<lastmod>2018-06-30T17:08:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://shufo.github.io/categories.html</loc>
-<lastmod>2018-05-25T21:04:38-00:00</lastmod>
+<lastmod>2018-06-30T17:08:37-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://shufo.github.io/yamashita-tatsuro-live-at-nhk-hall.html</loc>
+<lastmod>2018-06-28T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -81,6 +88,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://shufo.github.io/dieting.html</loc>
+<lastmod>2018-01-08T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://shufo.github.io/-panorama-nyc-festival-2017-2.html</loc>
 <lastmod>2017-08-06T09:18:00+09:00</lastmod>
 <changefreq>monthly</changefreq>
@@ -137,6 +151,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://shufo.github.io/category/diary</loc>
+<lastmod>2018-01-08T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://shufo.github.io/category/docker</loc>
 <lastmod>2015-03-19T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
@@ -153,6 +174,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://shufo.github.io/category/keyboard</loc>
 <lastmod>2018-01-08T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://shufo.github.io/category/music</loc>
+<lastmod>2018-06-28T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -188,6 +216,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://shufo.github.io/category/vacation</loc>
 <lastmod>2018-01-16T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://shufo.github.io/tag/dieting</loc>
+<lastmod>2018-01-08T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -284,6 +319,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://shufo.github.io/tag/music</loc>
+<lastmod>2018-06-28T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://shufo.github.io/tag/gadget</loc>
 <lastmod>2018-04-16T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
@@ -348,7 +390,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/author/shufo</loc>
-<lastmod>2018-05-25T00:00:00+09:19</lastmod>
+<lastmod>2018-06-28T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
