@@ -5,15 +5,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/</loc>
-<lastmod>2018-06-30T17:08:37-00:00</lastmod>
+<lastmod>2018-07-07T21:24:30-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://shufo.github.io/categories.html</loc>
-<lastmod>2018-06-30T17:08:37-00:00</lastmod>
+<lastmod>2018-07-07T21:24:30-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://shufo.github.io/soundsandbox-at-white-space-lab.html</loc>
+<lastmod>2018-07-07T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -180,7 +187,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/category/music</loc>
-<lastmod>2018-06-28T00:00:00+09:19</lastmod>
+<lastmod>2018-07-07T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -320,7 +327,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/tag/music</loc>
-<lastmod>2018-06-28T00:00:00+09:19</lastmod>
+<lastmod>2018-07-07T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://shufo.github.io/tag/dj</loc>
+<lastmod>2018-07-07T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -390,7 +404,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/author/shufo</loc>
-<lastmod>2018-06-28T00:00:00+09:19</lastmod>
+<lastmod>2018-07-07T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
