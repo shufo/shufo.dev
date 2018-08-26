@@ -5,15 +5,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/</loc>
-<lastmod>2018-07-07T21:24:30-00:00</lastmod>
+<lastmod>2018-08-27T08:17:39-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://shufo.github.io/categories.html</loc>
-<lastmod>2018-07-07T21:24:30-00:00</lastmod>
+<lastmod>2018-08-27T08:17:39-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://shufo.github.io/jinba-to-takao.html</loc>
+<lastmod>2018-08-25T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -153,6 +160,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://shufo.github.io/category/book</loc>
 <lastmod>2018-05-25T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://shufo.github.io/category/deng-shan</loc>
+<lastmod>2018-08-25T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -396,6 +410,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://shufo.github.io/tag/trekking</loc>
+<lastmod>2018-08-25T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://shufo.github.io/tag/docker</loc>
 <lastmod>2015-03-19T13:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
@@ -404,7 +425,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/author/shufo</loc>
-<lastmod>2018-07-07T00:00:00+09:19</lastmod>
+<lastmod>2018-08-25T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
