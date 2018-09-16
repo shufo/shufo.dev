@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+	<title>Electron + TypeScript + Vue.js でソーシャルメディアデトックスアプリを作ってみた - shufo blog</title>
+
+
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="referrer" content="origin" />
+	<meta name="generator" content="Pelican" /> 
+	<!-- Feed -->
+ 	<link href="https://shufo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="shufo blog Full Atom Feed"
+	/>     	<link href="https://shufo.github.io/feeds/programming.atom.xml" type="application/atom+xml" rel="alternate"
+	 title="shufo blog Categories Atom Feed" />     
+	<link href="//shufo.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+	<!-- Code highlight color scheme -->
+	<link href="//shufo.github.io/theme/css/code_blocks/tomorrow_night.css" rel="stylesheet">  
+	<!-- Custom fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+    <link href="http://shufo.github.io/built-app-with-electron-vuejs-typescript.html" rel="canonical" />
+
+        <meta name="description" content="Electron + TypeScript + Vue.js でアプリを作った話">
+
+        <meta name="author" content="shufo">
+
+        <meta name="tags" content="Electron">
+        <meta name="tags" content="Vue.js">
+        <meta name="tags" content="TypeScript">
+     	<meta property="og:locale" content="" /> 	<meta property="og:site_name" content="shufo blog" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="shufo blog" />
+	<meta property="og:description" content="Random automation stuff" />
+	<meta property="og:url" content="https://shufo.github.io" /> 	<meta property="og:image" content="https://shufo.github.io/assets/header.jpg" />   
+  <meta property="og:type" content="article">
+            <meta property="article:author" content="https://shufo.github.io/author/shufo">
+  <meta property="og:url" content="https://shufo.github.io/built-app-with-electron-vuejs-typescript.html">
+  <meta property="og:title" content="Electron + TypeScript + Vue.js でソーシャルメディアデトックスアプリを作ってみた">
+  <meta property="article:published_time" content="2018-09-16 00:00:00+09:00">
+            <meta property="og:description" content="Electron + TypeScript + Vue.js でアプリを作った話">
+
+                <meta property="og:image" content="https://i.imgur.com/IMqvtGH.png">
+         <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@shufo_">
+        <meta name="twitter:title" content="Electron + TypeScript + Vue.js でソーシャルメディアデトックスアプリを作ってみた">
+        <meta name="twitter:url" content="https://shufo.github.io/built-app-with-electron-vuejs-typescript.html">
+
+                <meta name="twitter:image:src" content="https://i.imgur.com/IMqvtGH.png">
+
+            <meta name="twitter:description" content="Electron + TypeScript + Vue.js でアプリを作った話">
+	<meta name="google-site-verification" content="pfqlDqY0RodNUTCncFltLDDwwV_AOnfcqefcGys1NTQ" />
+</head>
+<!-- TODO : Body class -->
+
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/hello-world.html" role="presentation">About</a></li>
+          <li><a href="/archives/" role="presentation">Archives</a></li>
+          <li><a href="./categories.html" role="presentation">Categories</a></li>
+          <li><a href="https://github.com/shufo" role="presentation">GitHub</a></li>
+          <li><a href="/feeds/all.atom.xml" role="presentation">RSS</a></li>
+
+
+    </ul>
+  </div>
+</nav>     <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://shufo.github.io" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">Electron + TypeScript + Vue.js でソーシャルメディアデトックスアプリを作ってみた</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://shufo.github.io/author/shufo">Shufo</a>
+            | <time datetime="2018 Sep/16 (Sun)">2018 Sep/16 (Sun)</time>
+        </span>
+        <!-- TODO : Modified check -->
+            <div class="post-cover cover" style="background-image: url('https://i.imgur.com/IMqvtGH.png')">
+      </div>
+    </header>
+
+	<section id="wrapper">
+		<a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p>最近ちょっと SNS 断ちをしていてついでにというか勉強がてら自分用に Electron + TypeScript + Vue.js でソーシャルメディアデトックスアプリを<a href="https://github.com/shufo/aspida">作ってみた</a></p>
+<p>簡単に説明するとアプリでスイッチをオンにすると対象のサイトにアクセス出来なくなるというもの。</p>
+<p>以下の GIF アニメを見てもらえればなんとなくどういうアプリかは分かると思う。</p>
+<p><img alt="" src="https://github.com/shufo/aspida/wiki/assets/description.gif"></p>
+<p>コードのコンパイル待ちだったり CI 待ちのちょっとした空き時間についアクセスしてスクロール中毒に陥ってしまうことを防ぎたくて作った。
+実際ソーシャルメディアを根本的に絶つにはマシンを破壊するか回線を切るくらいしかないと思うけど、そこまで出来ない人用。</p>
+<p>仕組み的には対象のサイトのホスト名を hosts ファイルに書き込んで IP アドレス <code>0.0.0.0</code> で名前解決させてアクセス出来なくさせるという簡単なもの。
+hosts ファイルに直接書き込むのでブラウザ以外にも CLI や専用のクライアントもブロック出来る。</p>
+<p>DNS キャッシュが効いてる状態で名前解決時にキャッシュを参照してるとアクセス出来てしまう場合があるが Chrome の場合は<code>chrome://net-internals/#dns</code>を開いてから<code>cleat host cache</code>でキャッシュを削除すれば名前解決時に hosts ファイルを参照するようになる</p>
+<h3>Electron</h3>
+<p>テンプレートとして<a href="https://github.com/SimulatedGREG/electron-vue">electron-vue</a>をベースに作成した。</p>
+<p>Electron は初めて使ったがクロスプラットフォームでバイナリを出力出来るのはやはり便利だった。ただ各プラットフォームごとにファイルシステムのアクセス制御の仕組みが違ったりするので書き込みに管理者権限の必要な hosts ファイルの権限チェックのためプラットフォーム固有の知識が必要になったりして少し苦労した。</p>
+<p>例えば Windows は ACL でアクセス制御しているので</p>
+<div class="highlight"><pre><span></span><span class="nx">fs</span><span class="p">.</span><span class="nx">access</span><span class="p">(</span><span class="nx">path</span><span class="p">,</span> <span class="nx">fs</span><span class="p">.</span><span class="nx">constants</span><span class="p">.</span><span class="nx">W_OK</span><span class="p">);</span>
+</pre></div>
+
+
+<p>で書き込みが可能かチェックしてもファイルが存在する限りは必ず成功する。</p>
+<p>一方 Linux は Electron を起動させているユーザで対象のパーミッションを正しくチェックする。
+なのでプラットフォームが Windows の場合のみ ACL を変えるコマンドを投げるようにした。</p>
+<p>あと他にも色々ハマりどころがあったので忘れないように覚え書きしておく。</p>
+<h4>ハマったところ</h4>
+<h5>静的ファイルの扱い</h5>
+<p><code>npm run dev</code> で起動する開発モードと <code>npm run build</code> で出力する production 用のバイナリでは起動時のディレクトリ構造が異なるので <code>__static</code> 変数を参照して静的ファイル用のディレクトリ(<code>static</code>)へのパスを取得しないといけない。
+ちなみに TypeScript でデフォルトだと global の<code>__static</code>を解決出来ないので</p>
+<div class="highlight"><pre><span></span><span class="kr">declare</span> <span class="kr">const</span> <span class="nx">__static</span>: <span class="kt">string</span><span class="p">;</span>
+</pre></div>
+
+
+<p>を宣言して解決させた。</p>
+<h3>TypeScript</h3>
+<p>以前から使ってみたかったけど中々使う機会がなかったのでせっかくなので使ってみた。</p>
+<p>VSCode + TypeScript の開発体験、いわゆる DX（<strong>D</strong>eveloper e<strong>X</strong>perience）は噂通り素晴らしかった。コンパイル前からエディタでほぼリアルタイムで型エラーを出力してくれるし精度も高い。補完も強力でほぼ取りこぼしもない。エディタ自体が TypeScript で作られているだけあって完成度は折り紙つき。</p>
+<p>ただ TypeScript 特有のクセみたいなものはあって Vue.js でコンポーネント内で<code>this</code>が解決されなかったりしてコンパイルエラーになるので</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">this</span> <span class="kr">as</span> <span class="nx">any</span><span class="p">).</span><span class="nx">someMethod</span><span class="p">();</span>
+</pre></div>
+
+
+<p>とキャストして型の解決が必要だったり多少 workaround 的な作業が必要になる箇所が何箇所かあった。</p>
+<p>あと TypeScript に対応していない npm モジュールもうまく解決出来ないこともあった。</p>
+<p>TypeScript 特有の問題というわけではないが主に外部のライブラリと組み合わせたときに TypeScript を考慮していない部分で問題が発生しているように思えたので、TypeScript 外の npm モジュールを組み合わせるときは予め相性をチェックする作業が必要になりそうだった。</p>
+<p>そういった意味で TypeScript を使う際は型が正しく通るように変更するオーバーヘッドが発生する可能性があるのでプロトタイプというよりは正式版としてかっちり作るのに向いているのかなと思った。</p>
+<p>ネイティブ JS なら npm ライブラリもほぼ問題なく使えるし TypeScript に対応していないライブラリで型の問題が発生するということもないのでプロトタイプとして JS で書いてから問題なさそうだったら TypeScript に変換するというのもありといえばありかもしれない。</p>
+<p>JS はテストを書くにも E2E がなかなか安定しなかったりで苦労するのでネイティブ JS で一度書いてから TypeScript に変換し型である程度の一貫性を保証することで品質を担保するという考え方も出来るかもしれない。</p>
+<h3>Vue.js</h3>
+<p>以前からちょくちょく片手間フロントエンドマンとして仕事で使ったりしていたのでなんとなくは知っていたが
+TypeScript で書いたことはなかったので組み合わせた時どんな感じなのかという確認の意味も込めて使ってみた。</p>
+<p>結果としては<a href="https://jp.vuejs.org/v2/guide/typescript.html">Vue.js 2.5 で TypeScript に正式に対応</a>したこともありほぼほぼ問題はなかった。</p>
+<p>ちゃんとコンパイラが怒るところは怒ってくれるのでとりあえずコンパイルが通れば大体動くという安心感がある。
+Electron 用のアプリ作成フレームワークとして見ても特に問題はなく普段 Web で動かすのと同じように書けた。
+Web と異なるのはファイルシステムに直接アクセスしてローカルのファイルを参照したりするくらいで（それが一番のメリットかもしれないが）少し修正すれば Web にもコードを再利用出来そうだった。</p>
+<h3>まとめ</h3>
+<p>Electron + TypeScript + Vue.js でデスクトップアプリケーションを作った。
+内容が簡単な割りに結構ハマったりしたものの、 TypeScript の体験はかなりよかったので結果オーライ。（オーライ）</p>
+<p>Repo: <a href="https://github.com/shufo/aspida">https://github.com/shufo/aspida</a></p>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=Electron + TypeScript + Vue.js でソーシャルメディアデトックスアプリを作ってみた&amp;url=https://shufo.github.io/built-app-with-electron-vuejs-typescript.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://shufo.github.io/built-app-with-electron-vuejs-typescript.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=https://shufo.github.io/built-app-with-electron-vuejs-typescript.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://shufo.github.io/tag/electron">Electron</a><a href="https://shufo.github.io/tag/vuejs">Vue.js</a><a href="https://shufo.github.io/tag/typescript">TypeScript</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+                        <figure class="post-author-avatar">
+                            <img src="https://avatars1.githubusercontent.com/u/1641039?s=400&u=e76a7e80d95805075226c95b7fc576ac0df4b6f1&v=4" alt="Shufo" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://shufo.github.io/author/shufo">Shufo</a></h4>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Tokyo</span>
+                            <span class="post-author-website"><a href="http://github.com/shufo"><i class="ic ic-link"></i> Website</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+                <script type="text/javascript">
+                    var disqus = 'shufo';
+                    var disqus_shortname = 'shufo';
+                    var disqus_identifier = '/built-app-with-electron-vuejs-typescript.html';
+                    var disqus_url = 'https://shufo.github.io/built-app-with-electron-vuejs-typescript.html';
+                </script>
+                <noscript>Please enable JavaScript to view the comments.</noscript>
+                <section class="post-comments">
+                        <a id="show-disqus" class="post-comments-activate" data-disqus-identifier="/built-app-with-electron-vuejs-typescript.html" >Show Comments</a>
+                    <div id="disqus_thread"></div>
+                </section>
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+		<!-- TODO : Body class -->
+		<div id="body-class" style="display: none;" class=""></div>
+
+		<footer id="footer">
+			<div class="inner">
+				<section class="credits">
+					<span class="credits-theme">Theme
+						<a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a>
+					</span>
+					<span class="credits-software">Published with
+						<a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a>
+					</span>
+				</section>
+			</div>
+		</footer>
+	</section>
+
+	<script type="text/javascript" src="//shufo.github.io/theme/js/script.js"></script>      <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1113986-11']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+ <script type="text/javascript">
+    var disqus_shortname = 'shufo';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+
+</html>

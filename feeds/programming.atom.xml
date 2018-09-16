@@ -1,5 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog - programming</title><link href="https://shufo.github.io/" rel="alternate"></link><link href="https://shufo.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://shufo.github.io/</id><updated>2018-01-12T00:00:00+09:00</updated><entry><title>2017年にElixirを仕事で使った振り返り</title><link href="https://shufo.github.io/my-elixir-status-of-the-last-year.html" rel="alternate"></link><published>2018-01-12T00:00:00+09:00</published><updated>2018-01-12T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-01-12:/my-elixir-status-of-the-last-year.html</id><summary type="html">&lt;p&gt;1年と少しElixirを使った感想など&lt;/p&gt;</summary><content type="html">&lt;p&gt;少し遅くなったけど2017年にElixirを使った振り返りをしてみる。(&lt;s&gt;年末年始ダラダラしてて書くの遅れた&lt;/s&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog - Programming</title><link href="https://shufo.github.io/" rel="alternate"></link><link href="https://shufo.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://shufo.github.io/</id><updated>2018-09-16T00:00:00+09:00</updated><entry><title>Electron + TypeScript + Vue.js でソーシャルメディアデトックスアプリを作ってみた</title><link href="https://shufo.github.io/built-app-with-electron-vuejs-typescript.html" rel="alternate"></link><published>2018-09-16T00:00:00+09:00</published><updated>2018-09-16T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-09-16:/built-app-with-electron-vuejs-typescript.html</id><summary type="html">&lt;p&gt;Electron + TypeScript + Vue.js でアプリを作った話&lt;/p&gt;</summary><content type="html">&lt;p&gt;最近ちょっと SNS 断ちをしていてついでにというか勉強がてら自分用に Electron + TypeScript + Vue.js でソーシャルメディアデトックスアプリを&lt;a href="https://github.com/shufo/aspida"&gt;作ってみた&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;簡単に説明するとアプリでスイッチをオンにすると対象のサイトにアクセス出来なくなるというもの。&lt;/p&gt;
+&lt;p&gt;以下の GIF アニメを見てもらえればなんとなくどういうアプリかは分かると思う。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://github.com/shufo/aspida/wiki/assets/description.gif"&gt;&lt;/p&gt;
+&lt;p&gt;コードのコンパイル待ちだったり CI 待ちのちょっとした空き時間についアクセスしてスクロール中毒に陥ってしまうことを防ぎたくて作った。
+実際ソーシャルメディアを根本的に絶つにはマシンを破壊するか回線を切るくらいしかないと思うけど、そこまで出来ない人用。&lt;/p&gt;
+&lt;p&gt;仕組み的には対象のサイトのホスト名を hosts ファイルに書き込んで IP アドレス &lt;code&gt;0.0.0.0&lt;/code&gt; で名前解決させてアクセス出来なくさせるという簡単なもの。
+hosts ファイルに直接書き込むのでブラウザ以外にも CLI や専用のクライアントもブロック出来る。&lt;/p&gt;
+&lt;p&gt;DNS キャッシュが効いてる状態で名前解決時にキャッシュを参照してるとアクセス出来てしまう場合があるが Chrome の場合は&lt;code&gt;chrome://net-internals/#dns&lt;/code&gt;を開いてから&lt;code&gt;cleat host cache&lt;/code&gt;でキャッシュを削除すれば名前解決時に hosts ファイルを参照するようになる&lt;/p&gt;
+&lt;h3&gt;Electron&lt;/h3&gt;
+&lt;p&gt;テンプレートとして&lt;a href="https://github.com/SimulatedGREG/electron-vue"&gt;electron-vue&lt;/a&gt;をベースに作成した。&lt;/p&gt;
+&lt;p&gt;Electron は初めて使ったがクロスプラットフォームでバイナリを出力出来るのはやはり便利だった。ただ各プラットフォームごとにファイルシステムのアクセス制御の仕組みが違ったりするので書き込みに管理者権限の必要な hosts ファイルの権限チェックのためプラットフォーム固有の知識が必要になったりして少し苦労した。&lt;/p&gt;
+&lt;p&gt;例えば Windows は ACL でアクセス制御しているので&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;fs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;access&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;fs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;constants&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;W_OK&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;で書き込みが可能かチェックしてもファイルが存在する限りは必ず成功する。&lt;/p&gt;
+&lt;p&gt;一方 Linux は Electron を起動させているユーザで対象のパーミッションを正しくチェックする。
+なのでプラットフォームが Windows の場合のみ ACL を変えるコマンドを投げるようにした。&lt;/p&gt;
+&lt;p&gt;あと他にも色々ハマりどころがあったので忘れないように覚え書きしておく。&lt;/p&gt;
+&lt;h4&gt;ハマったところ&lt;/h4&gt;
+&lt;h5&gt;静的ファイルの扱い&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;npm run dev&lt;/code&gt; で起動する開発モードと &lt;code&gt;npm run build&lt;/code&gt; で出力する production 用のバイナリでは起動時のディレクトリ構造が異なるので &lt;code&gt;__static&lt;/code&gt; 変数を参照して静的ファイル用のディレクトリ(&lt;code&gt;static&lt;/code&gt;)へのパスを取得しないといけない。
+ちなみに TypeScript でデフォルトだと global の&lt;code&gt;__static&lt;/code&gt;を解決出来ないので&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;declare&lt;/span&gt; &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;__static&lt;/span&gt;: &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;を宣言して解決させた。&lt;/p&gt;
+&lt;h3&gt;TypeScript&lt;/h3&gt;
+&lt;p&gt;以前から使ってみたかったけど中々使う機会がなかったのでせっかくなので使ってみた。&lt;/p&gt;
+&lt;p&gt;VSCode + TypeScript の開発体験、いわゆる DX（&lt;strong&gt;D&lt;/strong&gt;eveloper e&lt;strong&gt;X&lt;/strong&gt;perience）は噂通り素晴らしかった。コンパイル前からエディタでほぼリアルタイムで型エラーを出力してくれるし精度も高い。補完も強力でほぼ取りこぼしもない。エディタ自体が TypeScript で作られているだけあって完成度は折り紙つき。&lt;/p&gt;
+&lt;p&gt;ただ TypeScript 特有のクセみたいなものはあって Vue.js でコンポーネント内で&lt;code&gt;this&lt;/code&gt;が解決されなかったりしてコンパイルエラーになるので&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt; &lt;span class="kr"&gt;as&lt;/span&gt; &lt;span class="nx"&gt;any&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;someMethod&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;とキャストして型の解決が必要だったり多少 workaround 的な作業が必要になる箇所が何箇所かあった。&lt;/p&gt;
+&lt;p&gt;あと TypeScript に対応していない npm モジュールもうまく解決出来ないこともあった。&lt;/p&gt;
+&lt;p&gt;TypeScript 特有の問題というわけではないが主に外部のライブラリと組み合わせたときに TypeScript を考慮していない部分で問題が発生しているように思えたので、TypeScript 外の npm モジュールを組み合わせるときは予め相性をチェックする作業が必要になりそうだった。&lt;/p&gt;
+&lt;p&gt;そういった意味で TypeScript を使う際は型が正しく通るように変更するオーバーヘッドが発生する可能性があるのでプロトタイプというよりは正式版としてかっちり作るのに向いているのかなと思った。&lt;/p&gt;
+&lt;p&gt;ネイティブ JS なら npm ライブラリもほぼ問題なく使えるし TypeScript に対応していないライブラリで型の問題が発生するということもないのでプロトタイプとして JS で書いてから問題なさそうだったら TypeScript に変換するというのもありといえばありかもしれない。&lt;/p&gt;
+&lt;p&gt;JS はテストを書くにも E2E がなかなか安定しなかったりで苦労するのでネイティブ JS で一度書いてから TypeScript に変換し型である程度の一貫性を保証することで品質を担保するという考え方も出来るかもしれない。&lt;/p&gt;
+&lt;h3&gt;Vue.js&lt;/h3&gt;
+&lt;p&gt;以前からちょくちょく片手間フロントエンドマンとして仕事で使ったりしていたのでなんとなくは知っていたが
+TypeScript で書いたことはなかったので組み合わせた時どんな感じなのかという確認の意味も込めて使ってみた。&lt;/p&gt;
+&lt;p&gt;結果としては&lt;a href="https://jp.vuejs.org/v2/guide/typescript.html"&gt;Vue.js 2.5 で TypeScript に正式に対応&lt;/a&gt;したこともありほぼほぼ問題はなかった。&lt;/p&gt;
+&lt;p&gt;ちゃんとコンパイラが怒るところは怒ってくれるのでとりあえずコンパイルが通れば大体動くという安心感がある。
+Electron 用のアプリ作成フレームワークとして見ても特に問題はなく普段 Web で動かすのと同じように書けた。
+Web と異なるのはファイルシステムに直接アクセスしてローカルのファイルを参照したりするくらいで（それが一番のメリットかもしれないが）少し修正すれば Web にもコードを再利用出来そうだった。&lt;/p&gt;
+&lt;h3&gt;まとめ&lt;/h3&gt;
+&lt;p&gt;Electron + TypeScript + Vue.js でデスクトップアプリケーションを作った。
+内容が簡単な割りに結構ハマったりしたものの、 TypeScript の体験はかなりよかったので結果オーライ。（オーライ）&lt;/p&gt;
+&lt;p&gt;Repo: &lt;a href="https://github.com/shufo/aspida"&gt;https://github.com/shufo/aspida&lt;/a&gt;&lt;/p&gt;</content><category term="Electron"></category><category term="Vue.js"></category><category term="TypeScript"></category></entry><entry><title>2017年にElixirを仕事で使った振り返り</title><link href="https://shufo.github.io/my-elixir-status-of-the-last-year.html" rel="alternate"></link><published>2018-01-12T00:00:00+09:00</published><updated>2018-01-12T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-01-12:/my-elixir-status-of-the-last-year.html</id><summary type="html">&lt;p&gt;1年と少しElixirを使った感想など&lt;/p&gt;</summary><content type="html">&lt;p&gt;少し遅くなったけど2017年にElixirを使った振り返りをしてみる。(&lt;s&gt;年末年始ダラダラしてて書くの遅れた&lt;/s&gt;
 )&lt;/p&gt;
 &lt;p&gt;以下のElixir環境まとめエントリーに触発されました&lt;/p&gt;
 &lt;ul&gt;
