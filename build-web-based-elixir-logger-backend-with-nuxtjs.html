@@ -150,7 +150,7 @@
 <p>正直そこまで規模が大きくなければプレーン Vue.js でも問題ないとはいえるが、これは後付けになるがそれでもなぜ Nuxt がよかったのかというと、Vuex や Vue-router が<strong>オプトイン</strong>として組み込まれていることが大きかった。</p>
 <p>自分は最初この SPA のアプリを作った際まず Vuex や Vue-router の使い方を知らなかった。
 が、特に問題なく状態管理が必要になれるレベルまで作りこめていけたのは Vuex などがあくまでオプトインで必要に応じて使えるようになっていたからであり、Vuex に関する<strong>ドメイン知識を必要としなかった</strong>ためである。</p>
-<p>まず PoC をする段階で Vuex の使用が必須であれば挫折したかもしれないが、PoC の段階では状態を全て直接.vue ファイルに保持してしていた。
+<p>まず PoC をする段階で Vuex の使用が必須であれば挫折したかもしれないが、PoC の段階では状態を全て直接.vue ファイルに保持していた。
 そのおかげで Vuex に状態を dispatch せずに PoC に集中することが出来た。</p>
 <p>その上で理論的に全て動作することが確証出来た段階で改めて状態ストアの Vuex で状態を一元的に Immutable に管理することでアプリを堅牢化することが出来た。</p>
 <p>この小さく作って育てるという流れはまさに Vue.js 作者の Evan You が提唱するところの <a href="https://qiita.com/mikakane/items/3bd6af69259f5af6fecb"><strong>Progressive Framework</strong></a> でありオーナーの異なる Nuxt.js でも Progressive Framework の思想が実現されていることに Evan You のコミュニティ運営の手腕を見た気がする。</p>
