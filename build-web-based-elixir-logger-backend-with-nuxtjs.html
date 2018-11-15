@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+	<title>Nuxt.js で作る Web ベースの Elixir Logger バックエンド - shufo blog</title>
+
+
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="referrer" content="origin" />
+	<meta name="generator" content="Pelican" /> 
+	<!-- Feed -->
+ 	<link href="https://shufo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="shufo blog Full Atom Feed"
+	/>     	<link href="https://shufo.github.io/feeds/programming.atom.xml" type="application/atom+xml" rel="alternate"
+	 title="shufo blog Categories Atom Feed" />     
+	<link href="//shufo.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+	<!-- Code highlight color scheme -->
+	<link href="//shufo.github.io/theme/css/code_blocks/tomorrow_night.css" rel="stylesheet">  
+	<!-- Custom fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+    <link href="http://shufo.github.io/build-web-based-elixir-logger-backend-with-nuxtjs.html" rel="canonical" />
+
+        <meta name="description" content="Nuxt.js で Web ベースの SPA な Elixir の Logger バックエンドを作った">
+
+        <meta name="author" content="shufo">
+
+        <meta name="tags" content="Elixir">
+        <meta name="tags" content="Nuxt.js">
+     	<meta property="og:locale" content="" /> 	<meta property="og:site_name" content="shufo blog" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="shufo blog" />
+	<meta property="og:description" content="Random automation stuff" />
+	<meta property="og:url" content="https://shufo.github.io" /> 	<meta property="og:image" content="https://shufo.github.io/assets/header.jpg" />   
+  <meta property="og:type" content="article">
+            <meta property="article:author" content="https://shufo.github.io/author/shufo">
+  <meta property="og:url" content="https://shufo.github.io/build-web-based-elixir-logger-backend-with-nuxtjs.html">
+  <meta property="og:title" content="Nuxt.js で作る Web ベースの Elixir Logger バックエンド">
+  <meta property="article:published_time" content="2018-11-15 00:00:00+09:00">
+            <meta property="og:description" content="Nuxt.js で Web ベースの SPA な Elixir の Logger バックエンドを作った">
+
+                <meta property="og:image" content="https://i.imgur.com/WPAhlCS.png">
+         <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@shufo_">
+        <meta name="twitter:title" content="Nuxt.js で作る Web ベースの Elixir Logger バックエンド">
+        <meta name="twitter:url" content="https://shufo.github.io/build-web-based-elixir-logger-backend-with-nuxtjs.html">
+
+                <meta name="twitter:image:src" content="https://i.imgur.com/WPAhlCS.png">
+
+            <meta name="twitter:description" content="Nuxt.js で Web ベースの SPA な Elixir の Logger バックエンドを作った">
+	<meta name="google-site-verification" content="pfqlDqY0RodNUTCncFltLDDwwV_AOnfcqefcGys1NTQ" />
+</head>
+<!-- TODO : Body class -->
+
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/hello-world.html" role="presentation">About</a></li>
+          <li><a href="/archives/" role="presentation">Archives</a></li>
+          <li><a href="./categories.html" role="presentation">Categories</a></li>
+          <li><a href="https://github.com/shufo" role="presentation">GitHub</a></li>
+          <li><a href="/feeds/all.atom.xml" role="presentation">RSS</a></li>
+
+
+    </ul>
+  </div>
+</nav>     <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://shufo.github.io" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">Nuxt.js で作る Web ベースの Elixir Logger バックエンド</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://shufo.github.io/author/shufo">Shufo</a>
+            | <time datetime="2018 Nov/15 (Thu)">2018 Nov/15 (Thu)</time>
+        </span>
+        <!-- TODO : Modified check -->
+            <div class="post-cover cover" style="background-image: url('https://i.imgur.com/WPAhlCS.png')">
+      </div>
+    </header>
+
+	<section id="wrapper">
+		<a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p>Nuxt.js で Web ベースの SPA な Elixir の Logger バックエンドを作った</p>
+<p>GitHub: <a href="https://github.com/shufo/log_viewer">Log Viewer</a></p>
+<p><img alt="WPAhlCS - Imgur.png" src="https://qiita-image-store.s3.amazonaws.com/0/47983/671695d3-0a82-b11d-76a3-c2061856e9b2.png"></p>
+<p>使用した技術としては <a href="https://nuxtjs.org/">Nuxt.js</a>, Websocket, Cowboy, Logger, <a href="https://vuetifyjs.com/ja/">Vuetify.js</a>, <a href="https://www.chartjs.org/">Chart.js</a> など</p>
+<p>簡単に説明するとこの Logger backend は Web 上に リアルタイムに Elixir のログを表示してくれる</p>
+<p>なぜ Web にログを表示したいのか？という疑問ももっともだがまずそういうライブラリがなかったから作ったという以上の理由は今のところ正直特に無い。無ければ作る！それまでの話よ！（格言）</p>
+<p>機能としては</p>
+<ul>
+<li><strong>検索ワード ＆ Log レベルでログのフィルタリング</strong></li>
+<li><strong>メタデータの表示によりログを仕込んだ場所や他 PID などのメタ情報の確認</strong></li>
+<li><strong>Syntax Highlighted されたログ</strong></li>
+</ul>
+<p>などがある</p>
+<p><img alt="Imgur" src="https://i.imgur.com/0qj93i4.gif"></p>
+<p>利用用途としては主にローカルでのログの確認やリモートの開発環境のログ確認だが、やろうと思えばちょっとした本番環境のログの確認も出来るだろう。
+ただし Web ベースのためそれなりにリアルタイムでのレンダリングは重くなってしまうため、ログ流量の多い環境での利用はおすすめしない。
+またこのライブラリに認証の仕組み自体はないためリモート環境で使用する際は別途 <a href="https://github.com/ueberauth/guardian">guardian</a>, <a href="https://github.com/ueberauth/ueberauth">ueberauth</a> などでルートに認証をかけることが必要になるだろう。</p>
+<p>以降ではこのライブラリを作る際に使った技術などについて所感やなぜそれを使ったかなどについて触れてみる</p>
+<h3>Nuxt.js</h3>
+<p>Nuxt.js は今回初めて使ったが開発体験としてはとてもよかった</p>
+<p>まず使ってすぐ分かるメリットとしては</p>
+<ul>
+<li>小中規模 Vue.js のベストプラクティス構成</li>
+<li>設計で迷いが出にくい</li>
+<li>ドキュメントがしっかり書かれている</li>
+<li>サブモジュールがオプトイン</li>
+</ul>
+<p>というようなところがある。</p>
+<p>Vue.js は最小でペラ一の HTML に埋め込むことも、 SPA + SSR でサイト全体を構成するようなそれなりの規模の構成も可能なため設計の自由度は高いのだがその分強制力がなく、自由に設計すると一貫性のないコードになってしまうという問題があった。
+そこで Nuxt が Vue.js のフレームワークとして規約を提供してくれたおかげで統一された設計のもとプロジェクトをスケールすることが出来るようになった</p>
+<p>正直そこまで規模が大きくなければプレーン Vue.js でも問題ないとはいえるが、これは後付けになるがそれでもなぜ Nuxt がよかったのかというと、Vuex や Vue-router が<strong>オプトイン</strong>として組み込まれていることが大きかった。</p>
+<p>自分は最初この SPA のアプリを作った際まず Vuex や Vue-router の使い方を知らなかった。
+が、特に問題なく状態管理が必要になれるレベルまで作りこめていけたのは Vuex などがあくまでオプトインで必要に応じて使えるようになっていたからであり、Vuex に関する<strong>ドメイン知識を必要としなかった</strong>ためである。</p>
+<p>まず PoC をする段階で Vuex の使用が必須であれば挫折したかもしれないが、PoC の段階では状態を全て直接.vue ファイルに保持してしていた。
+そのおかげで Vuex に状態を dispatch せずに PoC に集中することが出来た。</p>
+<p>その上で理論的に全て動作することが確証出来た段階で改めて状態ストアの Vuex で状態を一元的に Immutable に管理することでアプリを堅牢化することが出来た。</p>
+<p>この小さく作って育てるという流れはまさに Vue.js 作者の Evan You が提唱するところの <a href="https://qiita.com/mikakane/items/3bd6af69259f5af6fecb"><strong>Progressive Framework</strong></a> でありオーナーの異なる Nuxt.js でも Progressive Framework の思想が実現されていることに Evan You のコミュニティ運営の手腕を見た気がする。</p>
+<p>Vue.js エコシステムが優れているのはエコシステム全体で Evan You の思想を実現するようサポートされていることであり、こういったエコシステムは React とはまた少し違う文化でどちらかというと PHP 的な文化であると個人的には思った。</p>
+<p>PHP は元々プログラミング言語としてというよりは単なるスクリプトとして生まれ、HTML の中に直接埋め込めるという形になり、更にオブジェクト指向が強化され現在の形に至るが、そういった最初からビッグバンで完璧な秩序が出来上がるというよりかは時代とそのニーズに合わせて言語自体が成長するという歴史に Progressive Framework である Vue.js と近いものを感じる。</p>
+<p>Vue.js もテンプレート言語のように最初は一枚の .vue ファイルの中にスクリプト、テンプレート、スタイルを定義してスコープを完結することが出来る。当然最初のうちはこれで問題がなくてもプロジェクトが成長するにつれて状態を一元的に管理するストアが欲しくなり、再利用可能な部品でコンポーネント化が進むが、この過程が PHP の歴史との親和性を感じた。</p>
+<p>Laravel が Vue.js を<a href="https://github.com/laravel/laravel/blob/de1f472d767236713870e424a87bcf2ab4ca80cf/package.json#L20">採用している</a>のも偶然ではないかもしれない。</p>
+<h3>Custom Logger backend and Websocket (Cowboy)</h3>
+<p>Elixir は標準で<code>Logger</code>というロギング用のモジュールがあり、これにカスタムのロギングモジュールを提供することで<code>Logger.info("foo")</code>などでログを出す際、任意の処理を hook することが出来る</p>
+<p>そこで今回は Web にログを出力するために Websocket 経由でログを送信するカスタムの Logger backend を<a href="https://github.com/shufo/log_viewer/blob/master/lib/log_viewer/logger.ex">作成した</a>。
+仕組みとしてはページを表示したクライアントへサーバより Websocket 経由でログを送るという簡単なものだ。</p>
+<p>なぜ Websocket 経由にしたかというと、ログファイルを直接読み取る方法もあるが、近年のソフトウェア開発環境ではコンテナベースで開発することも多くログは標準出力に出力するだけでファイルとして状態を保持しないことも多いため、ブラウザを持つクライアントならどこからでも表示可能にするためこの方法にした。</p>
+<p>Websocket の実装には<a href="https://github.com/ninenines/cowboy">Cowboy</a>のビルトイン Websocket サーバを使用。</p>
+<p>詳しい実装方法については以下に記事を書いた。</p>
+<p>参照: <a href="https://qiita.com/shufo/items/6ad1c2d51bca5a2e5f49">Elixir で Phoenix を使わずに Websocket サーバの実装 - Qiita</a></p>
+<h3>Vuetify, Chart.js</h3>
+<p>UI については当初 bootstrap を検討していたが、<a href="https://github.com/nuxt-community/awesome-nuxt">awesome-nuxt</a>を眺めていたところ、Official プロジェクトの中に <a href="https://vuetifyjs.com/ja/">Vuetify</a> を発見し、Material デザインが可能ということで検討リストに加えてみた。<a href="https://github.com/jgthms/bulma">Bulma</a> も検討していたがこの中では Vuetify がもっともアプリらしいアプリのデザインになることと、どちらかというと融通の効く bootstrap や Bulma のスタイルを使うよりかはユーザ知識の再利用が可能な Material デザインの方が機能性を求められるログビューワとしての UX としては優れているだろうという判断で Vuetify にした。</p>
+<p>結果としては Material デザインなのでほぼスタイルのカスタムの余地はなくブロックの組み合わせでアプリを構築していく形になるのだが、既にユーザが Google 周りのサービスを使う上で学習した知識を再利用出来るので操作に迷うということは少なくなったかと思う。</p>
+<p>逆にオリジナルのスタイルを適用したいとなるとマテリアルデザインの思想からは外れるので別の方法を検討した方がいいかもしれないが、管理画面やコンソールなど機能性を求められる箇所に関してはとても用途に合ってると思う。</p>
+<p>プラス α 要素で Chart.js でログの量をリアルタイムにチャートに反映させるということもやってみたが、Vue.js のコンポーネントシステムがよく出来ているため、グラフに関する状態をコンポーネント内に分離した上で安全に扱えた。</p>
+<h2>まとめ</h2>
+<p>それぞれ利用した技術について簡単に触れてみた。
+Vue.js は以前から軽く触れていたため今回 Nuxt は正直評価してみたい半分で使ってみたが結果としては収穫があってよかった。</p>
+<p>最初からその技術を目的として調査すると挫折しやすいけどライブラリ開発ドリブンで必要性に応じて理解を深めるのが学習の最短の手順だなと改めて思った。</p>
+<h2>環境</h2>
+<p>今回使用した環境は以下の通り</p>
+<ul>
+<li>Elixir 1.7</li>
+<li>Vue.js 2.5.17</li>
+<li>Nuxt.js 2.2.0</li>
+</ul>
+<h2>Links</h2>
+<ul>
+<li><a href="https://github.com/shufo/log_viewer">GitHub</a></li>
+</ul>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=Nuxt.js で作る Web ベースの Elixir Logger バックエンド&amp;url=https://shufo.github.io/build-web-based-elixir-logger-backend-with-nuxtjs.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://shufo.github.io/build-web-based-elixir-logger-backend-with-nuxtjs.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=https://shufo.github.io/build-web-based-elixir-logger-backend-with-nuxtjs.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://shufo.github.io/tag/elixir">Elixir</a><a href="https://shufo.github.io/tag/nuxtjs">Nuxt.js</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+                        <figure class="post-author-avatar">
+                            <img src="https://avatars1.githubusercontent.com/u/1641039?s=400&u=e76a7e80d95805075226c95b7fc576ac0df4b6f1&v=4" alt="Shufo" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://shufo.github.io/author/shufo">Shufo</a></h4>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Tokyo</span>
+                            <span class="post-author-website"><a href="http://github.com/shufo"><i class="ic ic-link"></i> Website</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+                <script type="text/javascript">
+                    var disqus = 'shufo';
+                    var disqus_shortname = 'shufo';
+                    var disqus_identifier = '/build-web-based-elixir-logger-backend-with-nuxtjs.html';
+                    var disqus_url = 'https://shufo.github.io/build-web-based-elixir-logger-backend-with-nuxtjs.html';
+                </script>
+                <noscript>Please enable JavaScript to view the comments.</noscript>
+                <section class="post-comments">
+                        <a id="show-disqus" class="post-comments-activate" data-disqus-identifier="/build-web-based-elixir-logger-backend-with-nuxtjs.html" >Show Comments</a>
+                    <div id="disqus_thread"></div>
+                </section>
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+		<!-- TODO : Body class -->
+		<div id="body-class" style="display: none;" class=""></div>
+
+		<footer id="footer">
+			<div class="inner">
+				<section class="credits">
+					<span class="credits-theme">Theme
+						<a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a>
+					</span>
+					<span class="credits-software">Published with
+						<a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a>
+					</span>
+				</section>
+			</div>
+		</footer>
+	</section>
+
+	<script type="text/javascript" src="//shufo.github.io/theme/js/script.js"></script>      <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1113986-11']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+ <script type="text/javascript">
+    var disqus_shortname = 'shufo';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+
+</html>

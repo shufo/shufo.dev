@@ -5,15 +5,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/</loc>
-<lastmod>2018-09-16T22:40:13-00:00</lastmod>
+<lastmod>2018-11-15T12:28:42-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://shufo.github.io/categories.html</loc>
-<lastmod>2018-09-16T22:40:13-00:00</lastmod>
+<lastmod>2018-11-15T12:28:42-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://shufo.github.io/build-web-based-elixir-logger-backend-with-nuxtjs.html</loc>
+<lastmod>2018-11-15T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -27,6 +34,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://shufo.github.io/jinba-to-takao.html</loc>
 <lastmod>2018-08-25T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://shufo.github.io/ortholinear-keyboard.html</loc>
+<lastmod>2018-08-11T00:00:00+09:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
@@ -201,7 +215,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/category/keyboard</loc>
-<lastmod>2018-01-08T00:00:00+09:19</lastmod>
+<lastmod>2018-08-11T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -229,7 +243,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/category/programming</loc>
-<lastmod>2018-09-16T00:00:00+09:19</lastmod>
+<lastmod>2018-11-15T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -278,7 +292,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/tag/keyboard</loc>
-<lastmod>2018-01-08T00:00:00+09:19</lastmod>
+<lastmod>2018-08-11T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -383,7 +397,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/tag/elixir</loc>
-<lastmod>2018-01-12T00:00:00+09:19</lastmod>
+<lastmod>2018-11-15T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -398,6 +412,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://shufo.github.io/tag/about</loc>
 <lastmod>2015-01-09T13:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://shufo.github.io/tag/nuxtjs</loc>
+<lastmod>2018-11-15T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -453,7 +474,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/author/shufo</loc>
-<lastmod>2018-09-16T00:00:00+09:19</lastmod>
+<lastmod>2018-11-15T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

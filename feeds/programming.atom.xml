@@ -1,5 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog - Programming</title><link href="https://shufo.github.io/" rel="alternate"></link><link href="https://shufo.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://shufo.github.io/</id><updated>2018-09-16T00:00:00+09:00</updated><entry><title>Electron + TypeScript + Vue.js でソーシャルメディアデトックスアプリを作ってみた</title><link href="https://shufo.github.io/built-app-with-electron-vuejs-typescript.html" rel="alternate"></link><published>2018-09-16T00:00:00+09:00</published><updated>2018-09-16T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-09-16:/built-app-with-electron-vuejs-typescript.html</id><summary type="html">&lt;p&gt;Electron + TypeScript + Vue.js でアプリを作った話&lt;/p&gt;</summary><content type="html">&lt;p&gt;最近ちょっと SNS 断ちをしていてついでにというか勉強がてら自分用に Electron + TypeScript + Vue.js でソーシャルメディアデトックスアプリを&lt;a href="https://github.com/shufo/aspida"&gt;作ってみた&lt;/a&gt;&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog - Programming</title><link href="https://shufo.github.io/" rel="alternate"></link><link href="https://shufo.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://shufo.github.io/</id><updated>2018-11-15T00:00:00+09:00</updated><entry><title>Nuxt.js で作る Web ベースの Elixir Logger バックエンド</title><link href="https://shufo.github.io/build-web-based-elixir-logger-backend-with-nuxtjs.html" rel="alternate"></link><published>2018-11-15T00:00:00+09:00</published><updated>2018-11-15T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-11-15:/build-web-based-elixir-logger-backend-with-nuxtjs.html</id><summary type="html">&lt;p&gt;Nuxt.js で Web ベースの SPA な Elixir の Logger バックエンドを作った&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nuxt.js で Web ベースの SPA な Elixir の Logger バックエンドを作った&lt;/p&gt;
+&lt;p&gt;GitHub: &lt;a href="https://github.com/shufo/log_viewer"&gt;Log Viewer&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="WPAhlCS - Imgur.png" src="https://qiita-image-store.s3.amazonaws.com/0/47983/671695d3-0a82-b11d-76a3-c2061856e9b2.png"&gt;&lt;/p&gt;
+&lt;p&gt;使用した技術としては &lt;a href="https://nuxtjs.org/"&gt;Nuxt.js&lt;/a&gt;, Websocket, Cowboy, Logger, &lt;a href="https://vuetifyjs.com/ja/"&gt;Vuetify.js&lt;/a&gt;, &lt;a href="https://www.chartjs.org/"&gt;Chart.js&lt;/a&gt; など&lt;/p&gt;
+&lt;p&gt;簡単に説明するとこの Logger backend は Web 上に リアルタイムに Elixir のログを表示してくれる&lt;/p&gt;
+&lt;p&gt;なぜ Web にログを表示したいのか？という疑問ももっともだがまずそういうライブラリがなかったから作ったという以上の理由は今のところ正直特に無い。無ければ作る！それまでの話よ！（格言）&lt;/p&gt;
+&lt;p&gt;機能としては&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;検索ワード ＆ Log レベルでログのフィルタリング&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;メタデータの表示によりログを仕込んだ場所や他 PID などのメタ情報の確認&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Syntax Highlighted されたログ&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;などがある&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Imgur" src="https://i.imgur.com/0qj93i4.gif"&gt;&lt;/p&gt;
+&lt;p&gt;利用用途としては主にローカルでのログの確認やリモートの開発環境のログ確認だが、やろうと思えばちょっとした本番環境のログの確認も出来るだろう。
+ただし Web ベースのためそれなりにリアルタイムでのレンダリングは重くなってしまうため、ログ流量の多い環境での利用はおすすめしない。
+またこのライブラリに認証の仕組み自体はないためリモート環境で使用する際は別途 &lt;a href="https://github.com/ueberauth/guardian"&gt;guardian&lt;/a&gt;, &lt;a href="https://github.com/ueberauth/ueberauth"&gt;ueberauth&lt;/a&gt; などでルートに認証をかけることが必要になるだろう。&lt;/p&gt;
+&lt;p&gt;以降ではこのライブラリを作る際に使った技術などについて所感やなぜそれを使ったかなどについて触れてみる&lt;/p&gt;
+&lt;h3&gt;Nuxt.js&lt;/h3&gt;
+&lt;p&gt;Nuxt.js は今回初めて使ったが開発体験としてはとてもよかった&lt;/p&gt;
+&lt;p&gt;まず使ってすぐ分かるメリットとしては&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;小中規模 Vue.js のベストプラクティス構成&lt;/li&gt;
+&lt;li&gt;設計で迷いが出にくい&lt;/li&gt;
+&lt;li&gt;ドキュメントがしっかり書かれている&lt;/li&gt;
+&lt;li&gt;サブモジュールがオプトイン&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;というようなところがある。&lt;/p&gt;
+&lt;p&gt;Vue.js は最小でペラ一の HTML に埋め込むことも、 SPA + SSR でサイト全体を構成するようなそれなりの規模の構成も可能なため設計の自由度は高いのだがその分強制力がなく、自由に設計すると一貫性のないコードになってしまうという問題があった。
+そこで Nuxt が Vue.js のフレームワークとして規約を提供してくれたおかげで統一された設計のもとプロジェクトをスケールすることが出来るようになった&lt;/p&gt;
+&lt;p&gt;正直そこまで規模が大きくなければプレーン Vue.js でも問題ないとはいえるが、これは後付けになるがそれでもなぜ Nuxt がよかったのかというと、Vuex や Vue-router が&lt;strong&gt;オプトイン&lt;/strong&gt;として組み込まれていることが大きかった。&lt;/p&gt;
+&lt;p&gt;自分は最初この SPA のアプリを作った際まず Vuex や Vue-router の使い方を知らなかった。
+が、特に問題なく状態管理が必要になれるレベルまで作りこめていけたのは Vuex などがあくまでオプトインで必要に応じて使えるようになっていたからであり、Vuex に関する&lt;strong&gt;ドメイン知識を必要としなかった&lt;/strong&gt;ためである。&lt;/p&gt;
+&lt;p&gt;まず PoC をする段階で Vuex の使用が必須であれば挫折したかもしれないが、PoC の段階では状態を全て直接.vue ファイルに保持してしていた。
+そのおかげで Vuex に状態を dispatch せずに PoC に集中することが出来た。&lt;/p&gt;
+&lt;p&gt;その上で理論的に全て動作することが確証出来た段階で改めて状態ストアの Vuex で状態を一元的に Immutable に管理することでアプリを堅牢化することが出来た。&lt;/p&gt;
+&lt;p&gt;この小さく作って育てるという流れはまさに Vue.js 作者の Evan You が提唱するところの &lt;a href="https://qiita.com/mikakane/items/3bd6af69259f5af6fecb"&gt;&lt;strong&gt;Progressive Framework&lt;/strong&gt;&lt;/a&gt; でありオーナーの異なる Nuxt.js でも Progressive Framework の思想が実現されていることに Evan You のコミュニティ運営の手腕を見た気がする。&lt;/p&gt;
+&lt;p&gt;Vue.js エコシステムが優れているのはエコシステム全体で Evan You の思想を実現するようサポートされていることであり、こういったエコシステムは React とはまた少し違う文化でどちらかというと PHP 的な文化であると個人的には思った。&lt;/p&gt;
+&lt;p&gt;PHP は元々プログラミング言語としてというよりは単なるスクリプトとして生まれ、HTML の中に直接埋め込めるという形になり、更にオブジェクト指向が強化され現在の形に至るが、そういった最初からビッグバンで完璧な秩序が出来上がるというよりかは時代とそのニーズに合わせて言語自体が成長するという歴史に Progressive Framework である Vue.js と近いものを感じる。&lt;/p&gt;
+&lt;p&gt;Vue.js もテンプレート言語のように最初は一枚の .vue ファイルの中にスクリプト、テンプレート、スタイルを定義してスコープを完結することが出来る。当然最初のうちはこれで問題がなくてもプロジェクトが成長するにつれて状態を一元的に管理するストアが欲しくなり、再利用可能な部品でコンポーネント化が進むが、この過程が PHP の歴史との親和性を感じた。&lt;/p&gt;
+&lt;p&gt;Laravel が Vue.js を&lt;a href="https://github.com/laravel/laravel/blob/de1f472d767236713870e424a87bcf2ab4ca80cf/package.json#L20"&gt;採用している&lt;/a&gt;のも偶然ではないかもしれない。&lt;/p&gt;
+&lt;h3&gt;Custom Logger backend and Websocket (Cowboy)&lt;/h3&gt;
+&lt;p&gt;Elixir は標準で&lt;code&gt;Logger&lt;/code&gt;というロギング用のモジュールがあり、これにカスタムのロギングモジュールを提供することで&lt;code&gt;Logger.info("foo")&lt;/code&gt;などでログを出す際、任意の処理を hook することが出来る&lt;/p&gt;
+&lt;p&gt;そこで今回は Web にログを出力するために Websocket 経由でログを送信するカスタムの Logger backend を&lt;a href="https://github.com/shufo/log_viewer/blob/master/lib/log_viewer/logger.ex"&gt;作成した&lt;/a&gt;。
+仕組みとしてはページを表示したクライアントへサーバより Websocket 経由でログを送るという簡単なものだ。&lt;/p&gt;
+&lt;p&gt;なぜ Websocket 経由にしたかというと、ログファイルを直接読み取る方法もあるが、近年のソフトウェア開発環境ではコンテナベースで開発することも多くログは標準出力に出力するだけでファイルとして状態を保持しないことも多いため、ブラウザを持つクライアントならどこからでも表示可能にするためこの方法にした。&lt;/p&gt;
+&lt;p&gt;Websocket の実装には&lt;a href="https://github.com/ninenines/cowboy"&gt;Cowboy&lt;/a&gt;のビルトイン Websocket サーバを使用。&lt;/p&gt;
+&lt;p&gt;詳しい実装方法については以下に記事を書いた。&lt;/p&gt;
+&lt;p&gt;参照: &lt;a href="https://qiita.com/shufo/items/6ad1c2d51bca5a2e5f49"&gt;Elixir で Phoenix を使わずに Websocket サーバの実装 - Qiita&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Vuetify, Chart.js&lt;/h3&gt;
+&lt;p&gt;UI については当初 bootstrap を検討していたが、&lt;a href="https://github.com/nuxt-community/awesome-nuxt"&gt;awesome-nuxt&lt;/a&gt;を眺めていたところ、Official プロジェクトの中に &lt;a href="https://vuetifyjs.com/ja/"&gt;Vuetify&lt;/a&gt; を発見し、Material デザインが可能ということで検討リストに加えてみた。&lt;a href="https://github.com/jgthms/bulma"&gt;Bulma&lt;/a&gt; も検討していたがこの中では Vuetify がもっともアプリらしいアプリのデザインになることと、どちらかというと融通の効く bootstrap や Bulma のスタイルを使うよりかはユーザ知識の再利用が可能な Material デザインの方が機能性を求められるログビューワとしての UX としては優れているだろうという判断で Vuetify にした。&lt;/p&gt;
+&lt;p&gt;結果としては Material デザインなのでほぼスタイルのカスタムの余地はなくブロックの組み合わせでアプリを構築していく形になるのだが、既にユーザが Google 周りのサービスを使う上で学習した知識を再利用出来るので操作に迷うということは少なくなったかと思う。&lt;/p&gt;
+&lt;p&gt;逆にオリジナルのスタイルを適用したいとなるとマテリアルデザインの思想からは外れるので別の方法を検討した方がいいかもしれないが、管理画面やコンソールなど機能性を求められる箇所に関してはとても用途に合ってると思う。&lt;/p&gt;
+&lt;p&gt;プラス α 要素で Chart.js でログの量をリアルタイムにチャートに反映させるということもやってみたが、Vue.js のコンポーネントシステムがよく出来ているため、グラフに関する状態をコンポーネント内に分離した上で安全に扱えた。&lt;/p&gt;
+&lt;h2&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;それぞれ利用した技術について簡単に触れてみた。
+Vue.js は以前から軽く触れていたため今回 Nuxt は正直評価してみたい半分で使ってみたが結果としては収穫があってよかった。&lt;/p&gt;
+&lt;p&gt;最初からその技術を目的として調査すると挫折しやすいけどライブラリ開発ドリブンで必要性に応じて理解を深めるのが学習の最短の手順だなと改めて思った。&lt;/p&gt;
+&lt;h2&gt;環境&lt;/h2&gt;
+&lt;p&gt;今回使用した環境は以下の通り&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Elixir 1.7&lt;/li&gt;
+&lt;li&gt;Vue.js 2.5.17&lt;/li&gt;
+&lt;li&gt;Nuxt.js 2.2.0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/shufo/log_viewer"&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Elixir"></category><category term="Nuxt.js"></category></entry><entry><title>Electron + TypeScript + Vue.js でソーシャルメディアデトックスアプリを作ってみた</title><link href="https://shufo.github.io/built-app-with-electron-vuejs-typescript.html" rel="alternate"></link><published>2018-09-16T00:00:00+09:00</published><updated>2018-09-16T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-09-16:/built-app-with-electron-vuejs-typescript.html</id><summary type="html">&lt;p&gt;Electron + TypeScript + Vue.js でアプリを作った話&lt;/p&gt;</summary><content type="html">&lt;p&gt;最近ちょっと SNS 断ちをしていてついでにというか勉強がてら自分用に Electron + TypeScript + Vue.js でソーシャルメディアデトックスアプリを&lt;a href="https://github.com/shufo/aspida"&gt;作ってみた&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;簡単に説明するとアプリでスイッチをオンにすると対象のサイトにアクセス出来なくなるというもの。&lt;/p&gt;
 &lt;p&gt;以下の GIF アニメを見てもらえればなんとなくどういうアプリかは分かると思う。&lt;/p&gt;
 &lt;p&gt;&lt;img alt="" src="https://github.com/shufo/aspida/wiki/assets/description.gif"&gt;&lt;/p&gt;
