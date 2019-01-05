@@ -5,15 +5,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/</loc>
-<lastmod>2018-11-15T17:26:41-00:00</lastmod>
+<lastmod>2019-01-05T14:46:59-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://shufo.github.io/categories.html</loc>
-<lastmod>2018-11-15T17:26:41-00:00</lastmod>
+<lastmod>2019-01-05T14:46:59-00:00</lastmod>
 <changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://shufo.github.io/linux-desktop-after-2-years.html</loc>
+<lastmod>2019-01-05T00:00:00+09:00</lastmod>
+<changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -186,6 +193,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://shufo.github.io/category/desktop</loc>
+<lastmod>2019-01-05T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://shufo.github.io/category/diary</loc>
 <lastmod>2018-01-08T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
@@ -291,6 +305,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>https://shufo.github.io/tag/linux</loc>
+<lastmod>2019-01-05T00:00:00+09:19</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>https://shufo.github.io/tag/zi-zuo-kibodo</loc>
 <lastmod>2018-01-08T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
@@ -382,8 +403,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://shufo.github.io/tag/mac</loc>
-<lastmod>2016-11-28T20:00:00+09:19</lastmod>
+<loc>https://shufo.github.io/tag/electron</loc>
+<lastmod>2018-09-16T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -424,8 +445,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://shufo.github.io/tag/electron</loc>
-<lastmod>2018-09-16T00:00:00+09:19</lastmod>
+<loc>https://shufo.github.io/tag/mac</loc>
+<lastmod>2016-11-28T20:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -467,7 +488,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://shufo.github.io/author/shufo</loc>
-<lastmod>2018-11-15T00:00:00+09:19</lastmod>
+<lastmod>2019-01-05T00:00:00+09:19</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

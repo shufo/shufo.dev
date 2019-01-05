@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog - Desktop</title><link href="https://shufo.github.io/" rel="alternate"></link><link href="https://shufo.github.io/feeds/desktop.atom.xml" rel="self"></link><id>https://shufo.github.io/</id><updated>2019-01-05T00:00:00+09:00</updated><entry><title>仕事用 PC を Linux デスクトップにしてから 2 年経ってよかったと思う点 3 つ</title><link href="https://shufo.github.io/linux-desktop-after-2-years.html" rel="alternate"></link><published>2019-01-05T00:00:00+09:00</published><updated>2019-01-05T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2019-01-05:/linux-desktop-after-2-years.html</id><summary type="html">&lt;p&gt;Linux デスクトップにしてから 2 年程経ったので&lt;/p&gt;</summary><content type="html">&lt;p&gt;というわけで仕事用の PC を Linux デスクトップにしてから 2 年程経ったので改めてその感想などを書いてみる&lt;/p&gt;
+&lt;p&gt;ちなみに OS は&lt;a href="https://elementary.io/"&gt;elementary OS&lt;/a&gt;を入れている&lt;/p&gt;
+&lt;h3&gt;elementary OS&lt;/h3&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;blockquote class="imgur-embed-pub" lang="en" data-id="DbKiPNf"&gt;&lt;a href="//imgur.com/DbKiPNf"&gt;View post on imgur.com&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;script async src="//s.imgur.com/min/embed.js" charset="utf-8"&gt;&lt;/script&gt;
+
+&lt;p&gt;elementary OS は Ubuntu ベースのディストリビューションで最近&lt;a href="https://distrowatch.com/"&gt;DistroWatch&lt;/a&gt;でも Linux Mint に次いで人気のディストリビューションになっている&lt;/p&gt;
+&lt;blockquote class="imgur-embed-pub" lang="en" data-id="DLIE28m"&gt;&lt;a href="//imgur.com/DLIE28m"&gt;View post on imgur.com&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;script async src="//s.imgur.com/min/embed.js" charset="utf-8"&gt;&lt;/script&gt;
+
+&lt;p&gt;elementary OS を一言で説明すると名前の通り elementary（初心者）向けの OS だ&lt;/p&gt;
+&lt;p&gt;というのは elementary OS の設計思想はどちらかというと Mac に近く、デフォルトでカスタマイズ出来る余地が少なくなっているのだ。Linux で最初にやることといったらデスクトップ環境を KDE や Gnome から選んで〜みたいなこともなく Pantheon という elementary OS のために設計されたデスクトップ環境の元で一貫した UI が提供される。&lt;/p&gt;
+&lt;p&gt;Mac が割と万人におすすめ出来るのはそういった選択の余地の少なさで、アフォーダンスを限定することで説明しなくても誰でも使える点だ。iOS も同じ思想で老人でも子供でも初見で使えるようになっている（最近は怪しいけど）&lt;/p&gt;
+&lt;p&gt;elementary OS でも同様にユーザに見せる UI を慎重に選んでいる。プログラミングにも通じることだけど、ユーザに見せる API のインターフェースをいかにシンプルにして複雑なバックグラウンドを隠蔽するかは良いソフトウェアを書くためには欠かせない点だ。 UI もソフトウェアと同じくインターフェースをいかに洗練させるかが使い安さに直結するということを(Linux ディストリ界隈では珍しく)作者はよく分かっている。&lt;/p&gt;
+&lt;p&gt;ちゃんと情報を見たいとなると CUI を使わないといけない辺り Mac に影響をかなり受けているように思われる。逆に突っ込んだことをしなければほとんど GUI で完結するので普段使いにもおすすめ出来る。（実際普段使い用の PC にも入れて使っているが特に問題ない）&lt;/p&gt;
+&lt;p&gt;ちなみに初心者向けといってもベースは Ubuntu LTS で apt コマンドもちゃんと使えるので上級者が使っても全然問題ない&lt;/p&gt;
+&lt;p&gt;前置きが長くなってしまったが以下の 3 つの点が主によかった&lt;/p&gt;
+&lt;h2&gt;よかった点&lt;/h2&gt;
+&lt;h3&gt;Docker をネイティブで使える&lt;/h3&gt;
+&lt;p&gt;Docker をネイティブで使えるという点については自分がサーバ周りのエンジニアということもありとても重要。
+実際本番環境で動かすコンテナ環境なども Linux OS ベースのためローカルと本番で動作原理が異なることがないというのは大きい。もちろん CI を噛ました上でというのはあるがそれでも CI 環境とローカル環境で動作が同じ OS を使えるので、OS の違いで変なハマり方をするというのがとても少なくなった。&lt;/p&gt;
+&lt;h3&gt;環境構築が楽&lt;/h3&gt;
+&lt;p&gt;環境構築という点でもソフトウェアエンジニアにとってはメリットが大きい。
+日々色々なツールを評価したり作ったりする中でインストール方法や Usage などは Linux 向けに書かれていることが多い。
+Mac や Windows 向けのインストール方法が書かれていることもあるがやはり実際に本番環境などで動かすのはほぼ Linux 環境である以上まず Linux 向けのインストール方法は動いて Mac や Windows 向けのインストール方法がメンテされていなくて動かない、という事も少なくない。&lt;/p&gt;
+&lt;p&gt;Windows で一時期ちゃんと&lt;a href="https://qiita.com/shufo/items/355514ba4177bc8ab335"&gt;開発環境を構築していた&lt;/a&gt;こともあったけど、本気で使うにはそれなりの努力が必要なのとやはり WSL や POSIX 環境がどうしても一枚層を噛ましている結果ネイティブの Linux に比べてファイルシステムが絡む操作の動作が遅いのが辛かった&lt;/p&gt;
+&lt;h3&gt;GNU コマンドが使える&lt;/h3&gt;
+&lt;p&gt;Mac の場合 GNU コマンドを入れることも出来るがデフォルトで入っているのは BSD 版のコマンドなので &lt;code&gt;tar&lt;/code&gt; コマンドや &lt;code&gt;sed&lt;/code&gt; コマンドなど微妙にオプションが GNU 版と異なる&lt;/p&gt;
+&lt;p&gt;困るのがローカルでこのコマンドで問題ないな！とか思って本番環境で実行するとオプションが異なって実行出来ないみたいなことが起こる。大抵はエラーになるだろうけど Bash スクリプトなど途中でコマンドを挟んで意図したとおりのコマンドが実行されなかったりすると心臓が止まる。&lt;/p&gt;
+&lt;p&gt;Linux デスクトップではローカルで動作するなら本番でも大体動作するという再現性がある程度保証出来るので精神衛生的にもよい。&lt;/p&gt;
+&lt;h2&gt;困った点&lt;/h2&gt;
+&lt;p&gt;逆に Linux を使う上で困った点を挙げてみる&lt;/p&gt;
+&lt;h3&gt;GUI の MySQL クライアントの定番がない&lt;/h3&gt;
+&lt;p&gt;これを使っておけば OK というような GUI クライアントがあまりない。
+無いなら作るというのが Linux コミュニティにおける基本態度なので文句はあまり言えないが…
+Windows なら HeidiSQL、Mac なら SequelPro といった定番クライアントがない。&lt;/p&gt;
+&lt;p&gt;なので Wine を入れて HeidiSQL を動かしている。そこそこまともに動いているがたまにコネクションが途切れてフリーズしたりやはりネイティブでの動作に比べて少しもっさりするのが残念。
+CUI で操作しろということだと思うけど常に CUI だと疲れてる時のオペミスが怖い（UPDATE 文で WHERE 忘れたりとか）のでオペミス防止であえて GUI 使ってるとこもあるのでここは重要。&lt;/p&gt;
+&lt;h3&gt;Office がない&lt;/h3&gt;
+&lt;p&gt;めったに使わないけど官公庁系のデータを見たい時とか xls 形式でしか配布してないとかたまーにある。
+そういう時や Windows でしかどうしても使えないソフトがある場合は Windows をインストールしてある PC へ &lt;a href="https://symless.com/synergy"&gt;Synergy&lt;/a&gt; で繋いでいつでも操作出来るようにしている。Synergy は神。&lt;/p&gt;
+&lt;h3&gt;サポートされていないアプリがある&lt;/h3&gt;
+&lt;p&gt;例えば &lt;a href="https://zoom.us/"&gt;Zoom&lt;/a&gt; など Linux 版だけ少し開発が遅く、Windows で使える機能を使えないなどやはりサポートが弱いということがある&lt;/p&gt;
+&lt;p&gt;Electron ベースのアプリ（Slack, VSCode など）は基本的にクロスプラットフォームで動作に変わりはないけれどそれぞれのプラットフォームのネイティブ API をディープに使うようなアプリだとクロスプラットフォームも難しいのでやはりまだ厳しい点はあるのかなという印象&lt;/p&gt;
+&lt;p&gt;結局普段どのように開発しているかというと Windows PC と Linux デスクトップをそれぞれ隣り合わせたディスプレイに別々に画面出力し &lt;a href="https://symless.com/synergy"&gt;Synergy&lt;/a&gt; でシームレスに OS を跨いで操作出来るようにして、Linux で出来ないことや Windows の方が早い時は Windows で操作したり逆に Linux の方が早い時は Linux で操作したり補い合うことでそれぞれ苦手なところを補完している。&lt;/p&gt;
+&lt;p&gt;ちなみに Linux デスクトップ用のディスプレイは &lt;a href="https://www.philips.com.ph/c-p/BDM4350UC_00/brilliance-4k-ultra-hd-lcd-display"&gt;Philips の 42 インチモニタ&lt;/a&gt; 1 枚でデュアルモニタにする必要をなくしている。elementary OS は HiDPI 環境でも割とまともに動く部類なので特に凝った設定も必要なかった。&lt;/p&gt;
+&lt;h2&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;デスクトップ Linux にして良かった点と困った点を見てみた&lt;/p&gt;
+&lt;p&gt;現状ではまだ足りない点もあるけどサーバ系エンジニアにとっては少なくともやる価値は十分あるというのが現時点での感想だ&lt;/p&gt;
+&lt;p&gt;ネイティブアプリ開発とかフロント開発とかなら正直 Mac で足りるかなという気もするけど今の Mac が気に入らないとか新しい環境を試してみたいなら脱出するいいタイミングだと思う。OS のアップデートに煩わされることが少なくなる。(無いとはいっていない)&lt;/p&gt;
+&lt;p&gt;それぞれの OS の苦手な点を補えるように Windows もしくは Mac も用意して &lt;a href="https://symless.com/synergy"&gt;Synergy&lt;/a&gt; などのインプットデバイス共有ツールで適宜 OS を使い分けるという方法が Linux デスクトップを使う上ではベストかもしれない&lt;/p&gt;</content><category term="Linux"></category></entry></feed>
