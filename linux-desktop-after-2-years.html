@@ -157,6 +157,32 @@ Mac や Windows 向けのインストール方法が書かれていることも�
 Windows なら HeidiSQL、Mac なら SequelPro といった定番クライアントがない。</p>
 <p>なので Wine を入れて HeidiSQL を動かしている。そこそこまともに動いているがたまにコネクションが途切れてフリーズしたりやはりネイティブでの動作に比べて少しもっさりするのが残念。
 CUI で操作しろということだと思うけど常に CUI だと疲れてる時のオペミスが怖い（UPDATE 文で WHERE 忘れたりとか）のでオペミス防止であえて GUI 使ってるとこもあるのでここは重要。</p>
+<p>※ 2019-01-26追記</p>
+<p>しばらく<a href="https://dbeaver.com">DBeaver</a>がメモリリークバグでまともに使えなかったが修正したら普通に使えるようになったので今ではDBeaverをメインで使っている</p>
+<p>2019-01-26現在現在最新のDBeaverをelementary OSで動かすにはdbeaver.iniでGTKのバージョンを直接指定する行を先頭に足す</p>
+<div class="highlight"><pre><span></span>$ sudo vim /usr/share/dbeaver/dbeaver.ini
+</pre></div>
+
+
+<p>以下の2行を先頭に足す</p>
+<div class="highlight"><pre><span></span>--launcher.GTK_version 
+2
+</pre></div>
+
+
+<p>最終的にこんな感じになる</p>
+<p><code>ini:dbeaver.ini
+--launcher.GTK_version 
+2
+-startup
+plugins/org.eclipse.equinox.launcher_1.5.100.v20180827-1352.jar
+--launcher.library
+plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.800.v20180827-1352
+-vmargs
+-XX:+IgnoreUnrecognizedVMOptions
+--add-modules=ALL-SYSTEM
+-Xms64m
+-Xmx1024m</code></p>
 <h3>Office がない</h3>
 <p>めったに使わないけど官公庁系のデータを見たい時とか xls 形式でしか配布してないとかたまーにある。
 そういう時や Windows でしかどうしても使えないソフトがある場合は Windows をインストールしてある PC へ <a href="https://symless.com/synergy">Synergy</a> で繋いでいつでも操作出来るようにしている。Synergy は神。</p>

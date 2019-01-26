@@ -40,6 +40,32 @@ Mac や Windows 向けのインストール方法が書かれていることも�
 Windows なら HeidiSQL、Mac なら SequelPro といった定番クライアントがない。&lt;/p&gt;
 &lt;p&gt;なので Wine を入れて HeidiSQL を動かしている。そこそこまともに動いているがたまにコネクションが途切れてフリーズしたりやはりネイティブでの動作に比べて少しもっさりするのが残念。
 CUI で操作しろということだと思うけど常に CUI だと疲れてる時のオペミスが怖い（UPDATE 文で WHERE 忘れたりとか）のでオペミス防止であえて GUI 使ってるとこもあるのでここは重要。&lt;/p&gt;
+&lt;p&gt;※ 2019-01-26追記&lt;/p&gt;
+&lt;p&gt;しばらく&lt;a href="https://dbeaver.com"&gt;DBeaver&lt;/a&gt;がメモリリークバグでまともに使えなかったが修正したら普通に使えるようになったので今ではDBeaverをメインで使っている&lt;/p&gt;
+&lt;p&gt;2019-01-26現在現在最新のDBeaverをelementary OSで動かすにはdbeaver.iniでGTKのバージョンを直接指定する行を先頭に足す&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo vim /usr/share/dbeaver/dbeaver.ini
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以下の2行を先頭に足す&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;--launcher.GTK_version 
+2
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;最終的にこんな感じになる&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ini:dbeaver.ini
+--launcher.GTK_version 
+2
+-startup
+plugins/org.eclipse.equinox.launcher_1.5.100.v20180827-1352.jar
+--launcher.library
+plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.800.v20180827-1352
+-vmargs
+-XX:+IgnoreUnrecognizedVMOptions
+--add-modules=ALL-SYSTEM
+-Xms64m
+-Xmx1024m&lt;/code&gt;&lt;/p&gt;
 &lt;h3&gt;Office がない&lt;/h3&gt;
 &lt;p&gt;めったに使わないけど官公庁系のデータを見たい時とか xls 形式でしか配布してないとかたまーにある。
 そういう時や Windows でしかどうしても使えないソフトがある場合は Windows をインストールしてある PC へ &lt;a href="https://symless.com/synergy"&gt;Synergy&lt;/a&gt; で繋いでいつでも操作出来るようにしている。Synergy は神。&lt;/p&gt;
