@@ -126,8 +126,7 @@ CUI で操作しろということだと思うけど常に CUI だと疲れて�
 
 
 &lt;p&gt;最終的にこんな感じになる&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;ini:dbeaver.ini
---launcher.GTK_version 
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;--launcher.GTK_version 
 2
 -startup
 plugins/org.eclipse.equinox.launcher_1.5.100.v20180827-1352.jar
@@ -137,7 +136,10 @@ plugins/org.eclipse.equinox.launcher.gtk.linux.x86_64_1.1.800.v20180827-1352
 -XX:+IgnoreUnrecognizedVMOptions
 --add-modules=ALL-SYSTEM
 -Xms64m
--Xmx1024m&lt;/code&gt;&lt;/p&gt;
+-Xmx1024m
+&lt;/pre&gt;&lt;/div&gt;
+
+
 &lt;h3&gt;Office がない&lt;/h3&gt;
 &lt;p&gt;めったに使わないけど官公庁系のデータを見たい時とか xls 形式でしか配布してないとかたまーにある。
 そういう時や Windows でしかどうしても使えないソフトがある場合は Windows をインストールしてある PC へ &lt;a href="https://symless.com/synergy"&gt;Synergy&lt;/a&gt; で繋いでいつでも操作出来るようにしている。Synergy は神。&lt;/p&gt;
