@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+	<title>人間工学としての Elixir - shufo blog</title>
+
+
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="referrer" content="origin" />
+	<meta name="generator" content="Pelican" /> 
+	<!-- Feed -->
+ 	<link href="https://shufo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="shufo blog Full Atom Feed"
+	/>     	<link href="https://shufo.github.io/feeds/programming.atom.xml" type="application/atom+xml" rel="alternate"
+	 title="shufo blog Categories Atom Feed" />     
+	<link href="//shufo.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+	<!-- Code highlight color scheme -->
+	<link href="//shufo.github.io/theme/css/code_blocks/tomorrow_night.css" rel="stylesheet">  
+	<!-- Custom fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+    <link href="http://shufo.github.io/drafts/why-i-choose-elixir-in-2019.html" rel="canonical" />
+
+        <meta name="description" content="つい先日 HN で Elixir を選ぶ理由についての記事が人気が集まっていた Would you still pick Elixir in 2019? | Hacker News Elixir を選ぶ理由と他言語との比較が GitHub issue...">
+
+        <meta name="author" content="shufo">
+
+        <meta name="tags" content="Programming">
+        <meta name="tags" content="Elixir">
+     	<meta property="og:locale" content="" /> 	<meta property="og:site_name" content="shufo blog" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="shufo blog" />
+	<meta property="og:description" content="Random automation stuff" />
+	<meta property="og:url" content="https://shufo.github.io" /> 	<meta property="og:image" content="https://shufo.github.io/assets/header.jpg" />   
+  <meta property="og:type" content="article">
+            <meta property="article:author" content="https://shufo.github.io/author/shufo">
+  <meta property="og:url" content="https://shufo.github.io/drafts/why-i-choose-elixir-in-2019.html">
+  <meta property="og:title" content="人間工学としての Elixir">
+  <meta property="article:published_time" content="2019-01-07 00:00:00+09:00">
+            <meta property="og:description" content="つい先日 HN で Elixir を選ぶ理由についての記事が人気が集まっていた Would you still pick Elixir in 2019? | Hacker News Elixir を選ぶ理由と他言語との比較が GitHub issue...">
+
+                <meta property="og:image" content="https://i.imgur.com/DbKiPNf.jpg">
+         <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@shufo_">
+        <meta name="twitter:title" content="人間工学としての Elixir">
+        <meta name="twitter:url" content="https://shufo.github.io/drafts/why-i-choose-elixir-in-2019.html">
+
+                <meta name="twitter:image:src" content="https://i.imgur.com/DbKiPNf.jpg">
+
+            <meta name="twitter:description" content="つい先日 HN で Elixir を選ぶ理由についての記事が人気が集まっていた Would you still pick Elixir in 2019? | Hacker News Elixir を選ぶ理由と他言語との比較が GitHub issue...">
+	<meta name="google-site-verification" content="pfqlDqY0RodNUTCncFltLDDwwV_AOnfcqefcGys1NTQ" />
+</head>
+<!-- TODO : Body class -->
+
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/hello-world.html" role="presentation">About</a></li>
+          <li><a href="/archives/" role="presentation">Archives</a></li>
+          <li><a href="./categories.html" role="presentation">Categories</a></li>
+          <li><a href="https://github.com/shufo" role="presentation">GitHub</a></li>
+          <li><a href="/feeds/all.atom.xml" role="presentation">RSS</a></li>
+
+
+    </ul>
+  </div>
+</nav>     <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://shufo.github.io" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">人間工学としての Elixir</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://shufo.github.io/author/shufo">Shufo</a>
+            | <time datetime="2019 Jan/07 (Mon)">2019 Jan/07 (Mon)</time>
+        </span>
+        <!-- TODO : Modified check -->
+            <div class="post-cover cover" style="background-image: url('https://i.imgur.com/DbKiPNf.jpg')">
+      </div>
+    </header>
+
+	<section id="wrapper">
+		<a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p>つい先日 HN で Elixir を選ぶ理由についての記事が人気が集まっていた</p>
+<p><a href="https://news.ycombinator.com/item?id=18838115">Would you still pick Elixir in 2019? | Hacker News</a></p>
+<p>Elixir を選ぶ理由と他言語との比較が GitHub issue に上げられていてそれについてのコメントが集まっている</p>
+<p>自分が気になったのはこのコメント欄で何度か出て来る</p>
+<blockquote>
+<p>Programmer Ergonomics</p>
+</blockquote>
+<p>という単語で、この単語で自分がぼんやりと抱いていた、 Elixir を一言で説明するための方法が見つかった気がする</p>
+<p>ぼんやり抱いていたというのは今までどうもうまく自分の中で Elixir が好きな理由を言語化出来ていなかったのだ</p>
+<p>Elixir を説明する単語として productivity, scalable といった単語がよくセールスポイントになるし、実際それを説得材料としても使ったことはあるがそれはあくまで売りだすための PR ポイントで本質的に何にフォーカスしているかということに答えていない気がしていた</p>
+<p>けどやっとこの Ergonomics という単語を見てフォーカスしているのは人間ではないか？ということに気づいた</p>
+<p>人間とプログラミング言語のインターフェースはもちろん言語の文法であり、ランタイムであり、コンパイラであり、またエコシステムやエディタ、コミュニティでもある</p>
+<p>それら諸々合わせた総合的なインターフェースが人間にフォーカスして作られている</p>
+<p>つまり Elixir を一言で説明すると ergonomic language ではないかということだ</p>
+<p>ergonomics の定義は国際人間工学連合(IEA）によると</p>
+<blockquote>
+<p>人間工学とは、システムにおける人間と他の要素とのインタラクションを理解するための科学的学問であり、人間の安寧とシステムの総合的性能との最適化を図るため、理論・原則・データ・設計方法を有効活用する独立した専門領域である</p>
+</blockquote>
+<p>とある</p>
+<p>つまり人間の認知と構造を理解し、人間とコンピュータのインターフェースにおける不協和を解消するための言語ということだ</p>
+<p>それだけ言ってもなんのこっちゃなので以降でそう思った理由を説明する。</p>
+<p>自分は Elixir をやるまでは正直プログラミングを楽しいと思ったことはなかった</p>
+<p>それまでの経験としては C と C#を軽くと Python, JavaScript, PHP などをやってきたがどれも「楽しい」という感覚を得られるまでにはならなかった。それらはあくまで仕事の道具でありいわばトンカチのようなもので仕事の相棒ではあるけど、「楽しいから」プログラミングをするという状態ではなかった</p>
+<p>それらのどの言語も「自分の言語」ではないという感覚を抱いており、なんとなく違和感を感じていた</p>
+<p>その中で一番好きな Python でさえよく出来たトンカチのようなもので叩けさえすれば形にはこだわらない、というような気持ちだった</p>
+<p>言語を「使う」というよりは「使われている」という感覚に近く、確かにプログラミングしているのは自分だけどその言語の文法に従っているだけで決まりきった一本道を歩いているだけのようなそんな感覚だった。</p>
+<p>それが Elixir をやって初めてプログラミングをやって「楽しい」という感覚に変わった</p>
+<p>ただ書かされるだけじゃなく自分から書くのが楽しいと思える言語は初めてだった。</p>
+<p>そう思えたのはおそらく自分の中でこの言語は「自分の言語」だという感覚を得られたからだと思う。例えば日本語話者が英語を書くときに一旦頭の中で翻訳して書くように、自分の自然な感覚から疎外された感覚を覚えていた。</p>
+<p>それは言語の積み重ねたバックグラウンドや歴史もあるだろうけど、しっくりくるという感覚ではなかった。</p>
+<p>自然言語と異なり形式言語のプログラミング言語には必ず設計者の意図が介在する。その意図は政治的要因で決められることも少なくない。そして政治的要因で決められた仕様は必ず禍根を残す。</p>
+<p>歴史が深い言語ほどこの問題は大きく、ハイコンテクストな文化になっていく。</p>
+<p>新しい言語は「比較的」政治的要因が少ないからマシなだけだ。もちろん新しくても政治的な言語はあるし、古くても慎重に政治性を排除した言語はある。</p>
+<p>政治的要因が絡むと純粋な形式言語世界から飛び出して「私の」言語ではなくその他の利害関係含む「私たち」の言語になる。そういった状況が嫌だったんだと思う。</p>
+<p>もちろん政治的動物である人間である以上プログラミング言語の政治性からも免れ得ないが、形式言語の世界だけは出来るだけ政治性を排したい。</p>
+<p>そういった点で Elixir は慎重に選択をしている言語だ。</p>
+<p>作者は思慮深くコミュニティに耳を傾けて特定の政治的配慮に与しない。</p>
+<p>プログラミング言語は歴史</p>
+<p>科学的な論証は何もないけどなぜ Elixir はしっくりくるという感覚を得れたのか。</p>
+<p>以下に言語の複雑性についての記事があった。</p>
+<p><a href="https://medium.com/@richardeng/how-to-measure-programming-language-complexity-afe4f7e75786">How to Measure Programming Language Complexity – Richard Kenneth Eng – Medium</a></p>
+<p>この記事では言語の予約語やキーワードの数を数えることで言語の複雑性を表すという方法を取っている。</p>
+<p>これによると Elixir はたったの <strong>18</strong> 個で Smalltalk に次いで二番目に予約語の少ない言語だった。</p>
+<p>それもそのはず、Elixir では <strong>if</strong> のような一見制御構造に見えるキーワードもただのマクロだったりするのだ。これによって言語のコア自体はとてもシンプルだけどとても自由度の高いことが出来るようになっている。例えば <strong>if</strong> を override して true だったら else 側を実行するなんてことも出来る</p>
+<p>教育用言語として考えると Smalltalk の予約語の少なさはある意味理想的かもしれないが、
+Real-World の使用の多さでいえばある意味最も予約語の少ない（覚えることのすくない）汎用言語は Elixir と言えるのではないか</p>
+<p>限りなくシンプルにした Go 言語でさえ 25 個なのだからそれより少ないというのは正直驚きだ</p>
+<p>これにより言語がとても習得しやすくなっている</p>
+<p>実際に私が会社に Elixir を導入し実案件で運用した際、後から入ってきた Elixir 未経験の人が 2 週間程ですぐ立派な Elixir コードを書いていたのをよく覚えている</p>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=人間工学としての Elixir&amp;url=https://shufo.github.io/drafts/why-i-choose-elixir-in-2019.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://shufo.github.io/drafts/why-i-choose-elixir-in-2019.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=https://shufo.github.io/drafts/why-i-choose-elixir-in-2019.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://shufo.github.io/tag/programming">Programming</a><a href="https://shufo.github.io/tag/elixir">Elixir</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+                        <figure class="post-author-avatar">
+                            <img src="https://avatars1.githubusercontent.com/u/1641039?s=400&u=e76a7e80d95805075226c95b7fc576ac0df4b6f1&v=4" alt="Shufo" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://shufo.github.io/author/shufo">Shufo</a></h4>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Tokyo</span>
+                            <span class="post-author-website"><a href="http://github.com/shufo"><i class="ic ic-link"></i> Website</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+		<!-- TODO : Body class -->
+		<div id="body-class" style="display: none;" class=""></div>
+
+		<footer id="footer">
+			<div class="inner">
+				<section class="credits">
+					<span class="credits-theme">Theme
+						<a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a>
+					</span>
+					<span class="credits-software">Published with
+						<a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a>
+					</span>
+				</section>
+			</div>
+		</footer>
+	</section>
+
+	<script type="text/javascript" src="//shufo.github.io/theme/js/script.js"></script>      <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1113986-11']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+ <script type="text/javascript">
+    var disqus_shortname = 'shufo';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+
+</html>
