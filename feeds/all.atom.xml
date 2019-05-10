@@ -1,5 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog</title><link href="https://shufo.github.io/" rel="alternate"></link><link href="https://shufo.github.io/feeds/all.atom.xml" rel="self"></link><id>https://shufo.github.io/</id><updated>2019-01-26T00:00:00+09:00</updated><entry><title>Elixirにまつわる3つの神話</title><link href="https://shufo.github.io/elixir-myth.html" rel="alternate"></link><published>2019-01-26T00:00:00+09:00</published><updated>2019-01-26T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2019-01-26:/elixir-myth.html</id><summary type="html">&lt;p&gt;神話について&lt;/p&gt;</summary><content type="html">&lt;p&gt;ある言語を評価するとき伝聞で聞いた情報であの言語は ○○ だという評価をよくしてしまいがちだ。&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog</title><link href="https://shufo.github.io/" rel="alternate"></link><link href="https://shufo.github.io/feeds/all.atom.xml" rel="self"></link><id>https://shufo.github.io/</id><updated>2019-05-09T00:00:00+09:00</updated><entry><title>VSCode Remote SSH + SoftEtherでリモート開発の夢を見る</title><link href="https://shufo.github.io/remote-development-with-vscode-and-softether.html" rel="alternate"></link><published>2019-05-09T00:00:00+09:00</published><updated>2019-05-09T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2019-05-09:/remote-development-with-vscode-and-softether.html</id><summary type="html">&lt;p&gt;先日VSCodeで&lt;a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh"&gt;VSCode Remote SSH&lt;/a&gt;拡張機能がMicrosoftからリリースされた。&lt;/p&gt;
+&lt;p&gt;これは何をしてくれる拡張かというとSSHでリモートサーバに接続し特定のディレクトリをマウントすることが出来、更にマウントしつつVSCodeの拡張はそのまま使えたり、ポートフォワーディングでリモートのポートをローカルに公開出来るのだ。今までもリモートサーバをsshでマウントしたりファイル更新をトリガーに同期することでリモートサーバでの開発は出来たが、この拡張はその辺りの自分でやると面倒になりがちなマウントやssh接続ターミナル、ポートフォワーディング等をまとめて提供してくれる。&lt;/p&gt;
+&lt;p&gt;2019/05/09現在まだStableのVSCodeではこの拡張機能は使えないので&lt;a href="https://code.visualstudio.com/insiders/"&gt;VSCode Insiders&lt;/a&gt;から先行公開版のVSCodeをダウンロードして使う。&lt;/p&gt;
+&lt;p&gt;インストールするとVSCode Insidersというアプリ名で使えるようになる。Linuxなら&lt;code&gt;code-insiders&lt;/code&gt;というコマンドがインストールされる。&lt;/p&gt;
+&lt;p&gt;リモートサーバはSSHで到達出来るLinuxサーバなら何でもよい。(WindowsとMacは未対応)&lt;/p&gt;
+&lt;p&gt;用途としては&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自宅や会社のPCにリモートからログインして開発&lt;/li&gt;
+&lt;li&gt;クラウド上のLinuxサーバをリモートサーバとして開発&lt;/li&gt;
+&lt;li&gt;WindowsやMacマシンで仮想Linuxホストをマウントして開発(VMやコンテナ)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;などが考えられる&lt;/p&gt;
+&lt;p&gt;自分は普段家で作業する時はデスクトップで作業しているが出先でノートPCを使う時にはファイルシステムを同期する必要があるので作業内容を一旦GitHubにコミットするなどしていたのだけど、案外面倒なのでどうしようか悩んでいたところこの拡張が公開されたのでVPN接続で家のPCをリモートサーバにしてシンクライアントのような開発環境を実現してみた。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="/assets/softether_vpn.png"&gt;&lt;/p&gt;
+&lt;h3&gt;SoftEther&lt;/h3&gt;
+&lt;p&gt;VPN接続を実現するのに最初はルータのVPN機能を使おうかと思ったけど自宅はIPoE環境なのでL2TP/IPSecを実現するには意外と面倒ということが分かった。&lt;/p&gt;
+&lt;p&gt;IPoEなのでほぼグローバルアドレスが変化することはないがDDNSは必要だし、クライアント側でのVPN接続の設定も必要。&lt;/p&gt;
+&lt;p&gt;VPN接続設定もOSによってバラバラだし分かりづらい。&lt;/p&gt;
+&lt;p&gt;他に何か簡単に実現するソリューションはないかと探したところオープンソース版の&lt;a href="https://www.softether-download.com/?product=softether"&gt;SoftEther&lt;/a&gt;を見つけた。&lt;/p&gt;
+&lt;p&gt;SoftEtherではWindowsやMac OSX, Linuxなどをサーバにしてクライアントは専用のSoftEtherクライアントを使う。
+クライアントもWindows, Linux, MacOSXと対応しているので統一されたインターフェースでVPN接続が出来る。（LinuxはCUIだけど）&lt;/p&gt;
+&lt;p&gt;この専用クライアントというのが重要でOSデフォルトのVPN設定インターフェースはOSごとに名称が異なったり、入力項目も様々なためVPN接続に問題が発生した場合の問題切り分けが難しい …&lt;/p&gt;</summary><content type="html">&lt;p&gt;先日VSCodeで&lt;a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh"&gt;VSCode Remote SSH&lt;/a&gt;拡張機能がMicrosoftからリリースされた。&lt;/p&gt;
+&lt;p&gt;これは何をしてくれる拡張かというとSSHでリモートサーバに接続し特定のディレクトリをマウントすることが出来、更にマウントしつつVSCodeの拡張はそのまま使えたり、ポートフォワーディングでリモートのポートをローカルに公開出来るのだ。今までもリモートサーバをsshでマウントしたりファイル更新をトリガーに同期することでリモートサーバでの開発は出来たが、この拡張はその辺りの自分でやると面倒になりがちなマウントやssh接続ターミナル、ポートフォワーディング等をまとめて提供してくれる。&lt;/p&gt;
+&lt;p&gt;2019/05/09現在まだStableのVSCodeではこの拡張機能は使えないので&lt;a href="https://code.visualstudio.com/insiders/"&gt;VSCode Insiders&lt;/a&gt;から先行公開版のVSCodeをダウンロードして使う。&lt;/p&gt;
+&lt;p&gt;インストールするとVSCode Insidersというアプリ名で使えるようになる。Linuxなら&lt;code&gt;code-insiders&lt;/code&gt;というコマンドがインストールされる。&lt;/p&gt;
+&lt;p&gt;リモートサーバはSSHで到達出来るLinuxサーバなら何でもよい。(WindowsとMacは未対応)&lt;/p&gt;
+&lt;p&gt;用途としては&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自宅や会社のPCにリモートからログインして開発&lt;/li&gt;
+&lt;li&gt;クラウド上のLinuxサーバをリモートサーバとして開発&lt;/li&gt;
+&lt;li&gt;WindowsやMacマシンで仮想Linuxホストをマウントして開発(VMやコンテナ)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;などが考えられる&lt;/p&gt;
+&lt;p&gt;自分は普段家で作業する時はデスクトップで作業しているが出先でノートPCを使う時にはファイルシステムを同期する必要があるので作業内容を一旦GitHubにコミットするなどしていたのだけど、案外面倒なのでどうしようか悩んでいたところこの拡張が公開されたのでVPN接続で家のPCをリモートサーバにしてシンクライアントのような開発環境を実現してみた。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="/assets/softether_vpn.png"&gt;&lt;/p&gt;
+&lt;h3&gt;SoftEther&lt;/h3&gt;
+&lt;p&gt;VPN接続を実現するのに最初はルータのVPN機能を使おうかと思ったけど自宅はIPoE環境なのでL2TP/IPSecを実現するには意外と面倒ということが分かった。&lt;/p&gt;
+&lt;p&gt;IPoEなのでほぼグローバルアドレスが変化することはないがDDNSは必要だし、クライアント側でのVPN接続の設定も必要。&lt;/p&gt;
+&lt;p&gt;VPN接続設定もOSによってバラバラだし分かりづらい。&lt;/p&gt;
+&lt;p&gt;他に何か簡単に実現するソリューションはないかと探したところオープンソース版の&lt;a href="https://www.softether-download.com/?product=softether"&gt;SoftEther&lt;/a&gt;を見つけた。&lt;/p&gt;
+&lt;p&gt;SoftEtherではWindowsやMac OSX, Linuxなどをサーバにしてクライアントは専用のSoftEtherクライアントを使う。
+クライアントもWindows, Linux, MacOSXと対応しているので統一されたインターフェースでVPN接続が出来る。（LinuxはCUIだけど）&lt;/p&gt;
+&lt;p&gt;この専用クライアントというのが重要でOSデフォルトのVPN設定インターフェースはOSごとに名称が異なったり、入力項目も様々なためVPN接続に問題が発生した場合の問題切り分けが難しい。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="/assets/2019-05-09_22h34_03.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;SoftEther Serverをインストールし、管理用クライアントから接続するとこのようなインターフェースが表示される。
+ここで表示されるDDNSホスト名をVPN Clientの接続先として使用する。&lt;/p&gt;
+&lt;p&gt;またSoftEtherはIPv6に対応しており、DDNSも自動で設定されるためIPoE環境でも特に追加設定は必要ない。&lt;/p&gt;
+&lt;p&gt;上記で作成した仮想ハブが仮想ネットワークを構築し、仮想ハブに接続されたクライアント同士で通信が可能になる。
+仮想ハブから物理LANにブリッジして、物理的なLANセグメントと通信するにはローカルブリッジ用にプロミスキャスモードに対応した物理的なNICが必要で無線LANカードは通常対応していない。&lt;/p&gt;
+&lt;p&gt;自分の環境ではリモート接続したいサーバも無線LANで接続していた。
+そのため接続したいリモートサーバにもSoftEther Clientを入れ、SoftEther Serverに接続させリモート接続クライアントと同一の仮想ハブに接続することでクライアント-サーバ間の通信を可能にした。&lt;/p&gt;
+&lt;h3&gt;VPN Client Install&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.29-9680-rtm/softether-vpnclient-v4.29-9680-rtm-2019.02.28-linux-x64-64bit.tar.gz
+$ tar xvf softether-vpnclient-v4.29-9680-rtm-2019.02.28-linux-x64-64bit.tar.gz
+$ &lt;span class="nb"&gt;cd&lt;/span&gt; vpnclient
+$ make 
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;VPNクライアント側では接続設定を作成し接続する&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ sudo ./vpnclient start
+$ sudo ./vpncmd         
+vpncmd コマンド - SoftEther VPN コマンドライン管理ユーティリティ
+SoftEther VPN コマンドライン管理ユーティリティ &lt;span class="o"&gt;(&lt;/span&gt;vpncmd コマンド&lt;span class="o"&gt;)&lt;/span&gt;
+Version &lt;span class="m"&gt;4&lt;/span&gt;.29 Build &lt;span class="m"&gt;9680&lt;/span&gt;   &lt;span class="o"&gt;(&lt;/span&gt;Japanese&lt;span class="o"&gt;)&lt;/span&gt;
+Compiled &lt;span class="m"&gt;2019&lt;/span&gt;/02/28 &lt;span class="m"&gt;19&lt;/span&gt;:22:54 by yagi at pc33
+Copyright &lt;span class="o"&gt;(&lt;/span&gt;c&lt;span class="o"&gt;)&lt;/span&gt; SoftEther VPN Project. All Rights Reserved.
+
+vpncmd プログラムを使って以下のことができます。
+
+&lt;span class="m"&gt;1&lt;/span&gt;. VPN Server または VPN Bridge の管理
+&lt;span class="m"&gt;2&lt;/span&gt;. VPN Client の管理
+&lt;span class="m"&gt;3&lt;/span&gt;. VPN Tools コマンドの使用 &lt;span class="o"&gt;(&lt;/span&gt;証明書作成や通信速度測定&lt;span class="o"&gt;)&lt;/span&gt;
+
+&lt;span class="m"&gt;1&lt;/span&gt; - &lt;span class="m"&gt;3&lt;/span&gt; を選択: &lt;span class="m"&gt;2&lt;/span&gt;
+
+接続先の VPN Client が動作しているコンピュータの IP アドレスまたはホスト名を指定してください。
+何も入力せずに Enter を押すと、localhost &lt;span class="o"&gt;(&lt;/span&gt;このコンピュータ&lt;span class="o"&gt;)&lt;/span&gt; に接続します。
+接続先のホスト名または IP アドレス: 
+
+VPN Client &lt;span class="s2"&gt;&amp;quot;localhost&amp;quot;&lt;/span&gt; に接続しました。
+
+VPN Client&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;接続設定作成&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;VPN Client&amp;gt; AccountCreate VPN_Server /SERVER:vpn12345678.softether.net:443 /HUB:VPN /USERNAME:shufo /NICNAME:VPN
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;パスワード設定&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;VPN Client&amp;gt; AccountPasswordSet VPN_Server /PASSWORD:myPassWord /TYPE:standard
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;起動時自動接続&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;VPN Client&amp;gt; AcccountStartupSet VPN_Server
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;VPNサーバ接続&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;VPN Client&amp;gt; AccountConnect VPN_Server
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;インターフェース確認&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ip a
+~中略~
+&lt;span class="m"&gt;14&lt;/span&gt;: vpn_vpn: &amp;lt;BROADCAST,MULTICAST,UP,LOWER_UP&amp;gt; mtu &lt;span class="m"&gt;1500&lt;/span&gt; qdisc pfifo_fast state UNKNOWN group default qlen &lt;span class="m"&gt;1000&lt;/span&gt;
+    link/ether 5e:07:43:55:41:2c brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::5c07:43ff:fe55:412c/64 scope link 
+       valid_lft forever preferred_lft forever
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;inet6でIPv6アドレスが振られていることが分かる
+SSH接続する際はこのアドレスとインターフェース名が接続先となる&lt;/p&gt;
+&lt;p&gt;同様にリモート接続クライアントでも接続設定を作成しVPNサーバに接続出来たらSSHの接続性を確認する&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ssh fe80::5c07:43ff:fe55:412c%vpn_vpn
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;IPv4アドレスでのSSH接続とは異なり末尾に&lt;code&gt;%vpn_vpn&lt;/code&gt;とついてることが分かる。&lt;/p&gt;
+&lt;p&gt;ssh_configの設定では&lt;code&gt;%%&lt;/code&gt;とすることで%の代わりになる&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Host remote
+    HostName fe80::5c07:43ff:fe55:412c%%vpn_vpn
+    User shufo
+    IdentityFile ~/.ssh/id_rsa
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;接続性確認&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;$ ssh remote
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;SSHでの接続性が確認出来ればVSCodeでのSSH Remote機能が利用出来るようになる。
+デフォルトではssh_configに設定された接続設定を使える&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="/assets/2019-05-09_23.28.14.png"&gt;&lt;/p&gt;
+&lt;p&gt;Remote SSH to Hostで先程設定して接続設定を選ぶ
+すると新しくウィンドウが開けばRemote SSH接続が完了する。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="/assets/2019-05-09_23.41.00.png"&gt;&lt;/p&gt;
+&lt;p&gt;ファイル一覧からOpenFolderボタンをクリックしマウントするディレクトリを選ぶ&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="/assets/2019-05-09_23.30.08.png"&gt;&lt;/p&gt;
+&lt;p&gt;マウントが完了するといつも通りローカルで開発しているようにファイルを扱えるようになる。
+もちろん拡張機能も動作する&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="/assets/2019-05-09_23.46.54.png"&gt;&lt;/p&gt;
+&lt;p&gt;またポートフォワーディングによりローカルのポートをリモートにフォワーディングすることが出来るので、例えばローカルの8000番にアクセスしたらリモートの8000番にフォワーディングして開発サーバプロセスにアクセスするみたいなことも出来る。&lt;/p&gt;
+&lt;p&gt;といった感じで一通りの機能が揃っているのでリモート開発を快適に進めることが出来る。&lt;/p&gt;
+&lt;p&gt;とここまで書いてきてなぜこの機能の反響が大きかったのかを考えると、今までもリモートのファイルシステムをマウントしたりport forwardingは手動でやればリモート開発を実現出来たが、初期設定とその設定の維持に忍耐力を要求されるものであり敷居の高さが問題だったのかなと思った。&lt;/p&gt;
+&lt;p&gt;正直その手のhackでリモート開発を実現するくらいなら最初からローカルで開発するかLinuxマシンで開発するというソリューションに辿り着くのは、その一手間が大きく開発体験を損なうものであり耐えられないものだったと。&lt;/p&gt;
+&lt;p&gt;開発者がやりたいのはただまともなPOSIX互換環境でコードを編集したいだけなのに開発環境を開く度にSSHでログインしたりポートフォワーディング設定したり、といったことがあるとちょっと思いついたコードを書くにも一手間になる。&lt;/p&gt;
+&lt;p&gt;それが軽量なVSCodeでエディタを開いたら即ディレクトリがマウントされるというのは開発体験としてはほぼローカル開発に近い。&lt;/p&gt;
+&lt;p&gt;今までも同様なリモート開発はEclipseのプラグインなり、手動でSSHFSでマウントするなりSFTPでファイルシステムを同期するなりで実現は出来たけど車輪の再発明とならないのは開発体験の大きな向上という点がある。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://devblogs.microsoft.com/commandline/introducing-windows-terminal/"&gt;Windows Terminal&lt;/a&gt;, &lt;a href="https://devblogs.microsoft.com/commandline/announcing-wsl-2/"&gt;WSL 2&lt;/a&gt;, &lt;a href="https://techcrunch.com/2019/05/06/microsoft-launches-visual-studio-online-an-online-code-editor/"&gt;Visual Studio Online&lt;/a&gt;, EdgeのChromium採用などDXへの取り組みの一環としてVSCodeを中心としたエコシステムが上手く回っていて最近のMicrosoftはおもしろい。&lt;/p&gt;</content><category term="VSCode"></category><category term="VPN"></category></entry><entry><title>Elixirにまつわる3つの神話</title><link href="https://shufo.github.io/elixir-myth.html" rel="alternate"></link><published>2019-01-26T00:00:00+09:00</published><updated>2019-01-26T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2019-01-26:/elixir-myth.html</id><summary type="html">&lt;p&gt;神話について&lt;/p&gt;</summary><content type="html">&lt;p&gt;ある言語を評価するとき伝聞で聞いた情報であの言語は ○○ だという評価をよくしてしまいがちだ。&lt;/p&gt;
 &lt;p&gt;Elixir も他言語の例に漏れず、○○ 言語は ○○ だという言語神話がよく振りかざされるので一使用者の立場から誤解を恐れずその神話を解いてみたい&lt;/p&gt;
 &lt;h3&gt;学習コストが高い&lt;/h3&gt;
 &lt;p&gt;Elixir は学習コストがかかるという誤解をされることがある。&lt;/p&gt;
