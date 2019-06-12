@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+	<title>Elixirにまつわる3つの神話 - shufo blog</title>
+
+
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="referrer" content="origin" />
+	<meta name="generator" content="Pelican" /> 
+	<!-- Feed -->
+ 	<link href="https://shufo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="shufo blog Full Atom Feed"
+	/>     	<link href="https://shufo.github.io/feeds/programming.atom.xml" type="application/atom+xml" rel="alternate"
+	 title="shufo blog Categories Atom Feed" />     
+	<link href="//shufo.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+	<!-- Code highlight color scheme -->
+	<link href="//shufo.github.io/theme/css/code_blocks/tomorrow_night.css" rel="stylesheet">  
+	<!-- Custom fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+    <link href="http://shufo.github.io/elixir-myth.html" rel="canonical" />
+
+        <meta name="description" content="神話について">
+
+        <meta name="author" content="shufo">
+
+        <meta name="tags" content="Programming">
+        <meta name="tags" content="Elixir">
+     	<meta property="og:locale" content="" /> 	<meta property="og:site_name" content="shufo blog" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="shufo blog" />
+	<meta property="og:description" content="Random automation stuff" />
+	<meta property="og:url" content="https://shufo.github.io" /> 	<meta property="og:image" content="https://shufo.github.io/assets/header.jpg" />   
+  <meta property="og:type" content="article">
+            <meta property="article:author" content="https://shufo.github.io/author/shufo">
+  <meta property="og:url" content="https://shufo.github.io/elixir-myth.html">
+  <meta property="og:title" content="Elixirにまつわる3つの神話">
+  <meta property="article:published_time" content="2019-01-26 00:00:00+09:00">
+            <meta property="og:description" content="神話について">
+
+                <meta property="og:image" content="https://i.imgur.com/DbKiPNf.jpg">
+         <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@shufo_">
+        <meta name="twitter:title" content="Elixirにまつわる3つの神話">
+        <meta name="twitter:url" content="https://shufo.github.io/elixir-myth.html">
+
+                <meta name="twitter:image:src" content="https://i.imgur.com/DbKiPNf.jpg">
+
+            <meta name="twitter:description" content="神話について">
+	<meta name="google-site-verification" content="pfqlDqY0RodNUTCncFltLDDwwV_AOnfcqefcGys1NTQ" />
+</head>
+<!-- TODO : Body class -->
+
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/hello-world.html" role="presentation">About</a></li>
+          <li><a href="/archives/" role="presentation">Archives</a></li>
+          <li><a href="./categories.html" role="presentation">Categories</a></li>
+          <li><a href="https://github.com/shufo" role="presentation">GitHub</a></li>
+          <li><a href="/feeds/all.atom.xml" role="presentation">RSS</a></li>
+
+
+    </ul>
+  </div>
+</nav>     <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://shufo.github.io" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">Elixirにまつわる3つの神話</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://shufo.github.io/author/shufo">Shufo</a>
+            | <time datetime="2019 Jan/26 (Sat)">2019 Jan/26 (Sat)</time>
+        </span>
+        <!-- TODO : Modified check -->
+            <div class="post-cover cover" style="background-image: url('https://i.imgur.com/DbKiPNf.jpg')">
+      </div>
+    </header>
+
+	<section id="wrapper">
+		<a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p>ある言語を評価するとき伝聞で聞いた情報であの言語は ○○ だという評価をよくしてしまいがちだ。</p>
+<p>Elixir も他言語の例に漏れず、○○ 言語は ○○ だという言語神話がよく振りかざされるので一使用者の立場から誤解を恐れずその神話を解いてみたい</p>
+<h3>学習コストが高い</h3>
+<p>Elixir は学習コストがかかるという誤解をされることがある。</p>
+<p>おそらく、Elixir = 関数型 = なんか難しい概念出てきそうという発想だろう。その気持ちはよくわかる。だがちょっとまって欲しい。Elixir はとても覚えることの少ない言語だ。</p>
+<p><a href="https://medium.com/@richardeng/how-to-measure-programming-language-complexity-afe4f7e75786">How to Measure Programming Language Complexity – Richard Kenneth Eng – Medium</a> (どのようにプログラミング言語の複雑性を計測するか)</p>
+<p>上記の記事で Richard 氏が各プログラミング言語のキーワードと予約語を数えたところ Elixir は <strong>18</strong> 個で Smalltalk に次いで最も予約語の少ない言語だった。</p>
+<p>シンプルさを哲学とする Golang でさえ 25 個、PHP では 67 個で約 4 倍もののキーワードが存在する。</p>
+<p>キーワードや予約語はプログラミングにおいて特別な意味を持っており、その文字によって予約語以外の文字と区別されるため学習する際にはほぼ覚えることが必須だ。</p>
+<p>もちろん予約語やキーワードの少なさだけで言語の複雑性が一意的に決まる訳ではないのでここではそれ以上踏み込まないが、究極的に覚えないといけないトークンの少なさはその言語がどういう言語でありたいかという思想を表している。</p>
+<p>後にも述べるが Elixir はマクロを使うことで制御構造でさえ変更可能な柔軟性がありつつも、究極的に覚えなければいけないのはこの 18 個の予約語だけというシンプルさを手にしている。</p>
+<p>要は Elixir は言語それ自体のコアはシンプルでありつつも高い拡張性を指向した言語であり、同時に出来るだけ初心者がとっつきやすい (easy な） 言語でありたいという思想をもった言語であるということだ。</p>
+<p>Smalltalk がハガキ一枚に収まる文法しか無いのと同様 Elixir もコア自体は恐らくハガキの表面と裏面で足りる程度の文法しかないだろう。</p>
+<p><img alt="" src="https://imgur.com/BUf4nbo.jpg"></p>
+<p>だが時に過剰なシンプルさは現実の複雑な問題を解くためには大量の boilerplate を必要とするためある程度の抽象度は必要だ。それこそシンプルでさえよければアセンブリ言語で書けばいいだろうがそれは現実的ではない。そのために高級言語が存在する。</p>
+<p>Rich Hickey が <a href="https://www.infoq.com/presentations/Simple-Made-Easy">Simple Made Easy</a> のスライドで語ったように Simple である場合と Easy である場合では以下のような出力の違いが出る。</p>
+<p><img src="https://i.imgur.com/T9TVQIA.png" style="width: 70%"></p>
+<p>Easy であるものは当初はスピードが出るものの時が経つにつれて段々と出力が落ち、逆に Simple であるものは当初は出力が出ないものの時が経つにつれて組み合わせの力で出力が増すということだ。</p>
+<p>プログラミング言語の歴史はこの Easy さと Simple さへの反省の繰り返しで漸進的に進化してきた。</p>
+<p>Elixir は Easy であることにも慎重に配慮されており、Ruby 系列の認知容易性の高い文法、REPL、ビルトインの mix を中心としたエコシステムが優れた開発体験を提供してくれる。</p>
+<p>Easy というのは時にバイアスになり、Simple でないことを隠蔽してしまうため一見して Easy というものにも注意は必要だが、 Elixir は言語のコアは Simple でありつつ表面上は Easy であるため、比較的最初から高い生産性を維持していくことが出来る。図にすると以下のような感じだ。</p>
+<p><img src="https://i.imgur.com/UvY0dPN.png" style="width: 70%"></p>
+<p>実際に自分が人に Elixir を教えた経験では他言語業務経験者なら 2 週間ほど、業務未経験者でも 1 ヶ月程でもう立派な Elixir のコードを書けるようになったことを覚えている。</p>
+<p>自分が Elixir のことを気に入っているのは結局のところこういったバランス感覚であり、Simple 極振りでもないけどかといって Easy に寄りすぎてもいないとかそういうところだと思う。要するにトレードオフなのだけれど、不確実なプロジェクトに対していきなり Simple 極振りも出来ない、かといって Easy にも寄り過ぎたくないというところでプラグマティックな選択肢としての Elixir が現れる。</p>
+<h3>Erlang のラッパー</h3>
+<p>Elixir って Erlang のラッパーでしょ？という言説をたまに目にする。念頭にあるのは CoffeeScript のようなシンタックスシュガーなものかもしれない。だがこれは間違いだ。</p>
+<p>どちらかというと Ruby の薄皮をかぶった BEAM ベースの Lisp と言っていいかもしれない。</p>
+<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">ElixirってほとんどLispです。Lispの柔軟性を損なわずにアルゴル系のシンタックスです。Elixirには高速WEBを満足する並列処理と言う大義名分があります。大っぴらにElixirを使うことができます。これはLisp使いの夢の実現ではないのかなぁ。</p>&mdash; LAL(Light AI Lab) (@LAL6809) <a href="https://twitter.com/LAL6809/status/1081165168950665216?ref_src=twsrc%5Etfw">2019年1月4日</a></blockquote>
+
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Lisp がマクロで多くのことを実現するように Elixir もマクロによって多くのことを実現している。</p>
+<p>例えば Elixir には<code>defmacro/2</code>というマクロを作成するマクロがあるがこれも実は defmacro で定義されている。</p>
+<div class="highlight"><pre><span></span><span class="kd">defmacro</span> <span class="kd">defmacro</span><span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">expr</span> <span class="p">\\</span> <span class="no">nil</span><span class="p">)</span> <span class="k">do</span>
+  <span class="n">define</span><span class="p">(</span><span class="ss">:defmacro</span><span class="p">,</span> <span class="n">call</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="bp">__CALLER__</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+
+
+<p>じゃあ defmacro を定義する defmacro はどこで定義されているんだよとなるがこれは言語の bootstrap 時に定義されている。</p>
+<p>このように Elixir ではコア機能の多くを Lisp のようにマクロで実現することでコア自体はマイクロでありつつも言語自体の大きな拡張性を手にしている。</p>
+<p>単純にラッパーと言いきれないのはこういった拡張性で、Erlang に一対一で対応すること以上のことが拡張性で可能になっている。</p>
+<p>しかしマクロは言語構造さえ動的に変えられるほど強力な反面一歩間違えば怪我をする諸刃の剣だ。</p>
+<p>Elixir がうまいのはプログラマにマクロを使っているということをほとんど意識させない点で、<code>def</code>のような基本的な文法でさえマクロなのに公式サイトのイントロダクションでは一切その説明は出てこない。</p>
+<div class="highlight"><pre><span></span><span class="kd">defmacro</span> <span class="kd">def</span><span class="p">(</span><span class="n">call</span><span class="p">,</span> <span class="n">expr</span> <span class="p">\\</span> <span class="no">nil</span><span class="p">)</span> <span class="k">do</span>
+  <span class="n">define</span><span class="p">(</span><span class="ss">:def</span><span class="p">,</span> <span class="n">call</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="bp">__CALLER__</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+
+
+<p>以下のような簡単な Hello world でさえ<code>defmodule</code>と<code>def</code>というマクロを使っている。</p>
+<div class="highlight"><pre><span></span><span class="kd">defmodule</span> <span class="nc">HelloWorld</span> <span class="k">do</span>
+  <span class="kd">def</span> <span class="n">hello</span> <span class="k">do</span>
+    <span class="nc">IO</span><span class="o">.</span><span class="n">puts</span> <span class="s2">&quot;Hello World&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+
+<p>一見 Ruby 寄りの命令型言語のように見えてバックは Erlang を由来とする BEAM ベースの非純粋関数型言語であり Lisp 並にマクロをフル活用している。Ruby のように見えるのは本当に表層的な部分だけで、内実は BEAM のゴリゴリの並行システムと Ruby も影響を受けた Lisp 並の高い拡張性が同居している。</p>
+<p>この拡張性により特定のドメインに囚われない、目的に合わせた幅広い利用が可能になっている。例えば <a href="https://github.com/nerves-project/nerves">Nerves</a> によるIoT組み込みプロジェクトから、<a href="https://lonestarelixir.com/2019/speakers/21">GPGPUによる並列科学計算</a>、もちろん Erlang の性能を活かした稼働率99.9999999%の高可用性システム、<a href="https://medium.com/margobank/why-elixir-546427542c">銀行システム</a>、<a href="https://github.com/omisego/ewallet">仮想通貨</a>、メディアサーバ、<a href="https://blog.discordapp.com/scaling-elixir-f9b8e1e7c29b">Discordの同時500万接続を支える</a>シグナリングサーバなどなど。</p>
+<p>Elixir の<a href="https://elixir-lang.org/blog/2013/08/08/elixir-design-goals/">デザインゴール</a>にも掲げられているが Ruby 的文法はあくまで作者が Ruby 出身ということで追加されたプロダクトとしてのデザインで言語デザイン上のゴールではない。</p>
+<p>あくまで言語としてのゴールは Erlang との互換性、そしてここがただのラッパーではないものになっている理由だが、マクロシステムをベースとした高い拡張性と生産性だ。</p>
+<h3>Erlang の知識が必要</h3>
+<p>Elixir は <a href="https://en.wikipedia.org/wiki/BEAM_(Erlang_virtual_machine)">BEAM</a> 上で作られているので Erlang の知識が必要というような言説を見ることがある。</p>
+<p>これは半分合っているが、半分間違っていると言っていいかもしれない。</p>
+<p>ここで Erlang の知識といっているのは OTP や Erlang 特有の知識のことで関数名や Erlang の文法などのことだ。</p>
+<p>半分合っているというのは実際自分は 3 年程 Elixir を使っているが OTP の知識が必要になったのはライブラリを作る時や、ロングランニングプロセスで定期的なタスクを実行するプロセスを作るなどした時くらいだ。</p>
+<p>Erlang は Elixir が依って立つ偉大な巨人だがその実態は慎重に抽象化されている。</p>
+<p>gen_server などの behaviour は Agent モジュールで抽象化出来るし、一時的に別プロセスが欲しくなったら Task モジュールを使うことが出来る。GenStage などのbehaviourも <a href="https://qiita.com/shufo/items/59d1c3b0baac6751777f">Flow</a> で抽象化出来る。</p>
+<p>あくまで BEAM 上で動作する軽量プロセスという概念は知る必要はあるが、そのプロセス同士がどのように連携するかまでは普通に使っているうちではあまり知る必要はないように抽象化したライブラリが充実しているといった方が正確か。</p>
+<p>もちろん作りたいものが何になるかにもよるがおそらく Elixir で最もユースケースの多い Phoenix をベースにした Web 周りの領域では踏み込まない限りは Erlang の知識が必要になることはあまりない。</p>
+<p>ただ Elixir が内実としてプロセス同士のメッセージングパッシングで動いていることを知ると実際の動作がイメージしやすい。言語としてのゴールは Erlang との互換性を保ちつつ並行システムを別のツールセットとして組むことなので学習するとしてもまずは別のツールセットとしての Elixir を学んでから Erlang を学ぶことをおすすめしたい。</p>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=Elixirにまつわる3つの神話&amp;url=https://shufo.github.io/elixir-myth.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://shufo.github.io/elixir-myth.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=https://shufo.github.io/elixir-myth.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://shufo.github.io/tag/programming">Programming</a><a href="https://shufo.github.io/tag/elixir">Elixir</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+                        <figure class="post-author-avatar">
+                            <img src="https://avatars1.githubusercontent.com/u/1641039?s=400&u=e76a7e80d95805075226c95b7fc576ac0df4b6f1&v=4" alt="Shufo" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://shufo.github.io/author/shufo">Shufo</a></h4>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Tokyo</span>
+                            <span class="post-author-website"><a href="http://github.com/shufo"><i class="ic ic-link"></i> Website</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+                <script type="text/javascript">
+                    var disqus = 'shufo';
+                    var disqus_shortname = 'shufo';
+                    var disqus_identifier = '/elixir-myth.html';
+                    var disqus_url = 'https://shufo.github.io/elixir-myth.html';
+                </script>
+                <noscript>Please enable JavaScript to view the comments.</noscript>
+                <section class="post-comments">
+                        <a id="show-disqus" class="post-comments-activate" data-disqus-identifier="/elixir-myth.html" >Show Comments</a>
+                    <div id="disqus_thread"></div>
+                </section>
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+		<!-- TODO : Body class -->
+		<div id="body-class" style="display: none;" class=""></div>
+
+		<footer id="footer">
+			<div class="inner">
+				<section class="credits">
+					<span class="credits-theme">Theme
+						<a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a>
+					</span>
+					<span class="credits-software">Published with
+						<a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a>
+					</span>
+				</section>
+			</div>
+		</footer>
+	</section>
+
+	<script type="text/javascript" src="//shufo.github.io/theme/js/script.js"></script>      <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1113986-11']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+ <script type="text/javascript">
+    var disqus_shortname = 'shufo';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+
+</html>

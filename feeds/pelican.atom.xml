@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog - Pelican</title><link href="https://shufo.github.io/" rel="alternate"></link><link href="https://shufo.github.io/feeds/pelican.atom.xml" rel="self"></link><id>https://shufo.github.io/</id><updated>2015-11-23T13:00:00+09:00</updated><entry><title>Pelican + codeanywhere + Github Pagesでシンクライアントなブログ作成</title><link href="https://shufo.github.io/site_building.html" rel="alternate"></link><published>2015-11-23T13:00:00+09:00</published><updated>2015-11-23T13:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2015-11-23:/site_building.html</id><summary type="html">&lt;p&gt;Pelican + codeanywhere + Github Pagesで非環境依存なブログ構築&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;このブログは&lt;a href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;で書いているけどいわゆるサイトジェネレータにありがちな問題なのがいちいち開発環境を開いたりするのが面倒というのがある。&lt;br&gt;
+WebUI管理画面をサイトジェネレータ自体が持っている&lt;a href="http://hubpress.io/"&gt;HubPress&lt;/a&gt;は気軽に記事を投稿出来るもののGithub APIを使うためGithub Pages専用アプリという色が強く他の環境に移す場合を考慮して使ってはいない。&lt;br&gt;
+2015年11月現在主なサイトジェネレータは&lt;a href="https://staticsitegenerators.net/"&gt;Static Site Generators&lt;/a&gt;でGitHub Starの多い順で&lt;a href="http://jekyllrb.com/"&gt;Jekyll&lt;/a&gt;, &lt;a href="http://octopress.org/"&gt;OctoPress&lt;/a&gt;, &lt;a href="https://hexo.io/"&gt;Hexo&lt;/a&gt;, &lt;a href="http://gohugo.io/"&gt;Hugo&lt;/a&gt;, &lt;a href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;がよく使われている。&lt;br&gt;
+それぞれWebベースの管理画面はないもののシンプルな構成で一度生成してしまえば特定のランタイムやDBに依存しないで静的コンテンツを配信出来る。&lt;/p&gt;
+&lt;h2&gt;やりたいこと&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;特定のマシン(PC, Mac, タブレット)に依存しないサイトジェネレータ環境の構築&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;やったこと&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://blog.getpelican.com/"&gt;Pelican&lt;/a&gt;で静的コンテンツの生成、&lt;a href="https://codeanywhere.com/"&gt;codeanywhere&lt;/a&gt;でWebベースでのファイルの編集とサイトジェネレータ用ランタイムの構築、GitHub Pagesでサイトの公開を行った。&lt;/p&gt;
+&lt;h2&gt;Pelican とは&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="画像" src="/images/pelican.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="http://docs.getpelican.com/en/3.6.3/"&gt;Pelican&lt;/a&gt;はPython製の静的サイトジェネレータでMarkdown形式で記事を書くことが出来る。&lt;/p&gt;
+&lt;p&gt;主な機能としては&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;記事の作成&lt;/li&gt;
+&lt;li&gt;RSS フィードの作成&lt;/li&gt;
+&lt;li&gt;テーマ機能&lt;/li&gt;
+&lt;li&gt;プラグイン&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;があり、ここら辺は類似のサイトジェネレータと特に変わりなし。&lt;/p&gt;
+&lt;h2&gt;Github Pages とは&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="画像" src="/images/githubpages.JPG"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://github.com/"&gt;GitHub&lt;/a&gt; で静的なページをホスティングすることが出来るサービス。
+独自ドメインの割当も出来る。&lt;/p&gt;
+&lt;h2&gt;codeanywhere とは&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="画像" src="/images/codeanywhere.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://codeanywhere.com/"&gt;codeanywhere&lt;/a&gt;は Web上でコードの編集や実行が出来るクラウドIDE。&lt;br&gt;
+プロジェクトごとにコンテナが作成されランタイム等は自由にインストール出来る。&lt;br&gt;
+ちなみにこの記事もcodeanywhereで作成から公開まで行っている。&lt;/p&gt;
+&lt;p&gt;主な機能としては&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GitHub, BitBucketからのコードの取得・編集&lt;/li&gt;
+&lt;li&gt;コンテナ内での任意のコマンドの実行&lt;/li&gt;
+&lt;li&gt;FTPアップロード&lt;/li&gt;
+&lt;li&gt;SSH接続&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;がある。今回はPython製ツールを使うのでコンテナのテンプレートにPythonを使いプロジェクトを作成してみる。&lt;/p&gt;
+&lt;h2&gt;やってみる&lt;/h2&gt;
+&lt;p&gt;まず&lt;a href="https://github.com/new"&gt;GitHub&lt;/a&gt;で「&lt;code&gt;ユーザ名.github.io&lt;/code&gt;」という名前で空のリポジトリを作る。
+自分の場合GitHubユーザ名は&lt;code&gt;shufo&lt;/code&gt;なので&lt;code&gt;shufo.github.io&lt;/code&gt;を作成。&lt;/p&gt;
+&lt;p&gt;作成出来たらcodeanywhereの&lt;a href="https://codeanywhere.com/dashboard#project"&gt;プロジェクトページ&lt;/a&gt;から適当に新規プロジェクトを作成する。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="画像" src="/images/codeanywhere1.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;先ほど作成したユーザ名.github.ioを選び、コンテナのテンプレートとしてpythonを選択する。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="画像" src="/images/codeanywhere2.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;Nextボタンをクリックししばらく待つとプロジェクト編集画面が開きファイルを編集出来るようになるので&lt;br&gt;
+左のファイルツリーからレポジトリ名を右クリックし「SSH Terminal」をクリックする。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="画像" src="/images/codeanywhere3.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;ターミナルが開くのでPelicanのインストールをする。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo pip install pelican Markdown mdx_linkify mdx_del_ins ghp-import
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;次にサイトの初期化。設定するパラメータを色々質問されるので必要に応じてyまたはnを押して進める。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Please answer the following questions so this script can generate the files                                                                                                                                                                                                           
+needed by Pelican.                                                                                                                                                                                                                                                                    
+
+
+&amp;gt; Where do you want to create your new web site? [.]                                                                                                                                                                                                                                  
+&amp;gt; What will be the title of this web site? test                                                                                                                                                                                                                                       
+&amp;gt; Who will be the author of this web site? shufo                                                                                                                                                                                                                                      
+&amp;gt; What will be the default language of this web site? [en] ja                                                                                                                                                                                                                         
+&amp;gt; Do you want to specify a URL prefix? e.g., http://example.com   (Y/n) y                                                                                                                                                                                                             
+&amp;gt; What is your URL prefix? (see above example; no trailing slash) http://shufo.github.io                                                                                                                                                                                              
+&amp;gt; Do you want to enable article pagination? (Y/n) y                                                                                                                                                                                                                                   
+&amp;gt; How many articles per page do you want? [10]                                                                                                                                                                                                                                        
+&amp;gt; What is your time zone? [Europe/Paris] Asia/Tokyo                                                                                                                                                                                                                                   
+&amp;gt; Do you want to generate a Fabfile/Makefile to automate generation and publishing? (Y/n) y                                                                                                                                                                                           
+&amp;gt; Do you want an auto-reload &amp;amp; simpleHTTP script to assist with theme and site development? (Y/n) y                                                                                                                                                                                   
+&amp;gt; Do you want to upload your website using FTP? (y/N) n                                                                                                                                                                                                                               
+&amp;gt; Do you want to upload your website using SSH? (y/N) n                                                                                                                                                                                                                               
+&amp;gt; Do you want to upload your website using Dropbox? (y/N) n                                                                                                                                                                                                                           
+&amp;gt; Do you want to upload your website using S3? (y/N) n                                                                                                                                                                                                                                
+&amp;gt; Do you want to upload your website using Rackspace Cloud Files? (y/N) n                                                                                                                                                                                                             
+&amp;gt; Do you want to upload your website using GitHub Pages? (y/N) y                                                                                                                                                                                                                      
+&amp;gt; Is this your personal page (username.github.io)? (y/N) y                                                                                                                                                                                                                            
+Done. Your new project is available at /home/cabox/workspace
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;初期化が完了したので記事を書いていく。&lt;code&gt;content&lt;/code&gt;ディレクトリ以下に拡張子を&lt;code&gt;.md&lt;/code&gt;で保存したファイルが記事の対象となる。
+基本的な記事のフォーマットは以下の様になる。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Title&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Pelican&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;codeanywhere&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;Github&lt;/span&gt; &lt;span class="n"&gt;Pages&lt;/span&gt;&lt;span class="err"&gt;でブラウザのみでブログ構築&lt;/span&gt;
+&lt;span class="n"&gt;Date&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2015&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;23&lt;/span&gt; &lt;span class="mi"&gt;13&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;00&lt;/span&gt;
+&lt;span class="n"&gt;Category&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Pelican&lt;/span&gt;
+&lt;span class="n"&gt;Tags&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;pelican&lt;/span&gt;
+&lt;span class="n"&gt;Slug&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;site_building&lt;/span&gt;
+&lt;span class="n"&gt;Author&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;shufo&lt;/span&gt;
+&lt;span class="n"&gt;Summary&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Pelican&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;codeanywhere&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;Github&lt;/span&gt; &lt;span class="n"&gt;Pages&lt;/span&gt;&lt;span class="err"&gt;での非環境依存なブログ構築&lt;/span&gt;
+
+&lt;span class="err"&gt;##&lt;/span&gt; &lt;span class="n"&gt;Pelican&lt;/span&gt; &lt;span class="err"&gt;とは&lt;/span&gt;
+&lt;span class="err"&gt;以下本文&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;テーマを適用。テーマは公式の&lt;a href="https://github.com/getpelican/pelican-themes"&gt;テーマ一覧&lt;/a&gt;から適当に。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir pelican-themes
+git clone https://github.com/lucachr/pelican-mg.git pelican-themes/pelican-mg
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;pelicanconf.pyを編集。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;THEME = &amp;#39;./pelican-themes/pelican-mg&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;記事の出力とサーバの起動を実行。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;./develop_server.sh start
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;確認用のサーバURLは画面左のファイルツリーのリポジトリを右クリックし「Info」から表示出来る。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="画像" src="/images/codeanywhere4.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;ファイルビューに環境情報が表示される。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="画像" src="/images/codeanywhere5.jpg"&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;http://preview.ys2w6ouag0c0udid1stmdqerhrara4iot2p57l4efhzd7vi.box.codeanywhere.com
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;先ほど起動したHTTPサーバはデフォルトで8000番でListenするので&lt;/p&gt;
+&lt;p&gt;http://preview.ys2w6ouag0c0udid1stmdqerhrara4iot2p57l4efhzd7vi.box.codeanywhere.com:8000 をブラウザで開いてみる。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="画像" src="/images/codeanywhere6.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;確認出来た。&lt;/p&gt;
+&lt;p&gt;記事に問題がなければ公開を実行。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;make github
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;このコマンドを実行すると&lt;code&gt;ghp-import&lt;/code&gt;で&lt;code&gt;output&lt;/code&gt;ディレクトリの内容が&lt;code&gt;master&lt;/code&gt;ブランチにコミットされ、同時に&lt;code&gt;master&lt;/code&gt;ブランチがGitHubへpushされ公開される。&lt;br&gt;
+pushから反映までは10分ほど時間かかるのでしばらく待ち反映されたのを確認出来たら完了。&lt;/p&gt;
+&lt;h2&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;PelicanとcodeanywhereとGitHub Pagesで意識低めのブログ構築をした。&lt;br&gt;
+ローカルの環境に依存しないためいつでも気が向いたときに書けるというのがブログ作成に当たっては大きいメリットだと思う。&lt;/p&gt;</content><category term="pelican"></category></entry></feed>

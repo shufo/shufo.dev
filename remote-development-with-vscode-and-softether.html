@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+	<title>VSCode Remote SSH + SoftEtherでリモート開発の夢を見る - shufo blog</title>
+
+
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="referrer" content="origin" />
+	<meta name="generator" content="Pelican" /> 
+	<!-- Feed -->
+ 	<link href="https://shufo.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="shufo blog Full Atom Feed"
+	/>     	<link href="https://shufo.github.io/feeds/development.atom.xml" type="application/atom+xml" rel="alternate"
+	 title="shufo blog Categories Atom Feed" />     
+	<link href="//shufo.github.io/theme/css/style.css" type="text/css" rel="stylesheet" />
+
+	<!-- Code highlight color scheme -->
+	<link href="//shufo.github.io/theme/css/code_blocks/tomorrow_night.css" rel="stylesheet">  
+	<!-- Custom fonts -->
+	<link href='https://fonts.googleapis.com/css?family=Montserrat:400,300' rel='stylesheet' type='text/css' />
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+
+    <link href="http://shufo.github.io/remote-development-with-vscode-and-softether.html" rel="canonical" />
+
+        <meta name="description" content="先日VSCodeでVSCode Remote SSH拡張機能がMicrosoftからリリースされた。...">
+
+        <meta name="author" content="shufo">
+
+        <meta name="tags" content="VSCode">
+        <meta name="tags" content="VPN">
+     	<meta property="og:locale" content="" /> 	<meta property="og:site_name" content="shufo blog" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="shufo blog" />
+	<meta property="og:description" content="Random automation stuff" />
+	<meta property="og:url" content="https://shufo.github.io" /> 	<meta property="og:image" content="https://shufo.github.io/assets/header.jpg" />   
+  <meta property="og:type" content="article">
+            <meta property="article:author" content="https://shufo.github.io/author/shufo">
+  <meta property="og:url" content="https://shufo.github.io/remote-development-with-vscode-and-softether.html">
+  <meta property="og:title" content="VSCode Remote SSH + SoftEtherでリモート開発の夢を見る">
+  <meta property="article:published_time" content="2019-05-09 00:00:00+09:00">
+            <meta property="og:description" content="先日VSCodeでVSCode Remote SSH拡張機能がMicrosoftからリリースされた。...">
+
+                <meta property="og:image" content="https://shufo.github.io//assets/softether_vpn.png">
+         <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@shufo_">
+        <meta name="twitter:title" content="VSCode Remote SSH + SoftEtherでリモート開発の夢を見る">
+        <meta name="twitter:url" content="https://shufo.github.io/remote-development-with-vscode-and-softether.html">
+
+                <meta name="twitter:image:src" content="https://shufo.github.io//assets/softether_vpn.png">
+
+            <meta name="twitter:description" content="先日VSCodeでVSCode Remote SSH拡張機能がMicrosoftからリリースされた。...">
+	<meta name="google-site-verification" content="pfqlDqY0RodNUTCncFltLDDwwV_AOnfcqefcGys1NTQ" />
+</head>
+<!-- TODO : Body class -->
+
+<body class="home-template">
+
+<nav id="menu">
+  <a class="close-button">Close</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">Menu</p>
+    <ul>
+          <li><a href="/hello-world.html" role="presentation">About</a></li>
+          <li><a href="/archives/" role="presentation">Archives</a></li>
+          <li><a href="./categories.html" role="presentation">Categories</a></li>
+          <li><a href="https://github.com/shufo" role="presentation">GitHub</a></li>
+          <li><a href="/feeds/all.atom.xml" role="presentation">RSS</a></li>
+
+
+    </ul>
+  </div>
+</nav>     <!-- Progressbar -->
+    <div class="progress-container">
+        <span class="progress-bar"></span>
+    </div>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header id="post-header" class="has-cover">
+      <div class="inner">
+        <nav id="navigation">
+            <span id="home-button" class="nav-button">
+                <a class="home-button" href="https://shufo.github.io" title="Home"><i class="ic ic-arrow-left"></i> Home</a>
+            </span>
+          <span id="menu-button" class="nav-button">
+            <a class="menu-button"><i class="ic ic-menu"></i> Menu</a>
+          </span>
+        </nav>
+        <h1 class="post-title">VSCode Remote SSH + SoftEtherでリモート開発の夢を見る</h1>
+        <!-- TODO : Proper class for headline -->
+        <span class="post-meta">
+                <a href="https://shufo.github.io/author/shufo">Shufo</a>
+            | <time datetime="2019 May/09 (Thu)">2019 May/09 (Thu)</time>
+        </span>
+        <!-- TODO : Modified check -->
+            <div class="post-cover cover" style="background-image: url('/assets/softether_vpn.png')">
+      </div>
+    </header>
+
+	<section id="wrapper">
+		<a class="hidden-close"></a>
+
+    <!-- Post content -->
+    <main class="content" role="main">
+        <article class="post">
+        <div class="inner">
+            <section class="post-content">
+                <p>先日VSCodeで<a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh">VSCode Remote SSH</a>拡張機能がMicrosoftからリリースされた。</p>
+<p>これは何をしてくれる拡張かというとSSHでリモートサーバに接続し特定のディレクトリをマウントすることが出来、更にマウントしつつVSCodeの拡張はそのまま使えたり、ポートフォワーディングでリモートのポートをローカルに公開出来るのだ。今までもリモートサーバをsshでマウントしたりファイル更新をトリガーに同期することでリモートサーバでの開発は出来たが、この拡張はその辺りの自分でやると面倒になりがちなマウントやssh接続ターミナル、ポートフォワーディング等をまとめて提供してくれる。</p>
+<p>2019/05/09現在まだStableのVSCodeではこの拡張機能は使えないので<a href="https://code.visualstudio.com/insiders/">VSCode Insiders</a>から先行公開版のVSCodeをダウンロードして使う。</p>
+<p>インストールするとVSCode Insidersというアプリ名で使えるようになる。Linuxなら<code>code-insiders</code>というコマンドがインストールされる。</p>
+<p>リモートサーバはSSHで到達出来るLinuxサーバなら何でもよい。(WindowsとMacは未対応)</p>
+<p>用途としては</p>
+<ul>
+<li>自宅や会社のPCにリモートからログインして開発</li>
+<li>クラウド上のLinuxサーバをリモートサーバとして開発</li>
+<li>WindowsやMacマシンで仮想Linuxホストをマウントして開発(VMやコンテナ)</li>
+</ul>
+<p>などが考えられる</p>
+<p>自分は普段家で作業する時はデスクトップで作業しているが出先でノートPCを使う時にはファイルシステムを同期する必要があるので作業内容を一旦GitHubにコミットするなどしていたのだけど、案外面倒なのでどうしようか悩んでいたところこの拡張が公開されたのでVPN接続で家のPCをリモートサーバにしてシンクライアントのような開発環境を実現してみた。</p>
+<p><img alt="" src="/assets/softether_vpn.png"></p>
+<h3>SoftEther</h3>
+<p>VPN接続を実現するのに最初はルータのVPN機能を使おうかと思ったけど自宅はIPoE環境なのでL2TP/IPSecを実現するには意外と面倒ということが分かった。</p>
+<p>IPoEなのでほぼグローバルアドレスが変化することはないがDDNSは必要だし、クライアント側でのVPN接続の設定も必要。</p>
+<p>VPN接続設定もOSによってバラバラだし分かりづらい。</p>
+<p>他に何か簡単に実現するソリューションはないかと探したところオープンソース版の<a href="https://www.softether-download.com/?product=softether">SoftEther</a>を見つけた。</p>
+<p>SoftEtherではWindowsやMac OSX, Linuxなどをサーバにしてクライアントは専用のSoftEtherクライアントを使う。
+クライアントもWindows, Linux, MacOSXと対応しているので統一されたインターフェースでVPN接続が出来る。（LinuxはCUIだけど）</p>
+<p>この専用クライアントというのが重要でOSデフォルトのVPN設定インターフェースはOSごとに名称が異なったり、入力項目も様々なためVPN接続に問題が発生した場合の問題切り分けが難しい。</p>
+<p><img alt="" src="/assets/2019-05-09_22h34_03.jpg"></p>
+<p>SoftEther Serverをインストールし、管理用クライアントから接続するとこのようなインターフェースが表示される。
+ここで表示されるDDNSホスト名をVPN Clientの接続先として使用する。</p>
+<p>またSoftEtherはIPv6に対応しており、DDNSも自動で設定されるためIPoE環境でも特に追加設定は必要ない。</p>
+<p>上記で作成した仮想ハブが仮想ネットワークを構築し、仮想ハブに接続されたクライアント同士で通信が可能になる。
+仮想ハブから物理LANにブリッジして、物理的なLANセグメントと通信するにはローカルブリッジ用にプロミスキャスモードに対応した物理的なNICが必要で無線LANカードは通常対応していない。</p>
+<p>自分の環境ではリモート接続したいサーバも無線LANで接続していた。
+そのため接続したいリモートサーバにもSoftEther Clientを入れ、SoftEther Serverに接続させリモート接続クライアントと同一の仮想ハブに接続することでクライアント-サーバ間の通信を可能にした。</p>
+<h3>VPN Client Install</h3>
+<div class="highlight"><pre><span></span>$ wget https://github.com/SoftEtherVPN/SoftEtherVPN_Stable/releases/download/v4.29-9680-rtm/softether-vpnclient-v4.29-9680-rtm-2019.02.28-linux-x64-64bit.tar.gz
+$ tar xvf softether-vpnclient-v4.29-9680-rtm-2019.02.28-linux-x64-64bit.tar.gz
+$ <span class="nb">cd</span> vpnclient
+$ make 
+</pre></div>
+
+
+<p>VPNクライアント側では接続設定を作成し接続する</p>
+<div class="highlight"><pre><span></span>$ sudo ./vpnclient start
+$ sudo ./vpncmd         
+vpncmd コマンド - SoftEther VPN コマンドライン管理ユーティリティ
+SoftEther VPN コマンドライン管理ユーティリティ <span class="o">(</span>vpncmd コマンド<span class="o">)</span>
+Version <span class="m">4</span>.29 Build <span class="m">9680</span>   <span class="o">(</span>Japanese<span class="o">)</span>
+Compiled <span class="m">2019</span>/02/28 <span class="m">19</span>:22:54 by yagi at pc33
+Copyright <span class="o">(</span>c<span class="o">)</span> SoftEther VPN Project. All Rights Reserved.
+
+vpncmd プログラムを使って以下のことができます。
+
+<span class="m">1</span>. VPN Server または VPN Bridge の管理
+<span class="m">2</span>. VPN Client の管理
+<span class="m">3</span>. VPN Tools コマンドの使用 <span class="o">(</span>証明書作成や通信速度測定<span class="o">)</span>
+
+<span class="m">1</span> - <span class="m">3</span> を選択: <span class="m">2</span>
+
+接続先の VPN Client が動作しているコンピュータの IP アドレスまたはホスト名を指定してください。
+何も入力せずに Enter を押すと、localhost <span class="o">(</span>このコンピュータ<span class="o">)</span> に接続します。
+接続先のホスト名または IP アドレス: 
+
+VPN Client <span class="s2">&quot;localhost&quot;</span> に接続しました。
+
+VPN Client&gt;
+</pre></div>
+
+
+<p>接続設定作成</p>
+<div class="highlight"><pre><span></span>VPN Client&gt; AccountCreate VPN_Server /SERVER:vpn12345678.softether.net:443 /HUB:VPN /USERNAME:shufo /NICNAME:VPN
+</pre></div>
+
+
+<p>パスワード設定</p>
+<div class="highlight"><pre><span></span>VPN Client&gt; AccountPasswordSet VPN_Server /PASSWORD:myPassWord /TYPE:standard
+</pre></div>
+
+
+<p>起動時自動接続</p>
+<div class="highlight"><pre><span></span>VPN Client&gt; AcccountStartupSet VPN_Server
+</pre></div>
+
+
+<p>VPNサーバ接続</p>
+<div class="highlight"><pre><span></span>VPN Client&gt; AccountConnect VPN_Server
+</pre></div>
+
+
+<p>インターフェース確認</p>
+<div class="highlight"><pre><span></span>$ ip a
+~中略~
+<span class="m">14</span>: vpn_vpn: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether 5e:07:43:55:41:2c brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::5c07:43ff:fe55:412c/64 scope link 
+       valid_lft forever preferred_lft forever
+</pre></div>
+
+
+<p>inet6でIPv6アドレスが振られていることが分かる
+SSH接続する際はこのアドレスとインターフェース名が接続先となる</p>
+<p>同様にリモート接続クライアントでも接続設定を作成しVPNサーバに接続出来たらSSHの接続性を確認する</p>
+<div class="highlight"><pre><span></span>$ ssh fe80::5c07:43ff:fe55:412c%vpn_vpn
+</pre></div>
+
+
+<p>IPv4アドレスでのSSH接続とは異なり末尾に<code>%vpn_vpn</code>とついてることが分かる。</p>
+<p>ssh_configの設定では<code>%%</code>とすることで%の代わりになる</p>
+<div class="highlight"><pre><span></span>Host remote
+    HostName fe80::5c07:43ff:fe55:412c%%vpn_vpn
+    User shufo
+    IdentityFile ~/.ssh/id_rsa
+</pre></div>
+
+
+<p>接続性確認</p>
+<div class="highlight"><pre><span></span>$ ssh remote
+</pre></div>
+
+
+<p>SSHでの接続性が確認出来ればVSCodeでのSSH Remote機能が利用出来るようになる。
+デフォルトではssh_configに設定された接続設定を使える</p>
+<p><img alt="" src="/assets/2019-05-09_23.28.14.png"></p>
+<p>Remote SSH to Hostで先程設定して接続設定を選ぶ
+すると新しくウィンドウが開けばRemote SSH接続が完了する。</p>
+<p><img alt="" src="/assets/2019-05-09_23.41.00.png"></p>
+<p>ファイル一覧からOpenFolderボタンをクリックしマウントするディレクトリを選ぶ</p>
+<p><img alt="" src="/assets/2019-05-09_23.30.08.png"></p>
+<p>マウントが完了するといつも通りローカルで開発しているようにファイルを扱えるようになる。
+もちろん拡張機能も動作する</p>
+<p><img alt="" src="/assets/2019-05-09_23.46.54.png"></p>
+<p>またポートフォワーディングによりローカルのポートをリモートにフォワーディングすることが出来るので、例えばローカルの8000番にアクセスしたらリモートの8000番にフォワーディングして開発サーバプロセスにアクセスするみたいなことも出来る。</p>
+<p>といった感じで一通りの機能が揃っているのでリモート開発を快適に進めることが出来る。</p>
+<p>とここまで書いてきてなぜこの機能の反響が大きかったのかを考えると、今までもリモートのファイルシステムをマウントしたりport forwardingは手動でやればリモート開発を実現出来たが、初期設定とその設定の維持に忍耐力を要求されるものであり敷居の高さが問題だったのかなと思った。</p>
+<p>正直その手のhackでリモート開発を実現するくらいなら最初からローカルで開発するかLinuxマシンで開発するというソリューションに辿り着くのは、その一手間が大きく開発体験を損なうものであり耐えられないものだったと。</p>
+<p>開発者がやりたいのはただまともなPOSIX互換環境でコードを編集したいだけなのに開発環境を開く度にSSHでログインしたりポートフォワーディング設定したり、といったことがあるとちょっと思いついたコードを書くにも一手間になる。</p>
+<p>それが軽量なVSCodeでエディタを開いたら即ディレクトリがマウントされるというのは開発体験としてはほぼローカル開発に近い。</p>
+<p>今までも同様なリモート開発はEclipseのプラグインなり、手動でSSHFSでマウントするなりSFTPでファイルシステムを同期するなりで実現は出来たけど車輪の再発明とならないのは開発体験の大きな向上という点がある。</p>
+<p><a href="https://devblogs.microsoft.com/commandline/introducing-windows-terminal/">Windows Terminal</a>, <a href="https://devblogs.microsoft.com/commandline/announcing-wsl-2/">WSL 2</a>, <a href="https://techcrunch.com/2019/05/06/microsoft-launches-visual-studio-online-an-online-code-editor/">Visual Studio Online</a>, EdgeのChromium採用などDXへの取り組みの一環としてVSCodeを中心としたエコシステムが上手く回っていて最近のMicrosoftはおもしろい。</p>
+            </section>
+
+            <section class="post-info">
+                <div class="post-share">
+                    <a class="twitter" href="https://twitter.com/share?text=VSCode Remote SSH + SoftEtherでリモート開発の夢を見る&amp;url=https://shufo.github.io/remote-development-with-vscode-and-softether.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <i class="ic ic-twitter"></i><span class="hidden">Twitter</span>
+                    </a>
+                    <a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://shufo.github.io/remote-development-with-vscode-and-softether.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <i class="ic ic-facebook"></i><span class="hidden">Facebook</span>
+                    </a>
+                    <a class="googleplus" href="https://plus.google.com/share?url=https://shufo.github.io/remote-development-with-vscode-and-softether.html" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <i class="ic ic-googleplus"></i><span class="hidden">Google+</span>
+                    </a>
+                    <div class="clear"></div>
+                </div>
+
+                <aside class="post-tags">
+<a href="https://shufo.github.io/tag/vscode">VSCode</a><a href="https://shufo.github.io/tag/vpn">VPN</a>                </aside>
+
+                <div class="clear"></div>
+
+                <aside class="post-author">
+                        <figure class="post-author-avatar">
+                            <img src="https://avatars1.githubusercontent.com/u/1641039?s=400&u=e76a7e80d95805075226c95b7fc576ac0df4b6f1&v=4" alt="Shufo" />
+                        </figure>
+                    <div class="post-author-bio">
+                        <h4 class="post-author-name"><a href="https://shufo.github.io/author/shufo">Shufo</a></h4>
+                            <span class="post-author-location"><i class="ic ic-location"></i> Tokyo</span>
+                            <span class="post-author-website"><a href="http://github.com/shufo"><i class="ic ic-link"></i> Website</a></span>
+                    </div>
+                    <div class="clear"></div>
+                </aside>
+
+                </section>
+
+                <script type="text/javascript">
+                    var disqus = 'shufo';
+                    var disqus_shortname = 'shufo';
+                    var disqus_identifier = '/remote-development-with-vscode-and-softether.html';
+                    var disqus_url = 'https://shufo.github.io/remote-development-with-vscode-and-softether.html';
+                </script>
+                <noscript>Please enable JavaScript to view the comments.</noscript>
+                <section class="post-comments">
+                        <a id="show-disqus" class="post-comments-activate" data-disqus-identifier="/remote-development-with-vscode-and-softether.html" >Show Comments</a>
+                    <div id="disqus_thread"></div>
+                </section>
+
+                <aside class="post-nav">
+                    <div class="clear"></div>
+                </aside>
+
+            </div>
+        </article>
+    </main>
+		<!-- TODO : Body class -->
+		<div id="body-class" style="display: none;" class=""></div>
+
+		<footer id="footer">
+			<div class="inner">
+				<section class="credits">
+					<span class="credits-theme">Theme
+						<a href="https://github.com/arulrajnet/attila" rel="nofollow">Attila</a>
+					</span>
+					<span class="credits-software">Published with
+						<a href="https://github.com/getpelican/pelican" rel="nofollow">Pelican</a>
+					</span>
+				</section>
+			</div>
+		</footer>
+	</section>
+
+	<script type="text/javascript" src="//shufo.github.io/theme/js/script.js"></script>      <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-1113986-11']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+ <script type="text/javascript">
+    var disqus_shortname = 'shufo';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+</body>
+
+</html>

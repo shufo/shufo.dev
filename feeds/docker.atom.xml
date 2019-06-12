@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog - Docker</title><link href="https://shufo.github.io/" rel="alternate"></link><link href="https://shufo.github.io/feeds/docker.atom.xml" rel="self"></link><id>https://shufo.github.io/</id><updated>2015-03-19T13:00:00+09:00</updated><entry><title>マルチホストdocker環境でのBlueGreenなデプロイメント</title><link href="https://shufo.github.io/weave_swarm_compose.html" rel="alternate"></link><published>2015-03-19T13:00:00+09:00</published><updated>2015-03-19T13:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2015-03-19:/weave_swarm_compose.html</id><summary type="html">&lt;p&gt;Weave / Swarm / Compose / Consulでdockerのクラスタリング&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Overview&lt;/h2&gt;
+&lt;p&gt;dockerをそれなりに扱おうと思うと直面するのがマルチホスト環境でのdockerの構成。&lt;br&gt;
+大抵シングルホストのプリミティブな環境では問題無かったL3/L4の扱い、IPアドレス、ポート等のメタデータのリソース管理が問題になってくる。&lt;br&gt;
+前者に関しては、ルーティングコンテナ経由でのパケット交換、cgroup/namespaced、Open vSwtichなどでSDNを実装、 &lt;br&gt;
+L3/L4を抽象化し仮想的に１つのネットワークとして扱えるようにすることで解決をしようという動きがある。
+代表的なソリューションとしては&lt;a href="https://github.com/socketplane/socketplane"&gt;socketplane&lt;/a&gt;, &lt;a href="https://github.com/zettio/weave"&gt;weave&lt;/a&gt;, &lt;a href="https://github.com/jpetazzo/pipework"&gt;pipework&lt;/a&gt;, &lt;a href="https://github.com/coreos/flannel"&gt;flannel&lt;/a&gt;, Open vSwitch等のソリューションがある。  &lt;/p&gt;
+&lt;p&gt;後者に関して分散Key Valueストアにコンテナのメタデータを登録し必要に応じてクラスタの構成情報を読み出す&lt;br&gt;
+ことで解決しようとする動きがある。
+代表的なソリューションとしては&lt;a href="https://www.consul.io/"&gt;Consul&lt;/a&gt;、&lt;a href="https://github.com/coreos/etcd"&gt;etcd&lt;/a&gt;、&lt;a href="http://zookeeper.apache.org/"&gt;zookeeper&lt;/a&gt;等がある。  &lt;/p&gt;
+&lt;h2&gt;マルチホストdocker環境で辛いところ&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;L3/L4管理&lt;/li&gt;
+&lt;li&gt;コンテナの配置スケジューリング&lt;/li&gt;
+&lt;li&gt;マルチホストでのメタデータ管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;やりたいこと&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;L3/L4の自動管理&lt;/li&gt;
+&lt;li&gt;スケジューリングの自動化&lt;/li&gt;
+&lt;li&gt;コンテナライフサイクル管理の自動化&lt;/li&gt;
+&lt;li&gt;configのdynamicな書き換え&lt;/li&gt;
+&lt;li&gt;BlueGreenなデプロイメント&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;やったこと&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;weave&lt;/code&gt;でホストごとに存在するdockerのプライベートネットワークをL3レベルで抽象化、複数のホストにまたがるdockerネットワークを一つのネットワークとして扱えるようにし、&lt;code&gt;Consul&lt;/code&gt;/&lt;code&gt;consul-template&lt;/code&gt;/&lt;code&gt;registrator&lt;/code&gt;でメタデータの管理/configの自動書き換え及びBlueGreenなクラスタの切り替え、またコンテナのスケジューリング/ライフサイクル管理に&lt;code&gt;docker-swarm&lt;/code&gt;/&lt;code&gt;docker-compose&lt;/code&gt;を使用しクラスタ全体を透過的に管理出来るようにした。&lt;br&gt;
+それぞれの構成要素は単体で落ちても他の構成要素には影響しないものとし、ホスト障害があってもクラスタ全体としては可用性を存続出来るようにする。
+なお前提として各構成要素は全てコンテナのためOSは便宜的に&lt;code&gt;CoreOS&lt;/code&gt;を使用しているがホストでdockerさえ動作すればどんな環境でも動作するようになっている。&lt;/p&gt;
+&lt;h3&gt;構成イメージ&lt;/h3&gt;
+&lt;p&gt;&lt;img alt="docker-weave-swarm" src="/images/docker-weave-swarm.gif" title="構成"&gt;&lt;/p&gt;
+&lt;h2&gt;Requirements&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://coreos.com/"&gt;CoreOS&lt;/a&gt; (Tested on 557.2.0)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.docker.com/"&gt;Docker&lt;/a&gt; (Tested on 1.4.1)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/zettio/weave"&gt;Weave&lt;/a&gt; (Tested on 0.9.0)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/docker/swarm/"&gt;docker-swarm&lt;/a&gt; (Tested on 0.1.0)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/docker/compose"&gt;docker-compose&lt;/a&gt; (Tested on 1.1.0)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.consul.io/"&gt;Consul&lt;/a&gt; (Tested on 0.5.0)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/hashicorp/consul-template"&gt;Consul-template&lt;/a&gt; (Tested on 0.7.0)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gliderlabs/registrator"&gt;registrator&lt;/a&gt; (Tested on v5)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Weave&lt;/h2&gt;
+&lt;p&gt;dockerネットワークの抽象化には&lt;a href="https://github.com/zettio/weave"&gt;Weave&lt;/a&gt;を使う。&lt;br&gt;
+Weaveは各ホストに存在するローカルなdockerネットワークを抽象化し、１つのネットワークとして扱うことを可能にする。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Unitファイル作成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo vim /etc/systemd/system/install-weave.service
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;[&lt;/span&gt;Unit&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="nv"&gt;After&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;network-online.target
+&lt;span class="nv"&gt;After&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;docker.service
+&lt;span class="nv"&gt;Description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;Install Weave
+&lt;span class="nv"&gt;Documentation&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;http://zettio.github.io/weave/
+&lt;span class="nv"&gt;Requires&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;network-online.target
+&lt;span class="nv"&gt;Requires&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;docker.service
+
+&lt;span class="o"&gt;[&lt;/span&gt;Service&lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="nv"&gt;Type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;oneshot
+&lt;span class="nv"&gt;RemainAfterExit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;yes
+&lt;span class="nv"&gt;ExecStartPre&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/bin/wget -N -P /opt/bin &lt;span class="se"&gt;\&lt;/span&gt;
+    https://raw.github.com/zettio/weave/master/weave 
+&lt;span class="nv"&gt;ExecStartPre&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/bin/chmod +x /opt/bin/weave
+&lt;span class="nv"&gt;ExecStartPre&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/usr/bin/docker pull zettio/weave:latest
+&lt;span class="nv"&gt;ExecStart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;/bin/echo Wave Installed
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;weave用ブリッジインターフェースUnitファイル作成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo vim /etc/systemd/network/10-weave.network
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[Match]&lt;/span&gt;
+&lt;span class="na"&gt;Type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;bridge&lt;/span&gt;
+&lt;span class="na"&gt;Name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;weave*&lt;/span&gt;
+
+&lt;span class="k"&gt;[Network]&lt;/span&gt;
+&lt;span class="na"&gt;Address&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;10.0.0.1/8&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo vim /etc/systemd/network/10-weave.netdev
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[NetDev]&lt;/span&gt;
+&lt;span class="na"&gt;Name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;weave&lt;/span&gt;
+&lt;span class="na"&gt;Kind&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;bridge&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;weave service用Unitファイル作成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo vim /etc/systemd/system/weave.service
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[Unit]&lt;/span&gt;
+&lt;span class="na"&gt;After&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;install-weave.service&lt;/span&gt;
+&lt;span class="na"&gt;Description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Weave Network&lt;/span&gt;
+&lt;span class="na"&gt;Documentation&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;http://zettio.github.io/weave/&lt;/span&gt;
+&lt;span class="na"&gt;Requires&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;install-weave.service&lt;/span&gt;
+
+&lt;span class="k"&gt;[Service]&lt;/span&gt;
+&lt;span class="na"&gt;ExecStartPre&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;/opt/bin/weave launch&lt;/span&gt;
+&lt;span class="na"&gt;ExecStart&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;/usr/bin/docker attach weave&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;ネットワーク再起動&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo systemctl restart systemd-networkd
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;weaveインストール・起動&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo systemctl start install-weave.service
+sudo systemctl start weave.service
+sudo /opt/bin/weave create-bridge
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Docker&lt;/h2&gt;
+&lt;p&gt;docker用の管理ポートを開ける。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Unitファイル作成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo vim /etc/systemd/system/docker-tcp.socket
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;[Unit]&lt;/span&gt;
+&lt;span class="na"&gt;Description&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;Docker Socket for the API&lt;/span&gt;
+
+&lt;span class="k"&gt;[Socket]&lt;/span&gt;
+&lt;span class="na"&gt;ListenStream&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;2375&lt;/span&gt;
+&lt;span class="na"&gt;BindIPv6Only&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;both&lt;/span&gt;
+&lt;span class="na"&gt;Service&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;docker.service&lt;/span&gt;
+
+&lt;span class="k"&gt;[Install]&lt;/span&gt;
+&lt;span class="na"&gt;WantedBy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;sockets.target&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;dockerのデフォルトブリッジをweaveし、dockerから透過的にweaveネットワークを扱えるようにする。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo cp /usr/lib/systemd/system/docker.service /etc/systemd/system/
+sudo vim /etc/systemd/system/docker.service
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Environment=DOCKER_OPTS=&amp;#39;--bridge=weave --fixed-cidr=&amp;quot;10.0.0.0/8&amp;quot; --insecure-registry=&amp;quot;0.0.0.0/0&amp;quot;&amp;#39;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;socketを起動&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;sudo systemctl enable docker-tcp.socket
+sudo systemctl stop docker
+sudo systemctl start docker-tcp.socket
+sudo systemctl start docker
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;適宜iptables等でListenする相手を制限。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Accept a manage node&lt;/span&gt;
+sudo iptables -A INPUT -s &lt;span class="m"&gt;10&lt;/span&gt;.0.0.1 -m tcp -p tcp --dport &lt;span class="m"&gt;2375&lt;/span&gt; -j ACCEPT
+&lt;span class="c1"&gt;# Drop other nodes&lt;/span&gt;
+sudo iptables -A INPUT -s &lt;span class="m"&gt;0&lt;/span&gt;.0.0.0/0 -m tcp -p tcp --dport &lt;span class="m"&gt;2375&lt;/span&gt; -j DROP
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;参照: &lt;a href="https://coreos.com/docs/launching-containers/building/customizing-docker/"&gt;https://coreos.com/docs/launching-containers/building/customizing-docker/&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;Swarm&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;クラスタIDを取得&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run --rm swarm create
+6856663cdefdec325839a4b7e1de38e8
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Swarm agentを起動(各ノード)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run -d --name swarm_agent swarm join --addr=&amp;lt;node_ip:2375&amp;gt; token://&amp;lt;cluster_id&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Swarm managerを起動&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run -d --name swarm_manager -p &amp;lt;swarm_port&amp;gt;:2375 swarm manage token://&amp;lt;cluster_id&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;確認&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker run --rm swarm list token://&amp;lt;cluster_id&amp;gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;終了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker kill swarm_agent
+docker kill swarm_manager
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Compose&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;実行ファイルをDL&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl -L https://github.com/docker/compose/releases/download/1.1.0/docker-compose-`uname -s`-`uname -m` &amp;gt; /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;docker-compose.ymlにコンテナの定義を書く&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir nodes
+cd nodes
+vim docker-compose.yml
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="l l-Scalar l-Scalar-Plain"&gt;consul&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;command&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;--name consul -server -bootstrap -ui-dir /ui -data-dir ./data&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;image&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;progrium/consul:latest&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;ports&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;8300&amp;quot;&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;8400&amp;quot;&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;8500&amp;quot;&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;8600/udp&amp;quot;&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;environment&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;affinity:container!=nodes_consul_*&amp;quot;&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;net&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;host&amp;quot;&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;registrator&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;command&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;-internal consul://127.0.0.1:8500&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;image&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;sttts/registrator:latest&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;volumes&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;/var/run/docker.sock:/tmp/docker.sock&amp;quot;&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;environment&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;affinity:container!=nodes_registrator_*&amp;quot;&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;net&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;host&amp;quot;&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;haproxy&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;image&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;shayashibara/docker-consul-template-haproxy&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;environment&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;affinity:container!=nodes_haproxy_*&amp;quot;&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;links&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+    &lt;span class="l l-Scalar l-Scalar-Plain"&gt;consul:consul&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;ports&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;80:80&amp;quot;&lt;/span&gt;
+
+&lt;span class="l l-Scalar l-Scalar-Plain"&gt;apache&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;image&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt; &lt;span class="l l-Scalar l-Scalar-Plain"&gt;httpd&lt;/span&gt;
+  &lt;span class="l l-Scalar l-Scalar-Plain"&gt;environment&lt;/span&gt;&lt;span class="p p-Indicator"&gt;:&lt;/span&gt;
+  &lt;span class="p p-Indicator"&gt;-&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;SERVICE_TAGS=production&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Swarm経由でComposeを実行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;DOCKER_HOST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;tcp://localhost:2375 docker-compose scale &lt;span class="nv"&gt;consul&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="nv"&gt;registrator&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="nv"&gt;haproxy&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;3&lt;/span&gt; &lt;span class="nv"&gt;apache&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="m"&gt;6&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;確認&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;DOCKER_HOST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;tcp://localhost:2375 docker-compose ps
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Consul / consul-template&lt;/h2&gt;
+&lt;p&gt;Consulでコンテナのメタデータを管理し、Consul-templateでHAProxy配下のbackendを切り替える。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;shayashibara/docker-consul-template-haproxy&lt;/code&gt;で起動するhaproxy用のconsul-templateのテンプレート。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="x"&gt;global&lt;/span&gt;
+&lt;span class="x"&gt;  log 127.0.0.1 local0&lt;/span&gt;
+&lt;span class="x"&gt;  log 127.0.0.1 local1 notice&lt;/span&gt;
+&lt;span class="x"&gt;  user haproxy&lt;/span&gt;
+&lt;span class="x"&gt;  group haproxy&lt;/span&gt;
+
+&lt;span class="x"&gt;defaults&lt;/span&gt;
+&lt;span class="x"&gt;  log global&lt;/span&gt;
+&lt;span class="x"&gt;  mode http&lt;/span&gt;
+&lt;span class="x"&gt;  option httplog&lt;/span&gt;
+&lt;span class="x"&gt;  option dontlognull&lt;/span&gt;
+&lt;span class="x"&gt;  balance roundrobin&lt;/span&gt;
+&lt;span class="x"&gt;  timeout connect 5000&lt;/span&gt;
+&lt;span class="x"&gt;  timeout client 50000&lt;/span&gt;
+&lt;span class="x"&gt;  timeout server 50000&lt;/span&gt;
+
+&lt;span class="x"&gt;listen stats&lt;/span&gt;
+&lt;span class="x"&gt;  bind *:8001&lt;/span&gt;
+&lt;span class="x"&gt;  option httpclose&lt;/span&gt;
+&lt;span class="x"&gt;  option forwardfor&lt;/span&gt;
+&lt;span class="x"&gt;  stats enable&lt;/span&gt;
+&lt;span class="x"&gt;  stats uri /haproxy?stats&lt;/span&gt;
+&lt;span class="x"&gt;  stats auth admin:123123q&lt;/span&gt;
+&lt;span class="x"&gt;  stats realm HAProxy\ Statistics&lt;/span&gt;
+
+&lt;span class="x"&gt;frontend web-app&lt;/span&gt;
+&lt;span class="x"&gt;  bind *:80&lt;/span&gt;
+&lt;span class="x"&gt;  default_backend &lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt;&lt;span class="nv"&gt;key&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;backend/current&amp;quot;&lt;/span&gt;&lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+
+&lt;span class="x"&gt;backend default&lt;/span&gt;
+&lt;span class="x"&gt;  server s1 localhost:8080&lt;/span&gt;
+
+&lt;span class="cp"&gt;{{&lt;/span&gt;&lt;span class="nv"&gt;range&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;tag&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;services&lt;/span&gt; &lt;span class="o"&gt;:=&lt;/span&gt; &lt;span class="nv"&gt;service&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;apache-80&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;|&lt;/span&gt; &lt;span class="nf"&gt;byTag&lt;/span&gt;&lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;backend &lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;tag&lt;/span&gt;&lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="x"&gt; balance roundrobin&lt;/span&gt;
+&lt;span class="cp"&gt;{{&lt;/span&gt;&lt;span class="nv"&gt;range&lt;/span&gt; &lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="nv"&gt;services&lt;/span&gt;&lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt; server &lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt;&lt;span class="nv"&gt;.ID&lt;/span&gt;&lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt; &lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt;&lt;span class="nv"&gt;.Address&lt;/span&gt;&lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;:&lt;/span&gt;&lt;span class="cp"&gt;{{&lt;/span&gt;&lt;span class="nv"&gt;.Port&lt;/span&gt;&lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;span class="cp"&gt;{{&lt;/span&gt;&lt;span class="nv"&gt;end&lt;/span&gt;&lt;span class="cp"&gt;}}{{&lt;/span&gt;&lt;span class="nv"&gt;end&lt;/span&gt;&lt;span class="cp"&gt;}}&lt;/span&gt;&lt;span class="x"&gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/gmr/consulate"&gt;consulate&lt;/a&gt;(Consulのpythonクライアント)で現在のクラスタのタグをsetし切り替える。&lt;br&gt;
+要件によるけど任意のタイミングでBlueGreenなクラスタの切り替えを行いたかったのでこのような構成にした。&lt;br&gt;
+実作業に落としこむ場合はJenkins等で切り替えをタスク化しWebUIから操作することになると思う。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;pip install consulate
+consulate --api-host 172.17.42.1:8500 kv set backend/current production
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;確認&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;docker exec -it nodes_haproxy_1 cat /etc/haproxy/haproxy.cfg
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;クラスタの終了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;DOCKER_HOST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;tcp://localhost:2375 docker-compose &lt;span class="nb"&gt;kill&lt;/span&gt;
+&lt;span class="nv"&gt;DOCKER_HOST&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;tcp://localhost:2375 docker-compose rm
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;マルチホストDocker環境でBlueGreenなデプロイを実現するためweaveでL3の抽象化とConsulによる分散Key-ValueストアでL3/L4リソースの管理、consul-templateで設定ファイルの動的書き換え、docker-swarm/composeによるコンテナのスケジューリング、ライフサイクル管理、BlueGreenなクラスタの切り替えを行った。&lt;br&gt;
+構成要素は多いものの各要素は疎結合でそれぞれ代替可能なツールが多い(weaveはpipeworkやflannel、Consulはetcdやzookeeper、consul-templateはconfd等ある)ので、要件に応じて構成要素は変えることが出来る。&lt;br&gt;
+dokkuやflynn、deis等のマイクロPaaSやCloud-FoundryやOpenShift等のフルスタックPaaSは単体で上記ツールチェインのほとんどの機能を備えている一方ロックインされやすいという面もあるため今回は既存の技術の組み合わせのみで構成した。  &lt;/p&gt;
+&lt;p&gt;&lt;a href="https://blog.docker.com/2015/03/dockers-2nd-birthday-wishes-qa-with-solomon-hykes-founder-of-docker/"&gt;Docker誕生から２年&lt;/a&gt;を迎え牧歌的なシングルホストでのdon't recommend in productionな状態からプロダクションでのマルチホスト環境を見据えたオーケストレーションツール群も大分整理統合されてきた感がある。&lt;br&gt;
+依然レポジトリの扱いやセキュリティ面等、実運用面で辛い箇所は残るものの徐々にプロダクション環境での現実的な解が見えてきたように思える。今年はdocker in productionの飛躍の年になることを願いたい。&lt;/p&gt;
+&lt;h3&gt;解決していない課題&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;プライベートなイメージの扱い&lt;br&gt;
+  OSイメージ + アプリケーションでそれなりの容量になる。&lt;br&gt;
+  また何をするにもdocker-registry専用のプロトコルが必要なためイメージの配信方法の選択肢が少ない。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ログの扱い&lt;br&gt;
+  各コンテナが生成するログをどこに送るか。またログ送信の冗長性の担保をどうするか&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ステートフルなコンテナの扱い&lt;br&gt;
+  主にRedis, MySQL, PostgreSQLといった状態を持ったアプリケーションをどうするか&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;セキュリティ面&lt;br&gt;
+  dockerデーモン自体の脆弱性、コンテナの脆弱性、ホストOSの脆弱性をどうするか&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;課題解決への布石&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;プライベートなイメージの扱い&lt;br&gt;
+  レポジトリ自体の冗長化、容量コスト等考えると&lt;a href="http://quay.io/"&gt;quay.io&lt;/a&gt;, &lt;a href="https://cloud.google.com/tools/container-registry/"&gt;Google Container Registry&lt;/a&gt;等のRegistry as a Serviceという選択肢もある。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ログの扱い&lt;br&gt;
+&lt;a href="https://github.com/gliderlabs/logspout"&gt;logsoutput&lt;/a&gt;, journalctl, fluentd等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ステートフルなコンテナの扱い&lt;br&gt;
+  ホスト側にマウント、data volume container、または&lt;a href="https://clusterhq.com/"&gt;flocker&lt;/a&gt;、そもそもDockerizeしない等&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;セキュリティ面&lt;br&gt;
+  Docker層だけで対応するのは難しいのでDockerを乗せるIaaSレベルでのコントロール。
+  ホスト側をなるべく薄く保つという意味でCoreOSやAtomic host等のコンテナ向け軽量OSやCoreOSの自動アップデート機能を使う。  &lt;br&gt;
+  またCoreOSによるコンテナ実装の&lt;a href="https://github.com/coreos/rocket"&gt;Rocket&lt;/a&gt;からのセキュリティ面でのフィードバックを今後期待。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;References&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://sttts.github.io/docker/weave/mesos/2015/01/22/weave.html"&gt;Adventures with Weave and Docker&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://qiita.com/zERobYTe/items/dd9b2365c93da2638221"&gt;docker - ELB+Swarm+Compose+Consul+Registratorで夢は叶うのか(1) - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://deeeet.com/writing/2014/05/14/logspout/"&gt;logspoutでDockerコンテナのログの集約・ルーティング | SOTA&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="docker"></category><category term="weave"></category><category term="swarm"></category><category term="compose"></category><category term="consul"></category></entry></feed>

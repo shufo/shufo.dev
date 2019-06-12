@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>shufo blog - Programming</title><link href="https://shufo.github.io/" rel="alternate"></link><link href="https://shufo.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://shufo.github.io/</id><updated>2019-01-26T00:00:00+09:00</updated><entry><title>Elixirにまつわる3つの神話</title><link href="https://shufo.github.io/elixir-myth.html" rel="alternate"></link><published>2019-01-26T00:00:00+09:00</published><updated>2019-01-26T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2019-01-26:/elixir-myth.html</id><summary type="html">&lt;p&gt;神話について&lt;/p&gt;</summary><content type="html">&lt;p&gt;ある言語を評価するとき伝聞で聞いた情報であの言語は ○○ だという評価をよくしてしまいがちだ。&lt;/p&gt;
+&lt;p&gt;Elixir も他言語の例に漏れず、○○ 言語は ○○ だという言語神話がよく振りかざされるので一使用者の立場から誤解を恐れずその神話を解いてみたい&lt;/p&gt;
+&lt;h3&gt;学習コストが高い&lt;/h3&gt;
+&lt;p&gt;Elixir は学習コストがかかるという誤解をされることがある。&lt;/p&gt;
+&lt;p&gt;おそらく、Elixir = 関数型 = なんか難しい概念出てきそうという発想だろう。その気持ちはよくわかる。だがちょっとまって欲しい。Elixir はとても覚えることの少ない言語だ。&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://medium.com/@richardeng/how-to-measure-programming-language-complexity-afe4f7e75786"&gt;How to Measure Programming Language Complexity – Richard Kenneth Eng – Medium&lt;/a&gt; (どのようにプログラミング言語の複雑性を計測するか)&lt;/p&gt;
+&lt;p&gt;上記の記事で Richard 氏が各プログラミング言語のキーワードと予約語を数えたところ Elixir は &lt;strong&gt;18&lt;/strong&gt; 個で Smalltalk に次いで最も予約語の少ない言語だった。&lt;/p&gt;
+&lt;p&gt;シンプルさを哲学とする Golang でさえ 25 個、PHP では 67 個で約 4 倍もののキーワードが存在する。&lt;/p&gt;
+&lt;p&gt;キーワードや予約語はプログラミングにおいて特別な意味を持っており、その文字によって予約語以外の文字と区別されるため学習する際にはほぼ覚えることが必須だ。&lt;/p&gt;
+&lt;p&gt;もちろん予約語やキーワードの少なさだけで言語の複雑性が一意的に決まる訳ではないのでここではそれ以上踏み込まないが、究極的に覚えないといけないトークンの少なさはその言語がどういう言語でありたいかという思想を表している。&lt;/p&gt;
+&lt;p&gt;後にも述べるが Elixir はマクロを使うことで制御構造でさえ変更可能な柔軟性がありつつも、究極的に覚えなければいけないのはこの 18 個の予約語だけというシンプルさを手にしている。&lt;/p&gt;
+&lt;p&gt;要は Elixir は言語それ自体のコアはシンプルでありつつも高い拡張性を指向した言語であり、同時に出来るだけ初心者がとっつきやすい (easy な） 言語でありたいという思想をもった言語であるということだ。&lt;/p&gt;
+&lt;p&gt;Smalltalk がハガキ一枚に収まる文法しか無いのと同様 Elixir もコア自体は恐らくハガキの表面と裏面で足りる程度の文法しかないだろう。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://imgur.com/BUf4nbo.jpg"&gt;&lt;/p&gt;
+&lt;p&gt;だが時に過剰なシンプルさは現実の複雑な問題を解くためには大量の boilerplate を必要とするためある程度の抽象度は必要だ。それこそシンプルでさえよければアセンブリ言語で書けばいいだろうがそれは現実的ではない。そのために高級言語が存在する。&lt;/p&gt;
+&lt;p&gt;Rich Hickey が &lt;a href="https://www.infoq.com/presentations/Simple-Made-Easy"&gt;Simple Made Easy&lt;/a&gt; のスライドで語ったように Simple である場合と Easy である場合では以下のような出力の違いが出る。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/T9TVQIA.png" style="width: 70%"&gt;&lt;/p&gt;
+&lt;p&gt;Easy であるものは当初はスピードが出るものの時が経つにつれて段々と出力が落ち、逆に Simple であるものは当初は出力が出ないものの時が経つにつれて組み合わせの力で出力が増すということだ。&lt;/p&gt;
+&lt;p&gt;プログラミング言語の歴史はこの Easy さと Simple さへの反省の繰り返しで漸進的に進化してきた。&lt;/p&gt;
+&lt;p&gt;Elixir は Easy であることにも慎重に配慮されており、Ruby 系列の認知容易性の高い文法、REPL、ビルトインの mix を中心としたエコシステムが優れた開発体験を提供してくれる。&lt;/p&gt;
+&lt;p&gt;Easy というのは時にバイアスになり、Simple でないことを隠蔽してしまうため一見して Easy というものにも注意は必要だが、 Elixir は言語のコアは Simple でありつつ表面上は Easy であるため、比較的最初から高い生産性を維持していくことが出来る。図にすると以下のような感じだ。&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://i.imgur.com/UvY0dPN.png" style="width: 70%"&gt;&lt;/p&gt;
+&lt;p&gt;実際に自分が人に Elixir を教えた経験では他言語業務経験者なら 2 週間ほど、業務未経験者でも 1 ヶ月程でもう立派な Elixir のコードを書けるようになったことを覚えている。&lt;/p&gt;
+&lt;p&gt;自分が Elixir のことを気に入っているのは結局のところこういったバランス感覚であり、Simple 極振りでもないけどかといって Easy に寄りすぎてもいないとかそういうところだと思う。要するにトレードオフなのだけれど、不確実なプロジェクトに対していきなり Simple 極振りも出来ない、かといって Easy にも寄り過ぎたくないというところでプラグマティックな選択肢としての Elixir が現れる。&lt;/p&gt;
+&lt;h3&gt;Erlang のラッパー&lt;/h3&gt;
+&lt;p&gt;Elixir って Erlang のラッパーでしょ？という言説をたまに目にする。念頭にあるのは CoffeeScript のようなシンタックスシュガーなものかもしれない。だがこれは間違いだ。&lt;/p&gt;
+&lt;p&gt;どちらかというと Ruby の薄皮をかぶった BEAM ベースの Lisp と言っていいかもしれない。&lt;/p&gt;
+&lt;blockquote class="twitter-tweet" data-lang="ja"&gt;&lt;p lang="ja" dir="ltr"&gt;ElixirってほとんどLispです。Lispの柔軟性を損なわずにアルゴル系のシンタックスです。Elixirには高速WEBを満足する並列処理と言う大義名分があります。大っぴらにElixirを使うことができます。これはLisp使いの夢の実現ではないのかなぁ。&lt;/p&gt;&amp;mdash; LAL(Light AI Lab) (@LAL6809) &lt;a href="https://twitter.com/LAL6809/status/1081165168950665216?ref_src=twsrc%5Etfw"&gt;2019年1月4日&lt;/a&gt;&lt;/blockquote&gt;
+
+&lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+
+&lt;p&gt;Lisp がマクロで多くのことを実現するように Elixir もマクロによって多くのことを実現している。&lt;/p&gt;
+&lt;p&gt;例えば Elixir には&lt;code&gt;defmacro/2&lt;/code&gt;というマクロを作成するマクロがあるがこれも実は defmacro で定義されている。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;defmacro&lt;/span&gt; &lt;span class="kd"&gt;defmacro&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;call&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;expr&lt;/span&gt; &lt;span class="p"&gt;\\&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="n"&gt;define&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:defmacro&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;expr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;__CALLER__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;じゃあ defmacro を定義する defmacro はどこで定義されているんだよとなるがこれは言語の bootstrap 時に定義されている。&lt;/p&gt;
+&lt;p&gt;このように Elixir ではコア機能の多くを Lisp のようにマクロで実現することでコア自体はマイクロでありつつも言語自体の大きな拡張性を手にしている。&lt;/p&gt;
+&lt;p&gt;単純にラッパーと言いきれないのはこういった拡張性で、Erlang に一対一で対応すること以上のことが拡張性で可能になっている。&lt;/p&gt;
+&lt;p&gt;しかしマクロは言語構造さえ動的に変えられるほど強力な反面一歩間違えば怪我をする諸刃の剣だ。&lt;/p&gt;
+&lt;p&gt;Elixir がうまいのはプログラマにマクロを使っているということをほとんど意識させない点で、&lt;code&gt;def&lt;/code&gt;のような基本的な文法でさえマクロなのに公式サイトのイントロダクションでは一切その説明は出てこない。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;defmacro&lt;/span&gt; &lt;span class="kd"&gt;def&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;call&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;expr&lt;/span&gt; &lt;span class="p"&gt;\\&lt;/span&gt; &lt;span class="no"&gt;nil&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="n"&gt;define&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:def&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;call&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;expr&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;__CALLER__&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以下のような簡単な Hello world でさえ&lt;code&gt;defmodule&lt;/code&gt;と&lt;code&gt;def&lt;/code&gt;というマクロを使っている。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;defmodule&lt;/span&gt; &lt;span class="nc"&gt;HelloWorld&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="kd"&gt;def&lt;/span&gt; &lt;span class="n"&gt;hello&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="nc"&gt;IO&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;puts&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Hello World&amp;quot;&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;一見 Ruby 寄りの命令型言語のように見えてバックは Erlang を由来とする BEAM ベースの非純粋関数型言語であり Lisp 並にマクロをフル活用している。Ruby のように見えるのは本当に表層的な部分だけで、内実は BEAM のゴリゴリの並行システムと Ruby も影響を受けた Lisp 並の高い拡張性が同居している。&lt;/p&gt;
+&lt;p&gt;この拡張性により特定のドメインに囚われない、目的に合わせた幅広い利用が可能になっている。例えば &lt;a href="https://github.com/nerves-project/nerves"&gt;Nerves&lt;/a&gt; によるIoT組み込みプロジェクトから、&lt;a href="https://lonestarelixir.com/2019/speakers/21"&gt;GPGPUによる並列科学計算&lt;/a&gt;、もちろん Erlang の性能を活かした稼働率99.9999999%の高可用性システム、&lt;a href="https://medium.com/margobank/why-elixir-546427542c"&gt;銀行システム&lt;/a&gt;、&lt;a href="https://github.com/omisego/ewallet"&gt;仮想通貨&lt;/a&gt;、メディアサーバ、&lt;a href="https://blog.discordapp.com/scaling-elixir-f9b8e1e7c29b"&gt;Discordの同時500万接続を支える&lt;/a&gt;シグナリングサーバなどなど。&lt;/p&gt;
+&lt;p&gt;Elixir の&lt;a href="https://elixir-lang.org/blog/2013/08/08/elixir-design-goals/"&gt;デザインゴール&lt;/a&gt;にも掲げられているが Ruby 的文法はあくまで作者が Ruby 出身ということで追加されたプロダクトとしてのデザインで言語デザイン上のゴールではない。&lt;/p&gt;
+&lt;p&gt;あくまで言語としてのゴールは Erlang との互換性、そしてここがただのラッパーではないものになっている理由だが、マクロシステムをベースとした高い拡張性と生産性だ。&lt;/p&gt;
+&lt;h3&gt;Erlang の知識が必要&lt;/h3&gt;
+&lt;p&gt;Elixir は &lt;a href="https://en.wikipedia.org/wiki/BEAM_(Erlang_virtual_machine)"&gt;BEAM&lt;/a&gt; 上で作られているので Erlang の知識が必要というような言説を見ることがある。&lt;/p&gt;
+&lt;p&gt;これは半分合っているが、半分間違っていると言っていいかもしれない。&lt;/p&gt;
+&lt;p&gt;ここで Erlang の知識といっているのは OTP や Erlang 特有の知識のことで関数名や Erlang の文法などのことだ。&lt;/p&gt;
+&lt;p&gt;半分合っているというのは実際自分は 3 年程 Elixir を使っているが OTP の知識が必要になったのはライブラリを作る時や、ロングランニングプロセスで定期的なタスクを実行するプロセスを作るなどした時くらいだ。&lt;/p&gt;
+&lt;p&gt;Erlang は Elixir が依って立つ偉大な巨人だがその実態は慎重に抽象化されている。&lt;/p&gt;
+&lt;p&gt;gen_server などの behaviour は Agent モジュールで抽象化出来るし、一時的に別プロセスが欲しくなったら Task モジュールを使うことが出来る。GenStage などのbehaviourも &lt;a href="https://qiita.com/shufo/items/59d1c3b0baac6751777f"&gt;Flow&lt;/a&gt; で抽象化出来る。&lt;/p&gt;
+&lt;p&gt;あくまで BEAM 上で動作する軽量プロセスという概念は知る必要はあるが、そのプロセス同士がどのように連携するかまでは普通に使っているうちではあまり知る必要はないように抽象化したライブラリが充実しているといった方が正確か。&lt;/p&gt;
+&lt;p&gt;もちろん作りたいものが何になるかにもよるがおそらく Elixir で最もユースケースの多い Phoenix をベースにした Web 周りの領域では踏み込まない限りは Erlang の知識が必要になることはあまりない。&lt;/p&gt;
+&lt;p&gt;ただ Elixir が内実としてプロセス同士のメッセージングパッシングで動いていることを知ると実際の動作がイメージしやすい。言語としてのゴールは Erlang との互換性を保ちつつ並行システムを別のツールセットとして組むことなので学習するとしてもまずは別のツールセットとしての Elixir を学んでから Erlang を学ぶことをおすすめしたい。&lt;/p&gt;</content><category term="Programming"></category><category term="Elixir"></category></entry><entry><title>Nuxt.js で作る Web ベースの Elixir Logger バックエンド</title><link href="https://shufo.github.io/build-web-based-elixir-logger-backend-with-nuxtjs.html" rel="alternate"></link><published>2018-11-15T00:00:00+09:00</published><updated>2018-11-15T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-11-15:/build-web-based-elixir-logger-backend-with-nuxtjs.html</id><summary type="html">&lt;p&gt;Nuxt.js で Web ベースの SPA な Elixir の Logger バックエンドを作った&lt;/p&gt;</summary><content type="html">&lt;p&gt;Nuxt.js で Web ベースの SPA な Elixir の Logger バックエンドを作った&lt;/p&gt;
+&lt;p&gt;GitHub: &lt;a href="https://github.com/shufo/log_viewer"&gt;Log Viewer&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="WPAhlCS - Imgur.png" src="https://qiita-image-store.s3.amazonaws.com/0/47983/671695d3-0a82-b11d-76a3-c2061856e9b2.png"&gt;&lt;/p&gt;
+&lt;p&gt;使用した技術としては &lt;a href="https://nuxtjs.org/"&gt;Nuxt.js&lt;/a&gt;, Websocket, Cowboy, Logger, &lt;a href="https://vuetifyjs.com/ja/"&gt;Vuetify.js&lt;/a&gt;, &lt;a href="https://www.chartjs.org/"&gt;Chart.js&lt;/a&gt; など&lt;/p&gt;
+&lt;p&gt;簡単に説明するとこの Logger backend は Web 上に リアルタイムに Elixir のログを表示してくれる&lt;/p&gt;
+&lt;p&gt;なぜ Web にログを表示したいのか？という疑問ももっともだがまずそういうライブラリがなかったから作ったという以上の理由は今のところ正直特に無い。無ければ作る！それまでの話よ！（格言）&lt;/p&gt;
+&lt;p&gt;機能としては&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;検索ワード ＆ Log レベルでログのフィルタリング&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;メタデータの表示によりログを仕込んだ場所や他 PID などのメタ情報の確認&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Syntax Highlighted されたログ&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;などがある&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Imgur" src="https://i.imgur.com/0qj93i4.gif"&gt;&lt;/p&gt;
+&lt;p&gt;利用用途としては主にローカルでのログの確認やリモートの開発環境のログ確認だが、やろうと思えばちょっとした本番環境のログの確認も出来るだろう。
+ただし Web ベースのためそれなりにリアルタイムでのレンダリングは重くなってしまうため、ログ流量の多い環境での利用はおすすめしない。
+またこのライブラリに認証の仕組み自体はないためリモート環境で使用する際は別途 &lt;a href="https://github.com/ueberauth/guardian"&gt;guardian&lt;/a&gt;, &lt;a href="https://github.com/ueberauth/ueberauth"&gt;ueberauth&lt;/a&gt; などでルートに認証をかけることが必要になるだろう。&lt;/p&gt;
+&lt;p&gt;以降ではこのライブラリを作る際に使った技術などについて所感やなぜそれを使ったかなどについて触れてみる&lt;/p&gt;
+&lt;h3&gt;Nuxt.js&lt;/h3&gt;
+&lt;p&gt;Nuxt.js は今回初めて使ったが開発体験としてはとてもよかった&lt;/p&gt;
+&lt;p&gt;まず使ってすぐ分かるメリットとしては&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;小中規模 Vue.js のベストプラクティス構成&lt;/li&gt;
+&lt;li&gt;設計で迷いが出にくい&lt;/li&gt;
+&lt;li&gt;ドキュメントがしっかり書かれている&lt;/li&gt;
+&lt;li&gt;サブモジュールがオプトイン&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;というようなところがある。&lt;/p&gt;
+&lt;p&gt;Vue.js は最小でペラ一の HTML に埋め込むことも、 SPA + SSR でサイト全体を構成するようなそれなりの規模の構成も可能なため設計の自由度は高いのだがその分強制力がなく、自由に設計すると一貫性のないコードになってしまうという問題があった。
+そこで Nuxt が Vue.js のフレームワークとして規約を提供してくれたおかげで統一された設計のもとプロジェクトをスケールすることが出来るようになった&lt;/p&gt;
+&lt;p&gt;正直そこまで規模が大きくなければプレーン Vue.js でも問題ないとはいえるが、これは後付けになるがそれでもなぜ Nuxt がよかったのかというと、Vuex や Vue-router が&lt;strong&gt;オプトイン&lt;/strong&gt;として組み込まれていることが大きかった。&lt;/p&gt;
+&lt;p&gt;自分は最初この SPA のアプリを作った際まず Vuex や Vue-router の使い方を知らなかった。
+が、特に問題なく状態管理が必要になれるレベルまで作りこめていけたのは Vuex などがあくまでオプトインで必要に応じて使えるようになっていたからであり、Vuex に関する&lt;strong&gt;ドメイン知識を必要としなかった&lt;/strong&gt;ためである。&lt;/p&gt;
+&lt;p&gt;まず PoC をする段階で Vuex の使用が必須であれば挫折したかもしれないが、PoC の段階では状態を全て直接.vue ファイルに保持していた。
+そのおかげで Vuex に状態を dispatch せずに PoC に集中することが出来た。&lt;/p&gt;
+&lt;p&gt;その上で理論的に全て動作することが確証出来た段階で改めて状態ストアの Vuex で状態を一元的に Immutable に管理することでアプリを堅牢化することが出来た。&lt;/p&gt;
+&lt;p&gt;この小さく作って育てるという流れはまさに Vue.js 作者の Evan You が提唱するところの &lt;a href="https://qiita.com/mikakane/items/3bd6af69259f5af6fecb"&gt;&lt;strong&gt;Progressive Framework&lt;/strong&gt;&lt;/a&gt; でありオーナーの異なる Nuxt.js でも Progressive Framework の思想が実現されていることに Evan You のコミュニティ運営の手腕を見た気がする。&lt;/p&gt;
+&lt;p&gt;Vue.js エコシステムが優れているのはエコシステム全体で Evan You の思想を実現するようサポートされていることであり、こういったエコシステムは React とはまた少し違う文化でどちらかというと PHP 的な文化であると個人的には思った。&lt;/p&gt;
+&lt;p&gt;PHP は元々プログラミング言語としてというよりは単なるスクリプトとして生まれ、HTML の中に直接埋め込めるという形になり、更にオブジェクト指向が強化され現在の形に至るが、そういった最初からビッグバンで完璧な秩序が出来上がるというよりかは時代とそのニーズに合わせて言語自体が成長するという歴史に Progressive Framework である Vue.js と近いものを感じる。&lt;/p&gt;
+&lt;p&gt;Vue.js もテンプレート言語のように最初は一枚の .vue ファイルの中にスクリプト、テンプレート、スタイルを定義してスコープを完結することが出来る。当然最初のうちはこれで問題がなくてもプロジェクトが成長するにつれて状態を一元的に管理するストアが欲しくなり、再利用可能な部品でコンポーネント化が進むが、この過程が PHP の歴史との親和性を感じた。&lt;/p&gt;
+&lt;p&gt;Laravel が Vue.js を&lt;a href="https://github.com/laravel/laravel/blob/de1f472d767236713870e424a87bcf2ab4ca80cf/package.json#L20"&gt;採用している&lt;/a&gt;のも偶然ではないかもしれない。&lt;/p&gt;
+&lt;h3&gt;Custom Logger backend and Websocket (Cowboy)&lt;/h3&gt;
+&lt;p&gt;Elixir は標準で&lt;code&gt;Logger&lt;/code&gt;というロギング用のモジュールがあり、これにカスタムのロギングモジュールを提供することで&lt;code&gt;Logger.info("foo")&lt;/code&gt;などでログを出す際、任意の処理を hook することが出来る&lt;/p&gt;
+&lt;p&gt;そこで今回は Web にログを出力するために Websocket 経由でログを送信するカスタムの Logger backend を&lt;a href="https://github.com/shufo/log_viewer/blob/master/lib/log_viewer/logger.ex"&gt;作成した&lt;/a&gt;。
+仕組みとしてはページを表示したクライアントへサーバより Websocket 経由でログを送るという簡単なものだ。&lt;/p&gt;
+&lt;p&gt;なぜ Websocket 経由にしたかというと、ログファイルを直接読み取る方法もあるが、近年のソフトウェア開発環境ではコンテナベースで開発することも多くログは標準出力に出力するだけでファイルとして状態を保持しないことも多いため、ブラウザを持つクライアントならどこからでも表示可能にするためこの方法にした。&lt;/p&gt;
+&lt;p&gt;Websocket の実装には&lt;a href="https://github.com/ninenines/cowboy"&gt;Cowboy&lt;/a&gt;のビルトイン Websocket サーバを使用。&lt;/p&gt;
+&lt;p&gt;詳しい実装方法については以下に記事を書いた。&lt;/p&gt;
+&lt;p&gt;参照: &lt;a href="https://qiita.com/shufo/items/6ad1c2d51bca5a2e5f49"&gt;Elixir で Phoenix を使わずに Websocket サーバの実装 - Qiita&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Vuetify, Chart.js&lt;/h3&gt;
+&lt;p&gt;UI については当初 bootstrap を検討していたが、&lt;a href="https://github.com/nuxt-community/awesome-nuxt"&gt;awesome-nuxt&lt;/a&gt;を眺めていたところ、Official プロジェクトの中に &lt;a href="https://vuetifyjs.com/ja/"&gt;Vuetify&lt;/a&gt; を発見し、Material デザインが可能ということで検討リストに加えてみた。&lt;a href="https://github.com/jgthms/bulma"&gt;Bulma&lt;/a&gt; も検討していたがこの中では Vuetify がもっともアプリらしいアプリのデザインになることと、どちらかというと融通の効く bootstrap や Bulma のスタイルを使うよりかはユーザ知識の再利用が可能な Material デザインの方が機能性を求められるログビューワとしての UX としては優れているだろうという判断で Vuetify にした。&lt;/p&gt;
+&lt;p&gt;結果としては Material デザインなのでほぼスタイルのカスタムの余地はなくブロックの組み合わせでアプリを構築していく形になるのだが、既にユーザが Google 周りのサービスを使う上で学習した知識を再利用出来るので操作に迷うということは少なくなったかと思う。&lt;/p&gt;
+&lt;p&gt;逆にオリジナルのスタイルを適用したいとなるとマテリアルデザインの思想からは外れるので別の方法を検討した方がいいかもしれないが、管理画面やコンソールなど機能性を求められる箇所に関してはとても用途に合ってると思う。&lt;/p&gt;
+&lt;p&gt;プラス α 要素で Chart.js でログの量をリアルタイムにチャートに反映させるということもやってみたが、Vue.js のコンポーネントシステムがよく出来ているため、グラフに関する状態をコンポーネント内に分離した上で安全に扱えた。&lt;/p&gt;
+&lt;h2&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;それぞれ利用した技術について簡単に触れてみた。
+Vue.js は以前から軽く触れていたため今回 Nuxt は正直評価してみたい半分で使ってみたが結果としては収穫があってよかった。&lt;/p&gt;
+&lt;p&gt;最初からその技術を目的として調査すると挫折しやすいけどライブラリ開発ドリブンで必要性に応じて理解を深めるのが学習の最短の手順だなと改めて思った。&lt;/p&gt;
+&lt;h2&gt;環境&lt;/h2&gt;
+&lt;p&gt;今回使用した環境は以下の通り&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Elixir 1.7&lt;/li&gt;
+&lt;li&gt;Vue.js 2.5.17&lt;/li&gt;
+&lt;li&gt;Nuxt.js 2.2.0&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Links&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/shufo/log_viewer"&gt;GitHub&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><category term="Elixir"></category><category term="Nuxt.js"></category></entry><entry><title>Electron + TypeScript + Vue.js でソーシャルメディアデトックスアプリを作ってみた</title><link href="https://shufo.github.io/built-app-with-electron-vuejs-typescript.html" rel="alternate"></link><published>2018-09-16T00:00:00+09:00</published><updated>2018-09-16T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-09-16:/built-app-with-electron-vuejs-typescript.html</id><summary type="html">&lt;p&gt;Electron + TypeScript + Vue.js でアプリを作った話&lt;/p&gt;</summary><content type="html">&lt;p&gt;最近ちょっと SNS 断ちをしていてついでにというか勉強がてら自分用に Electron + TypeScript + Vue.js でソーシャルメディアデトックスアプリを&lt;a href="https://github.com/shufo/aspida"&gt;作ってみた&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;簡単に説明するとアプリでスイッチをオンにすると対象のサイトにアクセス出来なくなるというもの。&lt;/p&gt;
+&lt;p&gt;以下の GIF アニメを見てもらえればなんとなくどういうアプリかは分かると思う。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://github.com/shufo/aspida/wiki/assets/description.gif"&gt;&lt;/p&gt;
+&lt;p&gt;コードのコンパイル待ちだったり CI 待ちのちょっとした空き時間についアクセスしてスクロール中毒に陥ってしまうことを防ぎたくて作った。
+実際ソーシャルメディアを根本的に絶つにはマシンを破壊するか回線を切るくらいしかないと思うけど、そこまで出来ない人用。&lt;/p&gt;
+&lt;p&gt;仕組み的には対象のサイトのホスト名を hosts ファイルに書き込んで IP アドレス &lt;code&gt;0.0.0.0&lt;/code&gt; で名前解決させてアクセス出来なくさせるという簡単なもの。
+hosts ファイルに直接書き込むのでブラウザ以外にも CLI や専用のクライアントもブロック出来る。&lt;/p&gt;
+&lt;p&gt;DNS キャッシュが効いてる状態で名前解決時にキャッシュを参照してるとアクセス出来てしまう場合があるが Chrome の場合は&lt;code&gt;chrome://net-internals/#dns&lt;/code&gt;を開いてから&lt;code&gt;cleat host cache&lt;/code&gt;でキャッシュを削除すれば名前解決時に hosts ファイルを参照するようになる&lt;/p&gt;
+&lt;h3&gt;Electron&lt;/h3&gt;
+&lt;p&gt;テンプレートとして&lt;a href="https://github.com/SimulatedGREG/electron-vue"&gt;electron-vue&lt;/a&gt;をベースに作成した。&lt;/p&gt;
+&lt;p&gt;Electron は初めて使ったがクロスプラットフォームでバイナリを出力出来るのはやはり便利だった。ただ各プラットフォームごとにファイルシステムのアクセス制御の仕組みが違ったりするので書き込みに管理者権限の必要な hosts ファイルの権限チェックのためプラットフォーム固有の知識が必要になったりして少し苦労した。&lt;/p&gt;
+&lt;p&gt;例えば Windows は ACL でアクセス制御しているので&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nx"&gt;fs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;access&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nx"&gt;path&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nx"&gt;fs&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;constants&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nx"&gt;W_OK&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;で書き込みが可能かチェックしてもファイルが存在する限りは必ず成功する。&lt;/p&gt;
+&lt;p&gt;一方 Linux は Electron を起動させているユーザで対象のパーミッションを正しくチェックする。
+なのでプラットフォームが Windows の場合のみ ACL を変えるコマンドを投げるようにした。&lt;/p&gt;
+&lt;p&gt;あと他にも色々ハマりどころがあったので忘れないように覚え書きしておく。&lt;/p&gt;
+&lt;h4&gt;ハマったところ&lt;/h4&gt;
+&lt;h5&gt;静的ファイルの扱い&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;npm run dev&lt;/code&gt; で起動する開発モードと &lt;code&gt;npm run build&lt;/code&gt; で出力する production 用のバイナリでは起動時のディレクトリ構造が異なるので &lt;code&gt;__static&lt;/code&gt; 変数を参照して静的ファイル用のディレクトリ(&lt;code&gt;static&lt;/code&gt;)へのパスを取得しないといけない。
+ちなみに TypeScript でデフォルトだと global の&lt;code&gt;__static&lt;/code&gt;を解決出来ないので&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kr"&gt;declare&lt;/span&gt; &lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;__static&lt;/span&gt;: &lt;span class="kt"&gt;string&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;を宣言して解決させた。&lt;/p&gt;
+&lt;h3&gt;TypeScript&lt;/h3&gt;
+&lt;p&gt;以前から使ってみたかったけど中々使う機会がなかったのでせっかくなので使ってみた。&lt;/p&gt;
+&lt;p&gt;VSCode + TypeScript の開発体験、いわゆる DX（&lt;strong&gt;D&lt;/strong&gt;eveloper e&lt;strong&gt;X&lt;/strong&gt;perience）は噂通り素晴らしかった。コンパイル前からエディタでほぼリアルタイムで型エラーを出力してくれるし精度も高い。補完も強力でほぼ取りこぼしもない。エディタ自体が TypeScript で作られているだけあって完成度は折り紙つき。&lt;/p&gt;
+&lt;p&gt;ただ TypeScript 特有のクセみたいなものはあって Vue.js でコンポーネント内で&lt;code&gt;this&lt;/code&gt;が解決されなかったりしてコンパイルエラーになるので&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;this&lt;/span&gt; &lt;span class="kr"&gt;as&lt;/span&gt; &lt;span class="nx"&gt;any&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="nx"&gt;someMethod&lt;/span&gt;&lt;span class="p"&gt;();&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;とキャストして型の解決が必要だったり多少 workaround 的な作業が必要になる箇所が何箇所かあった。&lt;/p&gt;
+&lt;p&gt;あと TypeScript に対応していない npm モジュールもうまく解決出来ないこともあった。&lt;/p&gt;
+&lt;p&gt;TypeScript 特有の問題というわけではないが主に外部のライブラリと組み合わせたときに TypeScript を考慮していない部分で問題が発生しているように思えたので、TypeScript 外の npm モジュールを組み合わせるときは予め相性をチェックする作業が必要になりそうだった。&lt;/p&gt;
+&lt;p&gt;そういった意味で TypeScript を使う際は型が正しく通るように変更するオーバーヘッドが発生する可能性があるのでプロトタイプというよりは正式版としてかっちり作るのに向いているのかなと思った。&lt;/p&gt;
+&lt;p&gt;ネイティブ JS なら npm ライブラリもほぼ問題なく使えるし TypeScript に対応していないライブラリで型の問題が発生するということもないのでプロトタイプとして JS で書いてから問題なさそうだったら TypeScript に変換するというのもありといえばありかもしれない。&lt;/p&gt;
+&lt;p&gt;JS はテストを書くにも E2E がなかなか安定しなかったりで苦労するのでネイティブ JS で一度書いてから TypeScript に変換し型である程度の一貫性を保証することで品質を担保するという考え方も出来るかもしれない。&lt;/p&gt;
+&lt;h3&gt;Vue.js&lt;/h3&gt;
+&lt;p&gt;以前からちょくちょく片手間フロントエンドマンとして仕事で使ったりしていたのでなんとなくは知っていたが
+TypeScript で書いたことはなかったので組み合わせた時どんな感じなのかという確認の意味も込めて使ってみた。&lt;/p&gt;
+&lt;p&gt;結果としては&lt;a href="https://jp.vuejs.org/v2/guide/typescript.html"&gt;Vue.js 2.5 で TypeScript に正式に対応&lt;/a&gt;したこともありほぼほぼ問題はなかった。&lt;/p&gt;
+&lt;p&gt;ちゃんとコンパイラが怒るところは怒ってくれるのでとりあえずコンパイルが通れば大体動くという安心感がある。
+Electron 用のアプリ作成フレームワークとして見ても特に問題はなく普段 Web で動かすのと同じように書けた。
+Web と異なるのはファイルシステムに直接アクセスしてローカルのファイルを参照したりするくらいで（それが一番のメリットかもしれないが）少し修正すれば Web にもコードを再利用出来そうだった。&lt;/p&gt;
+&lt;h3&gt;まとめ&lt;/h3&gt;
+&lt;p&gt;Electron + TypeScript + Vue.js でデスクトップアプリケーションを作った。
+内容が簡単な割りに結構ハマったりしたものの、 TypeScript の体験はかなりよかったので結果オーライ。（オーライ）&lt;/p&gt;
+&lt;p&gt;Repo: &lt;a href="https://github.com/shufo/aspida"&gt;https://github.com/shufo/aspida&lt;/a&gt;&lt;/p&gt;</content><category term="Electron"></category><category term="Vue.js"></category><category term="TypeScript"></category></entry><entry><title>2017年にElixirを仕事で使った振り返り</title><link href="https://shufo.github.io/my-elixir-status-of-the-last-year.html" rel="alternate"></link><published>2018-01-12T00:00:00+09:00</published><updated>2018-01-12T00:00:00+09:00</updated><author><name>shufo</name></author><id>tag:shufo.github.io,2018-01-12:/my-elixir-status-of-the-last-year.html</id><summary type="html">&lt;p&gt;1年と少しElixirを使った感想など&lt;/p&gt;</summary><content type="html">&lt;p&gt;少し遅くなったけど2017年にElixirを使った振り返りをしてみる。(&lt;s&gt;年末年始ダラダラしてて書くの遅れた&lt;/s&gt;
+)&lt;/p&gt;
+&lt;p&gt;以下のElixir環境まとめエントリーに触発されました&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://qiita.com/melpon/items/1502c403b7b5f37e325f"&gt;Elixir のチームでの開発環境について - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://www.m3tech.blog/entry/elixir-development-environment-2017"&gt;エムスリーでの Elixir 開発環境 ver.2017 #m3dev - エムスリーテックブログ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://qiita.com/ndruger/items/f6bd35bb0aede78b827d"&gt;Elixir 開発環境 2017 in ACCESS - Qiita&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Elixirは2016年ごろから&lt;a href="https://qiita.com/shufo/items/9cfb7bfcecd363e0ea86"&gt;触っていた&lt;/a&gt;のだけど2016年後半から2017年は仕事としてもほぼフルタイムで使っていたため、使ってるうちによかった点や辛かった点、開発環境など振り返ってみる。&lt;/p&gt;
+&lt;h2&gt;よかったところ&lt;/h2&gt;
+&lt;h3&gt;堅牢性(robustness)&lt;/h3&gt;
+&lt;p&gt;これは本当に頑強でErlang VMが直接的な原因でサーバが落ちたということは本番運用も含めて１年ぐらい稼働させてる中でなかったと思う。可用性nine nines(99.9999999%)はガチ。逆にやることなさすぎて暇になるやつ&lt;/p&gt;
+&lt;h3&gt;エコシステム&lt;/h3&gt;
+&lt;p&gt;ここ1, 2年で大分充実した。Hex.pmに登録されているパッケージの数は&lt;a href="https://medium.com/@cameronp/is-the-elixir-ecosystem-mature-enough-for-production-apps-79fbf9f2df31"&gt;2016年2月の段階で1455個&lt;/a&gt;だったのが2018年1月現在&lt;strong&gt;5702&lt;/strong&gt;個になった。約1年10ヶ月で約380%の増加。以前は主要なWebサービスでもAPIクライアントがないというようなこともあったけど最近はほぼないんじゃないんだろうか。&lt;/p&gt;
+&lt;p&gt;また&lt;a href="http://phoenixframework.org/blog/phoenix-1-3-0-released"&gt;Phoenix 1.3&lt;/a&gt;がリリースされた. &lt;a href="https://qiita.com/shufo/items/f0c85a100728a39dde13"&gt;ディレクトリ構造が変わったりContextという概念の導入&lt;/a&gt;などもあり若干脱Railsっぽくなってきている。既存のディレクトリ構造のままアップデートも可能なのでそのままアップデートして新しい機能を使うもよし、Phoenix 1.3 styleで始めるもよし。&lt;/p&gt;
+&lt;p&gt;以前言われていたほどパッケージが少ない問題はなくなってきていると思うのでそこが懸念点になる場合も今はあまりないと思う。&lt;/p&gt;
+&lt;h3&gt;コミュニティ&lt;/h3&gt;
+&lt;p&gt;ここ1年半ほどでゆるやかに成長してきた。&lt;/p&gt;
+&lt;p&gt;以下のグラフはRedditの言語別subredditのsubscriber数の統計だが、恐らく同じようなパラダイムで領域もそこそこ被ってると思われるClojureやScalaと比較して後発ながら伸び率も悪くない。&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Imgur" src="https://i.imgur.com/8cEXJbn.png"&gt;&lt;/p&gt;
+&lt;p&gt;急に人口が増えたら増えたでバックグラウンドの違うステークホルダーが増えてコミュニティが混乱する気がするのでこのぐらいの伸び率でちょうどいいと思う。&lt;/p&gt;
+&lt;h3&gt;生産性&lt;/h3&gt;
+&lt;p&gt;最初はElixirを部分的に使って管理系の画面はPHPなどで作ろうかと考えていたけどPhoenixの生産性がほぼ他のFWと変わらなかったので結局管理系も含めて全てElixirで作っているぐらいには問題ない&lt;/p&gt;
+&lt;h3&gt;楽しい&lt;/h3&gt;
+&lt;p&gt;Elixirはたのしい（語彙力）&lt;/p&gt;
+&lt;h2&gt;つらかったところ&lt;/h2&gt;
+&lt;p&gt;逆に使っているうちにつらかった点など&lt;/p&gt;
+&lt;h3&gt;コンパイル時間&lt;/h3&gt;
+&lt;p&gt;通常Elixirはコンパイル時に変更のあったファイルのみ再コンパイルされるのだけど、変更のあったファイル以外にも依存のあるファイルが再コンパイルされる。小さなライブラリレベルでは問題ないのだけどPhoenixを利用したWeb系の開発ではファイル数も多くなってきてコンパイル時間が大きくなるのが地味に効いてくる。&lt;/p&gt;
+&lt;p&gt;ちなみに再コンパイルの基準は&lt;code&gt;compile-time dependency&lt;/code&gt;が存在するかどうかで決まる。&lt;/p&gt;
+&lt;p&gt;例えば&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;import&lt;/code&gt;, &lt;code&gt;require&lt;/code&gt; を使用したとき&lt;/li&gt;
+&lt;li&gt;Structを使用したとき&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;に&lt;code&gt;compile-time dependency&lt;/code&gt;が追加され再コンパイル対象が増える。&lt;/p&gt;
+&lt;p&gt;Elixir 1.6で&lt;code&gt;mix xref graph --format stats&lt;/code&gt;でcompile-time dependencyの多いファイルを&lt;a href="https://github.com/elixir-lang/elixir/releases/tag/v1.6.0-rc.0"&gt;確認出来るようになる&lt;/a&gt;のでCIなどでチェックしてあげるといいと思います&lt;/p&gt;
+&lt;p&gt;参照: &lt;a href="http://milhouseonsoftware.com/2016/08/11/understanding-elixir-recompilation/"&gt;Understanding Elixir's recompilation&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;他の言語を使った時&lt;/h3&gt;
+&lt;p&gt;デメリットというかパターンマッチングがないと辛くなるようになってしまった(?)&lt;/p&gt;
+&lt;h2&gt;開発環境&lt;/h2&gt;
+&lt;h3&gt;コーディング規約&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://qiita.com/shufo/items/f5e3ccd4892288449ff9"&gt;Elixir 1.6のcode formatter&lt;/a&gt;を使っている。1.6.0-devの開発版に既に入っていたのでローカルとCIでのチェック用に1.6.0正式版に先行して導入したけど最高だったのでみんな使いましょう。コードレビューでコーディング規約に関する指摘をしなくてよくなるだけで大分脳の負荷が違います。&lt;/p&gt;
+&lt;h3&gt;テスト&lt;/h3&gt;
+&lt;p&gt;特に特別なことはしてないけどExUnitと&lt;a href="https://github.com/HashNuke/hound"&gt;hound&lt;/a&gt;でE2Eテストをしている&lt;/p&gt;
+&lt;p&gt;PhantomJSをバックエンドにE2Eテストしているけど挙動が微妙にブラウザと違ったりdeprecatedになっているのでそろそろHeadless Chromeに置き換えたい&lt;/p&gt;
+&lt;p&gt;カバレッジは取ってないけど体感大体8割くらいはテスト書いてる&lt;/p&gt;
+&lt;h3&gt;デプロイ&lt;/h3&gt;
+&lt;p&gt;ローカル: docker + docker-compose&lt;/p&gt;
+&lt;p&gt;本番: ECS + Distributed Erlang&lt;/p&gt;
+&lt;p&gt;たぶんElixirで一番悩むところがデプロイだと思うけど、&lt;a href="https://12factor.net/ja/dev-prod-parity"&gt;開発/本番一致&lt;/a&gt;の原則のためDockerでデプロイしている。&lt;a href="https://github.com/shufo/docker-phoenix"&gt;ベースイメージ&lt;/a&gt;はpublicでDockerHubに公開しローカルと本番で共通のベースイメージを使っている。&lt;/p&gt;
+&lt;p&gt;CIはCircleCIでテスト、コンパイル、docker imageの作成とプライベートなDockerHubのリポジトリへのpush、ECSのタスク更新を行う。&lt;/p&gt;
+&lt;p&gt;ちなみに&lt;a href="https://github.com/bitwalker/distillery"&gt;Distillery&lt;/a&gt;は使っていない。Dockerを使っている以上リリースのたびにプロセスが再起動されるので長期間に渡って起動されるようなプロセスもなくremote consoleを使ってプロセスのstateまで閲覧してデバッグしないといけないような状況も発生しづらくメリットも薄いと考えたからだ。OTP releaseは使わずコンパイル済みのソースを含めたイメージ内で&lt;code&gt;mix&lt;/code&gt;でサーバを起動している。今のところ起動中のプロセスのstateまで確認しないと分からないようなエッジケースには出会ったことはないが、そのようなケースになった時はremote console用にOTP releaseにしてみたい。&lt;/p&gt;
+&lt;p&gt;あとしばらくPhoenixのChannelのPubSubのアダプターとしてRedisを使っていたが無駄に単一障害点や管理ポイントを増やしたくないので分散Erlangクラスタを組んで&lt;a href="https://hexdocs.pm/phoenix_pubsub/Phoenix.PubSub.PG2.html"&gt;PG2&lt;/a&gt;をアダプターとして使っている。RedisをPubSubサーバとして使っていた頃は少しレイテンシがあったりRedisサーバの負荷によってはPubSubが不安定になったりしたけどPG2にしてからは全くそういうのがなくなった。&lt;/p&gt;
+&lt;p&gt;余計な不確実性を持ち込まないという意味でも言語のランタイムレベルで問題を解決出来るというのは精神衛生的にも良い。&lt;/p&gt;
+&lt;p&gt;コンテナ起動時にどのようにしてコンテナ内のプロセスをDistributed Erlang(Elixir)クラスタに参加させるかについては、&lt;code&gt;ERL_AFLAGS&lt;/code&gt;でVM間通信に使うポートを固定しコンテナ起動時のポートマッピングで固定したポートへのudp, tcpパケットを通している&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="nv"&gt;ERL_AFLAGS&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;-name app@&lt;/span&gt;&lt;span class="nv"&gt;$ERL_HOST&lt;/span&gt;&lt;span class="s2"&gt; \&lt;/span&gt;
+&lt;span class="s2"&gt;  -setcookie &lt;/span&gt;&lt;span class="nv"&gt;$ERL_COOKIE&lt;/span&gt;&lt;span class="s2"&gt; \&lt;/span&gt;
+&lt;span class="s2"&gt;  -kernel inet_dist_listen_min 4370 \&lt;/span&gt;
+&lt;span class="s2"&gt;          inet_dist_listen_max 4370&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;以下はECS task definition。&lt;code&gt;4369&lt;/code&gt;はepmdが固定で使うポートで&lt;code&gt;4370&lt;/code&gt;はepmdが動的に割り当てるポートを固定で指定したもの。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;〜中略〜&lt;/span&gt;
+&lt;span class="s2"&gt;&amp;quot;portMappings&amp;quot;&lt;/span&gt;&lt;span class="err"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;containerPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4369&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;hostPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4369&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;protocol&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;tcp&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;containerPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4369&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;hostPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4369&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;protocol&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;udp&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;containerPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4370&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;hostPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4370&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;protocol&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;tcp&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;containerPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4370&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;hostPort&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;4370&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="nt"&gt;&amp;quot;protocol&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;udp&amp;quot;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="err"&gt;〜中略〜&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;サービスディスカバリは&lt;a href="https://github.com/mrluc/peerage"&gt;peerage&lt;/a&gt;でカスタムのディスカバリを作成しredisにexpire付きでEC2のmetadataから取得した自身のホストの(コンテナではない)プライベートIPアドレスを保存して定期的にホストの一覧を走査して取得している。&lt;/p&gt;
+&lt;p&gt;なぜこうしているかというとEC2上ではmulticast udpが基本使えず（&lt;a href="https://www.weave.works"&gt;Weave&lt;/a&gt;などでoverlay networkを構築する方法もあるがオーバーヘッドが大きい）またgossipプロトコルを使うにもdockerコンテナのnetwork modeをhostにしなければならない→&lt;code&gt;network=host&lt;/code&gt;にするとlinkオプションが使えない→分離したnginxコンテナからlink出来ないという状態になるので、半自動的なクラスタリングはせずに地道にサービス一覧を取得し、それぞれのホストに対して定期的に&lt;code&gt;Node.connetct/1&lt;/code&gt;するようなディスカバリを書いている&lt;/p&gt;
+&lt;p&gt;long-running processを作れたりHot Upgrade出来るところがBEAMの強みでもあるけどdockerを使うことでデプロイの度にコンテナは破棄されるのでその利点は失われることは覚悟しないといけない。とはいえ実際にその機能は切り札のようなものでHot Upgrade自体のテストやロールバック等も考えると大半の場合は無停止でのアップグレードなどはインフラを含めたアプリケーション全体のアーキテクチャで吸収した方がいいとは思うのでElixirは基本コンテナの起動・停止で影響の出るようなステートを保持しない方針でdockerでワンバイナリのように扱っている。&lt;/p&gt;
+&lt;h2&gt;作ったパッケージ&lt;/h2&gt;
+&lt;p&gt;分量が少ないので1年程使う中でお仕事的に必要になったり個人的な興味で作ったパッケージが&lt;a href="https://hex.pm/users/shufo"&gt;10個&lt;/a&gt;に達したので感想など&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/cdn"&gt;cdn&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Elixirで初めて作成したパッケージ。&lt;/p&gt;
+&lt;p&gt;Laravelの&lt;a href="https://github.com/Vinelab/cdn"&gt;cdn&lt;/a&gt;というパッケージをportした。
+S3に特定のディレクトリ（&lt;code&gt;priv/assets&lt;/code&gt;とか）を更新時や差分等を考慮してアップロード出来る。またCloudFrontから配布するためのパスを生成出来る 例: &lt;code&gt;cdn(static_path(conn, "/css/main.css"))&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="" src="https://raw.githubusercontent.com/wiki/shufo/cdn/img/upload.gif"&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://qiita.com/ma2ge/items/0e19bf3f03078f589096"&gt;Hex.pmへのパッケージの公開の仕方&lt;/a&gt;を学ぶ&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://elixir-lang.github.io/getting-started/mix-otp/docs-tests-and-with.html"&gt;doctest&lt;/a&gt;便利&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/plug_rate_limit_redis"&gt;plug_rate_limit_redis&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;rate limitをredisをデータストアに&lt;a href="https://github.com/elixir-plug/plug"&gt;plug&lt;/a&gt;で実現するパッケージ&lt;/p&gt;
+&lt;h4&gt;Usage&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;defmodule&lt;/span&gt; &lt;span class="nc"&gt;MyApp&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+
+  &lt;span class="n"&gt;plug&lt;/span&gt; &lt;span class="nc"&gt;RateLimit&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;interval_seconds&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;60&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;max_requests&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;30&lt;/span&gt;
+
+  &lt;span class="kd"&gt;def&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_params&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="n"&gt;conn&lt;/span&gt;
+    &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;自作plugの作り方を学ぶ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/payjp-elixir"&gt;payjp&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://pay.jp/"&gt;PAY.JP&lt;/a&gt;のAPIクライアント。公式のクライアントライブラリがなかったので作成。
+&lt;a href="https://github.com/code-corps/stripity_stripe"&gt;Stripe&lt;/a&gt;のクライアントを参考にした。&lt;/p&gt;
+&lt;h4&gt;Usage&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;customer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+  &lt;span class="ss"&gt;email&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;test@test.com&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="ss"&gt;description&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;An Elixir Test Account&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="ss"&gt;metadata&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="ss"&gt;app_attr1&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;xyz&amp;quot;&lt;/span&gt;
+  &lt;span class="p"&gt;],&lt;/span&gt;
+  &lt;span class="ss"&gt;card&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;
+    &lt;span class="ss"&gt;number&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;4242424242424242&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="ss"&gt;exp_month&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;01&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="ss"&gt;exp_year&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;2020&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="ss"&gt;cvc&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;123&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="ss"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Joe Test User&amp;quot;&lt;/span&gt;
+  &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="nc"&gt;Payjp.Customers&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;create&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;customer&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;APIクライアントの作り方を学ぶ&lt;/li&gt;
+&lt;li&gt;外部APIのテストには&lt;a href="https://github.com/parroty/exvcr"&gt;ExVCR&lt;/a&gt;を使うとリクエストを再現して実際叩かないようにしてくれるので便利&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/paidy-elixir"&gt;paidy&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://paidy.com/"&gt;Paidy&lt;/a&gt;のAPIクライアント。同じく公式にクライアントライブラリがなかったので作成。&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/ex_line_pay"&gt;ex_line_pay&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://line.me/en/pay"&gt;LINE PAY&lt;/a&gt;のAPIクライアント。同じく類似パッケージが(ry&lt;/p&gt;
+&lt;p&gt;APIクライアントは一度ベースを作るとあとはエンドポイントとモジュールをちょっと調整すれば大体似通った作りになるので楽ですね。&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/fcmex"&gt;fcmex&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://firebase.google.com/docs/cloud-messaging/"&gt;FCM&lt;/a&gt;(Firebase Cloud Messaging)のAPIクライアント&lt;/p&gt;
+&lt;p&gt;FCM側にRate Limitがあり1リクエストあたり1000件までしかデバイスTokenを送信出来ないのと、短時間で大量のプッシュ通知を送信出来るように&lt;a href="https://hexdocs.pm/flow"&gt;Flow&lt;/a&gt;で流量を考慮しつつ並列度、CPU効率を考えて送信出来るようにした。&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/activity_log"&gt;activity_log&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;ロギング周りの実装で&lt;a href="https://www.w3.org/TR/activitystreams-core/"&gt;Activity Streams&lt;/a&gt;風のスキーマを定義したくてDSLが欲しくなったのでmacroで実装。
+EctoのSchema風にしたかったのでEctoを参考にしたりした。&lt;/p&gt;
+&lt;h4&gt;Usage&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# スキーマ定義&lt;/span&gt;
+&lt;span class="kd"&gt;defmodule&lt;/span&gt; &lt;span class="nc"&gt;MyApp.Activity.Article&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+  &lt;span class="kn"&gt;use&lt;/span&gt; &lt;span class="nc"&gt;ActivityLog&lt;/span&gt;
+
+  &lt;span class="n"&gt;activity&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;create&amp;quot;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="n"&gt;actor&lt;/span&gt;  &lt;span class="ss"&gt;:user&lt;/span&gt;
+    &lt;span class="n"&gt;object&lt;/span&gt; &lt;span class="ss"&gt;:article&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+
+  &lt;span class="kd"&gt;def&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;actor&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;object&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="ss"&gt;do&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;actor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt; created &lt;/span&gt;&lt;span class="si"&gt;#{&lt;/span&gt;&lt;span class="n"&gt;object&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+
+&lt;span class="c1"&gt;# ログ出力&lt;/span&gt;
+&lt;span class="n"&gt;iex&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;alias&lt;/span&gt; &lt;span class="nc"&gt;MyApp.Activity.Article&lt;/span&gt;
+&lt;span class="n"&gt;iex&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;activity&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;%&lt;/span&gt;&lt;span class="nc"&gt;Article&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;actor&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;%&lt;/span&gt;&lt;span class="nc"&gt;Article.Actor&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt; &lt;span class="ss"&gt;object&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;%&lt;/span&gt;&lt;span class="nc"&gt;Article.Object&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="ss"&gt;id&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;name&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;My article&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}}&lt;/span&gt;
+&lt;span class="n"&gt;iex&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="nc"&gt;ActivityLog&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;activity&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# outputs&lt;/span&gt;
+&lt;span class="mi"&gt;05&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;29&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;32.128&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;info&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;  &lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;create&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;target&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:null&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;object&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;article&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;My article&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;foo createed My article&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;actor&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:{&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;type&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;user&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;foo&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;id&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;},&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;@timestamp&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;2017-10-15T20:29:32.128192Z&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;@context&amp;quot;&lt;/span&gt;&lt;span class="ss"&gt;:&amp;quot;https://github.com/shufo/activity_log&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="ss"&gt;:ok&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;Macroの強力さと諸刃の剣さを理解&lt;/li&gt;
+&lt;li&gt;でもやっぱDSL便利&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/plug_cache"&gt;plug_cache&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;特定のリクエストパスに対するレスポンスをキャッシュするplug。
+ETSでインメモリでキャッシュを保存するからキャッシュサーバ等は不要。分散Erlangクラスタを組んでいる場合は分散キャッシュを使ってクラスタ全体で一意なキャッシュのinvalidationなども出来る。&lt;/p&gt;
+&lt;h4&gt;Usage&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kd"&gt;defmodule&lt;/span&gt; &lt;span class="nc"&gt;MyApp.PageController&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+
+  &lt;span class="n"&gt;plug&lt;/span&gt; &lt;span class="nc"&gt;PlugCache&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ss"&gt;ttl&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;86400&lt;/span&gt; &lt;span class="ow"&gt;when&lt;/span&gt; &lt;span class="n"&gt;action&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="ss"&gt;:index&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+  &lt;span class="kd"&gt;def&lt;/span&gt; &lt;span class="n"&gt;index&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;conn&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_params&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="n"&gt;conn&lt;/span&gt;
+    &lt;span class="o"&gt;|&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="ss"&gt;:index&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+  &lt;span class="k"&gt;end&lt;/span&gt;
+&lt;span class="k"&gt;end&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ul&gt;
+&lt;li&gt;ETS便利&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/plug_maintenance"&gt;plug_maintenance&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;メンテナンス状態を取得して&lt;code&gt;503 Service Not Available&lt;/code&gt;のHTTP Statusを返すplug&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/shufo/plug_robots"&gt;plug_robots&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;robots.txtを平文で返すplug。作った理由忘れたけどたぶんrobots.txtをapplicationサーバから返したいみたいな感じだったと思う&lt;/p&gt;
+&lt;p&gt;と、こんな感じで微力ながらElixirコミュニティに何らかのContributionが出来ればと思ったのと必要性にかられて何個か作成したけど、やっぱり言語を学習するのになんらかのパッケージを作るのは一番の近道だなと。&lt;/p&gt;
+&lt;h2&gt;お世話になってるパッケージ&lt;/h2&gt;
+&lt;p&gt;普段お世話になってるパッケージ&lt;/p&gt;
+&lt;h3&gt;&lt;a href="https://github.com/elixir-ecto/ecto"&gt;ecto&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;みんな大好き. &lt;a href="https://blog.drewolson.org/composable-queries-ecto/"&gt;Composed Query&lt;/a&gt;として書くと再利用性も高くシンプルな書き方が出来るのがすき。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/vt-elixir/ja_serializer"&gt;ja_serializer&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://jsonapi.org/"&gt;JSON-API&lt;/a&gt;形式でAPIレスポンスを返すため&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/HashNuke/hound"&gt;hound&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;E2Eでのテストをするため。PhantomJSをバックエンドとして使っていたけどdeprecatedになってしまったのでそろそろHeadless Chromeに移行したい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/thoughtbot/ex_machina"&gt;ex_machina&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;テストデータのFactoryに&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/cpjk/canary"&gt;canary&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Authorizationに&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/getsentry/sentry-elixir"&gt;sentry&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://sentry.io/welcome/"&gt;Sentry&lt;/a&gt;公式でElixirのクライアントライブラリが提供されているのでエラートラッカーはこれを使っている&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/PragTob/benchee"&gt;benchee&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;実装に困ったらマイクロベンチマークで適宜ベンチマークを測って指標にする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/xerions/phoenix_swagger"&gt;phoenix_swagger&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://swagger.io/"&gt;Swagger&lt;/a&gt;形式でAPIドキュメントを出力するため。そろそろOpenAPI 3.0仕様に準拠したい&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/navinpeiris/logster"&gt;logster&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;アクセスログをワンライナーでJSONで出力出来る&lt;/li&gt;
+&lt;li&gt;アクセスログをCloudwatch LogsからKinesis, S3, Athenaなどに送り込むため最初からJSON形式でログを出力したかったのでこれを使っている&lt;/li&gt;
+&lt;li&gt;ちなみにJSON形式でログを出力するとCloudWatch Logsのフィルタで&lt;code&gt;{ $.type = 'foo' }&lt;/code&gt;のような形で検索ワードを指定出来て便利&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;&lt;a href="https://github.com/drewolson/scrivener"&gt;scrivener&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;ページングライブラリ。最初自前でページャなどを書いたけど辛かったので早く知りたかった&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;まとめ&lt;/h2&gt;
+&lt;p&gt;最初は社内で自分一人だけだったElixir開発者も、実績がたまったおかげで他プロジェクトでも使われるようになって社内で5人ほど使うようになったり、周りで使われている会社も増えてきたりでなんだかんだゆるやかな成長を感じる。&lt;/p&gt;
+&lt;p&gt;少し前はミーハーでHypeな感じもあったけど最近は落ち着いて実際使う人は粛々と使ってる感じで個人的には居心地がいいです。&lt;/p&gt;</content><category term="Elixir"></category><category term="programming"></category></entry></feed>
