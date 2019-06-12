@@ -2,7 +2,6 @@ backend:
   name: github
   repo: shufo/shufo.github.io
   branch: master
-  site_domain: gallant-lumiere-92d567.netlify.com
 
 media_folder: "content/assets"
 publish_mode: editorial_workflow
