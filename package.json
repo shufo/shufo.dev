@@ -1,0 +1,21 @@
+{
+  "name": "blog",
+  "version": "0.0.1",
+  "description": "my blog build with vuepress",
+  "main": "index.js",
+  "authors": {
+    "name": "shufo",
+    "email": "meikyowise@gmail.com"
+  },
+  "repository": "shufo/vuepress-blog/blog",
+  "scripts": {
+    "dev": "vuepress dev blog",
+    "build": "vuepress build blog"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@vuepress/theme-blog": "^2.1.0",
+    "vuepress": "^1.3.1",
+    "vuepress-plugin-autometa": "^0.1.13"
+  }
+}
