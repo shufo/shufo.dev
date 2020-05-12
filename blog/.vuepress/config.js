@@ -13,7 +13,15 @@ module.exports = {
   title: 'shufo.dev',
   description: 'random automation stuff',
   lang: 'ja',
-  plugins: [['autometa', autometa_options]],
+  plugins: [
+    ['autometa', autometa_options],
+    [
+      '@vuepress/google-analytics',
+      {
+        'ga': 'UA-1113986-11'
+      }
+    ]
+  ],
   theme: '@vuepress/theme-blog', // OR shortcut: @vuepress/blog
   themeConfig: {
     /**
