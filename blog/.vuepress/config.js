@@ -1,6 +1,6 @@
 const autometa_options = {
   site: {
-    name   : 'shufo blog',
+    name   : 'shufo.dev',
     twitter: 'shufo_',
   },
   author: {
@@ -10,7 +10,7 @@ const autometa_options = {
   canonical_base: 'https://shufo.dev',
 };
 module.exports = {
-  title: 'shufo blog',
+  title: 'shufo.dev',
   description: 'random automation stuff',
   lang: 'ja',
   plugins: [['autometa', autometa_options]],
