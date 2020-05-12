@@ -3,6 +3,7 @@ backend:
   branch: master # Branch to update (master by default)
 
 media_folder: "blog/.vuepress/public/assets/img/uploads" # Folder where user uploaded files should go
+public_folder: "assets/img/uploads"
 
 locale: 'ja'
 site_url: https://shufo.dev
