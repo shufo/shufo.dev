@@ -32,7 +32,7 @@ module.exports = {
       },
       {
         text: 'About',
-        link: '/about',
+        link: '/hello-world/',
       },
       {
         text: 'Tags',
