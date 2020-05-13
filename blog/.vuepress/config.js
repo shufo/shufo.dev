@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 const autometa_options = {
   site: {
     name   : 'shufo.dev',
@@ -12,6 +14,7 @@ const autometa_options = {
 
 const feed_options = {
   canonical_base: 'https://shufo.dev',
+  sort:  entries => _.reverse( _.sortBy( entries, 'date' ) ),
 };
 
 module.exports = {
