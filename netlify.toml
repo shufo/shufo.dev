@@ -20,4 +20,4 @@
   # Override cache duration for assets with periods in the filename (i.e. static assets)
   for = "/*.*"
     [headers.values]
-    cache-control = "public,max-age=360000"
+    cache-control = "public,max-age=31536000"
