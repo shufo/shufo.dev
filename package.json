@@ -7,7 +7,7 @@
     "name": "shufo",
     "email": "meikyowise@gmail.com"
   },
-  "repository": "shufo/shufo.github.io",
+  "repository": "shufo/shufo.dev",
   "scripts": {
     "dev": "vuepress dev blog",
     "build": "vuepress build blog",
