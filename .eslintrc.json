@@ -1,0 +1,25 @@
+{
+    "env": {
+        "node": true
+    },
+    "extends": [
+        "plugin:vue/essential",
+        "airbnb-base",
+        "plugin:prettier/recommended",
+        "eslint:recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 11,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "vue",
+        "prettier"
+    ],
+    "rules": {
+    }
+}
