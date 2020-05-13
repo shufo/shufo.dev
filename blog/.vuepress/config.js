@@ -9,6 +9,11 @@ const autometa_options = {
   },
   canonical_base: 'https://shufo.dev',
 };
+
+const feed_options = {
+  canonical_base: 'https://shufo.dev',
+};
+
 module.exports = {
   title: 'shufo.dev',
   description: 'random automation stuff',
@@ -20,7 +25,8 @@ module.exports = {
       {
         'ga': 'UA-1113986-11'
       }
-    ]
+    ],
+    [ 'feed', feed_options ],
   ],
   theme: '@vuepress/theme-blog', // OR shortcut: @vuepress/blog
   themeConfig: {
