@@ -6,3 +6,18 @@
 
   # Default build command.
   command = "vuepress build blog"
+
+[[headers]]
+  # Set the default header to the one we want for documents
+  for = "/*"
+    [headers.values]
+    cache-control = "public,max-age=60"
+    Referrer-Policy = "no-referrer-when-downgrade"
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  # Override cache duration for assets with periods in the filename (i.e. static assets)
+  for = "/*.*"
+    [headers.values]
+    cache-control = "public,max-age=360000"
