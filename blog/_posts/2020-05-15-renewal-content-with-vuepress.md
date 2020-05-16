@@ -1,12 +1,12 @@
 ---
-title: PelicanからVuepressに移行した
+title: HPをVuepressに移行した
 date: 2020-05-15T22:21:20.942Z
 tags:
   - Vue
   - Programming
 slug: renewal-content-with-vuepress
 ---
-Staticサイトジェネレーターを [Pealican](https://blog.getpelican.com/) から [VuePress](https://vuepress.vuejs.org/) に移行したのでその件について書く
+ブログの生成代わりに使っていたStaticサイトジェネレーターを [Pelican](https://blog.getpelican.com/) から [VuePress](https://vuepress.vuejs.org/) に移行したのでその件について書く
 
 ## VuePress
 
