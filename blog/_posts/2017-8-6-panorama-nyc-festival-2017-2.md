@@ -7,7 +7,7 @@ author: shufo
 permalink: panorama-nyc-festival-2017-2
 ---
 
-<img src="http://i.imgur.com/Q5BklUY.jpg">
+<img src="https://i.imgur.com/Q5BklUY.jpg">
 
 [1日目](http://shufo.github.io/panorama-festival-2017-1.html)に続きNew York一人旅2日目です。
 
