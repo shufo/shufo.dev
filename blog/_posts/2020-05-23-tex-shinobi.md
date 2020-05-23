@@ -1,0 +1,16 @@
+---
+title: Tex Shinobiの感想
+date: 2020-05-23T16:41:55.520Z
+tags:
+  - keyboard
+slug: tex-shinobi
+---
+[Tex shinobi](https://tex.com.tw/products/shinobi?variant=16969883648090)を買ったのでそのレビュー
+
+- この価格で専用設計の7列thinkpad keyboardが手に入るのは素直に素晴らしい
+  - もう一枚バックアップに欲しいくらい
+- USB-Cヨシ
+- trackpointの感度が良い
+- 最初リストレストが邪魔なのでは？と思ったけど膝の上に置きながらでも安定して操作出来るため必用なものだということが分かった
+  - 現在売っている公式の無線thinkpadキーボードはリストレストがないので机の上などでしか使えないがこれは場所を選ばずベッドの上や寝転がりながらでも使える
+- EnterキーやBaskspaceが若干うるさい(Stabilizer変えた方がいい?) 
