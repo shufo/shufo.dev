@@ -1,5 +1,5 @@
 ---
-title: Tex Shinobiの感想
+title: Tex Shinobi DIY Kitの感想
 date: 2020-05-23T16:41:55.520Z
 tags:
   - keyboard
