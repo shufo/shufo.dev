@@ -2,7 +2,7 @@
 title: blade-formatter
 summary: An opinionated blade template formatter for Laravel
 year: 2020
-# thumbnail: https://i.imgur.com/82We192.png
+thumbnail: /assets/img/uploads/blade-formatter.png
 date: 2020-02-01
 categories:
   - PHP
@@ -17,3 +17,5 @@ tools:
   - prettier
 slug: blade-formatter
 ---
+
+<img src="/assets/img/uploads/blade-formatter.png">
