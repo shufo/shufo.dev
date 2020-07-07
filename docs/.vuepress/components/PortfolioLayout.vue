@@ -9,6 +9,7 @@
       :year="$page.frontmatter.year.toString()"
       :categories="$page.frontmatter.categories"
     />
+    <Thumbnail :src="$page.frontmatter.thumbnail" />
     <Content />
   </div>
 </template>
@@ -17,9 +18,12 @@
 export default {
   computed: {
     isSingleProject() {
-      const worksRoute = "/works/";
+      const projectRoutes = "/projects/";
       const { path } = this.$route;
-      if (path.includes("works") && path.length >= worksRoute.length + 1) {
+      if (
+        path.includes("projects") &&
+        path.length >= projectRoutes.length + 1
+      ) {
         return true;
       }
     }
