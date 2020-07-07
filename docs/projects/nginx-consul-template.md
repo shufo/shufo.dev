@@ -18,4 +18,4 @@ slug: nginx-consul-template
 priority: 1
 ---
 
-<img src="/assets/img/uploads/nginx-consul-template.png">
+<!-- <Thumbnail :src="/assets/img/uploads/nginx-consul-template.png" /> -->

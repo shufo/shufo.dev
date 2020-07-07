@@ -17,5 +17,3 @@ tools:
   - prettier
 slug: blade-formatter
 ---
-
-<img src="/assets/img/uploads/blade-formatter.png">
