@@ -10,23 +10,23 @@ export default {
     name: {
       required: true,
       type: String,
-      default: "",
+      default: ""
     },
     url: {
       required: true,
       type: String,
-      default: "",
+      default: ""
     },
     icon: {
       required: false,
       type: String,
-      default: "",
+      default: ""
     },
     size: {
       required: false,
       type: String,
-      default: "2em",
-    },
-  },
+      default: "2em"
+    }
+  }
 };
 </script>

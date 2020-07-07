@@ -8,10 +8,10 @@ export default {
   computed: {
     about() {
       return this.$site.pages.filter(
-        (x) => x.frontmatter.pageClass === "introduction"
+        x => x.frontmatter.pageClass === "introduction"
       )[0];
-    },
-  },
+    }
+  }
 };
 </script>
 <style scoped></style>

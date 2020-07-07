@@ -36,21 +36,21 @@ export default {
   computed: {
     posts() {
       return this.$site.pages
-        .filter((x) => x.regularPath.includes("_post"))
-        .filter((x) => x.path.startsWith(this.$localePath))
+        .filter(x => x.regularPath.includes("_post"))
+        .filter(x => x.path.startsWith(this.$localePath))
         .sort(
           (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
         )
         .slice(0, this.count);
-    },
+    }
   },
   props: {
     count: {
       type: Number,
       required: false,
-      default: 5,
-    },
-  },
+      default: 5
+    }
+  }
 };
 </script>
 

@@ -36,8 +36,8 @@ export default {
   computed: {
     data() {
       return this.frontmatter;
-    },
-  },
+    }
+  }
 };
 </script>
 

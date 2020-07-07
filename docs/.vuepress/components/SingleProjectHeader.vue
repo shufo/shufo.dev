@@ -26,17 +26,17 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
+      required: true
     },
     year: {
       type: String,
-      required: true,
+      required: true
     },
     categories: {
       type: Array,
-      required: true,
-    },
-  },
+      required: true
+    }
+  }
 };
 </script>
 

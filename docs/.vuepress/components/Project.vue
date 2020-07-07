@@ -27,25 +27,25 @@ export default {
   props: {
     title: {
       required: true,
-      type: String,
+      type: String
     },
     summary: {
       required: true,
-      type: String,
+      type: String
     },
     thumbnail: {
       required: false,
-      type: String,
+      type: String
     },
     links: {
       required: false,
-      type: Object,
+      type: Object
     },
     tools: {
       required: false,
-      type: Array,
-    },
-  },
+      type: Array
+    }
+  }
 };
 </script>
 <style scoped>

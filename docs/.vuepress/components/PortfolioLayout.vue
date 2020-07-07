@@ -18,24 +18,24 @@ export default {
   computed: {
     isSingleProject() {
       const worksRoute = "/works/";
-      const path = this.$route.path;
+      const { path } = this.$route;
       if (path.includes("works") && path.length >= worksRoute.length + 1) {
         return true;
       }
-    },
+    }
   },
   mounted() {
     // unwrap all images from paragraph tags so we can have
     // different widths inside the content.
-    document.querySelectorAll("img").forEach((image) => {
-      var wrapper = image.parentNode;
-      let children = wrapper.children;
-      let fragment = document.createDocumentFragment();
-      Array.from(children).forEach((child) => {
+    document.querySelectorAll("img").forEach(image => {
+      const wrapper = image.parentNode;
+      const { children } = wrapper;
+      const fragment = document.createDocumentFragment();
+      Array.from(children).forEach(child => {
         fragment.appendChild(child);
       });
       wrapper.parentNode.replaceChild(fragment, wrapper);
     });
-  },
+  }
 };
 </script>
