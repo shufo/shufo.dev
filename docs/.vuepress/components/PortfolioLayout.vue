@@ -28,18 +28,5 @@ export default {
       }
     }
   },
-  mounted() {
-    // unwrap all images from paragraph tags so we can have
-    // different widths inside the content.
-    document.querySelectorAll("img").forEach(image => {
-      const wrapper = image.parentNode;
-      const { children } = wrapper;
-      const fragment = document.createDocumentFragment();
-      Array.from(children).forEach(child => {
-        fragment.appendChild(child);
-      });
-      wrapper.parentNode.replaceChild(fragment, wrapper);
-    });
-  }
 };
 </script>
