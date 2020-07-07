@@ -75,6 +75,12 @@ module.exports = {
       {
         hostname: "https://shufo.dev"
       }
+    ],
+    [
+      "vuepress-plugin-serve",
+      {
+        port: 9000
+      }
     ]
   ],
   theme: "@vuepress/theme-blog", // OR shortcut: @vuepress/blog
