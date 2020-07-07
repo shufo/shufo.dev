@@ -1,7 +1,7 @@
 <template>
   <div class="card-list">
-    <router-link
-      :to="project.path"
+    <a
+      :href="project.path"
       tag="div"
       v-for="project in projects"
       :key="project.slug"
@@ -14,7 +14,7 @@
         :links="project.frontmatter.links"
         :tools="project.frontmatter.tools"
       />
-    </router-link>
+    </a>
   </div>
 </template>
 
@@ -46,6 +46,17 @@ export default {
   margin-top: 3em;
   display: flex;
   flex-wrap: wrap;
+}
+
+a {
+  color: inherit;
+  /* font-weight: 200; */
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+a:hover {
+  color: #8a278c;
 }
 /* .project {
   position: relative;
