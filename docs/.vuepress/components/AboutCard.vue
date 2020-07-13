@@ -24,17 +24,6 @@
           {{ data.interests }}
         </span>
       </div>
-      <div class="socials">
-        <div v-for="item in data.socials">
-          <router-link :to="item.link" tag="div">
-            <img
-              :src="'/icons/' + item.title + '.svg'"
-              :alt="item.title"
-              :title="item.title"
-            />
-          </router-link>
-        </div>
-      </div>
       <div class="actions">
         <div v-for="item in data.actions">
           <router-link :to="item.link" tag="div" class="button">
