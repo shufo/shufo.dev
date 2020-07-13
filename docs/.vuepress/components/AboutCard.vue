@@ -25,7 +25,7 @@
         </span>
       </div>
       <div class="actions">
-        <div v-for="item in data.actions">
+        <div v-for="item in data.actions" :key="item.text">
           <router-link :to="item.link" tag="div" class="button">
             {{ item.text }}
           </router-link>
