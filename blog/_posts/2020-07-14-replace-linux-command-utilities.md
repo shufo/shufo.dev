@@ -10,17 +10,17 @@ GNUベースのLinuxコマンドユーティリティ群（find, awk, ls, cat, s
 GNU coreutils自体は依然ほぼ全てのディストリビューションに入ってる以上廃れるということは無いが、個人レベルのPCでは生産性向上のため代替のCLIツールが今後も導入される動きは続くと思う
 
 ので以下に最近よく使っているalternativeを挙げてみる
-### exa
+### [exa](https://github.com/ogham/exa)
 
 `ls`の代替コマンド
 
 最近は`ls`にaliasを割り当て`alias ls='exa -al'`を設定している
 
-### fd
+### [fd](https://github.com/sharkdp/fd)
 
 `find`の代替コマンド
 
-### ripgrep
+### [ripgrep](https://github.com/BurntSushi/ripgrep)
 
 grepの代替コマンド
 
@@ -28,14 +28,14 @@ grepの代替コマンド
 
 コマンドは短縮して`rg`となっている
 
-### rnr
+### [rnr](https://github.com/ChuckDaniels87/rnr)
 
 個人的に推したいツール
 ファイルネームのリネームを一括で行える
 
 リファクタの強いお供
 
-### sd
+### [sd](https://github.com/chmln/sd)
 
 sedの代替
 こちらも一括してリファクタなど行いやすい
