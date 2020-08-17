@@ -1194,10 +1194,10 @@
     semver "^6.0.0"
     upath "^1.1.0"
 
-"@vuepress/theme-blog@^2.1.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@vuepress/theme-blog/-/theme-blog-2.3.0.tgz#8398b62bfdbcdd9731b47693ec7e7bad13c7e412"
-  integrity sha512-5uI2aBotjLZGF8i/AwLLCGkAetCBqIZSRmKXq9UyKkvqSk5WUISHLw6UMv3s+Hrpbiaea6hIBKtAtomxOBTr/g==
+"@vuepress/theme-blog@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@vuepress/theme-blog/-/theme-blog-2.3.1.tgz#ca1ba053ba30bfdd2344d668170c481adb6dead6"
+  integrity sha512-jZwNk7Lr4wFrYFjt41HwErBAsyQM6n4hR6xfRiav4a7HV8qUJy+CGWaOY5JKMhoR/lt142lMLscMTU9FaXx5/w==
   dependencies:
     "@vuepress/plugin-blog" "^1.9.2"
     "@vuepress/plugin-medium-zoom" "1.0.0"

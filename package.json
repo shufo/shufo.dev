@@ -19,7 +19,7 @@
   "devDependencies": {
     "@goy/vuepress-plugin-svg-icons": "^4.2.1",
     "@vuepress/plugin-google-analytics": "^1.5.3",
-    "@vuepress/theme-blog": "^2.1.0",
+    "@vuepress/theme-blog": "^2.3.1",
     "cache-loader": "1.2.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.2.0",
