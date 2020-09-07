@@ -8900,10 +8900,10 @@ vuepress-plugin-seo@^0.1.3:
   resolved "https://registry.yarnpkg.com/vuepress-plugin-seo/-/vuepress-plugin-seo-0.1.3.tgz#776cb73e9d364de2e3fcddfe15f21c00b708b2ec"
   integrity sha512-bPP1j9l4q9emoiFz7US2Zg1vsO62UoqhdLcGFcHbB7fvsgn+CmVXZuG2wR6Ap1PXT4ACYaz2lkUlfr5qU3M4vg==
 
-vuepress-plugin-serve@^2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/vuepress-plugin-serve/-/vuepress-plugin-serve-2.0.3.tgz#ca6497c5a3ef196c33cfa59a72a58227b9b504e4"
-  integrity sha512-SCacOcUbStcPp4f8QGKBoRj2N/JliKhF10ZBVJV7jv1J5gGQx+3kvjIkq5rLkE6RD+FkkmyLNwNtwGKWD0hd5w==
+vuepress-plugin-serve@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-serve/-/vuepress-plugin-serve-2.0.4.tgz#d44f5e68810bba4129f6d0d38d483b761655496e"
+  integrity sha512-k48WdAJ42+llZNXCbQ1ekDAZU54YXJtJRUpalAUkCP3FkI3esnUrMzyEKsosSdW2NSRLN9cPlj1qfhfYGhDNMw==
   dependencies:
     chalk "^2.4.2"
     express "^4.16.4"
