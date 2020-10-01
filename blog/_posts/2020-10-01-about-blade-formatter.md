@@ -56,11 +56,12 @@ Laravel Blade Snippetsはjs-beautifyでHTMLをFormatしているだけであく�
 
 またCLIでの実行をサポートしておらずあくまでVSCodeのプラグインとしてのみ動作していたためCIでのprogramiticalなformat検査などが実行出来なかった
 
-blade-formatterではそういった足りないところを補う形で実現した
+blade-formatterではそういった足りないところを補う形で当初は作ることにした<br>
+実際作った後から見るとほぼ別物になっていたので最初の指針で残っているのは大まかにlexerを作るか作らないかという違いくらいだった気がする
 
 ### 実装 
 
-まずどういったライブラリでもそうだけど最小限のPoCを実装する
+まずどういったソフトウェアでもそうだけど最小限のPoCを実装する
 
 PoCで十分最終的に実現したいソリューションを達成出来る手応えを得られた時点でリソースと相談して最後まで作るかどうか決める
 
@@ -69,7 +70,15 @@ PoCで十分最終的に実現したいソリューションを達成出来る�
 
 ただあくまで個人的に作るOSSは[それが僕には楽しかったから](https://www.amazon.co.jp/dp/4796880011/ref=cm_sw_r_tw_dp_x_VByDFbMXWSK00)作るという場合が往々にしてあるのでリソースといったところはあまり気にしない. 
 
-まずbladeディレクティブをネストさせる
+今回はまず要件としてbladeディレクティブをネストしたいのがあり、これを実現するためにはbladeファイルをパースしtokenizeした上でblade特有のディレクティブをtokenとして認識する必用があるのだけど、ここはTextMateのtmBundle形式の言語ファイルを使用した
+
+VSCodeには実はvscode-textmateというtextmateのbundleを処理するためのライブラリがbuiltinで入っており、vscode-textmate経由で各種言語のSyntax Highlightやtokenizeを行っている
+
+そのためtmBundle形式のファイルさえ用意すれば比較的用意にSyntax Hilighterなどは作れるのだがこれを利用し、vscoode-textmate自体はVSCodeが存在しなくても動くのでbladeファイルのtokenizerとして利用した
+
+結果としてはこの選択が後で作るVSCode向けの拡張の[vscode-blade-formatter](https://marketplace.visualstudio.com/items?itemName=shufo.vscode-blade-formatter)を作る時にVSCodeビルトインのvscode-textmateを直に利用出来る結果になったため互換性が増してよかった
+
+
 
 ## 参考にした
 
