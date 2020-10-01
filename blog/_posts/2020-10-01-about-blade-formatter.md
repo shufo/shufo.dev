@@ -1,5 +1,5 @@
 ---
-title: Laravelのblade向けformatterを作った
+title: Laravelのblade formatterを作った
 date: 2020-10-01T05:35:50.107Z
 tags:
   - programming
@@ -52,7 +52,11 @@ slug: about-blade-formatter
 
 今回は既に[Laravel Blade Snippets](https://marketplace.visualstudio.com/items?itemName=onecentlin.laravel-blade)が簡易的にFormatterを実装していたのでそれをベースにこのライブラリが出来ていない箇所をブラッシュアップしていく形になった
 
+Laravel Blade Snippetsはjs-beautifyでHTMLをFormatしているだけであくまでbladeディレクティブもHTMLのタグのようなものとして扱っていたためbladeディレクティブのネストやPSR2への準拠といったところが実現出来ていなかった
 
+またCLIでの実行をサポートしておらずあくまでVSCodeのプラグインとしてのみ動作していたためCIでのprogramiticalなformat検査などが実行出来なかった
+
+blade-formatterではそういった足りないところを補う形で実現した
 
 ### 実装 
 
@@ -64,6 +68,8 @@ PoCで十分最終的に実現したいソリューションを達成出来る�
 - 予算
 
 ただあくまで個人的に作るOSSは[それが僕には楽しかったから](https://www.amazon.co.jp/dp/4796880011/ref=cm_sw_r_tw_dp_x_VByDFbMXWSK00)作るという場合が往々にしてあるのでリソースといったところはあまり気にしない. 
+
+まずbladeディレクティブをネストさせる
 
 ## 参考にした
 
