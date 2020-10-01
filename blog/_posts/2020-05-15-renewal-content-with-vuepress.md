@@ -6,7 +6,7 @@ tags:
   - Programming
 slug: renewal-content-with-vuepress
 ---
-ブログの生成代わりに使っていたStaticサイトジェネレーターを [Pelican](https://blog.getpelican.com/) から [VuePress](https://vuepress.vuejs.org/) に移行したのでその件について書く
+ブログの生成代わりに使っていたStaticサイトジェネレーターを [Pelican](https://blog.getpelican.com/) から [VuePress(https://vuepress.vuejs.org/) に移行した
 
 ## VuePress
 
