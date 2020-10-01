@@ -1,33 +1,34 @@
 <template>
   <div>
-    <div class="card-list">
+    <ul>
+      <div class="card-list">
+        <router-link
+          :to="post.path"
+          tag="div"
+          v-for="post in posts"
+          :key="post.slug"
+          class="post"
+        >
+          <li>
+            <div class="info">
+              <h3>
+                <a>{{ post.frontmatter.title }}</a>
+              </h3>
+            </div>
+          </li>
+        </router-link>
+      </div>
       <router-link
-        :to="post.path"
+        v-if="this.$site.pages.length > this.count"
+        to="/blog/"
         tag="div"
-        v-for="post in posts"
-        :key="post.slug"
         class="post"
       >
         <div class="info">
-          <h3>
-            <a>{{ post.frontmatter.title }}</a>
-          </h3>
-          <span v-if="post.frontmatter.description">{{
-            post.frontmatter.description
-          }}</span>
+          <h3><a>read more...</a></h3>
         </div>
       </router-link>
-    </div>
-    <router-link
-      v-if="this.$site.pages.length > this.count"
-      to="/blog/"
-      tag="div"
-      class="post"
-    >
-      <div class="info">
-        <h3><a>read more...</a></h3>
-      </div>
-    </router-link>
+    </ul>
   </div>
 </template>
 
@@ -36,27 +37,28 @@ export default {
   computed: {
     posts() {
       return this.$site.pages
-        .filter(x => x.regularPath.includes("_post"))
-        .filter(x => x.path.startsWith(this.$localePath))
+        .filter((x) => x.regularPath.includes("_post"))
+        .filter((x) => x.path.startsWith(this.$localePath))
         .sort(
           (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
         )
         .slice(0, this.count);
-    }
+    },
   },
   props: {
     count: {
       type: Number,
       required: false,
-      default: 5
-    }
-  }
+      default: 10,
+    },
+  },
 };
 </script>
 
 <style scoped>
 .card-list {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
 }
 .card-list a {
