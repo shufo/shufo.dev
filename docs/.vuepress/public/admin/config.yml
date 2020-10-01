@@ -13,7 +13,7 @@ publish_mode: editorial_workflow
 collections:
   - name: "blog" # Used in routes, e.g., /admin/collections/blog
     label: "blog" # Used in the UI
-    folder: "blog/_posts" # The path to the folder where the documents are stored
+    folder: "docs/_posts" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{year}}-{{month}}-{{day}}-{{fields.slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
