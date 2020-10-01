@@ -6,13 +6,20 @@ tags:
   - Programming
 slug: renewal-content-with-vuepress
 ---
-ブログの生成代わりに使っていたStaticサイトジェネレーターを [Pelican](https://blog.getpelican.com/) から [VuePress(https://vuepress.vuejs.org/) に移行した
+Static siteジェネレータを [Pelican](https://blog.getpelican.com/) から [VuePres](https://vuepress.vuejs.org/) に移行した
 
-## VuePress
+## Why
+
+- プロジェクトでVueベースのStatic Siteジェネレータを素振りしたい場面が出てきたので
+- Pelicanの環境がPCの買い換えなどで再現しづらくなってきたので
+
+## VuePressとは
 
 Vue製のドキュメントジェネレータ
 
 デフォルトのテーマはプロダクトのドキュメントを出力するのに最適化されているけど, ブログ向けのテーマなどもあり用途に合わせてComponentを書けばいいので特に用途は限定されない
+
+元はVueのドキュメントを表示するためEvan yu wroted
 
 ## Netlify
 
