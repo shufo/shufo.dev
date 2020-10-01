@@ -78,7 +78,11 @@ VSCodeには実はvscode-textmateというtextmateのbundleを処理するため
 
 結果としてはこの選択が後で作るVSCode向けの拡張の[vscode-blade-formatter](https://marketplace.visualstudio.com/items?itemName=shufo.vscode-blade-formatter)を作る時にVSCodeビルトインのvscode-textmateを直に利用出来る結果になったため互換性が増してよかった
 
+### 反省点
 
+- 正規表現のみで無理やりformatterのようなことを実行しようとするナイーブな実装になってしまった点
+  - やはり専用にlexerやparserを作るのが最も確実な手段ではあるなと実感
+  - 実際のプロジェクトでの早急な必要性からナイーブなソリューションに飛びついてしまったけどもうちょい踏ん張りたかった
 
 ## 参考にした
 
