@@ -17,29 +17,58 @@ VSCode Extensionを作った
 
 [![shufo/vscode-blade-formatter - GitHub](https://gh-card.dev/repos/shufo/vscode-blade-formatter.svg)](https://github.com/shufo/vscode-blade-formatter)
 
+Market Place: [https://marketplace.visualstudio.com/items?itemName=shufo.vscode-blade-formatter](https://marketplace.visualstudio.com/items?itemName=shufo.vscode-blade-formatter)
+
+意外と需要があったのか2ヶ月くらいで10k DLを超えた
+
+## Preview
+
 ![](https://github.com/shufo/vscode-blade-formatter/raw/master/screencast.gif)
+
+### 出来ること
+- Bladeファイルを拡張子で判別してVSCodeの `Format Document` に対応
+  - Formatプロバイダを使っているためVSCodeデフォルトのFormat on Saveなどで随時フォーマット出来る
 
 ## Motivation
 
 - [blade-formatter](https://github.com/shufo/blade-formatter)はCLIツールとして開発したがエディタで編集している時に毎回CLIから叩くのが面倒だった
-- VSCode Extensionの素振りがしたかった
-- blade-formatterをnpmで公開していたのであれ、じゃあVSCodeで依存が解決出来れば利用出来るな？という安直な発想をPoCしたら実際出来たので
+- VSCodeを使っていてかつblade-formatterをnpmで公開していたので、じゃあVSCodeで依存が解決出来れば利用出来るな？という安直な発想からPoCしたら実際出来たので
+- あとVSCode Extensionの素振りがしたかった
 
-## VSCode Extension
+## VSCode Extensionはいいぞ
 
-公開の仕方は既に山程書かれてるので譲るとして以下VSCode Extensionで公開するよいところ
+VSCode Extensionを作るのは今回初めてだったので公開の仕方は既に山程[書かれてる](https://stackoverflow.com/questions/43671356/how-to-publish-a-extension-on-vscode-by-myself)ので譲るとして、以下VSCode Extensionを触った感想
 
 ### Pros
 
 ### npmを使える
 
-npmで公開されているpackageであればほぼそのまま利用出来る
+まずnpmで公開されているmoduleであればほぼそのまま利用出来る
 
-なので自前のパッケージで外部から利用出来るインターフェースさえあれば割と安直に
+なので自前のパッケージで外部から利用出来るインターフェースさえあれば割と安直に使えるので、vscode向けに作ったものでなくても比較的簡単にExtension化出来る
 
-ただ気をつけないといけないのはVSCodeはElectronでマルチプラットフォームで動作するためOS依存のnative extensionが依存にある場合難しくうということ
+#### Native Module対応はちょいむずい
 
+ただ気をつけないといけないのがVSCodeはElectronでマルチプラットフォームで動作するためOS依存のnative moduleが依存にある場合使うのが難しいというところ
+
+例えばonigurumaなどはそれぞれのOS向けのbindingがあるためそれぞれのOS向けにバイナリをビルドしないといけない. 今回まさにblade-formatterの依存でvscode-textmateがonigurumaを使っているため一度詰みかけたが、blade-formatterがVSCode Extensionの依存として読み込まれた時はvscode-onigurumaをnpmで解決されたblade-formatterの依存のonigurumaではなく**VSCodeバンドルのものを使う**というややhackyなworkaroundで回避した
+
+要はVSCodeは各OS向けにビルド済みのバイナリをバンドリングしているためVSCodeのインストールで自動的に一緒に入るのでそれを利用した
+
+
+
+### フィードバックが増える
+
+シンプルにVSCodeの利用者が膨大なので元のblade-formatter以外のユーザ(CLIを触らないユーザ)からこういった条件で動かないとか、こういった条件に対応してほしいなどのフィードバックをもらえた
 
 ### [VSCode Codespaces](https://github.com/features/codespaces) で使える
 
-最近early accessで公開されたVSCodeのWebエディタ. 自分のリポジトリをWeb上で直接Web版のVSCodeにcloneし編集出来る（Beta版はOrganizationリポジトリは未対応とのこと）のだけど、当然VSCodeなのでWeb上でもExtensionを利用出来る（！）. 試しにvscode-blade-formatterをインストールしたところ普通にWebで
+最近Early Accessで公開されたVSCodeのWebエディタ. 
+
+自分のリポジトリをWeb上で直接Web版VSCodeにcloneし編集出来る（Beta版はOrganizationリポジトリは未対応とのこと）
+実際使ってみると接続時にコンテナが起動され、ある程度のディスクがアタッチされターミナルなども使える. また環境内から更にコンテナを起動することも出来る.
+
+当然VSCodeなのでWeb上でもExtensionを利用出来るのだけど、試しにvscode-blade-formatterをインストールしたところ普通にWebでも動いた
+
+まだBeta版なので未完成な部分もあるが個人的にはかなり可能性を感じた. 今までクラウドIDEというとお仕着せのエディタでローカルとは違う環境を割り当てられるのが普通だったため、Webでほぼローカルと同様のVSCodeが動き、更に
+
