@@ -73,7 +73,7 @@ Aftershokz aeropex専用の充電ケーブルとなっていて持ち歩く際�
 
 元は恐らくスポーツ向け用途なので防水性能を高くするために端子に水が触れても問題ない専用端子になっている
 
-最近発売されたミドルエンドの[Aftershokz OpenMove](https://aftershokz.jp/products/bone-conduction-headphone-openmove)ではUSB-Cポートとなっている(ただ本体重量とバッテリーライフは6時間と短くなっている)
+最近発売されたミドルエンドの[Aftershokz OpenMove](https://aftershokz.jp/products/bone-conduction-headphone-openmove)ではUSB-Cポートとなっている(ただ本体重量が少し重く大きいのでAeropexより装着してる感が強く、バッテリーライフは6時間と短くなっている)
 
 防水性能はいらないのでWeb会議に特化した軽量かつ長時間バッテリーライフでUSB-CのAftershokzがあれば自分の用途ではほぼ隙がなかったので惜しかった
 
