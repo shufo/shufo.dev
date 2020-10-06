@@ -6,7 +6,7 @@ tags:
   - Programming
 slug: renewal-content-with-vuepress
 ---
-Static siteジェネレータを [Pelican](https://blog.getpelican.com/) から [VuePres](https://vuepress.vuejs.org/) に移行し、ついでにホスティングサービスをGitHub Pagesから[Netlify](https://www.netlify.com/), CMSとして[Netlify CMS](https://www.netlifycms.org/)を使うように環境を整えた
+Static siteジェネレータを [Pelican](https://blog.getpelican.com/) から [VuePres](https://vuepress.vuejs.org/) に[移行](https://github.com/shufo/shufo.dev)し、ついでにホスティングサービスをGitHub Pagesから[Netlify](https://www.netlify.com/), CMSとして[Netlify CMS](https://www.netlifycms.org/)を使うように環境を整えた
 
 ## Why
 
@@ -37,8 +37,8 @@ Vue製のStatic Site Generator
 
 ## 所感
 
-### Pros
-
+- VuePress楽
+  - [Gridsome](https://gridsome.org/)と迷ったけどブログ程度の軽い内容なら十分ワークする
 - 実際のプロジェクトでも軽く使ってみたけど、サーバランタイムが必用ないことによる心理的負担の少なさ
   - Wordpressは最初だけ楽だけど一度使い始めると世界一利用者数の大きいCMSとしてリスク低減のためにアプデするのが徐々に辛くなる
 - Static Site Generatorじゃ出来ないこともあるけど割り切って使う分にはメリット大
@@ -47,10 +47,9 @@ Vue製のStatic Site Generator
   - パフォーマンス面
     - 静的サイトなので通常使う上でパフォーマンスが問題になることはほぼない
     - パフォーマンスの恩恵から来るSEOのチューニングのしやすさ
-  - カスタマイズ（普段使いなれてるReactやVueベースであればコンポーネントを自作して再利用出来る）
-  - 脳死でとりあえずWordpressを選ぶのは後々辛くなるのでちゃんと要件を開発しよう
-- Netlify CMSの認証プロバイダをGitHubにしてしまえば認証面に関しては入り口のGitHubを堅牢化することで全体を堅牢化出来る
+  - カスタマイズ（普段使いなれてるReactやVueベースであればコンポーネントを自作して再利用出来る
+- 動的コンテンツに関してはAmplifyなどmBaaSをバックエンドにする方法もあるけどCMSでそれやるくらいなら最初からランタイムの存在するバックエンド選ぶかもしれない
+  - 何が出来て何が出来ないかという限界をちゃんと整理した上でSSGを選ぶ
+- Netlify CMSの認証プロバイダをGitHubにしてしまえば認証面に関しては入り口のGitHubにアイデンティティをIntegration出来るのでOrganizationで使う場合にも導入しやすい
 
-### Cons
-
-- 都度コンテンツを生成するような動的コンテンツには向かない
+GitHub repo: [https://github.com/shufo/shufo.dev](https://github.com/shufo/shufo.dev)
