@@ -1,6 +1,6 @@
 ---
 title: HPをVuePress + Netlify + Netlify CMSに移行した
-date: 2020-05-15T22:21:20.942Z
+date: 2020-10-06T23:32:18.935Z
 tags:
   - Vue
   - Programming
