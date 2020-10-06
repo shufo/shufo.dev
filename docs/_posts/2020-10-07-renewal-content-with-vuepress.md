@@ -29,6 +29,8 @@ Vue製のStatic Site Generator
 
 また以下に書くNetlify CMSも提供され静的CMSとして統合出来てワークフローを作るのが楽だったため
 
+![](/assets/img/uploads/2020-10-07_08-45-10.png)
+
 ## [Netlify CMS](https://www.netlifycms.org/)
 
 静的サイト上でフローを完結出来るNetlify製のコンテンツマネジメントシステム. Netlify上に編集のためのユーザを作成もしくは外部Identity ProviderとしてGitHubを使える（Organizationも可). 
@@ -36,8 +38,6 @@ Vue製のStatic Site Generator
 サーバランタイムを必用としないSPAとして動作し、ビジュアルエディタとPRを通じてGitHubへコミットをすることでサーバレスでコンテンツのデプロイをすることが出来る
 
 ![](/assets/img/uploads/2020-10-07_08-43-08.png)
-
-
 
 ## 所感
 
