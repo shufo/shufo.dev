@@ -7,6 +7,9 @@
   # Default build command.
   command = "vuepress build docs"
 
+[build.processing.images]
+  compress = true
+
 [[headers]]
   # Set the default header to the one we want for documents
   for = "/*"
