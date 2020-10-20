@@ -1,5 +1,5 @@
 ---
-title: サーバレスDBクエリクライアントを作った
+title: サーバレスなDBクエリクライアントを作った
 date: 2020-10-19T17:04:55.217Z
 tags:
   - programming
@@ -8,7 +8,7 @@ slug: struggle-with-bastion-server
 ---
 ## 何を作ったか
 
-- [lambda-query](https://github.com/shufo/lambda-query)
+* [lambda-query](https://github.com/shufo/lambda-query)
 
 ## What
 
@@ -28,11 +28,12 @@ slug: struggle-with-bastion-server
 
 ### 出来ること
 
-- Lambda経由でのサーバレスでのDBへのクエリ発行とその結果の取得, フォーマット
-  - CSVまたはテーブル形式での出力サポート
-  - ファイル出力もしくは標準出力サポート
-  - タイムアウト設定でロングランニングクエリ可
-  - 数百万件などのデータexportも可（内部的にクエリをoffsetで分割する）
+* Lambda経由でのサーバレスでのDBへのクエリ発行とその結果の取得, フォーマット
+
+  * CSVまたはテーブル形式での出力サポート
+  * ファイル出力もしくは標準出力サポート
+  * タイムアウト設定でロングランニングクエリ可
+  * 数百万件などのデータexportも可（内部的にクエリをoffsetで分割する）
 
 e.g.
 
@@ -97,6 +98,8 @@ $ lambda-query -f function_name \
 
 ### まとめ
 
-以上のように現代のインフラオペレーションにおいてはインフラ自体を直接触らないということが一つの目標でありそのためにk8sにおける宣言的インフラの実現やIaCによるAPI経由での構成管理が存在する
+以上のように現代のインフラオペレーションにおいてはインフラ自体を直接触らないということが一つの目標でありそのためにk8sにおける宣言的インフラの実現やIaCによるAPI経由での構成管理が進化してきた
 
 直近でHashicorpが[Boundaryを発表](https://www.hashicorp.com/blog/hashicorp-boundary)するなど構成管理におけるセキュリティをどう確保するかというDevSecOpsの文脈でのソリューションが成熟したインフラ環境で求められてきているというのもあり、今後もセキュリティ面を確保しつつどう宣言的なDevOpsを実現するかというのは重要なテーマになると思われる
+
+[BeyondProd](https://cloud.google.com/security/beyondprod)のような包括的なDevSecOpsセキュリティモデルをGoogleが発表するなどDevOpsからDevSecOpsモデルへの転換という流れは止まらなそうなので今後もその流れは注視していきたい
