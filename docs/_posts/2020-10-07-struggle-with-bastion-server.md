@@ -1,6 +1,6 @@
 ---
 title: サーバレスなDBクエリクライアントを作った
-date: 2020-10-19T17:04:55.217Z
+date: 2020-10-21T08:21:40.402Z
 tags:
   - programming
   - tools
