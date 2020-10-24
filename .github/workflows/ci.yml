@@ -23,3 +23,9 @@ jobs:
             ${{ runner.os }}-yarn-
       - run: yarn install
       - run: yarn run build
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          start: yarn run serve
+          browser: chrome
+          headless: true
