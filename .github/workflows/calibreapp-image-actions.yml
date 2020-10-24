@@ -2,18 +2,18 @@ name: Compress images
 on:
   pull_request:
     paths:
-      - '**.jpg'
-      - '**.jpeg'
-      - '**.png'
-      - '**.webp'
+      - 'docs/.vuepress/**/*.jpg'
+      - 'docs/.vuepress/**/*.jpeg'
+      - 'docs/.vuepress/**/*.png'
+      - 'docs/.vuepress/**/*.webp'
   push:
     branches:
       - master
     paths:
-      - '**.jpg'
-      - '**.jpeg'
-      - '**.png'
-      - '**.webp'
+      - 'docs/.vuepress/**/*.jpg'
+      - 'docs/.vuepress/**/*.jpeg'
+      - 'docs/.vuepress/**/*.png'
+      - 'docs/.vuepress/**/*.webp'
   workflow_dispatch:
 jobs:
   build:
