@@ -2,18 +2,18 @@ name: Compress images
 on:
   pull_request:
     paths:
-      - 'docs/.vuepress/**/*.jpg'
-      - 'docs/.vuepress/**/*.jpeg'
-      - 'docs/.vuepress/**/*.png'
-      - 'docs/.vuepress/**/*.webp'
+      - '**.jpg'
+      - '**.jpeg'
+      - '**.png'
+      - '**.webp'
   push:
     branches:
       - master
     paths:
-      - 'docs/.vuepress/**/*.jpg'
-      - 'docs/.vuepress/**/*.jpeg'
-      - 'docs/.vuepress/**/*.png'
-      - 'docs/.vuepress/**/*.webp'
+      - '**.jpg'
+      - '**.jpeg'
+      - '**.png'
+      - '**.webp'
   workflow_dispatch:
 jobs:
   build:
@@ -31,6 +31,7 @@ jobs:
         id: calibre
         uses: calibreapp/image-actions@master
         with:
+          githubWorkspace: "docs/.vuepress"
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           # For non-Pull Requests, run in compressOnly mode and we'll PR after.
           compressOnly: ${{ github.event_name != 'pull_request' }}
