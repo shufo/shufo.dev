@@ -31,7 +31,6 @@ jobs:
         id: calibre
         uses: calibreapp/image-actions@master
         with:
-          githubWorkspace: "docs/.vuepress"
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           # For non-Pull Requests, run in compressOnly mode and we'll PR after.
           compressOnly: ${{ github.event_name != 'pull_request' }}
