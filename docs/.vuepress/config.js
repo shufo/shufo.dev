@@ -57,16 +57,20 @@ module.exports = {
     ["link", { rel: "shortcut icon", href: "/assets/img/icons/favicon.ico" }],
     [
       "script",
+      {
+        async: true,
+        src: `https://www.googletagmanager.com/gtag/js?id=${trackingId}`,
+      },
+    ],
+    [
+      "script",
       {},
       `
-      <script async src="https://www.googletagmanager.com/gtag/js?id=${trackingId}"></script>
-      <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', ${trackingId});
-      </script>
+        gtag('config', '${trackingId}');
     `,
     ],
   ],
