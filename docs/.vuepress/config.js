@@ -3,33 +3,72 @@ const _ = require("lodash");
 const autometaOptions = {
   site: {
     name: "shufo.dev",
-    twitter: "shufo_"
+    twitter: "shufo_",
   },
   author: {
     name: "shufo",
-    twitter: "shufo_"
+    twitter: "shufo_",
   },
-  canonical_base: "https://shufo.dev"
+  canonical_base: "https://shufo.dev",
 };
 
 const feedOptions = {
   canonical_base: "https://shufo.dev",
-  sort: entries => _.reverse(_.sortBy(entries, "date"))
+  sort: (entries) => _.reverse(_.sortBy(entries, "date")),
 };
 
 const autonavOptions = {
-  enable: true
+  enable: true,
 };
+
+const trackingId = "G-EE7ZTDWXZS";
 
 module.exports = {
   title: "shufo.dev",
   description: "random automation stuff",
   head: [
-    ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "/assets/img/icons/apple-touch-icon.png"}],
-    ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/assets/img/icons/favicon-32x32.png"}],
-    ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/assets/img/icons/favicon-16x16.png"}],
-    ['link', { rel: "manifest", href: "/assets/img/icons/site.webmanifest"}],
-    ['link', { rel: "shortcut icon", href: "/assets/img/icons/favicon.ico"}],
+    [
+      "link",
+      {
+        rel: "apple-touch-icon",
+        sizes: "180x180",
+        href: "/assets/img/icons/apple-touch-icon.png",
+      },
+    ],
+    [
+      "link",
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "32x32",
+        href: "/assets/img/icons/favicon-32x32.png",
+      },
+    ],
+    [
+      "link",
+      {
+        rel: "icon",
+        type: "image/png",
+        sizes: "16x16",
+        href: "/assets/img/icons/favicon-16x16.png",
+      },
+    ],
+    ["link", { rel: "manifest", href: "/assets/img/icons/site.webmanifest" }],
+    ["link", { rel: "shortcut icon", href: "/assets/img/icons/favicon.ico" }],
+    [
+      "script",
+      {},
+      `
+      <script async src="https://www.googletagmanager.com/gtag/js?id=${trackingId}"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', ${trackingId});
+      </script>
+    `,
+    ],
   ],
   lang: "ja",
   plugins: [
@@ -37,8 +76,8 @@ module.exports = {
     [
       "@vuepress/google-analytics",
       {
-        ga: "G-EE7ZTDWXZS"
-      }
+        ga: "G-EE7ZTDWXZS",
+      },
     ],
     [
       "@vuepress/blog",
@@ -50,7 +89,7 @@ module.exports = {
             // Target directory
             dirname: "_posts",
             // Path of the `entry page` (or `list page`)
-            path: "/blog/"
+            path: "/blog/",
           },
           {
             // Unique ID of current classification
@@ -60,17 +99,17 @@ module.exports = {
             // Path of the `entry page` (or `list page`)
             path: "/en/blog/",
             itemLayout: "Post",
-            itemPermalink: "/en/:year/:month/:day/:slug"
-          }
+            itemPermalink: "/en/:year/:month/:day/:slug",
+          },
         ],
         frontmatters: [
           {
             id: "tag",
             keys: ["tag", "tags"],
-            path: "/tag/"
-          }
-        ]
-      }
+            path: "/tag/",
+          },
+        ],
+      },
     ],
     ["feed", feedOptions],
     "@goy/svg-icons",
@@ -80,14 +119,14 @@ module.exports = {
     [
       "sitemap",
       {
-        hostname: "https://shufo.dev"
-      }
+        hostname: "https://shufo.dev",
+      },
     ],
     [
       "vuepress-plugin-serve",
       {
-        port: 9000
-      }
+        port: 9000,
+      },
     ],
   ],
   theme: "@vuepress/theme-blog", // OR shortcut: @vuepress/blog
@@ -95,11 +134,11 @@ module.exports = {
     // The key is the path for the locale to be nested under.
     // As a special case, the default locale can use '/' as its path.
     "/": {
-      lang: "ja-JP" // this will be set as the lang attribute on <html>
+      lang: "ja-JP", // this will be set as the lang attribute on <html>
     },
     "/en/": {
-      lang: "en-US"
-    }
+      lang: "en-US",
+    },
   },
   themeConfig: {
     /**
@@ -114,24 +153,24 @@ module.exports = {
     nav: [
       {
         text: "About",
-        link: "/about/"
+        link: "/about/",
       },
       {
         text: "Blog",
-        link: "/blog/"
+        link: "/blog/",
       },
       {
         text: "Projects",
-        link: "/projects/"
+        link: "/projects/",
       },
       {
         text: "Tags",
-        link: "/tag/"
+        link: "/tag/",
       },
       {
         text: "Feed",
-        link: "https://shufo.dev/feed.atom"
-      }
+        link: "https://shufo.dev/feed.atom",
+      },
     ],
     /**
      * Ref: https://vuepress-theme-blog.ulivz.com/#footer
@@ -140,23 +179,23 @@ module.exports = {
       contact: [
         {
           type: "github",
-          link: "https://github.com/shufo"
+          link: "https://github.com/shufo",
         },
         {
           type: "twitter",
-          link: "https://twitter.com/shufo_"
-        }
+          link: "https://twitter.com/shufo_",
+        },
       ],
       copyright: [
         {
           text: "Privacy Policy",
-          link: "https://policies.google.com/privacy?hl=en-US"
+          link: "https://policies.google.com/privacy?hl=en-US",
         },
         {
           text: "MIT Licensed | Copyright © shufo 2020",
-          link: ""
-        }
-      ]
-    }
-  }
+          link: "",
+        },
+      ],
+    },
+  },
 };
