@@ -74,12 +74,6 @@ module.exports = {
   plugins: [
     ["autometa", autometaOptions],
     [
-      "@vuepress/google-analytics",
-      {
-        ga: "G-EE7ZTDWXZS",
-      },
-    ],
-    [
       "@vuepress/blog",
       {
         directories: [
