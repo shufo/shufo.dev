@@ -5,10 +5,7 @@
   </div>
 </template>
 <script>
-import { Skeleton } from "vue-loading-skeleton";
-
 export default {
-  components: { Skeleton },
   props: {
     src: {
       type: String,
