@@ -9,7 +9,11 @@
       :year="$page.frontmatter.year.toString()"
       :categories="$page.frontmatter.categories"
     />
-    <Thumbnail :src="$page.frontmatter.thumbnail" height="300px" />
+    <Thumbnail
+      v-if="$page.frontmatter.thumbnail"
+      :src="$page.frontmatter.thumbnail"
+      height="300px"
+    />
     <Content />
   </div>
 </template>
