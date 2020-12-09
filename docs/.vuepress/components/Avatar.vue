@@ -1,7 +1,16 @@
 <template>
   <div>
-    <img v-show="isLoaded" :src="src" @load="onImgLoad" />
-    <Skeleton v-if="!isLoaded" :height="height" :width="width" />
+    <img
+      v-show="isLoaded"
+      :src="`${src}?nf_resize=fit&w=${width}`"
+      @load="onImgLoad"
+    />
+    <Skeleton
+      v-if="!isLoaded"
+      circle
+      :height="`${height}px`"
+      :width="`${width}px`"
+    />
   </div>
 </template>
 <script>

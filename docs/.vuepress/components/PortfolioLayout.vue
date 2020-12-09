@@ -9,7 +9,7 @@
       :year="$page.frontmatter.year.toString()"
       :categories="$page.frontmatter.categories"
     />
-    <Thumbnail :src="$page.frontmatter.thumbnail" />
+    <Thumbnail :src="$page.frontmatter.thumbnail" height="300px" />
     <Content />
   </div>
 </template>
@@ -26,7 +26,7 @@ export default {
       ) {
         return true;
       }
-    }
+    },
   },
 };
 </script>

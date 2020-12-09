@@ -1,8 +1,11 @@
 <template>
   <div class="profile">
-    <div v-if="data.profile" class="image">
-      <img :src="$withBase(data.profile)" alt="" />
-    </div>
+    <Avatar
+      class="avatar image"
+      :src="$withBase(data.profile)"
+      width="126"
+      height="126"
+    />
     <div class="info">
       <div class="name">
         {{ data.name }}
@@ -12,11 +15,6 @@
       </div>
       <div class="socials">
         <SocialLinkList />
-        <!-- <div v-for="item in data.socials">
-          <a :href="item.link" target="_blank">
-            <img :src="item.icon" :alt="item.title" :title="item.title" />
-          </a>
-        </div> -->
       </div>
       <div class="contact">
         <div class="email" title="Contact me">{{ data.email }}</div>

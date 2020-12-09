@@ -1,8 +1,14 @@
 <template>
   <div class="about-card">
-    <div class="avatar">
+    <!-- <div class="avatar">
       <img :src="$withBase(data.avatar)" alt="" />
-    </div>
+    </div> -->
+    <Avatar
+      class="avatar"
+      :src="$withBase(data.avatar)"
+      width="150"
+      height="150"
+    />
     <div class="card">
       <div class="bio">
         <div class="head">
@@ -45,8 +51,8 @@ export default {
   computed: {
     data() {
       return this.frontmatter;
-    }
-  }
+    },
+  },
 };
 </script>
 
