@@ -3,6 +3,7 @@ title: log_viewer
 summary: An Web based Log Viewer for Elixir and Phoenix
 year: 2018
 date: 2018-9-1
+thumbnail: /assets/img/uploads/log-viewer.png
 categories:
   - Elixir
   - Library

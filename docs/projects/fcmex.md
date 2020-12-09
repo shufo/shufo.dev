@@ -2,7 +2,7 @@
 title: fcmex
 summary: FCM client for Elixir
 year: 2018
-# thumbnail: https://i.imgur.com/82We192.png
+thumbnail: /assets/img/uploads/fcmex.png
 date: 2018-9-1
 categories:
   - Elixir
