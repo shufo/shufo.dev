@@ -1,6 +1,11 @@
 <template>
   <div class="card-item">
-    <img v-if="thumbnail" class="card-img" :src="thumbnail" alt="" />
+    <img
+      v-if="thumbnail"
+      class="card-img"
+      :src="`${thumbnail}?nf_resize=fit&w=224`"
+      alt=""
+    />
     <div class="card-content">
       <div class="card-link">
         <i v-for="tool in tools" :key="tool" :alt="tool" :title="tool">
