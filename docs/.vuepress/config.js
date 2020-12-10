@@ -126,6 +126,13 @@ module.exports = {
         port: 9000,
       },
     ],
+    [
+      "vuepress-plugin-loading-overlay",
+      {
+        loader: "spinner",
+        timeout: 300,
+      },
+    ],
   ],
   theme: "@vuepress/theme-blog", // OR shortcut: @vuepress/blog
   locales: {
