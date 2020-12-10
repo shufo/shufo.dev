@@ -12037,6 +12037,11 @@ vue-loader@^15.7.1:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-loading-overlay@^3.4.2:
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/vue-loading-overlay/-/vue-loading-overlay-3.4.2.tgz#34792a83218df1d35dff50121ce9fac2114f1c38"
+  integrity sha512-xcB+NPjl76eA0uggm707x3ZFgrNosZXpynHipyS3K+rrK1NztOV49R1LY+/4ij5W1KYANp7eRI2EIHrxCpmWAw==
+
 vue-loading-skeleton@^1.1.9:
   version "1.1.9"
   resolved "https://registry.yarnpkg.com/vue-loading-skeleton/-/vue-loading-skeleton-1.1.9.tgz#e38bd157bf3348860fc22c49f1621e61feda7183"
@@ -12167,6 +12172,13 @@ vuepress-plugin-feed@^0.1.8:
     lodash.trimstart "^4.5.1"
     remove-markdown "0.3.0"
     striptags "3.1.1"
+
+vuepress-plugin-loading-overlay@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/vuepress-plugin-loading-overlay/-/vuepress-plugin-loading-overlay-0.1.0.tgz#92fb9470682ceff6571bad1e5699b87ee72847cc"
+  integrity sha512-7SJjeJ/GEK2/nWMxHXtvvA2jrjMDOiMYrgCyX1niALYW9CwloBDZDVgzadth1esLRifJhmdOtKrdxTGgNVFfEg==
+  dependencies:
+    vue-loading-overlay "^3.4.2"
 
 vuepress-plugin-mailchimp@^1.4.1:
   version "1.4.2"

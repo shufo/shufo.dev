@@ -38,6 +38,7 @@
     "vuepress-plugin-autonav": "^0.1.3",
     "vuepress-plugin-code-copy": "^1.0.6",
     "vuepress-plugin-feed": "^0.1.8",
+    "vuepress-plugin-loading-overlay": "^0.1.0",
     "vuepress-plugin-seo": "^0.1.4",
     "vuepress-plugin-serve": "^2.0.4",
     "vuepress-plugin-sitemap": "^2.3.1"
