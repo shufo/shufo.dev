@@ -12,9 +12,13 @@ slug: created-online-blade-formatter-with-nuxt-vercel
 
 ![](/assets/img/uploads/peek-2020-12-10-17-48.gif)
 
-url: [online-blade-formatter](https://online-blade-formatter.vercel.app/)
+url: [https://online-blade-formatter.vercel.app/](https://online-blade-formatter.vercel.app/)
 
-source: [GitHub](https://github.com/shufo/online-blade-formatter)
+source code: [GitHub](https://github.com/shufo/online-blade-formatter)
+
+## Motivation
+* 楽にSSR出来るプラットフォームないかなということで探していたらVercelを知り素振りしたくなった
+* 出来ればコスト抑えめで
 
 ## Vercel
 
@@ -120,7 +124,7 @@ exports.handler = async(event) => {
 };
 ```
 
-* SSRを有効にしているとSSRもコールドスタートになるようなので（SSRもLambda Function等で処理している？）serverMiddlewareとページ自体のどちらもWarmup状態に
+* SSRを有効にしているとSSRもコールドスタートになるようなので（SSRもLambda Function等で処理している？）serverMiddlewareとページ自体のどちらもWarmup状態にした
 * 1分毎に1回起動 = 月間43200回起動 * 1リクエスト辺り平均500ミリ秒程billing time消費, メモリ128MB割当で計算したところ月間約0.06$ = 6円, 年間$0.72 = 72円程だった
 * VercelのFunctionを叩ける回数自体にリミットはないように見えるので全体的なコストパフォーマンスはよさそう
 
@@ -129,3 +133,4 @@ exports.handler = async(event) => {
 * blade-formatterをfsモジュール等Node APIに依存するように作っていたためブラウザ上でstandaloneで動かせなかった
 * prettierの[standaloneバージョン](https://prettier.io/docs/en/browser.html)のようにstandalone版作ってブラウザAPIのみで動くようにしたい
 * 具体的にはwasmを読み込む際やSyntaxのロードをfsモジュールではなくブラウザAPIに置き換える
+  * これが実現出来ればfull staticになるので
