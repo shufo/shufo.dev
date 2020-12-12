@@ -12,20 +12,18 @@ slug: created-online-blade-formatter-with-nuxt-vercel
 
 ![](/assets/img/uploads/peek-2020-12-10-17-48.gif)
 
-
-
 url: [online-blade-formatter](https://online-blade-formatter.vercel.app/)
 
 source: [GitHub](https://github.com/shufo/online-blade-formatter)
 
 ## Vercel
 
-* Next.js開発元が運営するPaaS. 元 `now` というサービスをリブランドした（now悪くなかったけどググラビリティ悪すぎた感はあった）
-* ソースを解析しNext.jsやNuxt.jsでSSRまでまるっとやってくれる
+* [Next.js](https://nextjs.org/)開発元が運営するPaaS. 元 `now` というサービスをリブランドした（now悪くなかったけどググラビリティ悪すぎた感はあった）
+* ソースを解析しNext.jsやNuxt.jsでSSR, API routing等までまるっとやってくれる
 
 ## Vercel所感
 
-* SSRまでまるっとやってくれるNetlifyという印象
+* SSRまでまるっとやってくれるNetlifyという使用感
   * ブランチベースでのPreview, https有効化, デフォルトのドメインを自動発行等
 * now.jsonで `serverFiles` を指定するとうまいことLambda Functionとして裏で起動してくれてルーティングしてくれる（ログもあり）
 
@@ -36,8 +34,9 @@ source: [GitHub](https://github.com/shufo/online-blade-formatter)
 ## Cold Start対策
 
 * しばらくアクセスがないと自動的にCold状態に移行し、最初のレンダリングに4秒ほどかかるためAWS Lambdaで1分ごとにGETリクエストしWarmup状態を維持するようにした
+
   * Freeプランでは10秒でタイムアウトしそれまでに
-レンダリング出来ないと502 Bad Gatewayとなる
+    レンダリング出来ないと502 Bad Gatewayとなる
 
 ```javascript
 const https = require('https');
@@ -123,4 +122,10 @@ exports.handler = async(event) => {
 
 * SSRを有効にしているとSSRもコールドスタートになるようなので（SSRもLambda Function等で処理している？）serverMiddlewareとページ自体のどちらもWarmup状態に
 * 1分毎に1回起動 = 月間43200回起動 * 1リクエスト辺り平均500ミリ秒程billing time消費, メモリ128MB割当で計算したところ月間約0.06$ = 6円, 年間$0.72 = 72円程だった
-* VercelのFunctionを叩ける回数自体にリミットはないように見えるので全体的なコストパフォーマンス的には非常に優れているように思える
+* VercelのFunctionを叩ける回数自体にリミットはないように見えるので全体的なコストパフォーマンスはよさそう
+
+## 苦労したところ
+
+* blade-formatterをfsモジュール等Node APIに依存するように作っていたためブラウザ上でstandaloneで動かせなかった
+* prettierの[standaloneバージョン](https://prettier.io/docs/en/browser.html)のようにstandalone版作ってブラウザAPIのみで動くようにしたい
+* 具体的にはwasmを読み込む際やSyntaxのロードをfsモジュールではなくブラウザAPIに置き換える
