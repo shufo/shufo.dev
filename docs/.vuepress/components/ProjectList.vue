@@ -25,19 +25,14 @@ export default {
       const defaultPriority = Number.MAX_SAFE_INTEGER;
       return this.$site.pages
         .filter(
-          x => x.path.startsWith("/projects/") && !x.frontmatter.projects_index
+          (x) =>
+            x.path.startsWith("/projects/") && !x.frontmatter.projects_index
         )
         .sort(
           (a, b) => new Date(b.frontmatter.date) - new Date(a.frontmatter.date)
-        )
-        .sort((a, b) => {
-          return (
-            (a.frontmatter.priority ?? defaultPriority) -
-            (b.frontmatter.priority ?? defaultPriority)
-          );
-        });
-    }
-  }
+        );
+    },
+  },
 };
 </script>
 
