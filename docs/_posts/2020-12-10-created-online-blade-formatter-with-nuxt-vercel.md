@@ -1,5 +1,5 @@
 ---
-title: Nuxt.js + VercelでOnline Formatterを作った
+title: Nuxt.js + VercelでBlade Online Formatterを作った
 date: 2020-12-13T04:47:18.986Z
 tags:
   - blade
@@ -8,7 +8,7 @@ slug: created-online-blade-formatter-with-nuxt-vercel
 ---
 ## やったこと
 
-オンラインで動作するBlade Formatterを作った
+オンラインで動作するBlade Formatterを[作った](https://online-blade-formatter.vercel.app/)
 
 ![](/assets/img/uploads/peek-2020-12-10-17-48.gif)
 
@@ -18,7 +18,6 @@ source code: [GitHub](https://github.com/shufo/online-blade-formatter)
 
 ## Motivation
 * 楽にSSR出来るプラットフォームないかなということで探していたらVercelを知り素振りしたくなったので
-* 出来ればコスト抑えめで
 
 ## Vercel
 
@@ -127,7 +126,7 @@ exports.handler = async(event) => {
 * SSRを有効にしているとSSRもコールドスタートになるようなので（SSRもLambda Function等で処理している？）serverMiddlewareとページ自体のどちらもWarmup状態にした
 * 1分毎に1回起動 = 月間43200回起動 * 1リクエスト辺り平均500ミリ秒程billing time消費, メモリ128MB割当で計算したところ月間約0.06$ = 6円, 年間$0.72 = 72円程だった
 * VercelのFunctionを叩ける回数自体にリミットはないように見えるので全体的なコストパフォーマンスはよさそう
-* [SWR](https://vercel.com/docs/edge-network/caching#stale-while-revalidate) (state-while-revalidate)といったCache-Control機構もあるもののそもそも一度アクセスしないとcacheされないので初訪問時のレンダリングでcold startに当たり遅い場合もあるため
+* [SWR](https://vercel.com/docs/edge-network/caching#stale-while-revalidate) (stale-while-revalidate)といったCache-Control機構もあるもののそもそも一度アクセスしないとcacheされないので初訪問時のレンダリングでcold startに当たり遅い場合もあるため
 
 ## 苦労したところ
 
@@ -136,4 +135,11 @@ exports.handler = async(event) => {
 * 具体的にはwasmのロードやSyntaxのロードをfsモジュールではなくブラウザAPIに置き換える
   * これが実現出来ればfull staticになるので
 
-## 
+## まとめ 
+
+* Serverless APIをデプロイする手段としてVercelよい
+  * ローカルでのAPIがそのまま透過的にデプロイされる楽さ
+  * 他のStatic Hostingサービスと差別化出来ている箇所
+  * Full StaticであればNetlify等と正直変わりない
+* 1ページ1APIごとにFunctionになるようなのでCold Startへの対策は必用
+  * SWR(stale-while-revalidate), Warmup等
