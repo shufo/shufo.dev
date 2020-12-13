@@ -37,7 +37,7 @@ source code: [GitHub](https://github.com/shufo/online-blade-formatter)
 
 ## Cold Start対策
 
-* しばらくアクセスがないと自動的にCold状態に移行し、最初のレンダリングに4秒ほどかかるためAWS Lambdaで1分ごとにGETリクエストしWarmup状態を維持するようにした
+* しばらくアクセスがないと自動的にCold状態に移行し、最初のレンダリングに4秒ほどかかったためAWS Lambdaで1分ごとにGETリクエストしWarmup状態を維持するようにした
 
   * Freeプランでは10秒でタイムアウトしそれまでに
     レンダリング出来ないと502 Bad Gatewayとなる
@@ -127,7 +127,7 @@ exports.handler = async(event) => {
 * SSRを有効にしているとSSRもコールドスタートになるようなので（SSRもLambda Function等で処理している？）serverMiddlewareとページ自体のどちらもWarmup状態にした
 * 1分毎に1回起動 = 月間43200回起動 * 1リクエスト辺り平均500ミリ秒程billing time消費, メモリ128MB割当で計算したところ月間約0.06$ = 6円, 年間$0.72 = 72円程だった
 * VercelのFunctionを叩ける回数自体にリミットはないように見えるので全体的なコストパフォーマンスはよさそう
-* SWR (state-while-revalidate)も一応入れてみたものの一度アクセスしないとcacheされないので初訪問時のレンダリング
+* [SWR](https://vercel.com/docs/edge-network/caching#stale-while-revalidate) (state-while-revalidate)といったCache-Control機構もあるもののそもそも一度アクセスしないとcacheされないので初訪問時のレンダリングでcold startに当たり遅い場合もあるため
 
 ## 苦労したところ
 
