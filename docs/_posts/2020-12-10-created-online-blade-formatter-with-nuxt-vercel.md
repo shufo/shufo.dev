@@ -12,14 +12,17 @@ slug: created-online-blade-formatter-with-nuxt-vercel
 
 ![](/assets/img/uploads/peek-2020-12-10-17-48.gif)
 
-url: [https://online-blade-formatter.vercel.app/](https://online-blade-formatter.vercel.app/)
+url: <https://online-blade-formatter.vercel.app/>
 
 source code: [GitHub](https://github.com/shufo/online-blade-formatter)
 
 ## Motivation
+
 * 楽にSSR出来るプラットフォームないかなということで探していたら[Vercel](https://vercel.com/)を知り素振りしたくなったので
 
 ## Vercel
+
+![](/assets/img/uploads/2020-12-13_19-16-28.png)
 
 * [Next.js](https://nextjs.org/)開発元が運営するPaaS. 元 `now` というサービスをリブランドした（now悪くなかったけどググラビリティ悪すぎた感はあった）
 * ソースを解析しNext.jsやNuxt.jsでSSR, API routing等までまるっとやってくれる
@@ -27,6 +30,7 @@ source code: [GitHub](https://github.com/shufo/online-blade-formatter)
 ## Vercel所感
 
 * SSRまでまるっとやってくれるNetlifyという使用感
+
   * ブランチベースでのPreview, https有効化, デフォルトのドメインを自動発行等
 * now.json(or vercel.json)で `serverFiles` を指定するとうまいことLambda Functionとして裏で起動してくれてルーティングしてくれる（ログもあり）
 
@@ -133,13 +137,16 @@ exports.handler = async(event) => {
 * blade-formatterをfsモジュール等Node APIに依存するように作っていたためブラウザ上でstandaloneで動かせなかった
 * prettierの[standaloneバージョン](https://prettier.io/docs/en/browser.html)のようにstandalone版作ってブラウザAPIのみで動くようにしたい
 * 具体的にはwasmのロードやSyntaxのロードをfsモジュールではなくブラウザAPIに置き換える
+
   * これが実現出来ればfull staticになるので
 
-## まとめ 
+## まとめ
 
 * Serverless APIをデプロイする手段としてVercelよい
+
   * ローカルでのAPIがそのまま透過的にデプロイされる楽さ
   * 他のStatic Hostingサービスと差別化出来ている箇所
   * Full StaticであればNetlify等と正直変わりない
 * 1ページ1APIごとにLambda Functionになるようなのでユーザ体験を維持するにはCold Startへの対策は必用
+
   * SWR(stale-while-revalidate), Warmup等
