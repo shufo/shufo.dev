@@ -1,6 +1,6 @@
 ---
 title: Nuxt.js + VercelでOnline Formatterを作った
-date: 2020-12-10T21:05:27.426Z
+date: 2020-12-13T04:47:18.986Z
 tags:
   - blade
   - tools
@@ -29,7 +29,7 @@ source code: [GitHub](https://github.com/shufo/online-blade-formatter)
 
 * SSRまでまるっとやってくれるNetlifyという使用感
   * ブランチベースでのPreview, https有効化, デフォルトのドメインを自動発行等
-* now.jsonで `serverFiles` を指定するとうまいことLambda Functionとして裏で起動してくれてルーティングしてくれる（ログもあり）
+* now.json(or vercel.json)で `serverFiles` を指定するとうまいことLambda Functionとして裏で起動してくれてルーティングしてくれる（ログもあり）
 
   * SSRとCSRした時にAPIとして必用になるようなところとそのデプロイの面倒さをとてもよく分かっている印象を受けた. とにかくそういったSSRなどで面倒になる箇所をプラットフォームで一手に引き受けることとNext.jsというプラットフォーム自体が開発したフレームワークによって一貫した開発体験を提供している. ローカルでserverMiddlewareとして設定した箇所がそのまま透過的にVercelでも動作するなど細かいところに手が届くので開発体験的にはとてもよい
   * またPricingもSSRに関してはHobbyプランではFreeなところはありがたい
@@ -127,10 +127,11 @@ exports.handler = async(event) => {
 * SSRを有効にしているとSSRもコールドスタートになるようなので（SSRもLambda Function等で処理している？）serverMiddlewareとページ自体のどちらもWarmup状態にした
 * 1分毎に1回起動 = 月間43200回起動 * 1リクエスト辺り平均500ミリ秒程billing time消費, メモリ128MB割当で計算したところ月間約0.06$ = 6円, 年間$0.72 = 72円程だった
 * VercelのFunctionを叩ける回数自体にリミットはないように見えるので全体的なコストパフォーマンスはよさそう
+* SWR (state-while-revalidate)も一応入れてみたものの一度アクセスしないとcacheされないので初訪問時のレンダリング
 
 ## 苦労したところ
 
 * blade-formatterをfsモジュール等Node APIに依存するように作っていたためブラウザ上でstandaloneで動かせなかった
 * prettierの[standaloneバージョン](https://prettier.io/docs/en/browser.html)のようにstandalone版作ってブラウザAPIのみで動くようにしたい
-* 具体的にはwasmを読み込む際やSyntaxのロードをfsモジュールではなくブラウザAPIに置き換える
+* 具体的にはwasmのロードやSyntaxのロードをfsモジュールではなくブラウザAPIに置き換える
   * これが実現出来ればfull staticになるので
