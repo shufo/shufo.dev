@@ -17,7 +17,7 @@ url: [https://online-blade-formatter.vercel.app/](https://online-blade-formatter
 source code: [GitHub](https://github.com/shufo/online-blade-formatter)
 
 ## Motivation
-* 楽にSSR出来るプラットフォームないかなということで探していたらVercelを知り素振りしたくなった
+* 楽にSSR出来るプラットフォームないかなということで探していたらVercelを知り素振りしたくなったので
 * 出来ればコスト抑えめで
 
 ## Vercel
@@ -135,3 +135,5 @@ exports.handler = async(event) => {
 * prettierの[standaloneバージョン](https://prettier.io/docs/en/browser.html)のようにstandalone版作ってブラウザAPIのみで動くようにしたい
 * 具体的にはwasmのロードやSyntaxのロードをfsモジュールではなくブラウザAPIに置き換える
   * これが実現出来ればfull staticになるので
+
+## 
