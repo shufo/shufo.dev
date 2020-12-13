@@ -141,5 +141,5 @@ exports.handler = async(event) => {
   * ローカルでのAPIがそのまま透過的にデプロイされる楽さ
   * 他のStatic Hostingサービスと差別化出来ている箇所
   * Full StaticであればNetlify等と正直変わりない
-* 1ページ1APIごとにFunctionになるようなのでCold Startへの対策は必用
+* 1ページ1APIごとにLambda FunctionになるようなのでCold Startへの対策は必用
   * SWR(stale-while-revalidate), Warmup等
