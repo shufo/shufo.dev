@@ -1,6 +1,6 @@
 ---
 title: Nuxt.js + VercelでBlade Online Formatterを作った
-date: 2020-12-13T04:47:18.986Z
+date: 2020-12-13T10:10:47.952Z
 tags:
   - blade
   - tools
@@ -17,7 +17,7 @@ url: [https://online-blade-formatter.vercel.app/](https://online-blade-formatter
 source code: [GitHub](https://github.com/shufo/online-blade-formatter)
 
 ## Motivation
-* 楽にSSR出来るプラットフォームないかなということで探していたらVercelを知り素振りしたくなったので
+* 楽にSSR出来るプラットフォームないかなということで探していたら[Vercel](https://vercel.com/)を知り素振りしたくなったので
 
 ## Vercel
 
