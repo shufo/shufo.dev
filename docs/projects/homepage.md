@@ -2,7 +2,7 @@
 title: Homepage
 summary: My homepage
 year: 2020
-# thumbnail: https://i.imgur.com/0qj93i4.gif
+thumbnail: /assets/img/uploads/homepage.png
 date: 2020-05-16
 layout: PortfolioLayout
 tools:
