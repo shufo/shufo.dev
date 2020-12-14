@@ -142,7 +142,7 @@ exports.handler = async(event) => {
 
   * これが実現出来ればfull staticになるので
 * あとServerless Function周りのビルドの挙動がブラックボックスになっているのが辛い
-  * `api`ディレクトリ以下のファイルはrequireやfs.readFile等をソースから解析し自動的にLambda Functionのファイルシステムに追加されるらしいが実際どう追加されているのか等までデバッグ出来ない
+  * `api`ディレクトリ以下のファイルはrequireやfs.readFile等をソースから解析し自動的に必用なファイルのみLambda Functionのファイルシステムに追加されるらしいが実際どう追加されているのか等までデバッグ出来ない
     * また基本Vercel任せとなるため詳細なカスタマイズが出来ない(上位プランではメモリやtimeoutの選択の幅が広がる)
   * esmモジュールを使用しているblade-formatterをrequireしようとして詰まったり（結局serverMiddlewareとして処理しているのでcold startの場合Nuxtの立ち上げのオーバーヘッドがあって重い）
 
