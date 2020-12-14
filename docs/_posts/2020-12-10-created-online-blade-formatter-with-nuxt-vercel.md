@@ -6,6 +6,8 @@ tags:
   - tools
 slug: created-online-blade-formatter-with-nuxt-vercel
 ---
+# Nuxt.js + VercelでBlade Online Formatterを作った
+
 ## やったこと
 
 オンラインで動作するBlade Formatterを[作った](https://online-blade-formatter.vercel.app/)
@@ -32,9 +34,9 @@ source code: [GitHub](https://github.com/shufo/online-blade-formatter)
 * SSRまでまるっとやってくれるNetlifyという使用感
 
   * ブランチベースでのPreview, https有効化, デフォルトのドメインを自動発行等
-* now.json(or vercel.json)で `serverFiles` を指定するとうまいことLambda Functionとして裏で起動してくれてルーティングしてくれる（ログもあり）
+* vercel.json(or now.json)で `serverFiles` を指定するとうまいことLambda Functionとして裏で起動してくれてルーティングしてくれる（ログもあり）
 
-  * SSRとCSRした時にAPIとして必用になるようなところとそのデプロイの面倒さをとてもよく分かっている印象を受けた. とにかくそういったSSRなどで面倒になる箇所をプラットフォームで一手に引き受けることとNext.jsというプラットフォーム自体が開発したフレームワークによって一貫した開発体験を提供している. ローカルでserverMiddlewareとして設定した箇所がそのまま透過的にVercelでも動作するなど細かいところに手が届くので開発体験的にはとてもよい
+  * SSRとCSRした時にAPIとして必用になるようなところとそのデプロイの面倒さをよく分かっている印象を受けた. とにかくそういったSSRなどで面倒になる箇所をプラットフォームで一手に引き受けることとNext.jsというプラットフォーム自体が開発したフレームワークによって一貫した開発体験を提供している. ローカルでserverMiddlewareとして設定した箇所がそのまま透過的にVercelでも動作するなど細かいところに手が届くのは開発体験的にはとてもよい
   * またPricingもSSRに関してはHobbyプランではFreeなところはありがたい
   * ちょっとしたツールやutility的なものであればfunctionでサーバ処理することも出来るため今までNetlifyなどで二の足を踏んでいたServerless Functionに関する制限などがないため出来ることの幅が広がる
 
@@ -135,18 +137,23 @@ exports.handler = async(event) => {
 ## 苦労したところ
 
 * blade-formatterをfsモジュール等Node APIに依存するように作っていたためブラウザ上でstandaloneで動かせなかった
-* prettierの[standaloneバージョン](https://prettier.io/docs/en/browser.html)のようにstandalone版作ってブラウザAPIのみで動くようにしたい
+* prettierの[standaloneバージョン](https://prettier.io/docs/en/browser.html)のようにstandalone版作って、オンラインであることを前提としてブラウザAPIのみで動くようにしたい
 * 具体的にはwasmのロードやSyntaxのロードをfsモジュールではなくブラウザAPIに置き換える
 
   * これが実現出来ればfull staticになるので
+* あとServerless Function周りのビルドの挙動がブラックボックスになっているのが辛い
+  * `api`ディレクトリ以下のファイルはrequireやfs.readFile等をソースから解析し自動的にLambda Functionのファイルシステムに追加されるらしいが実際どう追加されているのか等までデバッグ出来ない
+    * また基本Vercel任せとなるため詳細なカスタマイズが出来ない(上位プランではメモリやtimeoutの選択の幅が広がる)
+  * esmモジュールを使用しているblade-formatterをrequireしようとして詰まったり（結局serverMiddlewareとして処理しているのでcold startの場合Nuxtの立ち上げのオーバーヘッドがあって重い）
 
 ## まとめ
 
-* Serverless APIをデプロイする手段としてVercelよい
+* Serverless APIを気軽にデプロイする手段としてはVercelよい
 
   * ローカルでのAPIがそのまま透過的にデプロイされる楽さ
   * 他のStatic Hostingサービスと差別化出来ている箇所
   * Full StaticであればNetlify等と正直変わりない
-* 1ページ1APIごとにLambda Functionになるようなのでユーザ体験を維持するにはCold Startへの対策は必用
+* 1ページ1APIごとにLambda Functionになるようなのでcold start problemへの対策が必用になる
 
   * SWR(stale-while-revalidate), Warmup等
+  * それでも自前でサーバを持ち維持するのに比べれば月額最低数ドル * 12 vs 年間数ドル程度だと思うと維持費の敷居が低い
