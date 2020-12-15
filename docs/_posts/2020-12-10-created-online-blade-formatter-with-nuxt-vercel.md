@@ -1,6 +1,6 @@
 ---
 title: Nuxt.js + VercelでBlade Online Formatterを作った
-date: 2020-12-13T10:10:47.952Z
+date: 2020-12-15T09:23:26.408Z
 tags:
   - blade
   - tools
@@ -10,7 +10,7 @@ slug: created-online-blade-formatter-with-nuxt-vercel
 
 ## やったこと
 
-オンラインで動作するBlade Formatterを[作った](https://online-blade-formatter.vercel.app/)
+ブラウザ上で動作するBlade Formatterを[作った](https://online-blade-formatter.vercel.app/)
 
 ![](/assets/img/uploads/peek-2020-12-10-17-48.gif)
 
@@ -136,15 +136,16 @@ exports.handler = async(event) => {
 
 ## 苦労したところ
 
-* blade-formatterをfsモジュール等Node APIに依存するように作っていたためブラウザ上でstandaloneで動かせなかった
-* prettierの[standaloneバージョン](https://prettier.io/docs/en/browser.html)のようにstandalone版作って、オンラインであることを前提としてブラウザAPIのみで動くようにしたい
-* 具体的にはwasmのロードやSyntaxのロードをfsモジュールではなくブラウザAPIに置き換える
-
-  * これが実現出来ればfull staticになるので
-* あとServerless Function周りのビルドの挙動がブラックボックスになっているのが辛い
+* Serverless Function周りのビルドの挙動がブラックボックスになっているのが辛い
   * `api`ディレクトリ以下のファイルはrequireやfs.readFile等をソースから解析し自動的に必用なファイルのみLambda Functionのファイルシステムに追加されるらしいが実際どう追加されているのか等までデバッグ出来ない
     * また基本Vercel任せとなるため詳細なカスタマイズが出来ない(上位プランではメモリやtimeoutの選択の幅が広がる)
   * esmモジュールを使用しているblade-formatterをrequireしようとして詰まったり（結局serverMiddlewareとして処理しているのでcold startの場合Nuxtの立ち上げのオーバーヘッドがあって重い）
+* blade-formatterをfsモジュール等Node APIに依存するように作っていたためブラウザ上でstandaloneで動かせなかった
+  * prettierの[standaloneバージョン](https://prettier.io/docs/en/browser.html)のようにstandalone版作って、オンラインであることを前提としてブラウザAPIのみで動くようにしたい
+  * 具体的にはwasmのロードやSyntaxのロードをfsモジュールではなくブラウザAPIに置き換える
+
+  * これが実現出来ればfull staticになるので
+
 
 ## まとめ
 
@@ -156,4 +157,4 @@ exports.handler = async(event) => {
 * 1ページ1APIごとにLambda Functionになるようなのでcold start problemへの対策が必用になる
 
   * SWR(stale-while-revalidate), Warmup等
-  * それでも自前でサーバを持ち維持するのに比べれば月額最低数ドル * 12 vs 年間数ドル程度だと思うと維持費の敷居が低い
+  * それでも自前でサーバを持ち維持するのに比べれば月額最低数ドル * 12 vs 年間1 or 2ドル程度だと思うと維持費の敷居が低い
