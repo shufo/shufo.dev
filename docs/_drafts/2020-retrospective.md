@@ -1,7 +1,7 @@
 ---
 author: shufo
 title: 2020年に作ったソフトウェア / 触った環境振り返り
-date: 2020-12-18 15:00:00 +0000
+date: 2020-12-20 00:00:00 +0900
 tags:
 - tools
 slug: retrospective-2020
@@ -56,7 +56,7 @@ feed:
 
 ![](/assets/img/uploads/clipboard_2020-12-19-19-11-19.png)
 
-GitHubアクションはペライチスクリプトでもコンテナで動かすことが出来てGitHubでホスティング出来るので開発の敷居が低いのがよい
+GitHubアクションはペライチスクリプトでもコンテナで動かすことが出来てホスティングもGitHubで完結出来るので開発の敷居が低いのがよい
 
 ### ECS Fargate運用
 
@@ -71,16 +71,13 @@ ECS Fargate運用する中で雑にoneshot(一回切り)でコンテナでコマ
 
 Cluster, Service, task definitionが既に定義されてること前提なので既にIaCで管理されてるコードベースでも運用後に追加しやすいと思う
 
-Opsツール程One-Size-Fits-Allにならないものもないと思うのでインターフェースをシンプルに保ちつつバックエンドを隠蔽している
-
 ### VSCode Extension
 
 * [vscode-blade-formatter](https://marketplace.visualstudio.com/items?itemName=shufo.vscode-blade-formatter)
 
 ![](/assets/img/uploads/screencast.gif)
 
-去年作った[blade-formatter](https://github.com/shufo/blade-formatter) (bladeファイルのopnionatedなformatter)をVSCode Extensionに移植した
-インターフェースがCLI -> VSCodeになってユーザ増えたことでいいフィードバック雑なフィードバック含めフィードバックが増えた
+去年作った[blade-formatter](https://github.com/shufo/blade-formatter) (bladeファイルのopnionatedなformatter)をVSCode Extensionに移植した インターフェースがCLI -> VSCodeになってユーザ増えたことでいいフィードバック雑なフィードバック含めフィードバックが増えた. 
 
 npmで何か作ってる人はVSCode ExntensionでWrapするとフィードバックには困らないかもしれない
 
@@ -92,6 +89,8 @@ npmで何か作ってる人はVSCode ExntensionでWrapするとフィードバ�
 パラメータでHTML渡すとPDF出力するLambda Function
 
 ![](/assets/img/uploads/2020-12-19-lambda-pdf-generator.png)
+
+![](/assets/img/uploads/2020-12-19-2020-12-20_00-18-52.png)
 
 Lambda上のHeadless Chrome経由で出力しているためChrome PDF印刷互換のPDFが生成される
 
@@ -105,17 +104,17 @@ ChromeのバージョンによってPDF出力に改善が加えられてたり�
 
 ![](/assets/img/uploads/2020-12-19-lambda-query.png)
 
-サーバレスでRDSにクエリ投げるためのCLI & Lambda Functionのセット
-
-RDS前提だけどIAMさえ持ってればクエリを投げられるようにしたくて作った. 
+サーバレスでRDSにクエリ投げるためのCLI & Lambda Functionのセットを作った
 
 以下の要領で[Aurora Serverless Data API](https://dev.classmethod.jp/articles/aurora_serverless_now_supportsdataapi/)のようにサーバレスでRDSにクエリ出来る
 
     $ lambda-query -f lambda_function -q "select * from users" --format table
 
+RDS前提だけどIAMさえ持ってればクエリを投げられるようにしたくて作った
+
 Aurora ServerlessはCold Startがあるので許容出来ずRDSでやっているけどサーバレスにクエリしたいよという場合は便利かもしれない
 
-踏み台サーバのようなものを作ってOS更新がパスワードがユーザ/Groupが許可されたコマンドが云々みたいなやつがなくなって楽になった
+作った結果踏み台サーバのようなものを作ってOS更新がパスワードがユーザ/Groupが許可されたコマンドが云々みたいなやつがなくなって楽になった
 
 直近の[AWS CloudShell](https://aws.amazon.com/jp/cloudshell/)やAWS SSMなどもあるけど基本的にサーバ管理も直接サーバに入ったりローカルに依存するということも今後必用になる場はやはり少なくなって行くと思う。人間の認知限界がある以上[Zero Touch Production](https://www.usenix.org/conference/srecon19emea/presentation/czapinski)のプラクティスは基本的にベストプラクティスということにはこれからも変わらない。ただ抽象化されるわけではなく、**直接触らない** ことが重要でObservabilityは確保した上での全てトレース可能になるようにAPI経由の構成でトレーサビリティを確保することに関心が向かっていくと思う.
 
@@ -129,8 +128,8 @@ AWS CloudShellもその文脈の話でWebコンソールでゼロコンフィグ
 
 [Vercel](https://vercel.com/)素振りしたくて[blade-formatter](https://github.com/shufo/blade-formatter)をオンラインに移植した
 
-* 色々制限はあるもののVercelに最適化したものを作れれば強そうだなという感触はある. ただ最適化が強すぎて一連託生感はあるので気軽に移るみたいなことをしづらくなりそう
-  * 実際実用レベルで使うためにはVercelはプラットフォームをもう少しオープンにしてほしい
+* 色々制限はあるもののVercelに最適化したものを作れれば強そうだなという感覚はある. ただ最適化が強すぎて一連託生感はあるので気軽に移るみたいなことをしづらくなりそう
+  * 実際実用レベルで使うためにはVercelはプラットフォームをもう少しオープンにしてほしいけどNext.jsと一体になった強い最適化が強みでもあるのでVercel選ぶのなら最初から一蓮托生覚悟で行った方がいいかもしれない
 
 ### GraphQL
 
@@ -150,18 +149,24 @@ Pelicanから[VuePressに移行した]()
 
 JSスタックなのでプラグインを作ったりするのが楽になったのはよかった
 
-* [vuepress-plugin-loading-overlay](https://github.com/shufo/vuepress-plugin-loading-overlay)
+* [vuepress-plugin-loading-overlay](https://github.com/shufo/vuepress-plugin-loading-overlay) を作ったりした
+
+![](/assets/img/uploads/2020-12-19-101765431-a2bba500-3b24-11eb-97d6-af71636890b1.gif)
 
 ### Laravel
 
 * ちょい大きめのお仕事だとちょいちょい触る
 * 複数人でやる場合はなんだかんだやっぱフルスタックなRailsライクな方法論がハマりどころが少ないというのはある
   * いい意味で枯れてる方法論なので枯れた方法論が必用になる限りは廃れることはないとは思う
-  * プロトタイピングの段階やPoCの段階でPDCAを高速で回すのにサーバレスやクライアントViewを中心とした開発が楽というのは分かるが
+  * プロトタイピングの段階やPoCの段階でPDCAを高速で回すのにサーバレスやクライアントViewを中心とした開発が楽というのは分かるけどスケールした時の方法論はまだMatureな感じがしない
+    * というか毎回サーバレスやる度に何かしらトラップにハマってる気がする…（サーバレス力が足りない）
+  * 結局アプリケーションのメインのStateを中央集権的に管理するか非中央集権的に管理するかの違いな気がするけど非中央集権はそれぞれの境界が明確でありつつ協調して働く自己完結的なMatureな構造を求められる…
+    * サーバレスの謳い文句でよく言われるワンタッチでデプロイとかフルマネージドで無限にスケールとかは隠蔽されている問題を解決したわけではないので、そのインピーダンスミスマッチがサーバレスで難しいところなのかなと思う
 
 ## まとめ
 
 * 相変わらず小さめの身の回りのやつ作ってる
   * 基本自分が困っているものの改善のために作っているのでコンパクトになりがち
-* 問題のターゲットを広げたサイドプロジェクトを作るのが課題か
-  * いまいち致命的な課題感を感じてないのが原因かもしれないけど
+* 問題のターゲットを広げたサイドプロジェクトを作るのが課題
+  * いまいち致命的な課題感を感じてないのが原因かもしれない
+  * とりあえず来年は課題感を感じるようなサイドプロジェクト探しでもしたい
