@@ -14,3 +14,9 @@ fields:
 - type: text
   name: slug
   label: slug
+- name: author
+  type: text
+  config:
+    required: false
+  label: Author
+  default: shufo

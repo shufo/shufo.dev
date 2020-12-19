@@ -9,7 +9,7 @@ sections:
   label: Draft
   create: all
   match: "**/*.md"
-  new_doc_ext: ".md"
+  new_doc_ext: md
   templates:
   - blog-post
 - type: directory
