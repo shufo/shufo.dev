@@ -75,6 +75,8 @@ Cluster, Service, task definitionが既に定義されてること前提なの�
 
 * [vscode-blade-formatter](https://github.com/shufo/vscode-blade-formatter)
 
+![](/assets/img/uploads/screencast.gif)
+
 去年作った[blade-formatter]() (bladeファイルのopnionatedなformatter)をVSCode Extensionに移植した
 インターフェースがCLI -> VSCodeになってユーザ増えたことでいいフィードバック雑なフィードバック含めフィードバックが増えた
 
