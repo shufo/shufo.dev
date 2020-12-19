@@ -20,3 +20,5 @@ fields:
     required: false
   label: Author
   default: shufo
+pages:
+- docs/_drafts/2020.md
