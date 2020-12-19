@@ -21,5 +21,10 @@ fields:
     required: false
   label: Author
   default: shufo
+- name: feed
+  type: boolean
+  label: feed
+  description: Whether it enables feed
+  default: true
 pages:
 - docs/_drafts/2020-retrospective.md
