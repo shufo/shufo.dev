@@ -116,7 +116,7 @@ Aurora ServerlessはCold Startがあるので許容出来ずRDSでやってい�
 
 作った結果踏み台サーバのようなものを作ってOS更新がパスワードがユーザ/Groupが許可されたコマンドが云々みたいなやつがなくなって楽になった
 
-直近の[AWS CloudShell](https://aws.amazon.com/jp/cloudshell/)やAWS SSMなどもあるけど基本的にサーバ管理も直接サーバに入ったりローカルに依存するということも今後必用になる場はやはり少なくなって行くと思う。人間の認知限界がある以上[Zero Touch Production](https://www.usenix.org/conference/srecon19emea/presentation/czapinski)のプラクティスは基本的にベストプラクティスということにはこれからも変わらない。ただ抽象化されるわけではなく、**直接触らない** ことが重要でObservabilityは確保した上での全てトレース可能になるようにAPI経由の構成でトレーサビリティを確保することに関心が向かっていくと思う.
+直近の[AWS CloudShell](https://aws.amazon.com/jp/cloudshell/)やAWS SSMなどもあるけど基本的にサーバ管理も直接サーバに入ったりローカルに依存するということも今後必用になる場はやはり少なくなって行くと思う。人間の認知限界がある以上[Zero Touch Production](https://www.usenix.org/conference/srecon19emea/presentation/czapinski)のプラクティスは基本的にベストプラクティスということにはこれからも変わらない。ただ抽象化されるわけではなく、**直接触らない** ことが重要でObservabilityは確保した上での全てトレース可能になるようにし、API経由の構成でトレーサビリティを確保することに関心が向かっていくと思う.
 
 AWS CloudShellもその文脈の話でWebコンソールでゼロコンフィグでAWS CLIを触れるというのが重要.　実際は裏にインスタンスが立っているわけだけど直接触れないということが重要.
 
