@@ -15,6 +15,10 @@ const autometaOptions = {
 const feedOptions = {
   canonical_base: "https://shufo.dev",
   sort: (entries) => _.reverse(_.sortBy(entries, "date")),
+  rss: true,
+  atom: true,
+  json: true,
+  count: 30,
 };
 
 const autonavOptions = {
@@ -109,7 +113,6 @@ module.exports = {
         ],
       },
     ],
-    ["feed", feedOptions],
     "@goy/svg-icons",
     "seo",
     ["vuepress-plugin-code-copy", true],
@@ -202,5 +205,6 @@ module.exports = {
         },
       ],
     },
+    feed: feedOptions,
   },
 };
