@@ -71,24 +71,29 @@ ECS Fargate運用する中で雑にoneshot(一回切り)でコンテナでコマ
 
 Cluster, Service, task definitionが既に定義されてること前提なので既にIaCで管理されてるコードベースでも運用後に追加しやすいと思う
 
+Opsツール程One-Size-Fits-Allにならないものもないと思うのでインターフェースをシンプルに保ちつつバックエンドを隠蔽している
+
 ### VSCode Extension
 
-* [vscode-blade-formatter](https://github.com/shufo/vscode-blade-formatter)
+* [vscode-blade-formatter](https://marketplace.visualstudio.com/items?itemName=shufo.vscode-blade-formatter)
 
 ![](/assets/img/uploads/screencast.gif)
 
-去年作った[blade-formatter]() (bladeファイルのopnionatedなformatter)をVSCode Extensionに移植した
+去年作った[blade-formatter](https://github.com/shufo/blade-formatter) (bladeファイルのopnionatedなformatter)をVSCode Extensionに移植した
 インターフェースがCLI -> VSCodeになってユーザ増えたことでいいフィードバック雑なフィードバック含めフィードバックが増えた
 
 npmで何か作ってる人はVSCode ExntensionでWrapするとフィードバックには困らないかもしれない
 
 ### Lambda Function
 
-* lambda-pdf-generator
+* [lambda-pdf-generator](https://github.com/shufo/lambda-pdf-generator)
   * lambda-cjk-font-layer 日本語対応用レイヤ
 
-パラメータでHTML渡すとPDF出力してくれるLambda Function
-ChromeのPDF印刷互換のPDFが生成される
+パラメータでHTML渡すとPDF出力するLambda Function
+
+![](/assets/img/uploads/2020-12-19-lambda-pdf-generator.png)
+
+Lambda上のHeadless Chrome経由で出力しているためChrome PDF印刷互換のPDFが生成される
 
 PDFをお仕事でごにょごにょしたいやつが出てきて（これ定期的に発生するな）最初昔のごとく各言語ネイティブなPDF出力系のバイディングを探していたのだけど、ChromeのPDF印刷なら楽じゃんということでLambdaベースでChrome動かないか探したら[あったので](https://github.com/alixaxel/chrome-aws-lambda)なんか出来た. HTML/CSSベースなので各言語のPDF出力系ライブラリよりずっと楽にスタイリング出来てまともなレンダリングのPDFが出力出来る. 楽すぎて各言語のバインディングで謎のセマンティクスを理解してPDFをゴリゴリいじってたのがあほらしくなる.
 
@@ -96,21 +101,36 @@ ChromeのバージョンによってPDF出力に改善が加えられてたり�
 
 ### サーバレス運用
 
-* lambda-query
+* [lambda-query](https://github.com/shufo/lambda-query)
 
-サーバレスでクエリ投げられるやつ
+![](/assets/img/uploads/2020-12-19-lambda-query.png)
 
-RDS前提だけどIAMさえ持ってればクエリを投げられるようにしたくて作った. 踏み台サーバのようなものを作ってOS更新がパスワードがユーザ/Groupが許可されたコマンドが云々みたいなやつがなくなって楽になった
+サーバレスでRDSにクエリ投げるためのCLI & Lambda Functionのセット
 
-直近の[AWS CloudShell](https://aws.amazon.com/jp/cloudshell/)やAWS SSMなどもあるけど基本的にサーバ管理も直接サーバに入ったりローカルに依存するということも今後必用になる場はやはり少なくなって行くと思う。No Touch Production Environmentのプラクティスは基本的にベストプラクティスではあるので。ただ抽象化されるわけではなく、**直接触らない** ことが重要でOvservabilityは確保した上でのAPI経由でのトレーサビリティを確保することに関心が向かっていくと思う.  AWS CloudShellもその文脈の話でWebコンソールでゼロコンフィグでAWS CLIを触れるというのが重要.
+RDS前提だけどIAMさえ持ってればクエリを投げられるようにしたくて作った. 
+
+以下の要領で[Aurora Serverless Data API](https://dev.classmethod.jp/articles/aurora_serverless_now_supportsdataapi/)のようにサーバレスでRDSにクエリ出来る
+
+    $ lambda-query -f lambda_function -q "select * from users" --format table
+
+Aurora ServerlessはCold Startがあるので許容出来ずRDSでやっているけどサーバレスにクエリしたいよという場合は便利かもしれない
+
+踏み台サーバのようなものを作ってOS更新がパスワードがユーザ/Groupが許可されたコマンドが云々みたいなやつがなくなって楽になった
+
+直近の[AWS CloudShell](https://aws.amazon.com/jp/cloudshell/)やAWS SSMなどもあるけど基本的にサーバ管理も直接サーバに入ったりローカルに依存するということも今後必用になる場はやはり少なくなって行くと思う。人間の認知限界がある以上[Zero Touch Production](https://www.usenix.org/conference/srecon19emea/presentation/czapinski)のプラクティスは基本的にベストプラクティスということにはこれからも変わらない。ただ抽象化されるわけではなく、**直接触らない** ことが重要でObservabilityは確保した上での全てトレース可能になるようにAPI経由の構成でトレーサビリティを確保することに関心が向かっていくと思う.
+
+AWS CloudShellもその文脈の話でWebコンソールでゼロコンフィグでAWS CLIを触れるというのが重要.　実際は裏にインスタンスが立っているわけだけど直接触れないということが重要.
 
 ### Vercel
 
-* online-blade-formatter
+* [online-blade-formatter](https://github.com/shufo/online-blade-formatter)
 
-blade-formatterをVercelでオンラインに移植した
+  ![](/assets/img/uploads/2020-12-19-2020-12-19_23-44-22.png)
 
-* 色々制限はあるもののVercelに最適化したものを作れれば強そうだなという感触はある. ただ最適化が強すぎて一連託生感はあるので気軽に移るみたいなことをしづらくなりそう.
+[Vercel](https://vercel.com/)素振りしたくて[blade-formatter](https://github.com/shufo/blade-formatter)をオンラインに移植した
+
+* 色々制限はあるもののVercelに最適化したものを作れれば強そうだなという感触はある. ただ最適化が強すぎて一連託生感はあるので気軽に移るみたいなことをしづらくなりそう
+  * 実際実用レベルで使うためにはVercelはプラットフォームをもう少しオープンにしてほしい
 
 ### GraphQL
 
@@ -128,19 +148,20 @@ blade-formatterをVercelでオンラインに移植した
 
 Pelicanから[VuePressに移行した]()
 
-ついでにプラグインを作った
+JSスタックなのでプラグインを作ったりするのが楽になったのはよかった
 
-* vuepress-plugin-loading-overlay
+* [vuepress-plugin-loading-overlay](https://github.com/shufo/vuepress-plugin-loading-overlay)
 
 ### Laravel
 
 * ちょい大きめのお仕事だとちょいちょい触る
 * 複数人でやる場合はなんだかんだやっぱフルスタックなRailsライクな方法論がハマりどころが少ないというのはある
   * いい意味で枯れてる方法論なので枯れた方法論が必用になる限りは廃れることはないとは思う
-  * プロトタイピングの段階やPoCの段階でPDCAを高速で回すのにサーバレスやクライアントViewを中心とした開発が楽というのは分かる
+  * プロトタイピングの段階やPoCの段階でPDCAを高速で回すのにサーバレスやクライアントViewを中心とした開発が楽というのは分かるが
 
 ## まとめ
 
-* 相変わらず小さめの細々としたもの作ってる
-  * 基本自分が困っている身の回りの改善のために作っているのと根の考え方がUNIX思想に汚染されてるのでコンパクトになりがち
-  * 少しスコープを広げたサイドプロジェクトを作るのが課題か
+* 相変わらず小さめの身の回りのやつ作ってる
+  * 基本自分が困っているものの改善のために作っているのでコンパクトになりがち
+* 問題のターゲットを広げたサイドプロジェクトを作るのが課題か
+  * いまいち致命的な課題感を感じてないのが原因かもしれないけど
