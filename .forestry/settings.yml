@@ -5,6 +5,13 @@ admin_path:
 webhook_url: 
 sections:
 - type: directory
+  path: docs/_drafts
+  label: Draft
+  create: all
+  match: "**/*"
+  templates:
+  - blog-post
+- type: directory
   path: docs/_posts
   label: Posts
   create: all
