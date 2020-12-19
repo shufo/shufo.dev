@@ -22,9 +22,13 @@ fields:
   label: Author
   default: shufo
 - name: feed
-  type: boolean
+  type: field_group
+  config: {}
+  fields:
+  - name: enable
+    type: boolean
+    label: enable
+    default: true
   label: feed
-  description: Whether it enables feed
-  default: true
 pages:
 - docs/_drafts/2020-retrospective.md
