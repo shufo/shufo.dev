@@ -43,17 +43,14 @@ slug: retrospective-2020
 * [auto-assign-reviewer-by-assignee](https://github.com/shufo/auto-assign-reviewer-by-assignee)
   * レビュワーをアサイニーによって自動的に割り当てるやつ
 
-![](@attachment/Clipboard_2020-12-19-19-05-57.png)
 
 * [auto-assign-reviewer-by-issuer](https://github.com/shufo/auto-assign-reviewer-by-issuer)
   * レビュワーをPR作成者によって自動的に割り当てるやつ
 
-![](@attachment/Clipboard_2020-12-19-19-11-19.png)
 
 * [auto-assign-reviewer-by-files](https://github.com/shufo/auto-assign-reviewer-by-files)
   * レビュワーをファイルパターンによって自動的に割り当てるやつ
 
-![](@attachment/Clipboard_2020-12-19-19-12-27.png)
 
 カスタムアクションはペライチスクリプトでもコンテナで動かすことも出来てGitHubでホスティング出来るので開発の敷居が低いのがよい
 
@@ -61,7 +58,6 @@ slug: retrospective-2020
 
 * [ecs-fargate-oneshot](https://github.com/shufo/ecs-fargate-oneshot)
 
-![](@attachment/Clipboard_2020-12-19-19-16-28.png)
 
 ECS Fargate運用する中で雑にoneshot(一回切り)でコンテナでコマンド叩きたいな〜みたいな場面が多かったのでoneshotで叩けるやつ作った
 クラスター, Service, Taskと実行したいコマンドを渡すと最新の定義からいい感じにｽｯとコマンドを実行してログを出してくれる
