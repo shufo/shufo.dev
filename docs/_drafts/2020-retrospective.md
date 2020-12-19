@@ -28,34 +28,30 @@ slug: retrospective-2020
     }
   }
 }
-
 ```
 
-![](@attachment/Clipboard_2020-12-17-03-46-01.png)
+### GitHub Action
 
-
-###  GitHub Action
-
-- GitHub Actionを業務個人利用含め使う機会が割と多くなった
-  - 個人利用でのCIはほぼGitHub Actionのみになった
-  - 静的解析、細々としたタスクあたりを業務で使うことも多くなった
-    - 他のWorkflowを真似したい場合 `.github`ディレクトリをコピるだけでほぼ以上完了するのがすき
-    - dependabotもGitHubに集約されGitHubのCIへの力の入れ方が伺える
+* GitHub Actionを業務個人利用含め使う機会が割と多くなった
+  * 個人利用でのCIはほぼGitHub Actionのみになった
+  * 静的解析、細々としたタスクあたりを業務で使うことも多くなった
+    * 他のWorkflowを真似したい場合 `.github`ディレクトリをコピるだけでほぼ以上完了するのがすき
+    * dependabotもGitHubに集約されGitHubのCIへの力の入れ方が伺える
 
 以下作ったアクション
 
-- [auto-assign-reviewer-by-assignee](https://github.com/shufo/auto-assign-reviewer-by-assignee)
-  - レビュワーをアサイニーによって自動的に割り当てるやつ
+* [auto-assign-reviewer-by-assignee](https://github.com/shufo/auto-assign-reviewer-by-assignee)
+  * レビュワーをアサイニーによって自動的に割り当てるやつ
 
 ![](@attachment/Clipboard_2020-12-19-19-05-57.png)
 
-- [auto-assign-reviewer-by-issuer](https://github.com/shufo/auto-assign-reviewer-by-issuer)
-  - レビュワーをPR作成者によって自動的に割り当てるやつ
+* [auto-assign-reviewer-by-issuer](https://github.com/shufo/auto-assign-reviewer-by-issuer)
+  * レビュワーをPR作成者によって自動的に割り当てるやつ
 
 ![](@attachment/Clipboard_2020-12-19-19-11-19.png)
 
-- [auto-assign-reviewer-by-files](https://github.com/shufo/auto-assign-reviewer-by-files)
-  - レビュワーをファイルパターンによって自動的に割り当てるやつ
+* [auto-assign-reviewer-by-files](https://github.com/shufo/auto-assign-reviewer-by-files)
+  * レビュワーをファイルパターンによって自動的に割り当てるやつ
 
 ![](@attachment/Clipboard_2020-12-19-19-12-27.png)
 
@@ -63,7 +59,7 @@ slug: retrospective-2020
 
 ### ECS Fargate運用
 
-- [ecs-fargate-oneshot](https://github.com/shufo/ecs-fargate-oneshot)
+* [ecs-fargate-oneshot](https://github.com/shufo/ecs-fargate-oneshot)
 
 ![](@attachment/Clipboard_2020-12-19-19-16-28.png)
 
@@ -75,8 +71,8 @@ ECS Fargate運用する中で雑にoneshot(一回切り)でコンテナでコマ
 Cluster, Service, task definitionが既に定義されてること前提なので既にIaCで管理されてるコードベースでも運用後に追加しやすいと思う
 
 ### VSCode Extension
-- [vscode-blade-formatter](https://github.com/shufo/vscode-blade-formatter)
 
+* [vscode-blade-formatter](https://github.com/shufo/vscode-blade-formatter)
 
 去年作った[blade-formatter]() (bladeファイルのopnionatedなformatter)をVSCode Extensionに移植した
 インターフェースがCLI -> VSCodeになってユーザ増えたことでいいフィードバック雑なフィードバック含めフィードバックが増えた
@@ -85,19 +81,19 @@ npmで何か作ってる人はVSCode ExntensionでWrapするとフィードバ�
 
 ### Lambda Function
 
-- lambda-pdf-generator
-  - lambda-cjk-font-layer 日本語対応用レイヤ
+* lambda-pdf-generator
+  * lambda-cjk-font-layer 日本語対応用レイヤ
 
-パラメータでHTML渡すとPDF出力してくれるLambda Function 
+パラメータでHTML渡すとPDF出力してくれるLambda Function
 ChromeのPDF印刷互換のPDFが生成される
 
-PDFをお仕事でごにょごにょしたいやつが出てきて（これ定期的に発生するな）最初昔のごとく各言語ネイティブなPDF出力系のバイディングを探していたのだけど、ChromeのPDF印刷なら楽じゃんということでLambdaベースでChrome動かないか探したら[あったので](https://github.com/alixaxel/chrome-aws-lambda)なんか出来た. HTML/CSSベースなので各言語のPDF出力系ライブラリよりずっと楽にスタイリング出来てまともなレンダリングのPDFが出力出来る. 楽すぎて各言語のバインディングで謎のセマンティクスを理解してPDFをゴリゴリいじってたのがあほらしくなる. 
+PDFをお仕事でごにょごにょしたいやつが出てきて（これ定期的に発生するな）最初昔のごとく各言語ネイティブなPDF出力系のバイディングを探していたのだけど、ChromeのPDF印刷なら楽じゃんということでLambdaベースでChrome動かないか探したら[あったので](https://github.com/alixaxel/chrome-aws-lambda)なんか出来た. HTML/CSSベースなので各言語のPDF出力系ライブラリよりずっと楽にスタイリング出来てまともなレンダリングのPDFが出力出来る. 楽すぎて各言語のバインディングで謎のセマンティクスを理解してPDFをゴリゴリいじってたのがあほらしくなる.
 
 ChromeのバージョンによってPDF出力に改善が加えられてたりする（CSSの縦/横のportraitを認識したり）ので開発用ChromeとLambdaのChromeのバージョンを揃えないハマる（1敗）
 
 ### サーバレス運用
 
-- lambda-query
+* lambda-query
 
 サーバレスでクエリ投げられるやつ
 
@@ -107,40 +103,41 @@ RDS前提だけどIAMさえ持ってればクエリを投げられるように�
 
 ### Vercel
 
-- online-blade-formatter
+* online-blade-formatter
 
 blade-formatterをVercelでオンラインに移植した
 
-- 色々制限はあるもののVercelに最適化したものを作れれば強そうだなという感触はある. ただ最適化が強すぎて一連託生感はあるので気軽に移るみたいなことをしづらくなりそう.
+* 色々制限はあるもののVercelに最適化したものを作れれば強そうだなという感触はある. ただ最適化が強すぎて一連託生感はあるので気軽に移るみたいなことをしづらくなりそう.
 
 ### GraphQL
 
-- 実運用に投入するレベルではないけどちょいちょい触ってる
-- RESTの代替云々みたいな話はどうでもよくクエリを定義するタイミングをクライアント実装時まで遅延させる遅延束縛みたいな開発スタイルも出来る点がすき
-- 要は開発スタイルに選択肢が生まれるということが重要でその点ではRESTと競合するものでもないので比較対象としては違うと思ってる
-  - スモールチーム（モバイル開発や個人開発等）で最大の生産性を発揮するんだろうなというのは分かるけどでかくなった時のスキーマ, Resolverのメンテナンスがいまいち想像つかない
-    - GraphQLスキーマ, リゾルバ実装 / バックエンド実装 -> テスト実装といった形になると思うけどGraphQLレイヤーの分の負担がスケールしたときにどこまででかくなるかということに興味がある
-    - 要は責任分界点はどこになるかということだけどエンドトゥーエンドのテスタビリティの確保をどうするかというところ
-- AppSync/Amplify辺りも触ってみてなるほどなという感じ
-  - AmplifyもGraphQLだけ扱えるというわけでなくRESTもサポートしている
-  - サービス説明にモバイル開発者/フロントエンド開発者向けみたいな文言が入っていたのでバックエンド抽象化しすぎてる系のいつものAWSサービスかと思ってたけど割と筋は悪くない（Amplifyは抽象化しすぎてるので個別のコンポーネント理解してないときつくなりそうだけど）
+* 実運用に投入するレベルではないけどちょいちょい触ってる
+* RESTの代替云々みたいな話はどうでもよくクエリを定義するタイミングをクライアント実装時まで遅延させる遅延束縛みたいな開発スタイルも出来る点がすき
+* 要は開発スタイルに選択肢が生まれるということが重要でその点ではRESTと競合するものでもないので比較対象としては違うと思ってる
+  * スモールチーム（モバイル開発や個人開発等）で最大の生産性を発揮するんだろうなというのは分かるけどでかくなった時のスキーマ, Resolverのメンテナンスがいまいち想像つかない
+    * GraphQLスキーマ, リゾルバ実装 / バックエンド実装 -> テスト実装といった形になると思うけどGraphQLレイヤーの分の負担がスケールしたときにどこまででかくなるかということに興味がある
+    * 要は責任分界点はどこになるかということだけどエンドトゥーエンドのテスタビリティの確保をどうするかというところ
+* AppSync/Amplify辺りも触ってみてなるほどなという感じ
+  * AmplifyもGraphQLだけ扱えるというわけでなくRESTもサポートしている
+  * サービス説明にモバイル開発者/フロントエンド開発者向けみたいな文言が入っていたのでバックエンド抽象化しすぎてる系のいつものAWSサービスかと思ってたけど割と筋は悪くない（Amplifyは抽象化しすぎてるので個別のコンポーネント理解してないときつくなりそうだけど）
 
 ### HP更新
 
 Pelicanから[VuePressに移行した]()
 
 ついでにプラグインを作った
-- vuepress-plugin-loading-overlay
+
+* vuepress-plugin-loading-overlay
 
 ### Laravel
 
-- ちょい大きめのお仕事だとちょいちょい触る
-- 複数人でやる場合はなんだかんだやっぱフルスタックなRailsライクな方法論がハマりどころが少ないというのはある
-  - いい意味で枯れてる方法論なので枯れた方法論が必用になる限りは廃れることはないとは思う
-  - プロトタイピングの段階やPoCの段階でPDCAを高速で回すのにサーバレスやクライアントViewを中心とした開発が楽というのは分かる
+* ちょい大きめのお仕事だとちょいちょい触る
+* 複数人でやる場合はなんだかんだやっぱフルスタックなRailsライクな方法論がハマりどころが少ないというのはある
+  * いい意味で枯れてる方法論なので枯れた方法論が必用になる限りは廃れることはないとは思う
+  * プロトタイピングの段階やPoCの段階でPDCAを高速で回すのにサーバレスやクライアントViewを中心とした開発が楽というのは分かる
 
 ## まとめ
 
-- 相変わらず小さめの細々としたもの作ってる
-  - 基本自分が困っている身の回りの改善のために作っているのと根の考え方がUNIX思想に汚染されてるのでコンパクトになりがち
-  - 少しスコープを広げたサイドプロジェクトを作るのが課題か
+* 相変わらず小さめの細々としたもの作ってる
+  * 基本自分が困っている身の回りの改善のために作っているのと根の考え方がUNIX思想に汚染されてるのでコンパクトになりがち
+  * 少しスコープを広げたサイドプロジェクトを作るのが課題か
