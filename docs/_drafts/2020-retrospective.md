@@ -5,6 +5,8 @@ date: 2020-12-18 15:00:00 +0000
 tags:
 - tools
 slug: retrospective-2020
+feed:
+  enable: true
 
 ---
 # 2020年に作ったソフトウェア / 触った環境振り返り
