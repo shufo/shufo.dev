@@ -14,5 +14,3 @@ fields:
 - type: text
   name: slug
   label: slug
-pages:
-- docs/_posts/2020.md

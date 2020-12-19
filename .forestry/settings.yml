@@ -9,6 +9,8 @@ sections:
   label: Posts
   create: all
   match: "**/*.md"
+  templates:
+  - blog-post
 upload_dir: docs/.vuepress/public/assets/img/uploads
 public_path: "/assets/img/uploads"
 front_matter_path: ''
