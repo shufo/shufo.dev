@@ -30,6 +30,8 @@ slug: retrospective-2020
 }
 ```
 
+![](/assets/img/uploads/clipboard_2020-12-17-03-46-01.png)
+
 ### GitHub Action
 
 * GitHub Actionを業務個人利用含め使う機会が割と多くなった
@@ -42,22 +44,16 @@ slug: retrospective-2020
 
 * [auto-assign-reviewer-by-assignee](https://github.com/shufo/auto-assign-reviewer-by-assignee)
   * レビュワーをアサイニーによって自動的に割り当てるやつ
-
-
 * [auto-assign-reviewer-by-issuer](https://github.com/shufo/auto-assign-reviewer-by-issuer)
   * レビュワーをPR作成者によって自動的に割り当てるやつ
-
-
 * [auto-assign-reviewer-by-files](https://github.com/shufo/auto-assign-reviewer-by-files)
   * レビュワーをファイルパターンによって自動的に割り当てるやつ
-
 
 カスタムアクションはペライチスクリプトでもコンテナで動かすことも出来てGitHubでホスティング出来るので開発の敷居が低いのがよい
 
 ### ECS Fargate運用
 
 * [ecs-fargate-oneshot](https://github.com/shufo/ecs-fargate-oneshot)
-
 
 ECS Fargate運用する中で雑にoneshot(一回切り)でコンテナでコマンド叩きたいな〜みたいな場面が多かったのでoneshotで叩けるやつ作った
 クラスター, Service, Taskと実行したいコマンドを渡すと最新の定義からいい感じにｽｯとコマンドを実行してログを出してくれる
