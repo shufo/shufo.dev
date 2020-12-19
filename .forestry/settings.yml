@@ -15,7 +15,7 @@ upload_dir: docs/.vuepress/public/assets/img/uploads
 public_path: "/assets/img/uploads"
 front_matter_path: ''
 use_front_matter_path: false
-file_template: ":filename:"
+file_template: ":year:-:month:-:day:-:filename:"
 build:
   preview_output_directory: docs/.vuepress/dist
   install_dependencies_command: yarn install
