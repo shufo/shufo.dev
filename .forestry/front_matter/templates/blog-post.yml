@@ -30,5 +30,3 @@ fields:
     label: enable
     default: true
   label: feed
-pages:
-- docs/_drafts/2020-retrospective.md

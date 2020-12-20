@@ -1,7 +1,7 @@
 ---
 author: shufo
 title: 2020年に作ったソフトウェア / 触った環境振り返り
-date: 2020-12-20 00:00:00 +0900
+date: 2020-12-20T00:00:00.000+09:00
 tags:
 - tools
 - programming
@@ -10,7 +10,6 @@ feed:
   enable: true
 
 ---
-
 以下の記事に触発された
 
 [2020年に作ったソフトウェアや開発技術をふりかえる](https://laiso.hatenablog.com/entry/everyday-coding-2020)
@@ -77,7 +76,7 @@ Cluster, Service, task definitionが既に定義されてること前提なの�
 
 ![](/assets/img/uploads/screencast.gif)
 
-去年作った[blade-formatter](https://github.com/shufo/blade-formatter) (bladeファイルのopnionatedなformatter)をVSCode Extensionに移植した インターフェースがCLI -> VSCodeになってユーザ増えたことでいいフィードバック雑なフィードバック含めフィードバックが増えた. 
+去年作った[blade-formatter](https://github.com/shufo/blade-formatter) (bladeファイルのopinionatedなformatter)をVSCode Extensionに移植した インターフェースがCLI -> VSCodeになってユーザ増えたことでいいフィードバック雑なフィードバック含めフィードバックが増えた.
 
 npmで何か作ってる人はVSCode ExntensionでWrapするとフィードバックには困らないかもしれない
 
