@@ -30,3 +30,5 @@ fields:
     label: enable
     default: true
   label: feed
+pages:
+- docs/_drafts/cms.md
