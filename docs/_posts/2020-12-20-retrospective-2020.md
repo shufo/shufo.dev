@@ -85,7 +85,7 @@ npmで何か作ってる人はVSCode ExntensionでWrapするとフィードバ�
 * [lambda-pdf-generator](https://github.com/shufo/lambda-pdf-generator)
   * [lambda-cjk-font-layer](https://github.com/shufo/lambda-cjk-font-layer) 日本語対応用レイヤ
 
-パラメータとしてHTMLを渡すとPDFを出力するLambda Functionを作った
+パラメータとしてHTMLを渡すとChromeでレンダリングしてPDFとして出力するLambda Functionを作った
 
 ![](/assets/img/uploads/2020-12-19-lambda-pdf-generator.png)
 
