@@ -15,6 +15,7 @@ const autometaOptions = {
 const feedOptions = {
   canonical_base: "https://shufo.dev",
   sort: (entries) => _.reverse(_.sortBy(entries, "date")),
+  posts_directories: ['/_posts/'],
   rss: true,
   atom: true,
   json: true,
