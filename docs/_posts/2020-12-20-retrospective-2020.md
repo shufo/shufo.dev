@@ -83,11 +83,24 @@ npmで何か作ってる人はVSCode ExntensionでWrapするとフィードバ�
 ### Lambda Function
 
 * [lambda-pdf-generator](https://github.com/shufo/lambda-pdf-generator)
-  * lambda-cjk-font-layer 日本語対応用レイヤ
+  * [lambda-cjk-font-layer](https://github.com/shufo/lambda-cjk-font-layer) 日本語対応用レイヤ
 
-パラメータでHTML渡すとPDF出力するLambda Function
+パラメータとしてHTMLを渡すとPDFを出力するLambda Functionを作った
 
 ![](/assets/img/uploads/2020-12-19-lambda-pdf-generator.png)
+
+e.g.
+
+```bash
+$ echo '{"data": "<html><body><p style=\"color: red\">Hello World</p></body></html>"}' > payload.json
+$ aws lambda invoke \
+ --function-name lambda-pdf-generator \
+ --invocation-type RequestResponse \
+ --payload file://payload.json --cli-binary-format raw-in-base64-out response.json
+
+ $ cat response.json | jq -r .data | base64 -d > example.pdf
+ $ open example.pdf
+```
 
 ![](/assets/img/uploads/2020-12-19-2020-12-20_00-18-52.png)
 
