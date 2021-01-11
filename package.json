@@ -22,7 +22,7 @@
     "@goy/vuepress-plugin-svg-icons": "^4.2.2",
     "@vuepress/theme-blog": "^2.3.3",
     "cache-loader": "4.1.0",
-    "cypress": "^5.6.0",
+    "cypress": "^6.2.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^6.15.0",
