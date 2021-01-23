@@ -35,6 +35,5 @@ fields:
   label: draft
   description: Draft status
   showOnly:
-    field: draft
     value: false
   default: true
