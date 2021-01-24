@@ -24,3 +24,8 @@
   for = "/*.*"
     [headers.values]
     cache-control = "public,max-age=31536000"
+
+[[headers]]
+  for = "/assets/keys/pgp.pub"
+    [headers.values]
+    Content-Type = "text/plain"
