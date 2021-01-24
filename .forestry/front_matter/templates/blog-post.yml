@@ -30,5 +30,12 @@ fields:
     label: enable
     default: true
   label: feed
+- name: draft
+  type: boolean
+  label: draft
+  description: Draft status
+  showOnly:
+    value: false
+  default: true
 pages:
-- docs/_drafts/cms.md
+- docs/_posts/chrome.md
