@@ -1043,10 +1043,10 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@goy/vuepress-plugin-svg-icons@^4.2.2":
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/@goy/vuepress-plugin-svg-icons/-/vuepress-plugin-svg-icons-4.2.2.tgz#3e5cdb011f9e5c365fbe455de059a10dde85fec8"
-  integrity sha512-5BhwxltL9X1X1uEbb2d9rWiJdxdoG97sKFGq1Bf8ODKSD9X9SXF2ezmW6Y7RaEcg98ent9NDoVtrpmBXIQOE0g==
+"@goy/vuepress-plugin-svg-icons@^4.2.3":
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/@goy/vuepress-plugin-svg-icons/-/vuepress-plugin-svg-icons-4.2.3.tgz#b2ea38a0f1703f604285eb6ce5f01a2e053f98df"
+  integrity sha512-OCepSD9kbBnXw04CwVQI7y3cD1SFxTYdVZtLQHkCoPod6S+ZWBOuFW6yeO851zm+zzzKusEHaq/d/mDvBqZRcg==
   dependencies:
     svg-mixer "^2.4.0"
     svgo "^1.3.2"

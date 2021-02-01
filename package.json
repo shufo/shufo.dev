@@ -19,7 +19,7 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@goy/vuepress-plugin-svg-icons": "^4.2.2",
+    "@goy/vuepress-plugin-svg-icons": "^4.2.3",
     "@vuepress/theme-blog": "^2.3.3",
     "cache-loader": "4.1.0",
     "cypress": "^5.6.0",
