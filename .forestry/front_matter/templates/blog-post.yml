@@ -38,4 +38,5 @@ fields:
     value: false
   default: true
 pages:
+- docs/_posts/2021-03.md
 - docs/_posts/chrome.md
