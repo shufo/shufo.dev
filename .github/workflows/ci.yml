@@ -1,5 +1,9 @@
 name: CI
-on: [push, pull_request]
+on:
+  push:
+    paths-ignore:
+      - 'docs/_drafts/**'
+  pull_request:
 jobs:
   build:
     runs-on: ubuntu-latest
