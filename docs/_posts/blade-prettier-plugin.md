@@ -4,7 +4,7 @@ feed:
   enable: true
 draft: true
 title: Blade用のPrettier Pluginを作った
-date: 2022-02-05 00:00:00 +0900
+date: 2022-02-05T00:00:00.000+09:00
 tags:
 - Tools
 - Programming
@@ -17,11 +17,9 @@ Prettier Plugin for Bladeを作った
 
 [![shufo/prettier-plugin-blade - GitHub](https://gh-card.dev/repos/shufo/prettier-plugin-blade.svg)](https://github.com/shufo/prettier-plugin-blade)
 
-<p align="center">
-
 ![](/assets/img/uploads/2022-02-04-prettier-1-logo-png-transparent-1.png)
 
-</p>
+![](/assets/img/uploads/2022-02-04-screen-record-from-2022-01-27-20-53-05-2x_0-5-optimized.gif)
 
 ### 作った経緯
 
