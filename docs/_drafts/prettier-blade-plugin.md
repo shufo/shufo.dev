@@ -25,9 +25,9 @@ Prettier用のBlade Pluginを作った
 
 ### ASTじゃなくてもOK
 
-しかしPrettierのPluginを実装する際は実はPlugin側がASTを返さなくてもフォーマット後のstringさえ返せれば問題なく、例えば[prettier-plugin-elm](https://github.com/gicentre/prettier-plugin-elm) などはそうなっており、I/O形式さえ理解すれば文字列操作だけでも完結するのでPrettier Plugin作成はそう難しくはない
+しかしPrettierのPluginを実装する際は実はPlugin側がASTを返さなくてもフォーマット後のstringさえ返せれば問題なく、例えば [prettier-plugin-elm](https://github.com/gicentre/prettier-plugin-elm) などはそうなっており、I/O形式さえ理解すれば文字列操作だけでも完結するのでPrettier Plugin作成はそう難しくはない
 
-で、軽く [blade-formatter](https://github.com/shufo/blade-formatter) ベースで文字列ベースでPoCしたら出来たのでそのまま公開した
+で、軽く [blade-formatter](https://github.com/shufo/blade-formatter) ベースで文字列のみでPoCしたら出来たのでそのまま公開した
 
 ### 苦労した点
 
