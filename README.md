@@ -3,8 +3,7 @@
 My blog built with
 
 - [VuePress](https://vuepress.vuejs.org/)
-- [Netlify](https://www.netlify.com/)
-- [Netlify CMS](https://github.com/netlify/netlify-cms)
+- [Forestry.io](https://app.forestry.io/) (CMS)
 
 ## Development
 
