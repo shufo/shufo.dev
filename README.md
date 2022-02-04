@@ -2,7 +2,8 @@
 
 My blog built with
 
-- [VuePress](https://vuepress.vuejs.org/)
+- [VuePress](https://vuepress.vuejs.org/) (SSG)
+- [Netlify](https://www.netlify.com/) (Hosting)
 - [Forestry.io](https://app.forestry.io/) (CMS)
 
 ## Development
