@@ -3,26 +3,26 @@ author: shufo
 feed:
   enable: true
 draft: true
-title: PrettierのBlade Pluginを作った
+title: Blade用のPrettier Pluginを作った
 date: 2022-02-05 00:00:00 +0900
 tags:
 - Tools
 - Programming
-slug: created-prettier-plugin-blade
+slug: created-prettier-plugin-for-blade
 
 ---
 ### Overview
 
-Prettier用のBlade Pluginを作った
+Prettier Plugin for Bladeを作った
 
 [![shufo/prettier-plugin-blade - GitHub](https://gh-card.dev/repos/shufo/prettier-plugin-blade.svg)](https://github.com/shufo/prettier-plugin-blade)
 
 <p align="center">
-  
+
 ![](/assets/img/uploads/2022-02-04-prettier-1-logo-png-transparent-1.png)
 
 </p>
-  
+
 ### 作った経緯
 
 なぜかPrettier向けのプラグインにBlade向けの物がなく（npmでglobalに名前だけ取られているが[404](https://www.npmjs.com/package/prettier-plugin-blade)) 、以前からちょいちょいPrettierでフォーマットしたいみたいな話題が一部でちらほら上がっていたものの最近またTaylor Otwell（Laravel作者）がPrettier向け[Blade Plugin欲しいというような発言をしてた](https://twitter.com/taylorotwell/status/1486085543960186882)のを見て、以前確認した時からまだ無かったのかと気づいて作った
@@ -41,4 +41,4 @@ Prettier用のBlade Pluginを作った
 
 ### よかった点
 
-Prettier pluginとして作ってよかったこととしてはVSCodeや[coc.nvim](https://github.com/neoclide/coc.nvim), WebStorm, PHPStormなどIntelliJ系IDEなどに既にPrettier拡張が存在するので、作ったプラグインを依存に追加さえすれば特に何もしなくても複数のエディタに対応出来るという点があった
+Prettier pluginとして作ってよかったこととしてはVSCodeや[coc.nvim](https://github.com/neoclide/coc.nvim), WebStorm, PHPStormなどIntelliJ系IDEなどに既にPrettier拡張が存在するので、作ったプラグインを依存に追加さえすれば特に何もしなくても複数のエディタに対応出来るという点があった。 既に成熟したエコシステムならではの寄らば大樹の陰感。
