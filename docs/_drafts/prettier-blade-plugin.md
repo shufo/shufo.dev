@@ -17,6 +17,12 @@ Prettier用のBlade Pluginを作った
 
 [![shufo/prettier-plugin-blade - GitHub](https://gh-card.dev/repos/shufo/prettier-plugin-blade.svg)](https://github.com/shufo/prettier-plugin-blade)
 
+<p align="center">
+  
+![](/assets/img/uploads/2022-02-04-prettier-1-logo-png-transparent-1.png)
+
+</p>
+  
 ### 作った経緯
 
 なぜかPrettier向けのプラグインにBlade向けの物がなく（npmでglobalに名前だけ取られているが[404](https://www.npmjs.com/package/prettier-plugin-blade)) 、以前からちょいちょいPrettierでフォーマットしたいみたいな話題が一部でちらほら上がっていたものの最近またTaylor Otwell（Laravel作者）がPrettier向け[Blade Plugin欲しいというような発言をしてた](https://twitter.com/taylorotwell/status/1486085543960186882)のを見て、以前確認した時からまだ無かったのかと気づいて作った
