@@ -19,7 +19,7 @@ Prettier用のBlade Pluginを作った
 
 ### 作った経緯
 
-なぜかPrettier向けのプラグインにBlade向けの物がなく（npmでglobalに名前だけ取られているが[404](https://www.npmjs.com/package/prettier-plugin-blade)) 、以前からちょいちょいPrettierでフォーマットしたいみたいな話題が一部でちらほら上がっていたが最近Taylor OtwellがPrettier向けBlade Pluginないの作った
+なぜかPrettier向けのプラグインにBlade向けの物がなく（npmでglobalに名前だけ取られているが[404](https://www.npmjs.com/package/prettier-plugin-blade)) 、以前からちょいちょいPrettierでフォーマットしたいみたいな話題が一部でちらほら上がっていたが最近Taylor OtwellがPrettier向け[Blade Plugin欲しいというような発言をしてた](https://twitter.com/taylorotwell/status/1486085543960186882)ので作った
 
 存在しなかった理由としてはそもそもBladeテンプレートエンジン自体がlexerやparserを使ってテンプレートを解析しているわけではなく、正規表現と置換を使ってBlade用のSyntaxを純粋なPHPファイルとして扱えるようにトークンを置き換えているだけという実装になっているので、通常ASTを期待する（ように見える）Prettierのparser向けに実装しようと思うと腰が重い…という理由なのかもしれない
 
