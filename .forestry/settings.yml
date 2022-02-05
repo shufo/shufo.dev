@@ -11,7 +11,7 @@ sections:
   match: "**/*.md"
   new_doc_ext: md
   templates:
-  - blog-post
+  - blog-draft
 - type: directory
   path: docs/_posts
   label: Posts

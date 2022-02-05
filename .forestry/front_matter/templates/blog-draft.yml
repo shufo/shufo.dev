@@ -1,0 +1,45 @@
+---
+label: Blog draft
+hide_body: false
+display_field: title
+fields:
+- type: text
+  name: title
+  label: title
+- type: datetime
+  name: date
+  label: date
+- type: list
+  name: tags
+  label: tags
+- type: text
+  name: slug
+  label: slug
+- name: author
+  type: text
+  config:
+    required: false
+  label: Author
+  default: shufo
+- name: feed
+  type: field_group
+  config: {}
+  fields:
+  - name: enable
+    type: boolean
+    label: enable
+    default: false
+  label: feed
+- name: draft
+  type: boolean
+  label: draft
+  description: Draft status
+  showOnly:
+    value: false
+  default: true
+pages:
+- docs/_drafts/prettier-blade-plugin.md
+- docs/_posts/2021-03.md
+- docs/_posts/2021-12.md
+- docs/_posts/blade-prettier-plugin.md
+- docs/_posts/chrome.md
