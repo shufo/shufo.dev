@@ -5,6 +5,8 @@ feed:
 draft: false
 title: Blade用のPrettier Pluginを作った
 date: 2022-02-05T00:00:00.000+09:00
+twitter_image: /assets/img/uploads/2022-02-04-prettier-1-logo-png-transparent-1.png
+og_image: /assets/img/uploads/2022-02-04-prettier-1-logo-png-transparent-1.png
 tags:
 - Tools
 - Programming
