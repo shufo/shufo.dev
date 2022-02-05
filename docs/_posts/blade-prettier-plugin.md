@@ -2,7 +2,7 @@
 author: shufo
 feed:
   enable: true
-draft: true
+draft: false
 title: Blade用のPrettier Pluginを作った
 date: 2022-02-05T00:00:00.000+09:00
 tags:
