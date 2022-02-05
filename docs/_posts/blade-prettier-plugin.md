@@ -17,9 +17,9 @@ slug: created-prettier-plugin-for-blade
 
 Prettier Plugin for Bladeを作った
 
-[![shufo/prettier-plugin-blade - GitHub](https://gh-card.dev/repos/shufo/prettier-plugin-blade.svg)](https://github.com/shufo/prettier-plugin-blade)
-
 ![](/assets/img/uploads/2022-02-04-prettier-1-logo-png-transparent-1.png)
+
+[![shufo/prettier-plugin-blade - GitHub](https://gh-card.dev/repos/shufo/prettier-plugin-blade.svg)](https://github.com/shufo/prettier-plugin-blade)
 
 ![](/assets/img/uploads/2022-02-04-screen-record-from-2022-01-27-20-53-05-2x_0-5-optimized.gif)
 
