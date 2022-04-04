@@ -42,6 +42,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   text-align: right;
+  justify-content: center;
 }
 
 a {
