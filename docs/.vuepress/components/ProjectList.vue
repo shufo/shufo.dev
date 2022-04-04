@@ -41,6 +41,7 @@ export default {
   margin-top: 3em;
   display: flex;
   flex-wrap: wrap;
+  text-align: right;
 }
 
 a {
