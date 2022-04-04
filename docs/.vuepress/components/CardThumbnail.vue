@@ -2,7 +2,7 @@
   <div>
     <img
       v-show="isLoaded"
-      :src="`${src}?nf_resize=fit&w=224`"
+      :src="`${src}?nf_resize=fit&w=630`"
       @load="onImgLoad"
       class="card-img"
       alt=""
