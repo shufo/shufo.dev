@@ -51,10 +51,27 @@ export default {
 <style scoped>
 .card-item {
   margin: 0 15px 15px 0;
-  width: 14rem;
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 5px #ccc;
+}
+
+@media (min-width: 0px) {
+  .card-item {
+    width: fit-content;
+  }
+}
+
+@media (min-width: 660px) {
+  .card-item {
+    width: 18em;
+  }
+}
+
+@media (min-width: 1000px) {
+  .card-item {
+    width: 14rem;
+  }
 }
 .card-img {
   border-radius: 5px 5px 0 0;
