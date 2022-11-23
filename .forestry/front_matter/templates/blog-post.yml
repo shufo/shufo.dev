@@ -37,3 +37,5 @@ fields:
   showOnly:
     value: false
   default: true
+pages:
+- docs/_posts/vscode-blade-formatter-hits-2000-github-stars.md
