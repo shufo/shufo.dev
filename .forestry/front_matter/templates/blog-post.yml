@@ -37,8 +37,3 @@ fields:
   showOnly:
     value: false
   default: true
-pages:
-- docs/_posts/2021-03.md
-- docs/_posts/2021-12.md
-- docs/_posts/blade-prettier-plugin.md
-- docs/_posts/chrome.md
