@@ -1,0 +1,194 @@
+{
+  "redirects": [
+    {
+      "source": "/feeds/all.atom",
+      "destination": "/feed.atom",
+      "permanent": true
+    },
+    {
+      "source": "/feeds/all.atom",
+      "destination": "/rss.xml",
+      "permanent": true
+    },
+    {
+      "source": "/remote-development-with-vscode-and-softether/",
+      "destination": "/posts/remote-development-with-vscode-and-softether",
+      "permanent": true
+    },
+    {
+      "source": "/hello-world/",
+      "destination": "/posts/hello-world",
+      "permanent": true
+    },
+    {
+      "source": "/my-elixir-status-of-the-last-year/",
+      "destination": "/posts/my-elixir-status-of-the-last-year",
+      "permanent": true
+    },
+    {
+      "source": "/book-review-washoku-toha-nanika/",
+      "destination": "/posts/book-review-washoku-toha-nanika",
+      "permanent": true
+    },
+    {
+      "source": "/books-recent-read/",
+      "destination": "/posts/books-recent-read",
+      "permanent": true
+    },
+    {
+      "source": "/book-review-le-monde-est-clos-et-let-desir-infini/",
+      "destination": "/posts/book-review-le-monde-est-clos-et-let-desir-infini",
+      "permanent": true
+    },
+    {
+      "source": "/yamashita-tatsuro-live-at-nhk-hall/",
+      "destination": "/posts/yamashita-tatsuro-live-at-nhk-hall",
+      "permanent": true
+    },
+    {
+      "source": "/built-app-with-electron-vuejs-typescript/",
+      "destination": "/posts/built-app-with-electron-vuejs-typescript",
+      "permanent": true
+    },
+    {
+      "source": "/book-review-engineering-organization/",
+      "destination": "/posts/book-review-engineering-organization",
+      "permanent": true
+    },
+    {
+      "source": "/visual-studio-live-share/",
+      "destination": "/posts/visual-studio-live-share",
+      "permanent": true
+    },
+    {
+      "source": "/build-web-based-elixir-logger-backend-with-nuxtjs/",
+      "destination": "/posts/build-web-based-elixir-logger-backend-with-nuxtjs",
+      "permanent": true
+    },
+    {
+      "source": "/panorama-festival-2017-1/",
+      "destination": "/posts/panorama-festival-2017-1",
+      "permanent": true
+    },
+    {
+      "source": "/linux-desktop-after-2-years/",
+      "destination": "/posts/linux-desktop-after-2-years",
+      "permanent": true
+    },
+    {
+      "source": "/panorama-nyc-festival-2017-2/",
+      "destination": "/posts/panorama-nyc-festival-2017-2",
+      "permanent": true
+    },
+    {
+      "source": "/jinba-to-takao/",
+      "destination": "/posts/jinba-to-takao",
+      "permanent": true
+    },
+    {
+      "source": "/soundsandbox-at-white-space-lab/",
+      "destination": "/posts/soundsandbox-at-white-space-lab",
+      "permanent": true
+    },
+    {
+      "source": "/elixir-myth/",
+      "destination": "/posts/elixir-myth",
+      "permanent": true
+    },
+    {
+      "source": "/alternative_to_mac/",
+      "destination": "/posts/alternative_to_mac",
+      "permanent": true
+    },
+    {
+      "source": "/thinkpad-X210/",
+      "destination": "/posts/thinkpad-X210",
+      "permanent": true
+    },
+    {
+      "source": "/build-lets-split/",
+      "destination": "/posts/build-lets-split",
+      "permanent": true
+    },
+    {
+      "source": "/site_building/",
+      "destination": "/posts/site_building",
+      "permanent": true
+    },
+    {
+      "source": "/weave_swarm_compose/",
+      "destination": "/posts/weave_swarm_compose",
+      "permanent": true
+    },
+    {
+      "source": "/hello-world/",
+      "destination": "/posts/hello-world",
+      "permanent": true
+    },
+    {
+      "source": "/2020/10/01/about-blade-formatter/",
+      "destination": "/posts/about-blade-formatter",
+      "permanent": true
+    },
+    {
+      "source": "/2020/10/01/review-aftershokz-aeropex/",
+      "destination": "/posts/review-aftershokz-aeropex",
+      "permanent": true
+    },
+    {
+      "source": "/2020/10/03/published-vscode-blade-formatter/",
+      "destination": "/posts/published-vscode-blade-formatter",
+      "permanent": true
+    },
+    {
+      "source": "/2020/10/06/renewal-content-with-vuepress/",
+      "destination": "/posts/renewal-content-with-vuepress",
+      "permanent": true
+    },
+    {
+      "source": "/2020/10/19/struggle-with-bastion-server/",
+      "destination": "/posts/struggle-with-bastion-server",
+      "permanent": true
+    },
+    {
+      "source": "/2020/12/15/created-online-blade-formatter-with-nuxt-vercel/",
+      "destination": "/posts/created-online-blade-formatter-with-nuxt-vercel",
+      "permanent": true
+    },
+    {
+      "source": "/2020/12/19/retrospective-2020/",
+      "destination": "/posts/retrospective-2020",
+      "permanent": true
+    },
+    {
+      "source": "/2020/12/22/switched-cms-from-netlify-to-forestry/",
+      "destination": "/posts/switched-cms-from-netlify-to-forestry",
+      "permanent": true
+    },
+    {
+      "source": "/2021/01/24/chrome/",
+      "destination": "/posts/published-amazon-3rd-party-seller-filter-chrome-extension",
+      "permanent": true
+    },
+    {
+      "source": "/2021/03/13/_2021-03/",
+      "destination": "/posts/books-recently-read-2021-03",
+      "permanent": true
+    },
+    {
+      "source": "/2021/12/19/_2021-12/",
+      "destination": "/posts/recently-read-books-2021-12",
+      "permanent": true
+    },
+    {
+      "source": "/2022/02/04/blade-prettier-plugin/",
+      "destination": "/posts/created-prettier-plugin-for-blade",
+      "permanent": true
+    },
+    {
+      "source": "/2022/11/23/vscode-blade-formatter-hits-2000-github-stars/",
+      "destination": "/posts/vscode-blade-formatter-hits-2000-github-stars",
+      "permanent": true
+    }
+  ]
+}
