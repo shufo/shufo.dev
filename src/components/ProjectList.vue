@@ -1,7 +1,7 @@
 <template>
   <div class="card-list">
     <a
-      :href="'projects/' + project.frontmatter.slug"
+      :href="'/projects/' + project.frontmatter.slug"
       tag="div"
       v-for="project in projects"
       :key="project.frontmatter.slug"
