@@ -1,0 +1,67 @@
+---
+import { SITE } from "src/config";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+import Tag from "@components/Tag.astro";
+import getUniqueTags from "@utils/getUniqueTags";
+import type { Frontmatter, ProjectFrontmatter } from "src/types";
+import Project from "@components/Project.vue";
+import ProjectList from "@components/ProjectList.vue";
+import { Debug } from "astro/components";
+import type { MarkdownInstance } from "astro";
+import slugify from "@utils/slugify";
+import getPageNumbers from "@utils/getPageNumbers";
+import { log } from "console";
+import ProjectDetail from "@components/ProjectDetail.vue";
+
+type PostResult = {
+  params: {
+    slug: string | number;
+  };
+  props?: {
+    project: MarkdownInstance<Record<string, any>>;
+  };
+}[];
+
+type PagePaths = {
+  params: {
+    slug: string;
+  };
+}[];
+
+export async function getStaticPaths() {
+  const projects = await Astro.glob<ProjectFrontmatter>(
+    "../../projects/**/*.md"
+  );
+
+  const filteredProjects = projects.filter(
+    ({ frontmatter }) => !frontmatter.draft
+  );
+
+  let projectResult: PostResult = filteredProjects.map(project => {
+    return {
+      params: {
+        slug: slugify(project.frontmatter),
+      },
+      props: {
+        project,
+      },
+    };
+  });
+
+  return projectResult;
+}
+
+const { slug } = Astro.params;
+const { project } = Astro.props;
+---
+
+<Layout title={`Projects | ${SITE.title}`}>
+  <Header activeNav="projects" />
+  <Main pageTitle={project.frontmatter.title} pageDesc={project.frontmatter.summary}>
+    <ProjectDetail project={project} />
+  </Main>
+  <Footer />
+</Layout>

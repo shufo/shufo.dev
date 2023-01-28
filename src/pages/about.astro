@@ -1,0 +1,44 @@
+---
+import { SITE } from "src/config";
+import Breadcrumbs from "@components/Breadcrumbs.astro";
+import Footer from "@components/Footer.astro";
+import Header from "@components/Header.astro";
+import Layout from "@layouts/Layout.astro";
+import { Img } from "astro-imagetools/components";
+
+export interface Props {
+  frontmatter: {
+    title: string;
+    description?: string;
+  };
+}
+---
+
+<Layout title={`About | ${SITE.title}`}>
+  <Header activeNav="about" />
+  <Breadcrumbs />
+  <main id="main-content">
+    <section id="about" class="mb-28 prose max-w-3xl prose-img:border-0">
+      <h1 class="text-2xl sm:text-3xl tracking-wider">About</h1>
+      <div class="avatar">
+      <img src="/assets/profile.jpg" alt="profile image" />
+      </div>
+      <p>
+        Hi, my name is Shuhei Hayashibara. I'm Software Engineer living in
+        Tokyo, Japan. I am a fan of web development, music, DIY, and Sauna. I'm
+        also interested in DJing, hiking and Photography. You can read my blog
+        with a click on the link below.
+      </p>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+<style>
+  .avatar img {
+    max-width: 126px;
+    max-height: 126px;
+    border-radius: 50%;
+    padding: 2px;
+    border: 1px solid #f2f3f3;
+  }
+</style>

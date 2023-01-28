@@ -1,0 +1,23 @@
+---
+import { SITE } from "src/config";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import Layout from "@layouts/Layout.astro";
+import Main from "@layouts/Main.astro";
+import Tag from "@components/Tag.astro";
+import getUniqueTags from "@utils/getUniqueTags";
+import type { ProjectFrontmatter } from "src/types";
+import Project from "@components/Project.vue";
+import ProjectList from "@components/ProjectList.vue";
+import { Debug } from "astro/components";
+import sortByPriority from "@utils/sortByPriority";
+
+const projects = (await Astro.glob<ProjectFrontmatter>("../../projects/**/*.md")).sort(sortByPriority);
+---
+<Layout title={`Projects | ${SITE.title}`}>
+  <Header activeNav="projects" />
+  <Main pageTitle="Projects" pageDesc="My Recent Projects.">
+    <ProjectList projects={projects} />
+  </Main>
+  <Footer />
+</Layout>

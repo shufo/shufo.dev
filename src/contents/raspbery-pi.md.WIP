@@ -1,0 +1,29 @@
+Title: Raspberry Piのある生活
+datetime: 2015-02-23 13:00
+Category: Raspberry pi
+Tags: IoT, Raspberry_pi
+Slug: raspberry-pi
+Author: shufo
+Summary: Raspberry Piで変わった点など
+
+## Overview
+
+今更感はあるけどRaspberry Piを買ったので使ってみた所感
+
+![raspberry-pi](http://www.yoppul.co.uk/yoppulv1/wp-content/uploads/2014/01/Raspberry-Pi-Logo1-620x350.png)
+
+## 手に入れた経緯
+
+住んでるとこが北側の部屋で朝晩の気温差が激しかったので家に帰る前にエアコンを入れたいってのがあったんだけど[IRKit](http://getirkit.com/)は前から気になってて
+インターネット経由でリモコンの信号を送れるデバイスらしいということだけ知ってて手に入れたら
+APIインターフェースもついてるしじゃあAPIを叩く用のDebianが動く(らしい)Raspberry piも買うかって感じでついでな感じでお迎えした。(Raspberry Pi 2が既に出てたことを知らずにB+を買った)
+
+## Raspberry Piを買ってよかった点
+
+これは自分がウェブ系エンジニアだからというのもあるけど気軽に作ったり壊したり出来る物理Linux環境が手に入ったのが嬉しかった。 
+
+PC買ってLinuxイメージ落としてインストールしてサーバ立てて電源挿してよっしゃLinux環境出来たみたいな工程を踏むと環境を壊すに壊せなくてちょっとした変更やアップデートも次第に躊躇するようになる。
+そういった工程が一切必要なくてMacでマイクロSD書き込んでRaspberry Piに挿して電源用のマイクロUSBケーブル繋げるだけでLinux環境が完成する環境があると思い切った変更とかしやすい。  
+
+極端な話OSが壊れてもマイクロSDを上書きして挿し直すだけでいいし物理的には一般的なPCと全く同じアーキテクチャなのに扱える気軽さが仮想マシンのそれに近い。  
+ハードはそのままでイメージだけ交換したければマイクロSDを差し替えるだけでいいしデータは全てSDカードの中に詰まっている。

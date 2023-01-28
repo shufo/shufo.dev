@@ -1,0 +1,196 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Header from "@components/Header.astro";
+import Footer from "@components/Footer.astro";
+import LinkButton from "@components/LinkButton.astro";
+import Hr from "@components/Hr.astro";
+import Card from "@components/Card";
+import getSortedPosts from "@utils/getSortedPosts";
+import slugify from "@utils/slugify";
+import type { Frontmatter, ProjectFrontmatter } from "src/types";
+import Socials from "@components/Socials.astro";
+import { SOCIALS } from "@config";
+import { Content as PGP } from "@components/PGP.md";
+import ProjectList from "@components/ProjectList.vue";
+import sortByPriority from "@utils/sortByPriority";
+
+const posts = await Astro.glob<Frontmatter>("../contents/**/*.md");
+
+const sortedPosts = getSortedPosts(posts);
+const featuredPosts = sortedPosts.filter(
+  ({ frontmatter }) => frontmatter.featured
+);
+
+const socialCount = SOCIALS.filter(social => social.active).length;
+
+const projects = (await Astro.glob<ProjectFrontmatter>("../projects/**/*.md")).sort(sortByPriority);
+
+---
+
+<Layout>
+  <Header />
+  <main id="main-content">
+    <section id="hero">
+      <div class="profile">
+        <div class="info">
+          <div class="name">
+            Shuhei Hayashibara
+            <a
+              target="_blank"
+              href="/rss.xml"
+              class="rss-link"
+              aria-label="rss feed"
+              title="RSS Feed"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
+                ><path
+                  d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"
+                ></path><path
+                  d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
+                ></path><circle cx="6" cy="18" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+          <div class="bio">
+            <p>Software Engineer</p>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        Hi, my name is Shuhei Hayashibara. I'm Software Engineer living in
+        Tokyo, Japan. I am a fan of web development, music, DIY, and Sauna. I'm
+        also interested in DJing, hiking and Photography. You can read my blog
+        with a click on the link below.
+      </p>
+      {
+        // only display if at least one social link is enabled
+        socialCount > 0 && (
+          <div class="social-wrapper">
+            <div class="social-links">Social Links:</div>
+            <Socials />
+          </div>
+        )
+      }
+    </section>
+
+    <Hr />
+
+    {
+      featuredPosts.length > 0 && (
+        <>
+          <section id="featured">
+            <h2>Featured</h2>
+            <ul>
+              {featuredPosts.map(({ frontmatter }) => (
+                <Card
+                  href={`/posts/${slugify(frontmatter)}`}
+                  post={frontmatter}
+                  secHeading={false}
+                />
+              ))}
+            </ul>
+          </section>
+          <Hr />
+        </>
+      )
+    }
+
+    <section id="recent-posts">
+      <h2>Recent Posts</h2>
+      <ul>
+        {
+          sortedPosts.map(
+            ({ frontmatter }, index) =>
+              index < 5 && (
+                <Card
+                  href={`/posts/${slugify(frontmatter)}`}
+                  post={frontmatter}
+                  secHeading={false}
+                />
+              )
+          )
+        }
+      </ul>
+      <div class="all-posts-btn-wrapper">
+        <LinkButton href="/posts">
+          All Posts
+          <svg xmlns="http://www.w3.org/2000/svg"
+            ><path
+              d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
+            ></path>
+          </svg>
+        </LinkButton>
+      </div>
+    </section>
+    <Hr />
+    <section id="projects">
+      <h2>Projects</h2>
+      <ProjectList client:visible projects={projects} />
+    </section>
+    <Hr />
+    <section id="pgp">
+      <h2>PGP</h2>
+      <article class="prose">
+      <PGP />
+
+      </article>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  /* ===== Hero Section ===== */
+  #hero {
+    @apply pt-8 pb-6;
+  }
+  #hero h1 {
+    @apply inline-block font-bold my-4 sm:my-8 text-2xl sm:text-4xl;
+  }
+  #hero .rss-link {
+    @apply mb-6;
+  }
+  #hero .rss-icon {
+    @apply h-6 w-6 scale-110 sm:scale-125 mb-2 sm:mb-3 fill-skin-accent;
+  }
+  #hero p {
+    @apply my-2;
+  }
+  .social-wrapper {
+    @apply flex flex-col sm:flex-row sm:items-center mt-4;
+  }
+  .social-links {
+    @apply whitespace-nowrap mr-2 sm:mb-0 mb-1;
+  }
+
+  #hero .profile {
+    @apply flex flex-row items-stretch;
+  }
+
+  #hero .profile > .info {
+    @apply flex flex-col items-stretch;
+  }
+
+  #hero .profile > .info > .name {
+    @apply mb-2 text-4xl font-bold;
+  }
+
+  /* ===== Featured & Recent Posts Sections ===== */
+  #featured,
+  #recent-posts,
+  #pgp,
+  #projects {
+    @apply pt-12 pb-6;
+  }
+  #featured h2,
+  #pgp h2,
+  #recent-posts h2,
+  #projects h2 {
+    @apply font-semibold text-2xl tracking-wide;
+  }
+  .all-posts-btn-wrapper {
+    @apply text-center my-8;
+  }
+</style>
