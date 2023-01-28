@@ -4,7 +4,7 @@ My blog built with
 
 - [Astro](https://astro.build/) (SSG)
 - [AstroPaper](https://github.com/satnaing/astro-paper) (Blog Theme)
-- [Netlify](https://www.netlify.com/) (Hosting)
+- [Vercel](https://vercel.com/) (Hosting)
 - [Forestry.io](https://app.forestry.io/) (CMS)
 
 ## Development
