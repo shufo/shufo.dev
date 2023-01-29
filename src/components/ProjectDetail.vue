@@ -9,13 +9,13 @@
       :title="project.frontmatter.title"
       :year="project.frontmatter.year.toString()"
       :categories="project.frontmatter.categories"
+      :tools="project.frontmatter.tools"
     />
     <Thumbnail
       v-if="project.frontmatter.thumbnail"
       :src="project.frontmatter.thumbnail"
       height="300px"
     />
-    <Content />
   </div>
 </template>
 
