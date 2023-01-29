@@ -4,7 +4,7 @@
     <div class="card-content">
       <div class="card-link">
         <i v-for="tool in tools" :key="tool" :alt="tool" :title="tool">
-          <Icon :svg="toolIcons[tool]" />
+          <Icon :svg="toolIcons[tool.toLowerCase()]" />
         </i>
       </div>
       <h1 class="card-title" :class="{ 'dark-mode': darkMode }">{{ title }}</h1>
