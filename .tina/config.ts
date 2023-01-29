@@ -22,7 +22,19 @@ export default defineConfig({
       {
         name: "post",
         label: "Posts",
+        format: 'md',
         path: "src/contents",
+        ui: {
+          filename: {
+            // if disabled, the editor can not edit the filename
+            readonly: true,
+            // Example of using a custom slugify function
+            slugify: values => {
+              // Values is an object containing all the values of the form.
+              return `${(new Date(values.datetime))?.toLocaleString('en-CA').split(',')[0]}-${values?.slug}`
+            },
+          },
+        },
         defaultItem: () => {
           return {
             // When a new post is created the title field will be set to "New post"
