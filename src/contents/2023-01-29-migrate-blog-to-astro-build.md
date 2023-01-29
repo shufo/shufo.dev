@@ -17,7 +17,7 @@ featured: false
 
 Astroの[公式サイトの説明](https://docs.astro.build/en/concepts/why-astro/ "")を見てもらうのが早いかもしれない
 
-`Astro is an all-in-one web frameworkfor buildingfast, content-focusedwebsites.`
+`Astro is an all-in-one web framework for buildingfast, content-focusedwebsites.`
 
 コンテンツ主体のウェブサイトを高速に作れるオールインワンウェブフレームワーク、という説明だが実際使ってみた感じ概ね合っていると思う.&#x20;
 
@@ -36,7 +36,7 @@ Scrapboxにも SPA に関する[メモ](https://scrapbox.io/shufo/SPA%E3%81%AF%E
 * [An SPA Alternative](https://htmx.org/essays/spa-alternative/ "")
 * [Second-guessing the modern web](https://macwright.com/2020/05/10/spa-fatigue.html "")
 * [State of JS 2022](https://2022.stateofjs.com/en-US/ "")
-  * AlpineやSvelte等非VDOM系軽量UIフレームワークや、Remix, AstroなどMPAアプローチをするライブラリの関心度が高くなっている
+  * AlpineやSvelte等非VDOM系軽量UIフレームワークや、Remix, AstroなどMPAアプローチをするライブラリの関心度が高くなっている. ([Rendering Framework部門](https://2022.stateofjs.com/en-US/libraries/rendering-frameworks/)ではNext.jsやNuxt.jsといった強豪を押さえて Astro がもっとも関心を持たれているフレームワークとなっている）
 * [SPA by default | Thought Works](https://www.thoughtworks.com/radar/techniques/spa-by-default "")
   * アーキテクチャ上の必要性やビジネス上の必要性など無くSPAを選択しまうことに警鐘を鳴らしている
 
@@ -46,7 +46,7 @@ Scrapboxにも SPA に関する[メモ](https://scrapbox.io/shufo/SPA%E3%81%AF%E
 
 そのもやもやをまさにピンポイントでソリューションとして提供する Astro は現状の SPA へのアンサーとして、とても正しいように思える。要は我々がやりたいことは完全に影響が独立したコンポーネント指向＆開発者体験の向上だったのだけど、いつのまにかコンポーネント指向をサポートする UI フレームワークでの SPA 開発がコンポーネント指向とセットのようにすり替えられて SPA が目的化してしまい、不必要な場面でパフォーマンスを犠牲にしてしまいユーザへの裏切りとなってしまったことへの。
 
-Astro はその現状の問題によくフィットするソリューションとなっている。Astro 自体は薄いビルドとアーキテクチャを提供するメタフレームワーク程度の Wrapper 風な顔をしていて Astro コンポーネント自体は多機能すぎないのもいい。Astro コンポーネントだけでも十分 Web アプリを作ることは出来るが凝ったことをやろうと思ったら React や Vue の豊富なエコシステムを利用すればいいという割り切りも見える。JSフレームワークでありながら不必要な箇所ではHTML-centricにしZero JSを目指す方向も共感出来る。
+Astro はその現状の問題によくフィットするソリューションとなっている。Astro 自体は薄いビルドとアーキテクチャを提供するメタフレームワーク程度の Wrapper 風な顔をしていて(Rendering Frameworkと呼ばれるらしいが) Astro コンポーネント自体は多機能すぎないのもいい。Astro コンポーネントだけでも十分 Web アプリを作ることは出来るが凝ったことをやろうと思ったら React や Vue の豊富なエコシステムを利用すればいいという割り切りも見える。JSフレームワークでありながら不必要な箇所ではHTML-centricにしZero JSを目指す方向も共感出来る。
 
 ## 移行
 
@@ -79,7 +79,7 @@ $  cat vercel.json
 
 ### 既存Vue資産
 
-移行前のブログで Vue で作っていたコンポーネント資産があったため一部そのまま使用している（プロジェクトの一覧など）。一方ベースとなる [AstroPaper](https://github.com/satnaing/astro-paper) は React Component で実装されていたので早速 Island Architecture の目玉であるコンポーネントの混在をしている。今の所特に問題はない。&#x20;
+移行前のブログで Vue で作っていたコンポーネント資産があったため一部そのまま使用している（プロジェクトの一覧など）。一方ベースとなる [AstroPaper](https://github.com/satnaing/astro-paper "") は React Component で実装されていたので早速 Island Architecture の目玉であるコンポーネントの混在をしている。今の所特に問題はない。&#x20;
 
 近年はどの UI フレームワークでも基本的に出来ることはほぼ変わらないので任意の UI フレームワークでのコンポーネントを混在して使える Island Architecture は実際のビジネスニーズとしても訴求点になると思う。
 
@@ -89,15 +89,13 @@ $  cat vercel.json
 
 ### CMS
 
-以前は Forestry.io を使用していたのだけど 2023/04 で [Discontinued してしまう](https://forestry.io/blog/forestry.io-end-of-life/)ので[TinaCMS](https://tina.io/)へ移行した。
+以前は Forestry.io を使用していたのだけど 2023/04 で [Discontinued してしまう](https://forestry.io/blog/forestry.io-end-of-life/ "")ので[TinaCMS](https://tina.io/ "")へ移行した。
 
 forestry.io の開発チームと同じチームが開発しているので forestry.io を使っていた人はほぼ同じ感覚で使えると思うけど、forestry.ioと同様にGitベースのCMSとなっている。
 
 ```shell
 $  npx @tinacms/cli@latest init
 ```
-
-
 
 で初期化し Tina の Config を設定する. コンテンツの保存先ディレクトリや Frontmatter の入力項目等指定することでそのフォーマットで .md ファイルが作成される.
 
@@ -207,9 +205,23 @@ export default defineConfig({
 });
 ```
 
-
-
 Tina の Client ID や Read Only Token などは Vercel の環境変数に設定する。
+
+
+
+#### その他Trouble Shoot
+
+* Astro コンポーネント内でのデバッグが最初分からず `console.log` してもブラウザに出力されないのでなぜかと思ったけど Staticモードなのでビルド時に出力されていただけだった。 -> Dev Serverを起動しているセッションのログを確認
+* Astro コンポーネント内での変数の画面出力
+
+```javascript
+---
+import { Debug } from "astro/components";
+---
+  <Debug user={user} /> 
+```
+
+* Vue の @load が動作しない -> Hydrationが必要で client:load 指定子をコンポーネントに指定する必要があった. (デフォルトでは静的にビルドされるためクライアントでイベントハンドリングが必要なものは必ず指定が必要）
 
 
 
@@ -217,5 +229,6 @@ Tina の Client ID や Read Only Token などは Vercel の環境変数に設定
 
 ブログを Astro に移行した。
 
-移行にかかったのは実質2日程度だったと思う。Astro コンポーネントの記法というか癖もほぼ無く、既存資産をほぼそのまま使用出来たので
+移行にかかったのは実質2日程度だったと思う。Astro コンポーネントの記法というか癖もほぼ無く、既存資産をほぼそのまま使用出来たので思ったより短時間で移行出来た。
 
+React や Vue が登場してから約 10 年が経ち
