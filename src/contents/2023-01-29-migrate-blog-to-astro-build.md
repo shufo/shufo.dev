@@ -31,7 +31,7 @@ Astroの[公式サイトの説明](https://docs.astro.build/en/concepts/why-astr
 
 ## なぜ Astro なのか&#x20;
 
-Scrapboxにも SPA に関する[メモ](https://scrapbox.io/shufo/SPA%E3%81%AF%E9%96%93%E9%81%95%E3%81%84%E3%81%A0%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%8B "")を書いていたのだけど 2022 年辺りから過剰な SPA への反省という文脈がある程度共通認識として開発者界隈に広がってきたように思える。
+Scrapbox にも SPA に関する[メモ](https://scrapbox.io/shufo/SPA%E3%81%AF%E9%96%93%E9%81%95%E3%81%84%E3%81%A0%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%8B "")を書いていたのだけど 2022 年辺りから過剰な SPA への反省という文脈がある程度共通認識として開発者界隈に広がってきたように思える。
 
 * [An SPA Alternative](https://htmx.org/essays/spa-alternative/ "")
 * [Second-guessing the modern web](https://macwright.com/2020/05/10/spa-fatigue.html "")
