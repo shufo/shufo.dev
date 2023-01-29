@@ -231,7 +231,7 @@ import { Debug } from "astro/components";
 
 ## まとめ
 
-ブログを Astro に移行した。
+ブログを Astro に移行した。ブログのソースは[こちら](https://github.com/shufo/shufo.dev)。
 
 移行にかかったのは実質2日程度だったと思う。Astro コンポーネントの記法というか癖もほぼ無く、既存資産をほぼそのまま使用出来たので思ったより短時間で移行出来た。
 
