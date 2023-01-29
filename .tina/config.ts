@@ -46,6 +46,7 @@ export default defineConfig({
             ui: {
               timeFormat: "HH:mm"
             },
+            required: true,
           },
           {
             type: "string",
@@ -74,11 +75,13 @@ export default defineConfig({
             type: "boolean",
             name: "draft",
             label: "Draft",
+            required: true,
           },
           {
             type: "boolean",
             name: "featured",
             label: "Featured",
+            required: true,
           }
         ],
       },
