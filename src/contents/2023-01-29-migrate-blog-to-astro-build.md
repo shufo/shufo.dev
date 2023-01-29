@@ -21,7 +21,7 @@ Astroの[公式サイトの説明](https://docs.astro.build/en/concepts/why-astr
 
 コンテンツ主体のウェブサイトを高速に作れるオールインワンウェブフレームワーク、という説明だが実際使ってみた感じ概ね合っていると思う.&#x20;
 
-特徴的なのが Astro で採用している Island Architecture と呼ばれるアーキテクチャで、UIの各コンポーネントを Island (島）のように見立ててそれぞれ独立したマイクロフロントエンドのように扱うことが出来る構成になっていること。
+特徴的なのが Astro で採用している [Island Architecture](https://docs.astro.build/ja/concepts/islands/) と呼ばれるアーキテクチャで、UIの各コンポーネントを Island (島）のように見立ててそれぞれ独立したマイクロフロントエンドのように扱うことが出来る構成になっていること。
 
 完全に Static な HTML とレンダリング後に Hydration (静的なHTMLに後からイベントハンドラを設定)して JS により動的な操作が出来るコンポーネントを混ぜることで最終的な JS の読み込み量を減らしパフォーマンスの改善が計れるパラダイムとなっている。
 
@@ -91,7 +91,7 @@ $  cat vercel.json
 
 以前は [Forestry.io ](https://forestry.io/)を使用していたのだけど 2023/04 で [Discontinued してしまう](https://forestry.io/blog/forestry.io-end-of-life/ "")ので[TinaCMS](https://tina.io/ "")へ移行した。
 
-TinaCMS は forestry.io の開発チームと同じチームが開発しているので forestry.io を使っていた人はほぼ同じ感覚で使えると思う。forestry.ioと同様にGitベースのCMSとなっている。
+TinaCMS は forestry.io の開発チームと同じチームが開発しているので forestry.io を使っていた人はほぼ同じ感覚で使えると思う。forestry.io と同様に Git ベースの CMS となっており、OSS でローカルでも使えるがクラウド版を利用してホスティングサイトに管理画面をデプロイすることも出来る。
 
 ```shell
 $  npx @tinacms/cli@latest init
@@ -207,7 +207,7 @@ export default defineConfig({
 
 Tina の Client ID や Read Only Token などは Vercel の環境変数に設定する。
 
-軽く TinaCMS を使ってみた感想としては forestry.io より柔軟にコンテンツ定義など出来るようになったものの、GraphQLベースになっていたりやや癖は強い。
+軽く TinaCMS を使ってみた感想としては forestry.io より柔軟にコンテンツ定義など出来るようになったものの、Next.jsベースになっておりややローカルで動かすには重くなった印象。
 
 ### その他Trouble Shoot
 
