@@ -10,10 +10,10 @@ categories:
 links:
   github: https://github.com/shufo/blade-formatter
 tools:
-  - nodejs
-  - javascript
+  - Nodejs
+  - TypeScript 
   - eslint
-  - prettier
+  - Prettier
 slug: blade-formatter
 priority: 95
 ---

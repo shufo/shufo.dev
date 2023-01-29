@@ -10,10 +10,10 @@ categories:
 links:
   github: https://github.com/shufo/vscode-blade-formatter
 tools:
-  - vscode
-  - laravel
-  - nodejs
-  - javascript
+  - VSCode
+  - Laravel
+  - Nodejs
+  - TypeScript 
 slug: vscode-blade-formatter
 priority: 100
 ---

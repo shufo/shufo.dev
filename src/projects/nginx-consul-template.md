@@ -11,8 +11,8 @@ categories:
 links:
   github: https://github.com/shufo/nginx-consul-template
 tools:
-  - nginx
-  - consul
+  - Nginx
+  - Consul
 slug: nginx-consul-template
 priority: 1
 ---

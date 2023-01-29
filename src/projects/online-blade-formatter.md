@@ -10,11 +10,11 @@ categories:
 links:
   github: https://github.com/shufo/online-blade-formatter
 tools:
-  - nodejs
-  - javascript
-  - nuxt
+  - Nodejs
+  - TypeScript 
+  - Nuxt
   - eslint
-  - prettier
+  - Prettier
 slug: online-blade-formatter
 priority: 92
 ---

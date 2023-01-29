@@ -10,9 +10,9 @@ categories:
 links:
   github: https://github.com/shufo/log_viewer
 tools:
-  - elixir
-  - nuxt
-  - vuetifyjs
+  - Elixir
+  - Nuxt
+  - Vuetifyjs
 slug: log_viewer
 priority: 90
 ---

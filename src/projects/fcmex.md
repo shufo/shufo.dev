@@ -10,7 +10,7 @@ categories:
 links:
   github: https://github.com/shufo/fcmex
 tools:
-  - elixir
+  - Elixir
 slug: fcmex
 priority: 80
 ---
