@@ -83,4 +83,6 @@ export type Tool =
   | "react"
   | "nginx"
   | "consul"
+  | "typescript"
+  | "vercel"
   | "vscode";
