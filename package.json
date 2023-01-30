@@ -51,7 +51,10 @@
     }
   },
   "lint-staged": {
-    "*": [
+    "*.ts": [
+      "prettier --write"
+    ],
+    "*.astro": [
       "prettier --write"
     ]
   }
