@@ -56,7 +56,7 @@ Astro はその現状の問題によくフィットするソリューション�
 
 ### Hosting&#x20;
 
-Netlify から [Cloudflare Pages](https://pages.cloudflare.com/) へホスティングサービスを乗り換えた。Netlify の [Free プランは全てのリージョンの CDN を利用出来るというわけではなく](https://answers.netlify.com/t/changing-deployment-region/25265/2 "")、静的なホスティングでもややひっかかりを感じるくらいにはレスポンスの遅さを感じたため。最初 Vercel でホスティングも試したが自分のネット環境が IPoEだったので IPv6 に対応していない Vercel と比べて IPv6 に対応している Cloudflare Pages の方が体感早かった。Page Speed等で試したスコアは変わらないので IPv4 環境では Vercel と Cloudflare Pages の差はほぼ感じないと思う。IPv6 環境は最近は一般家庭にも普及してきていると思うので対応している Cloudflare Pages の方が早く感じる環境も多そう。
+Netlify から [Cloudflare Pages](https://pages.cloudflare.com/) へホスティングサービスを乗り換えた。Netlify の [Free プランは全てのリージョンの CDN を利用出来るというわけではなく](https://answers.netlify.com/t/changing-deployment-region/25265/2 "")、静的なホスティングでもややひっかかりを感じるくらいにはレスポンスの遅さを感じたため。最初 Vercel でホスティングも試したが自分のネット環境が IPoEだったので IPv6 に対応していない Vercel と比べて IPv6 に対応している Cloudflare Pages の方が体感早かった。Page Speed等で試したスコアは変わらないので IPv4 環境では Vercel と Cloudflare Pages の差はほぼ感じないと思う。IPv6 環境は最近は一般家庭にも[急速に普及してきている](https://logmi.jp/tech/articles/324984)ので IPv6 対応している Cloudflare Pages の方が早く感じる環境も多そう。
 
 Netlifyからの移行は GitHub デプロイ連携設定と DNS の向き先変更以外に特に面倒なことはなかった。元のサイトのエントリーのパスが `/2022/10/21/~~` というような形式だったのを `/posts/~` にリダイレクトするため  `_redirects` ファイルを作成しリダイレクト設定を書いた
 
