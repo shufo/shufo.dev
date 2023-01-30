@@ -4,8 +4,8 @@ My blog built with
 
 - [Astro](https://astro.build/) (SSG)
 - [AstroPaper](https://github.com/satnaing/astro-paper) (Blog Theme)
-- [Vercel](https://vercel.com/) (Hosting)
-- [Forestry.io](https://app.forestry.io/) (CMS)
+- [Cloudflare Pages](https://pages.cloudflare.com/) (Hosting)
+- [TinaCMS](https://tina.io/) (CMS)
 
 ## Development
 
