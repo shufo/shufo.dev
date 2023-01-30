@@ -7,7 +7,7 @@ tags:
   - cms
   - blog
   - astro
-draft: true
+draft: false
 featured: true
 ---
 
