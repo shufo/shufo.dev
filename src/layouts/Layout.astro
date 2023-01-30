@@ -57,7 +57,7 @@ const fallbackImageURL = new URL(SITE.ogImage, Astro.url.origin).href;
     <meta
       property="twitter:image"
       content={socialImageURL.endsWith(".svg")
-        ? fallbackImageURL
+        ? `${socialImageURL.slice(0, -4)}.png`
         : socialImageURL}
     />
 
