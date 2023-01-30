@@ -9,6 +9,7 @@ tags:
   - astro
 draft: false
 featured: true
+description: Astro + Cloudflare Pages + TinaCMS に移行した話
 ---
 
 ブログを [Astro](https://astro.build/ "") に移行した
