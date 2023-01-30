@@ -2,8 +2,8 @@ import type { SocialObjects } from "./types";
 
 export const SITE = {
   website: "https://www.shufo.dev/",
-  author: "Shuhei Hayashibara",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
+  author: "shufo",
+  desc: "https://www.shufo.dev/",
   title: "shufo.dev",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
