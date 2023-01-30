@@ -5,7 +5,7 @@ export const SITE = {
   author: "shufo",
   desc: "https://www.shufo.dev/",
   title: "shufo.dev",
-  ogImage: "astropaper-og.jpg",
+  ogImage: "profile.jpg",
   lightAndDarkMode: true,
   postPerPage: 10,
 };
