@@ -21,7 +21,7 @@ Astroの[公式サイトの説明](https://docs.astro.build/en/concepts/why-astr
 
 コンテンツ主体のウェブサイトを高速に作れるオールインワンウェブフレームワーク、という説明だが実際使ってみた感じ概ね合っていると思う.&#x20;
 
-特徴的なのが Astro で採用している [Island Architecture](https://docs.astro.build/ja/concepts/islands/) と呼ばれるアーキテクチャで、UIの各コンポーネントを Island (島）のように見立ててそれぞれ独立したマイクロフロントエンドのように扱うことが出来る構成になっていること。
+特徴的なのが Astro で採用している [Island Architecture](https://docs.astro.build/ja/concepts/islands/ "") と呼ばれるアーキテクチャで、UIの各コンポーネントを Island (島）のように見立ててそれぞれ独立したマイクロフロントエンドのように扱うことが出来る構成になっていること。
 
 完全に Static な HTML とレンダリング後に Hydration (静的なHTMLに後からイベントハンドラを設定)して JS により動的な操作が出来るコンポーネントを混ぜることで最終的な JS の読み込み量を減らしパフォーマンスの改善が計れるパラダイムとなっている。
 
@@ -36,7 +36,7 @@ Scrapbox にも SPA に関する[メモ](https://scrapbox.io/shufo/SPA%E3%81%AF%
 * [An SPA Alternative](https://htmx.org/essays/spa-alternative/ "")
 * [Second-guessing the modern web](https://macwright.com/2020/05/10/spa-fatigue.html "")
 * [State of JS 2022](https://2022.stateofjs.com/en-US/ "")
-  * AlpineやSvelte等非VDOM系軽量UIフレームワークや、Remix, AstroなどMPAアプローチをするライブラリの関心度が高くなっている. ([Rendering Framework部門](https://2022.stateofjs.com/en-US/libraries/rendering-frameworks/)ではNext.jsやNuxt.jsといった強豪を押さえて Astro がもっとも関心を持たれているフレームワークとなっている）
+  * AlpineやSvelte等非VDOM系軽量UIフレームワークや、Remix, AstroなどMPAアプローチをするライブラリの関心度が高くなっている. ([Rendering Framework部門](https://2022.stateofjs.com/en-US/libraries/rendering-frameworks/ "")ではNext.jsやNuxt.jsといった強豪を押さえて Astro がもっとも関心を持たれているフレームワークとなっている）
 * [SPA by default | Thought Works](https://www.thoughtworks.com/radar/techniques/spa-by-default "")
   * アーキテクチャ上の必要性やビジネス上の必要性など無くSPAを選択しまうことに警鐘を鳴らしている
 
@@ -52,34 +52,24 @@ Astro はその現状の問題によくフィットするソリューション�
 
 ### テーマ
 
-[AstroPaper](https://github.com/satnaing/astro-paper) という Astro のブログテーマを使っている。概ね既存のブログテーマと一緒だったのと、色々 Astro をいじる上で参考になりそうだったので。使ってみると分かるけど Astro 自体の層はやはり薄く、ブラックボックスになるところが少ないので少し詰まってもコンポーネントのソース見れば大体分かるというのがよい。
+[AstroPaper](https://github.com/satnaing/astro-paper "") という Astro のブログテーマを使っている。概ね既存のブログテーマと一緒だったのと、色々 Astro をいじる上で参考になりそうだったので。使ってみると分かるけど Astro 自体の層はやはり薄く、ブラックボックスになるところが少ないので少し詰まってもコンポーネントのソース見れば大体分かるというのがよい。
 
 ### Hosting&#x20;
 
-Netlify から Vercel へホスティングサービスを乗り換えた。Netlify の [Free プランは全てのリージョンの CDN を利用出来るというわけではなく](https://answers.netlify.com/t/changing-deployment-region/25265/2 "")、静的なホスティングでも Vercel と比べるとややひっかかりを感じるくらいにはレスポンスの遅さを感じたため。
+Netlify から [Cloudflare Pages](https://pages.cloudflare.com/) へホスティングサービスを乗り換えた。Netlify の [Free プランは全てのリージョンの CDN を利用出来るというわけではなく](https://answers.netlify.com/t/changing-deployment-region/25265/2 "")、静的なホスティングでもややひっかかりを感じるくらいにはレスポンスの遅さを感じたため。最初 Vercel でホスティングも試したが自分のネット環境が IPoEだったので IPv6 に対応していない Vercel と比べて IPv6 に対応している Cloudflare Pages の方が体感早かった。Page Speed等で試したスコアは変わらないので IPv4 環境では Vercel と Cloudflare Pages の差はほぼ感じないと思う。IPv6 環境は最近は一般家庭にも普及してきていると思うので対応している Cloudflare Pages の方が早く感じる環境も多そう。
 
-Netlifyからの移行は GitHub デプロイ連携設定と DNS の向き先変更以外に特に面倒なことはなかった。元のサイトのエントリーのパスが `/2022/10/21/~~` というような形式だったのを `/posts/~` にリダイレクトするため  [Migration ガイド](https://vercel.com/guides/migrate-to-vercel-from-netlify "") を参考に `vercel.json` にリダイレクト設定を書いていった
+Netlifyからの移行は GitHub デプロイ連携設定と DNS の向き先変更以外に特に面倒なことはなかった。元のサイトのエントリーのパスが `/2022/10/21/~~` というような形式だったのを `/posts/~` にリダイレクトするため  `_redirects` ファイルを作成しリダイレクト設定を書いた
 
-```json
-$  cat vercel.json
-{
-  "redirects": [
-    {
-      "source": "/remote-development-with-vscode-and-softether/",
-      "destination": "/posts/remote-development-with-vscode-and-softether",
-      "permanent": true
-    },
-~中略~
-    {
-      "source": "/2022/11/23/vscode-blade-formatter-hits-2000-github-stars/",
-      "destination": "/posts/vscode-blade-formatter-hits-2000-github-stars",
-      "permanent": true
-    }
-  ]
-}
+```shell
+$  cat public/_redirects | tail -n 3
+/2021/12/19/_2021-12/ /posts/recently-read-books-2021-12 301
+/2022/02/04/blade-prettier-plugin/ /posts/created-prettier-plugin-for-blade 301
+/2022/11/23/vscode-blade-formatter-hits-2000-github-stars/ /posts/vscode-blade-formatter-hits-2000-github-stars 301
 ```
 
-数自体はそこまで多くなかったのでファイル名や slug をコマンドラインでこねこねしてJSON出力させてすぐに終わった
+
+
+frontmatter の slug などを grep やらで抜き出して vim でこねこねしただけなのであまり時間はかからなかった。
 
 ### 既存Vue資産
 
@@ -93,9 +83,9 @@ $  cat vercel.json
 
 ### CMS
 
-以前は [Forestry.io ](https://forestry.io/)を使用していたのだけど 2023/04 で [Discontinued してしまう](https://forestry.io/blog/forestry.io-end-of-life/ "")ので[TinaCMS](https://tina.io/ "")へ移行した。
+以前は [Forestry.io ](https://forestry.io/ "")を使用していたのだけど 2023/04 で [Discontinued してしまう](https://forestry.io/blog/forestry.io-end-of-life/ "")ので[TinaCMS](https://tina.io/ "")へ移行した。
 
-TinaCMS は forestry.io の開発チームと同じチームが開発しているので forestry.io を使っていた人はほぼ同じ感覚で使えると思う。forestry.io と同様に Git ベースの CMS となっており、OSS でローカルでも使えるがクラウド版を利用してホスティングサイトに管理画面をデプロイすることも出来る。
+TinaCMS は forestry.io の開発チームと同じチームが開発しているので forestry.io を使っていた人はほぼ同じ感覚で使えると思う。forestry.io と同様に Git ベースの CMS となっており、OSS でローカルでも使えるがクラウド版を利用してホスティングサービスに管理画面をデプロイすることも出来る。
 
 ```shell
 $  npx @tinacms/cli@latest init
@@ -231,7 +221,7 @@ import { Debug } from "astro/components";
 
 ## まとめ
 
-ブログを Astro に移行した。ブログのソースは[こちら](https://github.com/shufo/shufo.dev)。
+ブログを Astro に移行した。ブログのソースは[こちら](https://github.com/shufo/shufo.dev "")。
 
 移行にかかったのは実質2日程度だったと思う。Astro コンポーネントの記法というか癖もほぼ無く、既存資産をほぼそのまま使用出来たので思ったより短時間で移行出来た。
 
@@ -239,4 +229,4 @@ React や Vue が登場してから約 10 年が経ち良い意味でも悪い�
 
 SPA は見かけ上の制作の難易度に比べて継続的な運用面はハードでありソリューションとしてはずっと適用出来る範囲は狭いと思っているのでこれからもカウンターとしての MPA でのアプローチには期待していきたい。
 
-余談だけど [HotWire](https://hotwired.dev/) や [LiveView](https://github.com/phoenixframework/phoenix_live_view),  [LiveWire](https://laravel-livewire.com/)などJSレスで動的な画面を実現する方向性も成熟し Stable になってきているのでそちらの方向でのアプローチも期待したい。本格的な SPA を実装するほどでもないけど簡単なデータバインディングをしたりポーリングのような動作をしたい時、APIインターフェースすら気にすることなくサーバでのデータ構造をそのままフロントエンドで使える体験はとてもよく、別方向での MPA と SPA を統合していく正しいアプローチだと思う。SPA のセキュリティについては[徳丸さんも指摘している通り](https://blog.tokumaru.org/2022/09/super-introduction-to-spa.html)近年脆弱性が増加しており、最新の正しい知識を仕入れて実装するというのは意外と難しい。セキュアであることは近年より求められているアーキテクチャ特性であり HotWire や LiveWire といったサーバを起点としたアプローチで不必要な脆弱性を作り込むことを減らせるのではないかと期待している。
+余談だけど [HotWire](https://hotwired.dev/ "") や [LiveView](https://github.com/phoenixframework/phoenix_live_view ""),  [LiveWire](https://laravel-livewire.com/ "")などJSレスで動的な画面を実現する方向性も成熟し Stable になってきているのでそちらの方向でのアプローチも期待したい。本格的な SPA を実装するほどでもないけど簡単なデータバインディングをしたりポーリングのような動作をしたい時、APIインターフェースすら気にすることなくサーバでのデータ構造をそのままフロントエンドで使える体験はとてもよく、別方向での MPA と SPA を統合していく正しいアプローチだと思う。SPA のセキュリティについては[徳丸さんも指摘している通り](https://blog.tokumaru.org/2022/09/super-introduction-to-spa.html "")近年脆弱性が増加しており、最新の正しい知識を仕入れて実装するというのは意外と難しい。セキュアであることは近年より求められているアーキテクチャ特性であり HotWire や LiveWire といったサーバを起点としたアプローチで不必要な脆弱性を作り込むことを減らせることはこれから必要になるアプローチなんじゃないかと思ってる。
