@@ -37,4 +37,10 @@ export default defineConfig({
     },
     extendDefaultPlugins: true,
   },
+  vite: {
+    // Let the library user control minification in their own bundler
+    optimizeDeps: {
+      exclude: ["@resvg/resvg-js"],
+    },
+  },
 });
