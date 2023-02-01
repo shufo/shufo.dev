@@ -5,6 +5,7 @@ tags:
   - Mac 
   - PC
 permalink: alternative_to_mac
+slug: alternative_to_mac
 author: shufo
 description: Macbook Proを捨ててThinkpad X220を買った話
 ---

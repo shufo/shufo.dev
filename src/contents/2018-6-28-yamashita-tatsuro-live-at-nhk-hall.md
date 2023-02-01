@@ -5,6 +5,7 @@ tags:
   - Music
 description: 山下達郎のコンサートに行った話
 permalink: yamashita-tatsuro-live-at-nhk-hall
+slug: yamashita-tatsuro-live-at-nhk-hall
 ---
 
 <img src="https://i.imgur.com/yinseJm.jpg">

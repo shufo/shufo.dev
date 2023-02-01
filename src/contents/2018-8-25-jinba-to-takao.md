@@ -4,6 +4,7 @@ datetime: 2018-8-25
 tags: 
   - trekking
 permalink: jinba-to-takao
+slug: jinba-to-takao
 description: 登山初心者が陣馬山から高尾山まで縦走した話
 ---
 

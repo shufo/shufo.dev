@@ -2,6 +2,7 @@
 title: ニューヨーク一人旅 + Panorama NYC Festival 2017 その１
 datetime: 2017-8-4
 permalink: panorama-festival-2017-1
+slug: panorama-festival-2017-1
 tags: 
   - vacation
   - panorama

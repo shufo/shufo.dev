@@ -6,6 +6,7 @@ tags:
   - Book
   - Review
 permalink: book-review-washoku-toha-nanika
+slug: book-review-washoku-toha-nanika
 ---
 
 <img src="https://i.imgur.com/w3Gxtd9.png">

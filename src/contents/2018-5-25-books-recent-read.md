@@ -5,6 +5,7 @@ tags:
   - Book
   - Review
 permalink: books-recent-read
+slug: books-recent-read
 description: 銃・病原菌・鉄、サピエンス全史、遺伝子-親密なる人類史
 ---
 

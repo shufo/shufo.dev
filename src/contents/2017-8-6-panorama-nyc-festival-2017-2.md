@@ -5,6 +5,7 @@ tags:
   - vacation
 author: shufo
 permalink: panorama-nyc-festival-2017-2
+slug: panorama-nyc-festival-2017-2
 ---
 
 <img src="https://i.imgur.com/Q5BklUY.jpg">

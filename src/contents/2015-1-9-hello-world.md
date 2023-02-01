@@ -4,6 +4,7 @@ datetime: 2015-01-09T13:00:00+09:00
 tags: 
   - about
 permalink: hello-world
+slug: hello-world
 author: shufo
 description: このブログについて
 ---

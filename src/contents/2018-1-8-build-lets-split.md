@@ -6,6 +6,7 @@ tags:
   - keyboard
   - 自作キーボード
 permalink: build-lets-split
+slug: build-lets-split
 description: レツプリを組み立てた話
 ---
 

@@ -4,6 +4,7 @@ datetime: 2015-11-23T13:00:00+09:00
 tags: 
   - pelican
 permalink: site_building
+slug: site_building
 author: shufo
 description: Pelican + codeanywhere + Github Pagesで非環境依存なブログ構築
 ---

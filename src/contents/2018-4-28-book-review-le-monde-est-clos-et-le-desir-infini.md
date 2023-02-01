@@ -6,6 +6,7 @@ tags:
   - Book 
   - Review
 permalink: book-review-le-monde-est-clos-et-let-desir-infini
+slug: book-review-le-monde-est-clos-et-let-desir-infini
 ---
 
 <img src="https://i.imgur.com/5Sx2aEv.jpg">

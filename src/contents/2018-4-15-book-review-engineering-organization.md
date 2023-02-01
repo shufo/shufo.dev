@@ -5,6 +5,7 @@ tags:
   - Book
   - Review
 permalink: book-review-engineering-organization
+slug: book-review-engineering-organization
 ---
 <img src="https://i.imgur.com/4FDK7fC.jpg">
 

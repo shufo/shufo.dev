@@ -6,6 +6,7 @@ tags:
   - Music
   - DJ
 permalink: soundsandbox-at-white-space-lab
+slug: soundsandbox-at-white-space-lab
 ---
 
 <img src="https://i.imgur.com/JIPZcEH.jpg">

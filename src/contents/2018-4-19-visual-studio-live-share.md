@@ -5,6 +5,7 @@ tags:
   - Tech,
   - VSCode
 permalink: visual-studio-live-share
+slug: visual-studio-live-share
 description: ローカルサーバ共有便利
 ---
 

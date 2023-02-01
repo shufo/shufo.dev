@@ -5,6 +5,7 @@ tags:
   - VSCode
   - VPN
 permalink: remote-development-with-vscode-and-softether
+slug: remote-development-with-vscode-and-softether
 header_cover: /assets/softether_vpn.png
 cover: /assets/softether_vpn.png
 twitter_image: /assets/softether_vpn.png

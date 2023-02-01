@@ -6,6 +6,7 @@ tags:
   - Vue.js
   - TypeScript
 permalink: built-app-with-electron-vuejs-typescript
+slug: built-app-with-electron-vuejs-typescript
 author: shufo
 description: Electron + TypeScript + Vue.js でアプリを作った話
 ---

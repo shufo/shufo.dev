@@ -4,6 +4,7 @@ datetime: 2019-01-05
 tags: 
   - Linux
 permalink: linux-desktop-after-2-years
+slug: linux-desktop-after-2-years
 description: Linux デスクトップにしてから 2 年程経ったので
 ---
 
