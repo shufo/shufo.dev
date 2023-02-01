@@ -1,7 +1,8 @@
 ---
 title: マルチホストdocker環境でのBlueGreenなデプロイメント
 datetime: 2015-03-19T13:00:00+09:00
-tags: 
+slug: weave_swarm_compose
+tags:
   - docker
   - weave
   - swarm
