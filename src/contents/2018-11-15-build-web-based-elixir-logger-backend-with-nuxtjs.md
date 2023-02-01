@@ -1,7 +1,8 @@
 ---
 title: Nuxt.js で作る Web ベースの Elixir Logger バックエンド
 datetime: 2018-11-15
-tags: 
+slug: build-web-based-elixir-logger-backend-with-nuxtjs
+tags:
   - Elixir
   - Nuxt.js
 permalink: build-web-based-elixir-logger-backend-with-nuxtjs

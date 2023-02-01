@@ -1,7 +1,8 @@
 ---
 title: 2017年にElixirを仕事で使った振り返り
 datetime: 2018-01-12 00:00
-tags: 
+slug: my-elixir-status-of-the-last-year
+tags:
   - Elixir
   - programming
 permalink: my-elixir-status-of-the-last-year
