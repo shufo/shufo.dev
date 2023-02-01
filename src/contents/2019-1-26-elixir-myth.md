@@ -1,7 +1,8 @@
 ---
 title: Elixirにまつわる3つの神話
 datetime: 2019-01-26
-tags: 
+slug: elixir-myth
+tags:
   - Programming
   - Elixir
 permalink: elixir-myth
