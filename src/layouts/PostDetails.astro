@@ -6,6 +6,7 @@ import Tag from "@components/Tag.astro";
 import Datetime from "@components/Datetime";
 import type { MarkdownInstance } from "astro";
 import type { Frontmatter } from "src/types";
+import SocialButtons from "@components/SocialButtons.svelte";
 
 export interface Props {
   post: MarkdownInstance<Frontmatter>;
@@ -43,6 +44,9 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.svg`, Astro.url.origin)
     <ul class="tags-container">
       {tags.map(tag => <Tag name={tag} />)}
     </ul>
+    <div class="social-buttons">
+      <SocialButtons title={title} url={Astro.url.origin} />
+    </div>
   </main>
   <Footer />
 </Layout>
@@ -56,5 +60,8 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.svg`, Astro.url.origin)
   }
   .tags-container {
     @apply my-8;
+  }
+  .social-buttons {
+    @apply my-3;
   }
 </style>
