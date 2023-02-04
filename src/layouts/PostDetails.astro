@@ -47,7 +47,7 @@ const ogUrl = new URL(ogImage ? ogImage : `${title}.svg`, Astro.url.origin)
     <div class="social-buttons">
       <SocialButtons
         title={title}
-        url={`${Astro.url.origin}/posts/${Astro.params.slug}`}
+        url={`${Astro.url.origin}/posts/${Astro.params.slug}/`}
       />
     </div>
   </main>
