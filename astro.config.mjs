@@ -6,6 +6,7 @@ import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
 import vue from "@astrojs/vue";
 import { astroImageTools } from "astro-imagetools";
+import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
@@ -20,6 +21,7 @@ export default defineConfig({
     sitemap(),
     vue(),
     astroImageTools,
+    svelte(),
   ],
   markdown: {
     remarkPlugins: [
