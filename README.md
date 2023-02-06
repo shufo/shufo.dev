@@ -7,28 +7,38 @@ My blog built with
 - [Cloudflare Pages](https://pages.cloudflare.com/) (Hosting)
 - [TinaCMS](https://tina.io/) (CMS)
 
-## Development
+## Installation
 
-Install dependencies
-
-```bash
-yarn install
 ```
+$ yarn install
+```
+
+then get client id and read only token from app.tina.io and setting environment variable as `TINA_CLIENT_ID`, `TINA_TOKEN`.
+
+## Development
 
 Run local environment
 
 ```bash
-yarn run dev
+$ yarn run dev
 ```
 
 Check if assets can properly build for production
 
-```
-yarn run build
-yarn run preview
+```bash
+$ yarn run build
+$ yarn run preview
 ```
 
-then commit with Netlify CMS (Invite only)
+## Admin
+
+### TinaCMS
+
+```bash
+$ yarn run dev
+```
+
+then open https://localhost:3000/admin/
 
 ## Contributing
 
