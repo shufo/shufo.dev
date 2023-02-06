@@ -16,7 +16,7 @@ const { frontmatter, Content } = Astro.props.post;
 
 const { title, author, description, ogImage, datetime, tags } = frontmatter;
 
-const ogUrl = new URL(ogImage ? ogImage : `${title}.svg`, Astro.url.origin)
+const ogUrl = new URL(ogImage ? ogImage : `${title}.png`, Astro.url.origin)
   .href;
 ---
 
