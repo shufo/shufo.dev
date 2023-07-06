@@ -31,6 +31,12 @@ export const SOCIALS: SocialObjects = [
     active: true,
   },
   {
+    name: "Threads",
+    href: "https://www.threads.net/@shufo",
+    linkTitle: `Threads`,
+    active: true,
+  },
+  {
     name: "Twitter",
     href: "https://twitter.com/shufo_",
     linkTitle: `Twitter`,
