@@ -18,6 +18,8 @@ Amazonが販売元の製品しかAmazon上の検索結果に表示されなく�
 
 [Amazon 3rd party seller filter - Chrome ウェブストア](https://chrome.google.com/webstore/detail/amazon-3rd-party-seller-f/gmfbegokkdolaokghlfnohddllgbbohd?hl=ja&authuser=0) 
 
+Source Code: [GitHub](https://github.com/shufo/amazon-3rd-party-seller-filter)
+
 例えば現在Amazon.co.jpで [「イヤホン」で検索](https://www.amazon.co.jp/s?k=%E3%82%A4%E3%83%A4%E3%83%9B%E3%83%B3&__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&ref=nb_sb_noss) すると以下のようにいわゆる令和最新版臭のする製品が検索トップに来る惨状だけど
 
 ![](/assets/img/uploads/2021-01-23-screenshot_12.png)
