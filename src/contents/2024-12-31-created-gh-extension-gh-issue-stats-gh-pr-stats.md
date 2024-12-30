@@ -24,7 +24,7 @@ description: gh-extension
 
 #### Screencast
 
-![](https://assets.tina.io/c62a3f46-718a-47df-9433-ee1efaba84ce/ScreencastFrom2024-12-3021-18-59-ezgif.com-video-to-gif-converter.gif)
+![](/assets/img/uploads/ScreencastFrom2024-12-3021-18-59-ezgif.com-video-to-gif-converter.gif)
 
 ### Motivation
 
