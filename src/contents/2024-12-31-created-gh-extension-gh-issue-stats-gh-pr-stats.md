@@ -55,7 +55,18 @@ gh issue-stats --format json
 gh issue-stats --format tsv
 ```
 
+それぞれラベルごとの Issue 件数, そのうち Open 件数, Close 件数, Open 率, Close までの平均日数, Close までの日数の中央値を出力出来る
+
+```bash
+Label,Open,Closed,Total,Open %,Average Time to close (days),Median Time to close (days)
+*unlabeled*,2,44,46,4.35,96,14
+bug,4,33,37,10.81,101,76
+Total,6,77,83,7.23%,99,71
+```
+
 #### gh-pr-stats
+
+こちらも同様
 
 ```bash
 gh extension install shufo/gh-pr-stats
