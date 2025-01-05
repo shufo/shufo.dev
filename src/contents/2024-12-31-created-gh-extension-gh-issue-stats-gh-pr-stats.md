@@ -1,8 +1,9 @@
 ---
 title: GitHubのissueやPRの統計情報を集計するGitHub CLIの拡張機能を作った
-datetime: "2024-12-31T00:00:00.000Z"
+datetime: 2024-12-31T00:00:00.000Z
 slug: created-gh-extension-gh-issue-stats-gh-pr-stats
-author: shufo
+author:
+  - shufo
 tags:
   - tool
   - development
