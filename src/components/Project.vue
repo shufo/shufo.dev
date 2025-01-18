@@ -57,6 +57,7 @@ export default {
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 5px #ccc;
+  min-height: 300px;
 }
 
 @media (min-width: 0px) {

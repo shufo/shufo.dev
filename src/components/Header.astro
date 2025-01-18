@@ -46,7 +46,10 @@ const { activeNav } = Astro.props;
         </button>
         <ul id="menu-items" class="display-none sm:flex">
           <li>
-            <a href="/projects" class={activeNav === "projects" ? "active" : ""}>
+            <a
+              href="/projects"
+              class={activeNav === "projects" ? "active" : ""}
+            >
               Projects
             </a>
           </li>
@@ -115,7 +118,7 @@ const { activeNav } = Astro.props;
     @apply bg-skin-accent text-skin-inverted py-2 px-3 absolute -top-full focus:top-4 left-16 z-50 transition-all;
   }
   .nav-container {
-    @apply max-w-3xl mx-auto flex flex-col sm:flex-row justify-between items-center;
+    @apply max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center;
   }
   .top-nav-wrap {
     @apply relative w-full p-4 sm:py-8 flex justify-between items-start sm:items-center;
