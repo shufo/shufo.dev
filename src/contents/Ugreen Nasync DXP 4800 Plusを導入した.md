@@ -288,7 +288,7 @@ Ugreen Nas 自体のバックアップは今のところ別の NAS を用意し�
     - オートメーションプラットホーム。IFTTT や Zapier 代替
 - [Adguard Home](https://github.com/AdguardTeam/AdGuardHome#getting-started)
     - tailscale を有効にしているとモバイルで Adguard が使えないので Adguard Home を立て、Tailscale DNS で DNS サーバとして指定している。これにより Tailscale net 内であれば自動的に DNS ブロッキングされ有害な広告やフィッシングサイトがブロックされる。
-- emby
+- [Jellyfin](https://jellyfin.org/)
     - メディアホスティング。音楽、動画等
 - [komga](https://komga.org/)
     - 漫画等書籍のホスティング
