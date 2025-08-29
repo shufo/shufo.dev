@@ -11,6 +11,7 @@ import type { Frontmatter, ProjectFrontmatter } from "src/types";
 import Socials from "@components/Socials.astro";
 import { SOCIALS } from "@config";
 import { Content as PGP } from "@components/PGP.md";
+import { Content as Email } from "@components/Email.md";
 import ProjectList from "@components/ProjectList.vue";
 import sortByPriority from "@utils/sortByPriority";
 
@@ -23,8 +24,9 @@ const featuredPosts = sortedPosts.filter(
 
 const socialCount = SOCIALS.filter(social => social.active).length;
 
-const projects = (await Astro.glob<ProjectFrontmatter>("../projects/**/*.md")).sort(sortByPriority);
-
+const projects = (
+  await Astro.glob<ProjectFrontmatter>("../projects/**/*.md")
+).sort(sortByPriority);
 ---
 
 <Layout>
@@ -72,6 +74,18 @@ const projects = (await Astro.glob<ProjectFrontmatter>("../projects/**/*.md")).s
           </div>
         )
       }
+    </section>
+    <section id="pgp">
+      <h2>PGP</h2>
+      <article class="prose">
+        <PGP />
+      </article>
+    </section>
+    <section id="email">
+      <h2>Email</h2>
+      <article class="prose mb-5">
+        <Email />
+      </article>
     </section>
 
     <Hr />
@@ -129,13 +143,6 @@ const projects = (await Astro.glob<ProjectFrontmatter>("../projects/**/*.md")).s
       <ProjectList client:visible projects={projects} />
     </section>
     <Hr />
-    <section id="pgp">
-      <h2>PGP</h2>
-      <article class="prose">
-      <PGP />
-
-      </article>
-    </section>
   </main>
 
   <Footer />
