@@ -1,2 +1,1 @@
-<a href="mailto:meikyowise@gmail.com">meikyowise@gmail.com</a>
-
+<a href="mailto:me@shufo.dev">me@shufo.dev</a>
