@@ -3,12 +3,13 @@ title: Ugreen Nasync DXP 4800 Plusを導入した
 author:
   - shufo
 datetime: 2025-05-19T20:00:00+09:00
+featured: true
 tags:
   - NAS
 slug: ugreen-nasync-dxp-4800-plus
 ---
 
-## TL;DR;
+## TL;DR
 
 [Ugeen Nasync DXP 4800 Plus](https://nas.ugreen.jp/) を自宅環境に導入した。
 
@@ -107,12 +108,12 @@ services:
     image: tailscale/tailscale:latest
     restart: always
     volumes:
-        - ./tun:/dev/net/tun
-        - ./lib:/var/lib
+      - ./tun:/dev/net/tun
+      - ./lib:/var/lib
     environment:
-        - TS_AUTH_KEY=your_keys_goes_here
-        - TS_STATE_DIR=/var/lib/tailscale
-        - TS_ROUTES=192.168.68.0/22
+      - TS_AUTH_KEY=your_keys_goes_here
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_ROUTES=192.168.68.0/22
     network_mode: host
     privileged: true
 ```
@@ -146,7 +147,7 @@ Tailscale 自体はとても軽量で同一ネットワーク内であればレ�
 Linux (Fedora) からは MagicDNS 名でマウントし
 
 ```bash
-$ sudo mount -t cifs //dxp4800plus/personal_folder /mnt/dxp4800plus -o username=********,password=********,file_mode=0755,dir_mode=0755,uid=shuhei,gid=shuhei
+sudo mount -t cifs //dxp4800plus/personal_folder /mnt/dxp4800plus -o username=********,password=********,file_mode=0755,dir_mode=0755,uid=shuhei,gid=shuhei
 
 ```
 
@@ -210,10 +211,10 @@ services:
 以下の箇所がプロキシオプションの指定箇所で意味としては `enable` で有効化, `name` で実際にアクセスする際のサブドメイン（`<name>.<tsnet ドメイン名>` となる）、container_port はトラフィックをルーティングするポートを明示的に指定する（指定しなければコンテナ定義のデフォルトの Expose ポートとなる）
 
 ```yaml
-    labels:
-      tsdproxy.enable: "true"
-      tsdproxy.name: "emby"
-      tsdproxy.container_port: 8096
+labels:
+  tsdproxy.enable: "true"
+  tsdproxy.name: "emby"
+  tsdproxy.container_port: 8096
 ```
 
 これにより例えば tsnet 名が your-network.ts.net であれば
@@ -229,12 +230,12 @@ services:
     image: tailscale/tailscale:latest
     restart: always
     volumes:
-        - ./tun:/dev/net/tun
-        - ./lib:/var/lib
+      - ./tun:/dev/net/tun
+      - ./lib:/var/lib
     environment:
-        - TS_AUTH_KEY=tskey-auth-~~~~~~~~~~~
-        - TS_STATE_DIR=/var/lib/tailscale
-        - TS_ROUTES=192.168.68.0/22
+      - TS_AUTH_KEY=tskey-auth-~~~~~~~~~~~
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_ROUTES=192.168.68.0/22
     network_mode: host
     privileged: true
     labels:
@@ -256,46 +257,46 @@ services:
 Ugreen Nas 自体のバックアップは今のところ別の NAS を用意して Rsync などで定期バックアップを行うという想定でいる。正直それは専用の NAS アプライアンスである必要もないので汎用 PC に [TrueNas](https://www.truenas.com/)/[Unraid](https://unraid.net/)/[HexOS](https://hexos.com/) でも入れて冗長性無しで運用しようと思っている。（ちょうど MS-01 が 1 台余ってるのでオールフラッシュ NAS にするのもありか）。
 
 - NAS
-    - NAS 本体と異なる OS にすることで同じ脆弱性を突かれるリスクを低減させておく
-        - 候補
-            - TrueNas
-            - Unraid
-            - HexOS
+  - NAS 本体と異なる OS にすることで同じ脆弱性を突かれるリスクを低減させておく
+    - 候補
+      - TrueNas
+      - Unraid
+      - HexOS
 - 外付け HDD/USB フラッシュドライブ
-    - コスト面では最安
-    - バックアップ自体の時間がかかる
-    - セキュリティ保護はないため Nas にランサム被害があると同時に暗号化されてしまうリスクはある
+  - コスト面では最安
+  - バックアップ自体の時間がかかる
+  - セキュリティ保護はないため Nas にランサム被害があると同時に暗号化されてしまうリスクはある
 - クラウド
-    - 災害、盗難なども考慮するとクラウドが最も安全だがデータの重要性に左右される
-    - コスト面はそれなりにかかる（BackBlaze でも年 99 ドル)
-        - バックアップから復旧する場合も引き出すためのコストが必要
-    - またサービス自体の継続性にも左右される
-    - S3 互換ストレージ
-        - AWS S3
-        - BackBlaze B2 等
+  - 災害、盗難なども考慮するとクラウドが最も安全だがデータの重要性に左右される
+  - コスト面はそれなりにかかる（BackBlaze でも年 99 ドル)
+    - バックアップから復旧する場合も引き出すためのコストが必要
+  - またサービス自体の継続性にも左右される
+  - S3 互換ストレージ
+    - AWS S3
+    - BackBlaze B2 等
 
 ### 稼働中アプリケーション
 
 以下のアプリケーションを今のところ Ugreen NAS で稼働させている
 
 - tailscale
-    - 公式クラウド接続機能代替の軽量 VPN
+  - 公式クラウド接続機能代替の軽量 VPN
 - tailsacle-docker-proxy
-    - tailscale 上で docker コンテナへのルーティング、及び証明書自動作成などを行う
+  - tailscale 上で docker コンテナへのルーティング、及び証明書自動作成などを行う
 - Nginx Proxy Manager
-    - tailscale 外で 各種サービスへ proxy する用
+  - tailscale 外で 各種サービスへ proxy する用
 - [n8n](https://n8n.io/)
-    - オートメーションプラットホーム。IFTTT や Zapier 代替
+  - オートメーションプラットホーム。IFTTT や Zapier 代替
 - [Adguard Home](https://github.com/AdguardTeam/AdGuardHome#getting-started)
-    - tailscale を有効にしているとモバイルで Adguard が使えないので Adguard Home を立て、Tailscale DNS で DNS サーバとして指定している。これにより Tailscale net 内であれば自動的に DNS ブロッキングされ有害な広告やフィッシングサイトがブロックされる。
+  - tailscale を有効にしているとモバイルで Adguard が使えないので Adguard Home を立て、Tailscale DNS で DNS サーバとして指定している。これにより Tailscale net 内であれば自動的に DNS ブロッキングされ有害な広告やフィッシングサイトがブロックされる。
 - [Jellyfin](https://jellyfin.org/)
-    - メディアホスティング。音楽、動画等
+  - メディアホスティング。音楽、動画等
 - [komga](https://komga.org/)
-    - 漫画等書籍のホスティング
+  - 漫画等書籍のホスティング
 - [metube](https://github.com/alexta69/metube)
-    - Youtube 等の動画をローカルへ永続化する Downloader
+  - Youtube 等の動画をローカルへ永続化する Downloader
 - CouchDB
-    - [Obsidian self hosted Live Sync](https://github.com/vrtmrz/obsidian-livesync) で使用し Obsidian のノートを同期している。
+  - [Obsidian self hosted Live Sync](https://github.com/vrtmrz/obsidian-livesync) で使用し Obsidian のノートを同期している。
 
 けっこうなアプリケーションを稼働させているが待機時 CPU 使用率は数％程度で処理能力には余裕がある。
 Ugreen Nas は docker がプリインストールされていたり、他のいくつかのプリインストールアプリも docker で起動されるのが前提で、ただの NAS だけとしてだけでなくホームサーバとして運用されることを想定しているように思える。
