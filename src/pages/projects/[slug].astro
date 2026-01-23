@@ -58,9 +58,12 @@ const { slug } = Astro.params;
 const { project } = Astro.props;
 ---
 
-<Layout title={`Projects | ${SITE.title}`}>
+<Layout title={`${project.frontmatter.title} | ${SITE.title}`}>
   <Header activeNav="projects" />
-  <Main pageTitle={project.frontmatter.title} pageDesc={project.frontmatter.summary}>
+  <Main
+    pageTitle={project.frontmatter.title}
+    pageDesc={project.frontmatter.summary}
+  >
     <ProjectDetail project={project} />
   </Main>
   <Footer />
