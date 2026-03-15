@@ -18,7 +18,7 @@
   "dependencies": {
     "@astrojs/rss": "^1.0.3",
     "@astrojs/vue": "^1.2.2",
-    "@tinacms/cli": "^1.0.6",
+    "@tinacms/cli": "^1.0.9",
     "astro": "^2.0.4",
     "astro-imagetools": "^0.7.6",
     "fuse.js": "^6.6.2",
