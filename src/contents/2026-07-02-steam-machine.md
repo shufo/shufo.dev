@@ -11,7 +11,7 @@ author:
 description: Steam Machineを買った話
 ---
 
-[Komodo](https://komodostation.com/)から初回バッチで2TB版を入手したので簡単にレビュー
+[Komodo](https://komodostation.com/)から初回バッチで2TB版を入手したので簡単に感想
 
 <img src="//i.imgur.com/SOhkWRE.jpeg" width="500">
 
