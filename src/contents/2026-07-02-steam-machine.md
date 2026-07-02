@@ -4,7 +4,7 @@ datetime: 2026-07-02T21:00:00+09:00
 tags:
   - blog
 permalink: steam-machine
-featured: true
+featured: false
 slug: steam-machine
 author:
   - shufo
